@@ -9,12 +9,16 @@ It includes:
 
 ## How to use this repo
 
-**NOTE:** Make sure to replace `USERNAME` `THEMENAME` with the desired name for your theme in the following instructions.
+**NOTE:** Make sure to replace `USERNAME` with your GitHub username and `THEMENAME` with your theme name.
 
-1.  Get the theme set up locally
+1.  Fork this repo.
+
+2.  Rename the forked repo `gatsby-theme-THEMENAME`. (Make sure to replace `THEMENAME` with your chosen name.)
+
+3.  Get the theme set up locally.
     ```sh
     # clone the repo
-    git clone git@github.com:USERNAME/gatsby-theme-jam-example.git gatsby-theme-THEMENAME
+    git clone git@github.com:USERNAME/gatsby-theme-THEMENAME.git
 
     # move into the directory
     cd gatsby-theme-THEMENAME
@@ -23,18 +27,18 @@ It includes:
     yarn
     ```
 
-2.  Start the demo site
+4.  Start the demo site.
     ```sh
     yarn workspace demo develop
     ```
 
     The demo will start at http://localhost:8000
 
-3.  Start editing the theme! Any changes you make to the local `theme` directory will be reflected on the demo site for easy local development.
+5.  Start editing the theme! Any changes you make to the local `theme` directory will be reflected on the demo site for easy local development.
 
-4.  Follow the [submission checklist](./theme/README.md#submission-checklist) to make sure your theme qualifies to win!
+6.  Follow the [submission checklist](./theme/README.md#submission-checklist) to make sure your theme qualifies to win!
 
-5.  [Submit your theme](https://themejam.gatsbyjs.org/submit) to win!
+7.  [Submit your theme](https://themejam.gatsbyjs.org/submit) to win!
 
 ## More information
 
