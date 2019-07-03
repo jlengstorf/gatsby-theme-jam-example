@@ -35,10 +35,12 @@ To ensure your Theme Jam submission [follows the rules](https://themejam.gatsbyj
 - [ ] Run a performance audit using [Lighthouse][] and/or [WebPageTest][]
 - [ ] Set up a live demo using [Netlify][] or [GitHub Pages][]
 - [ ] Add installation documentation to the README
+- [ ] Update the `name` field in `package.json`
 - [ ] Update the `author` field in `package.json`
 - [ ] Update the `repository` field in `package.json`
 - [ ] Make sure the theme’s `keywords` in `package.json` include `gatsby`, `gatsby-theme`, and `gatsby-plugin`
 - [ ] Publish your theme to npm ([docs][npmpublish])
+- [ ] Submit your theme at https://themejam.gatsbyjs.org
 
 [Lighthouse]: https://developers.google.com/web/tools/lighthouse/
 [axe]: https://www.deque.com/axe/

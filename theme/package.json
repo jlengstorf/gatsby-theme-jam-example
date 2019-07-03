@@ -3,9 +3,9 @@
   "author": "Jason Lengstorf <jason@gatsbyjs.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jlengstorf/gatsby-theme-jam-example"
+    "url": "https://github.com/jlengstorf/gatsby-theme-jam-example.git"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
