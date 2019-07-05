@@ -3,5 +3,10 @@
   "workspaces": [
     "theme",
     "demo"
-  ]
+  ],
+  "scripts": {
+    "start": "yarn workspace demo start",
+    "build": "yarn workspace demo build",
+    "serve": "yarn workspace demo serve"
+  }
 }

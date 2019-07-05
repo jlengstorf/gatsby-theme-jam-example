@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-theme-jam-example",
-  "author": "Jason Lengstorf <jason@gatsbyjs.com>",
+  "name": "gatsby-theme-scarlet",
+  "author": "Shaun Wong <hello@shaunwong.com.au>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jlengstorf/gatsby-theme-jam-example.git"
+    "url": "https://github.com/ARXChrono/gatsby-theme-scarlet.git"
   },
   "version": "1.0.1",
   "main": "index.js",
