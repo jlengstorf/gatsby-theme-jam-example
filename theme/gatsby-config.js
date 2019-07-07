@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Theme Jam Example Submission",
+    title: "Gatsby Theme Scarlet",
   },
   plugins: ["gatsby-plugin-theme-ui"],
 }
