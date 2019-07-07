@@ -55,7 +55,7 @@ const Layout = ({ children }) => {
       </section>
       <Footer>
         <Container>
-          <p>footer!</p>
+          <p>footer! </p>
         </Container>
       </Footer>
     </StyledLayout>
