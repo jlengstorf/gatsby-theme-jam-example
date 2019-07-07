@@ -5,5 +5,5 @@
  */
 
 module.exports = {
-  plugins: ["gatsby-theme-jam-example"],
+  plugins: ["trixie-hood-and-lilly-joan-book-theme"],
 }
