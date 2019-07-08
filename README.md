@@ -27,7 +27,7 @@ It includes:
     yarn
     ```
 
-4.  Update `package.json` with your info.
+4.  Update `theme/package.json` with your info.
     ```diff
       {
     +   "name": "gatsby-theme-THEMENAME",
