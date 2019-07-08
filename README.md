@@ -38,7 +38,15 @@ It includes:
         },
     ```
 
-5.  Start the demo site.
+5. Update `demo/gatsby-config.js` with your THEMENAME
+    ```diff
+      module.exports = {
+    -   plugins: ["gatsby-theme-jam-example"],
+    +   plugins: ["gatsby-theme-THEMENAME"],
+      }
+    ```
+
+6.  Start the demo site.
     ```sh
     yarn workspace demo develop
     ```
