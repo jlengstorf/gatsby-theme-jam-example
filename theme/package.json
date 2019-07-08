@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-theme-awesome-personal-site",
-  "author": "Luis Oliveira <luis.fgbo@gmail.com>",
+  "name": "gatsby-theme-jam-example",
+  "author": "Jason Lengstorf <jason@gatsbyjs.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/luisFilipePT/gatsby-theme-awesome-personal-site.git"
+    "url": "https://github.com/jlengstorf/gatsby-theme-jam-example.git"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
