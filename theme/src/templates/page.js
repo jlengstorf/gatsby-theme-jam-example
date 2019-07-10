@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import Layout from "../components/layout"
+
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 
@@ -16,7 +16,7 @@ export default class postLayout extends Component {
     const nextPageLink = (conCurrentPage + 1).toString()
 
     return (
-      <Layout>
+      <>
         <ul
           style={{
             background: `pink`,
@@ -46,7 +46,7 @@ export default class postLayout extends Component {
         </ul>
 
         <Img fluid={file.childImageSharp.fluid} />
-      </Layout>
+      </>
     )
   }
 }

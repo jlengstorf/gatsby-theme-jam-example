@@ -8,7 +8,7 @@ module.exports = {
       options: {
         name: `audio`,
         path: `${__dirname}/content/audio/`,
-        ignore: [`**/\Petra*`], // ignore files starting with a dot
+        ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
     {
@@ -17,6 +17,12 @@ module.exports = {
         name: `images`,
         path: `${__dirname}/content/ChildrensPictureBookImages/`,
         ignore: [`**/\cover*`], // ignore files starting with a dot
+      },
+    },
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/layouts/index.js`),
       },
     },
     "gatsby-plugin-theme-ui",
