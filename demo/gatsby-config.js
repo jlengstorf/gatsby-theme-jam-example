@@ -5,5 +5,10 @@
  */
 
 module.exports = {
-  plugins: ["gatsby-theme-auth-app"],
+  plugins: [
+    {
+      resolve: "gatsby-theme-auth-app",
+      options: { contentPath: "data", basePath: "/nav" },
+    },
+  ],
 }

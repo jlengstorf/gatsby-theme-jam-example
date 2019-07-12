@@ -1,11 +1,11 @@
-import React from "react";
-import { Link } from "gatsby";
-import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import Divider from "@material-ui/core/Divider";
+import React from 'react';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+import { makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles({
   list: {
@@ -13,47 +13,41 @@ const useStyles = makeStyles({
   },
 });
 
-// const navList = [
-//   {
-//     route: 'instruction',
-//     title: 'Getting Started',
-//   },
-//   {
-//     route: 'self-confidence',
-//     title: 'Self Confidence',
-//   },
-//   {
-//     route: 'auto-suggestion',
-//     title: 'Auto Suggestion',
-//   },
-//   {
-//     route: 'miracle-equation',
-//     title: 'Miracle Equation',
-//   },
-//   {
-//     route: 'self-analysis',
-//     title: 'Self Analysis',
-//   },
-//   {
-//     route: 'miracle-morning',
-//     title: 'Miracle Morning',
-//   },
-//   {
-//     route: 'faith',
-//     title: 'Faith',
-//   },
-//   {
-//     route: 'meditation',
-//     title: 'Meditation',
-//   },
-//   {
-//     route: 'habits',
-//     title: 'Habits',
-//   },
-// ];
+export default function NavigationList() {
+  const data = useStaticQuery(graphql`
+    query {
+      allNavigation(sort: { fields: loadOrder, order: ASC }) {
+        nodes {
+          id
+          route
+          label
+          loadOrder
+        }
+      }
+    }
+  `);
 
-export default function NavigationList({ navList }) {
+  const imageData = useStaticQuery(graphql`
+    query {
+      fileName: file(
+        relativePath: { regex: "/(jpg)|(jpeg)|(png)/" },
+        relativeDirectory: { eq: "logo" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 250) {
+            src
+          }
+        }
+        name
+      }
+    }
+  `);
+
+  const navList = data.allNavigation.nodes;
+
   const classes = useStyles();
+  console.log('test');
+  // console.log(imageData);
   return (
     <div className={classes.list}>
       <List>
@@ -63,8 +57,8 @@ export default function NavigationList({ navList }) {
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
-              <Link style={{ textDecoration: "none" }} to={`/app/${nav.route}`}>
-                {`${nav.title}`}
+              <Link style={{ textDecoration: 'none' }} to={`/app/${nav.route}`}>
+                {`${nav.label}`}
               </Link>
             </ListItem>
           );

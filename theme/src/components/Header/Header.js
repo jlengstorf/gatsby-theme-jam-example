@@ -1,26 +1,29 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { graphql, useStaticQuery, Link } from "gatsby";
-import { withStyles } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import Button from "@material-ui/core/Button";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+import { withStyles } from '@material-ui/core/styles';
+import MenuIcon from '@material-ui/icons/Menu';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Button from '@material-ui/core/Button';
 
-import HeaderText from "../Text/TypographyH6";
-import SimpleAppBar from "./SimpleAppBar";
-import HeaderButton from "../Button/HeaderButton";
-import SwipeDrawer from "../Menu/SwipeDrawer";
-import UserMenu from "../Menu/UserMenu";
-import NavigationList from "../Menu/NavigationList";
-import { isAuthenticated, login, logout } from "../../utils/Auth";
+import HeaderText from '../Text/TypographyH6';
+import SimpleAppBar from './SimpleAppBar';
+import HeaderButton from '../Button/HeaderButton';
+import SwipeDrawer from '../Menu/SwipeDrawer';
+import UserMenu from '../Menu/UserMenu';
+import NavigationList from '../Menu/NavigationList';
+import { isAuthenticated, login, logout } from '../../utils/Auth';
+import brandLogo from '../../images/spud_logo_red.svg';
 
 const styles = {
   root: {
     flexGrow: 1,
-    background:
-      "linear-gradient(to bottom, #ffcc00 0%, #FFD700 35%, #ffe066 68%, #fff5cc 100%)",
-    boxShadow: "inset 0px 1px 6px 0px #ffe066",
-    margin: "auto 0px",
+    // background:
+    //   'linear-gradient(to bottom, #ffcc00 0%, #FFD700 35%, #ffe066 68%, #fff5cc 100%)',
+    background: `linear-gradient(to bottom, #EE3234 0%, #EE6454 19%
+        , #dd3234 30%, #912b2d 100%)`,
+    boxShadow: 'inset 0px 1px 6px 0px #ffe066',
+    margin: 'auto 0px',
   },
   grow: {
     flexGrow: 1,
@@ -30,27 +33,15 @@ const styles = {
     marginRight: 20,
   },
   plainLink: {
-    color: "#7b1bb3",
-    textDecoration: "none",
+    // color: '#7b1bb3',
+    color: '#eee',
+    textDecoration: 'none',
   },
   foregroundColor: {
-    color: "#7b1bb3",
+    // color: '#7b1bb3',
+    color: '#eee',
   },
 };
-
-const data = useStaticQuery(graphql`
-  query {
-    allNavigation(sort: { fields: loadOrder, order: ASC }) {
-      nodes {
-        id
-        route
-        label
-        loadOrder
-      }
-    }
-  }
-`);
-const navList = data.allNavigation.nodes;
 
 class Header extends React.Component {
   state = {
@@ -80,31 +71,31 @@ class Header extends React.Component {
 
     return (
       <SimpleAppBar className={classes.root}>
-        {isAuthenticated() && (
+        {!isAuthenticated() && (
           <HeaderButton
             className={classes.menuButton}
             aria-label="Menu"
-            aria-owns={anchorEl ? "menu-sidebar" : undefined}
-            onClick={this.toggleDrawer("left", true)}
+            aria-owns={anchorEl ? 'menu-sidebar' : undefined}
+            onClick={this.toggleDrawer('left', true)}
           >
             <MenuIcon className={classes.foregroundColor} />
           </HeaderButton>
         )}
         <HeaderText className={classes.grow}>
           <Link to="/" className={classes.plainLink}>
-            {siteTitle}
+            <img style={{ maxWidth: '175px' }} src={brandLogo} />
           </Link>
         </HeaderText>
-        {isAuthenticated() && (
+        {!isAuthenticated() && (
           <SwipeDrawer left={left} toggleDrawer={this.toggleDrawer}>
-            <NavigationList navList={navList} />
+            <NavigationList />
           </SwipeDrawer>
         )}
         <div>
           {isAuthenticated() && (
             <React.Fragment>
               <HeaderButton
-                aria-owns={open ? "menu-appbar" : undefined}
+                aria-owns={open ? 'menu-appbar' : undefined}
                 onClick={this.handleMenu}
               >
                 <AccountCircle className={classes.foregroundColor} />
@@ -123,6 +114,7 @@ class Header extends React.Component {
           {!isAuthenticated() && (
             <Button
               onClick={() => login()}
+              className={classes.foregroundColor}
               // color={buttonColor}
               // autoFocus
             >

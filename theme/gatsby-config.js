@@ -1,6 +1,8 @@
-module.exports = {
+const path = require(`path`);
+module.exports = ({ contentPath = 'data', basePath = '/' }) => ({
   siteMetadata: {
     title: 'Gatsby Theme Auth App',
+    basePath,
   },
   plugins: [
     'gatsby-plugin-theme-ui',
@@ -8,14 +10,31 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/data`,
+        name: `data`,
+        path: contentPath,
       },
     },
     {
-      resolve: 'gatsby-transformer-yaml',
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `src`, `images`),
+      },
+    },
+    {
+      resolve: 'gatsby-transformer-json',
       options: {
         typeName: 'Navigation',
       },
     },
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        useMozJpeg: false,
+        stripMetadata: false,
+        defaultQuality: 75,
+      },
+    },
+    'gatsby-transformer-sharp',
   ],
-};
+});
