@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-theme-jam-example",
-  "author": "Jason Lengstorf <jason@gatsbyjs.com>",
+  "name": "gatsby-theme-auth-app",
+  "author": "Reuben Ellis <thedevelopertoolbook@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jlengstorf/gatsby-theme-jam-example.git"
+    "url": "https://github.com/ethriel3695/gatsby-theme-auth-app.git"
   },
   "version": "1.0.1",
   "main": "index.js",
@@ -20,8 +20,16 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.14",
+    "@material-ui/core": "^4.2.0",
+    "@material-ui/icons": "^4.2.1",
     "@mdx-js/react": "^1.0.21",
+    "auth0-js": "^9.11.1",
+    "gatsby-plugin-material-ui": "^2.1.4",
     "gatsby-plugin-theme-ui": "^0.2.2",
+    "gatsby-source-filesystem": "^2.1.4",
+    "gatsby-transformer-yaml": "^2.2.1",
+    "react-swipeable-views": "^0.13.3",
+    "react-swipeable-views-utils": "^0.13.3",
     "theme-ui": "^0.2.2"
   },
   "keywords": [

@@ -1,0 +1,4 @@
+-id: 1
+route: home
+label: Home
+loadOrder: 1

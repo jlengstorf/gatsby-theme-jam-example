@@ -1,7 +1,9 @@
-import React from "react"
-import { css, Global } from "@emotion/core"
-import { Layout as StyledLayout, Header, Main, Container } from "theme-ui"
-import { graphql, useStaticQuery } from "gatsby"
+import React from 'react';
+import { css, Global } from '@emotion/core';
+import { Layout as StyledLayout, Main, Container } from 'theme-ui';
+import { graphql, useStaticQuery } from 'gatsby';
+
+import Header from '../components/Header/Header';
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -12,7 +14,7 @@ const Layout = ({ children }) => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <StyledLayout>
@@ -30,7 +32,7 @@ const Layout = ({ children }) => {
         <Container>{children}</Container>
       </Main>
     </StyledLayout>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
