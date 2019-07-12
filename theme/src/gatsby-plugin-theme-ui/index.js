@@ -1,65 +1,56 @@
-/**
- * This theme uses `theme-ui` under the hood.
- * @see https://theme-ui.com/
- * @see https://theme-ui.com/gatsby-plugin/
- */
+import "typeface-open-sans"
+import "typeface-pacifico"
+
+const systemFontStack =
+  '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol'
+
 export default {
+  // Global Theme Styles
   colors: {
     text: "#FFF",
     background: "#F53B57",
+    primary: "#F53B57",
     secondary: "#EF5777",
-    primary: "#FFF",
   },
   fonts: {
-    default:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+    heading: `'Pacifico', ${systemFontStack}`,
+    body: `'Open Sans', ${systemFontStack}`,
   },
-  fontSizes: [16, 18, 20, 22, 27, 36],
+  fontSizes: [12, 14, 16, 18, 24, 32, 48, 64, 72],
+  fontWeights: {
+    body: 400,
+    heading: 500,
+    bold: 700,
+  },
   lineHeights: {
-    text: "1.45",
-    heading: "1.1",
-  },
-  sizes: {
-    container: 650,
+    body: 1.5,
+    heading: 1.125,
   },
   styles: {
-    Layout: {
-      backgroundColor: "background",
-      color: "text",
-      fontFamily: "default",
-      fontSize: 1,
-      lineHeight: "text",
-    },
-    Header: {
-      backgroundColor: "salmon",
-      color: "text",
-      fontWeight: "bold",
-      margin: 0,
-      span: {
-        display: "block",
-        fontSize: 3,
-        margin: "0 auto",
-        maxWidth: "container",
-        backgroundColor: "crimson",
-        padding: 3,
-        width: "90vw",
-      },
-    },
-    Main: {
-      margin: "0 auto",
-      maxWidth: "container",
-      // width: "90vw",
-      backgroundColor: "pink",
-    },
-    Container: {
-      padding: 0,
-      // paddingBottom: 3,
-      // paddingTop: 3,
+    p: {
+      fontSize: [2, 3],
     },
     h1: {
       color: "text",
-      fontSize: 5,
-      lineHeight: "heading",
+      fontSize: [6, 7],
+      fontFamily: "heading",
+    },
+    h2: {
+      color: "text",
+      fontFamily: "heading",
+      fontSize: [4, 5],
+    },
+    // Theme UI Components
+    Layout: {
+      backgroundColor: "background",
+      color: "text",
+      fontFamily: "body",
+      fontSize: 1,
+    },
+    Container: {
+      padding: 0,
+      paddingBottom: 3,
+      paddingTop: 3,
     },
   },
 }

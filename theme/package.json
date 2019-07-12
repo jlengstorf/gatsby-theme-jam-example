@@ -21,8 +21,12 @@
   "dependencies": {
     "@emotion/core": "^10.0.14",
     "@mdx-js/react": "^1.0.21",
+    "gatsby-plugin-netlify": "^2.1.1",
     "gatsby-plugin-theme-ui": "^0.2.2",
-    "theme-ui": "^0.2.2"
+    "gatsby-source-lastfm": "^0.1.2",
+    "theme-ui": "^0.2.2",
+    "typeface-open-sans": "^0.0.54",
+    "typeface-pacifico": "^0.0.72"
   },
   "keywords": [
     "gatsby",

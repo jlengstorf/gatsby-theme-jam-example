@@ -1,12 +1,12 @@
 import React from "react"
 import { Styled } from "theme-ui"
-import Layout from "../components/layout"
+import HomeLayout from "../layouts/home"
 
 const PageTemplate = ({ pageContext }) => (
-  <Layout>
+  <HomeLayout>
     <Styled.h1>{pageContext.heading}</Styled.h1>
     <div dangerouslySetInnerHTML={{ __html: pageContext.content }} />
-  </Layout>
+  </HomeLayout>
 )
 
 export default PageTemplate
