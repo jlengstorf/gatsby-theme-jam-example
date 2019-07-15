@@ -1,14 +1,20 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.org/docs/gatsby-config/
- */
-
 module.exports = {
   plugins: [
     {
       resolve: "gatsby-theme-auth-app",
-      options: { contentPath: "data", basePath: "/nav" },
+      options: {},
     },
   ],
+  siteMetadata: {
+    title: `Spudnik Landing Page`,
+    author: `Reuben Ellis`,
+    description: `Spudnik Tools Landing Page`,
+    loginDesc: "Login",
+    social: [
+      {
+        name: `github`,
+        url: `https://github.com/ethriel3695`,
+      },
+    ],
+  },
 }

@@ -1,40 +1,77 @@
-const path = require(`path`);
-module.exports = ({ contentPath = 'data', basePath = '/' }) => ({
-  siteMetadata: {
-    title: 'Gatsby Theme Auth App',
-    basePath,
-  },
-  plugins: [
-    'gatsby-plugin-theme-ui',
-    'gatsby-plugin-material-ui',
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: `data`,
-        path: contentPath,
-      },
+module.exports = options => {
+  const { mdx = false } = options
+
+  return {
+    siteMetadata: {
+      title: `Gatsby Theme Auth App`,
+      author: `Name Placeholder`,
+      description: `Description placeholder`,
+      loginDesc: 'Login / Signup',
+      social: [
+        {
+          name: `twitter`,
+          url: `https://twitter.com/reubenellis8`,
+        },
+        {
+          name: `github`,
+          url: `https://github.com/ethriel3695`,
+        },
+      ],
     },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: `images`,
-        path: path.join(__dirname, `src`, `images`),
+    plugins: [
+      mdx && {
+        resolve: `gatsby-plugin-mdx`,
+        options: {
+          extensions: [`.mdx`, `.md`],
+          gatsbyRemarkPlugins: [
+            {
+              resolve: `gatsby-remark-images`,
+              options: {
+                // should this be configurable by the end-user?
+                maxWidth: 1380,
+                linkImagesToOriginal: false,
+              },
+            },
+            { resolve: `gatsby-remark-copy-linked-files` },
+            { resolve: `gatsby-remark-numbered-footnotes` },
+            { resolve: `gatsby-remark-smartypants` },
+          ],
+          remarkPlugins: [require(`remark-slug`)],
+        },
       },
-    },
-    {
-      resolve: 'gatsby-transformer-json',
-      options: {
-        typeName: 'Navigation',
+      {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          path: options.contentPath || `content/data`,
+          name: options.contentPath || `content/data`,
+        },
       },
-    },
-    {
-      resolve: 'gatsby-plugin-sharp',
-      options: {
-        useMozJpeg: false,
-        stripMetadata: false,
-        defaultQuality: 75,
+      {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          path: options.assetPath || `content/assets`,
+          name: options.assetPath || `content/assets`,
+        },
       },
-    },
-    'gatsby-transformer-sharp',
-  ],
-});
+      {
+        resolve: 'gatsby-transformer-json',
+        options: {
+          typeName: 'Navigation',
+        },
+      },
+      {
+        resolve: 'gatsby-plugin-sharp',
+        options: {
+          useMozJpeg: false,
+          stripMetadata: false,
+          defaultQuality: 75,
+        },
+      },
+      'gatsby-transformer-sharp',
+      'gatsby-plugin-emotion',
+      'gatsby-plugin-theme-ui',
+      'gatsby-plugin-material-ui',
+      'gatsby-plugin-react-helmet',
+    ].filter(Boolean),
+  }
+};

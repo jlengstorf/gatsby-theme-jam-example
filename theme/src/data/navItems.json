@@ -1,4 +1,4 @@
 [
-  { "route": "home", "label": "Submit Field Issue", "loadOrder": 1 },
+  { "route": "test", "label": "Submit Field Issue", "loadOrder": 1 },
   { "route": "existing-issues", "label": "Existing Issues", "loadOrder": 2 }
 ]

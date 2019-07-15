@@ -1,17 +1,14 @@
-/**
- * This theme uses `theme-ui` under the hood.
- * @see https://theme-ui.com/
- * @see https://theme-ui.com/gatsby-plugin/
- */
-export default {
-  colors: {
-    text: "#232129",
-    background: "#fff",
-    primary: "#639",
-  },
+import merge from "lodash.merge"
+import colors from "./colors"
+import styles from "./styles"
+import prism from "./prism"
+
+export default merge({}, {
+  initialColorMode: `light`,
+  colors,
   fonts: {
-    default:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+    heading: `Montserrat, sans-serif`,
+    monospace: `Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace`,
   },
   fontSizes: [16, 18, 20, 22, 27, 36],
   lineHeights: {
@@ -19,17 +16,9 @@ export default {
     heading: "1.1",
   },
   sizes: {
-    container: 650,
+    container: 672,
   },
-  styles: {
-    Layout: {
-      backgroundColor: "background",
-      color: "text",
-      fontFamily: "default",
-      fontSize: 1,
-      lineHeight: "text",
-    },
-    Header: {
+  Header: {
       backgroundColor: "primary",
       color: "background",
       fontWeight: "bold",
@@ -58,5 +47,6 @@ export default {
       fontSize: 5,
       lineHeight: "heading",
     },
-  },
-}
+  styles,
+  prism,
+})

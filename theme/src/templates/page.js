@@ -1,12 +1,33 @@
 import React from 'react';
-import { Styled } from 'theme-ui';
-import Layout from '../components/layout';
+import { Link, graphql } from 'gatsby';
+import Image from 'gatsby-image';
+import Home from '../components/Home';
 
-const PageTemplate = ({ pageContext }) => (
-  <Layout>
-    <Styled.h1>{pageContext.heading}</Styled.h1>
-    <div dangerouslySetInnerHTML={{ __html: pageContext.content }} />
-  </Layout>
-);
+export const pageQuery = graphql`
+  query {
+    brandLogo: file(
+      relativePath: { regex: "/(jpg)|(jpeg)|(png)/" }
+      relativeDirectory: { eq: "logo" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 250) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`;
+
+const PageTemplate = ({ pageContext }) => {
+  console.log(pageContext);
+  return (
+    <Home
+      siteTitle={pageContext.siteTitle}
+      socialLinks={pageContext.socialLinks}
+      brand={pageContext.brand}
+      loginOption={pageContext.loginOption}
+    />
+  );
+};
 
 export default PageTemplate;

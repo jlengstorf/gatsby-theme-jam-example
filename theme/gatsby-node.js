@@ -1,15 +1,36 @@
-// https://egghead.io/lessons/gatsby-set-up-to-create-data-driven-pages-in-gatsby
-
 const fs = require('fs');
+const path = require(`path`);
+const mkdirp = require(`mkdirp`);
+const Debug = require(`debug`);
 
+const debug = Debug(`gatsby-theme-auth-app`);
+
+// These are customizable theme options we only need to check once
+let basePath
+let contentPath
+let assetPath
+
+// These templates are simply data-fetching wrappers that import components
+const PageTemplate = require.resolve(`./src/templates/page`)
+// const PostsTemplate = require.resolve(`./src/templates/posts`)
 // Verify the data directory exists
-exports.onPreBootstrap = ({ reporter }, options) => {
-  const contentPath = options.contentPath || 'data';
+exports.onPreBootstrap = ({ store }, options) => {
+  const { program } = store.getState();
+  basePath = options.basePath || `/`;
+  contentPath = options.contentPath || `content/posts`;
+  assetPath = options.assetPath || `content/assets`;
 
-  if (!fs.existsSync(contentPath)) {
-    reporter.info(`creating the ${contentPath} directory`);
-    fs.mkdirSync(contentPath);
-  }
+  const dirs = [
+    path.join(program.directory, contentPath),
+    path.join(program.directory, assetPath),
+  ];
+
+  dirs.forEach(dir => {
+    debug(`Initializing ${dir} directory`);
+    if (!fs.existsSync(dir)) {
+      mkdirp.sync(dir);
+    }
+  });
 };
 
 // Define the event type
@@ -24,15 +45,22 @@ exports.sourceNodes = ({ actions }) => {
 };
 
 // Query for nav and create pages
-exports.createPages = async ({ actions, graphql, reporter }, options) => {
-  const basePath = options.basePath || '/';
-  actions.createPage({
-    path: basePath,
-    component: require.resolve('./src/templates/page.js'),
-  });
-
+exports.createPages = async ({ actions, graphql, reporter }) => {
+  
   const result = await graphql(`
-    query {
+    {
+      site {
+        siteMetadata {
+          title
+          description
+          author
+          loginDesc
+          social {
+            name
+            url
+          }
+        }
+      }
       allNavigation(sort: { fields: loadOrder, order: ASC }) {
         nodes {
           id
@@ -41,13 +69,39 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
           loadOrder
         }
       }
+      brandLogo: file(
+        relativePath: { regex: "/(jpg)|(jpeg)|(png)/" }
+        relativeDirectory: { eq: "logo" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 250) {
+            src
+          }
+        }
+      }
     }
   `);
 
+  // ...GatsbyImageSharpFluid
   if (result.errors) {
     reporter.panic('error loading nav', reporter.errors);
     return;
   }
+
+  // Create Posts and Post pages.
+  const { site: { siteMetadata }, brandLogo } = result.data;
+  const { title: siteTitle, social: socialLinks, loginDesc: loginOption } = siteMetadata;
+  const brand = brandLogo.childImageSharp.fluid;
+
+  actions.createPage({
+    path: basePath,
+    component: PageTemplate,
+  });
+
+  // actions.createPage({
+  //   path: '/home',
+  //   component: require.resolve('./src/pages/index.js'),
+  // });
 
   const navList = result.data.allNavigation.nodes;
 
@@ -57,6 +111,10 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
       component: require.resolve('./src/templates/page.js'),
       context: {
         navId: nav.id,
+        siteTitle,
+        socialLinks,
+        brand,
+        loginOption,
       },
     });
   });

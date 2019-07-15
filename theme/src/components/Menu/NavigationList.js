@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function NavigationList() {
+export default function NavigationList () {
   const data = useStaticQuery(graphql`
     query {
       allNavigation(sort: { fields: loadOrder, order: ASC }) {
@@ -27,27 +27,9 @@ export default function NavigationList() {
     }
   `);
 
-  const imageData = useStaticQuery(graphql`
-    query {
-      fileName: file(
-        relativePath: { regex: "/(jpg)|(jpeg)|(png)/" },
-        relativeDirectory: { eq: "logo" }
-      ) {
-        childImageSharp {
-          fluid(maxWidth: 250) {
-            src
-          }
-        }
-        name
-      }
-    }
-  `);
-
   const navList = data.allNavigation.nodes;
 
   const classes = useStyles();
-  console.log('test');
-  // console.log(imageData);
   return (
     <div className={classes.list}>
       <List>
@@ -57,7 +39,10 @@ export default function NavigationList() {
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
-              <Link style={{ textDecoration: 'none' }} to={`/app/${nav.route}`}>
+              <Link
+                style={{ textDecoration: 'none' }}
+                to={`/app/${nav.route}`}
+              >
                 {`${nav.label}`}
               </Link>
             </ListItem>

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { Link, graphql } from 'gatsby';
+import Image from 'gatsby-image';
 import { withStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -13,7 +14,7 @@ import SwipeDrawer from '../Menu/SwipeDrawer';
 import UserMenu from '../Menu/UserMenu';
 import NavigationList from '../Menu/NavigationList';
 import { isAuthenticated, login, logout } from '../../utils/Auth';
-import brandLogo from '../../images/spud_logo_red.svg';
+// import brandLogo from '../../images/spud_logo_red.svg';
 
 const styles = {
   root: {
@@ -43,6 +44,21 @@ const styles = {
   },
 };
 
+export const pageQuery = graphql`
+  query {
+    brandLogo: file(
+      relativePath: { regex: "/(jpg)|(jpeg)|(png)/" }
+      relativeDirectory: { eq: "logo" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 250) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`;
+
 class Header extends React.Component {
   state = {
     anchorEl: null,
@@ -64,8 +80,10 @@ class Header extends React.Component {
   };
 
   render() {
-    const { classes, siteTitle } = this.props;
+    const { classes, siteTitle, brand, loginOption } = this.props;
+    console.log(this.props);
     const { anchorEl, left } = this.state;
+    console.log(brand);
 
     const open = Boolean(anchorEl);
 
@@ -83,7 +101,8 @@ class Header extends React.Component {
         )}
         <HeaderText className={classes.grow}>
           <Link to="/" className={classes.plainLink}>
-            <img style={{ maxWidth: '175px' }} src={brandLogo} />
+            {/* <Image fluid={brand.src} alt={`Hello`} /> */}
+            {siteTitle}
           </Link>
         </HeaderText>
         {!isAuthenticated() && (
@@ -118,7 +137,7 @@ class Header extends React.Component {
               // color={buttonColor}
               // autoFocus
             >
-              Login / Signup
+              {loginOption}
             </Button>
           )}
         </div>
