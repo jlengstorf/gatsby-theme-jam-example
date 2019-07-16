@@ -1,50 +1,18 @@
 import React, { Component } from "react"
-
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
+import PageFlipper from "../components/PageFlipper"
 
 export default class postLayout extends Component {
   render() {
     const { file } = this.props.data
-    const currentPage = file.name
-    const prevPage = currentPage - 1 === 0 ? "/" : (currentPage - 1).toString()
-
-    const prevPageLink = (currentPage - 1).toString()
-
-    var conCurrentPage = Number(currentPage)
-    const nextPage = (conCurrentPage + 1).toString()
-    const nextPageLink = (conCurrentPage + 1).toString()
 
     return (
       <>
-        <ul
-          style={{
-            background: `pink`,
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-
-            margin: 0,
-            marginBottom: 0,
-          }}
-        >
-          <li>
-            {prevPage && (
-              <Link to={`/${prevPage}`} rel="prev">
-                ← {prevPageLink}
-              </Link>
-            )}
-          </li>
-          <li>
-            {nextPage && (
-              <Link to={`/${nextPage}`} rel="next">
-                {nextPageLink} →
-              </Link>
-            )}
-          </li>
-        </ul>
-
+        <PageFlipper
+          pageNumberProp={file.name}
+          tagline="Wes & Scott Is Syntax.fm"
+        />
         <Img fluid={file.childImageSharp.fluid} />
       </>
     )
@@ -61,11 +29,6 @@ export const query = graphql`
         }
       }
       name
-      relativePath
-      absolutePath
-    }
-    front: file(name: { eq: $slug }) {
-      id
     }
   }
 `

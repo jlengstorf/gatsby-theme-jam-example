@@ -1,20 +1,13 @@
-/**
- * Layout component that queries for data
- * with Gatsby's StaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import "../components/layout.css"
 
-const Layout = ({ children }) => (
+const audioWrapper = ({ children }) => (
   <StaticQuery
     query={graphql`
-      query LayoutQuery {
+      query audioWrapperQuery {
         file(relativePath: { eq: "Petra_Kanini.mp3" }) {
           publicURL
         }
@@ -52,25 +45,34 @@ const Layout = ({ children }) => (
               }}
             />
           </div>
-
-          <footer>
-            © {new Date().getFullYear()}, Homemade by hand with
-            {` `}
-            <a href="https://www.gatsbyjs.org">
-              Children's Picture Book Gatsby Theme
-            </a>
-          </footer>
         </div>
       </>
     )}
   />
 )
 
-Layout.propTypes = {
+audioWrapper.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout
+export default audioWrapper
 
-// line 39
-//<Header siteTitle={data.site.siteMetadata.title} />
+/**
+ * Layout component that queries for data
+ * with Gatsby's StaticQuery component
+ *
+ * See: https://www.gatsbyjs.org/docs/static-query/
+ */
+
+/** line 39
+<Header siteTitle={data.site.siteMetadata.title} />
+
+line 54
+<footer>
+© {new Date().getFullYear()}, Homemade by hand with
+{` `}
+<a href="https://www.gatsbyjs.org">
+  Children's Picture Book Gatsby Theme
+</a>
+</footer>
+*/

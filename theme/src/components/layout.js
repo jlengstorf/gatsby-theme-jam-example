@@ -23,9 +23,7 @@ const Layout = ({ children }) => {
           }
         `}
       />
-      <Header>
-        <span>{data.site.siteMetadata.title}</span>
-      </Header>
+
       <Main>
         <Container>{children}</Container>
       </Main>
@@ -34,3 +32,9 @@ const Layout = ({ children }) => {
 }
 
 export default Layout
+
+/*
+<Header>
+<span>{data.site.siteMetadata.title}</span>
+</Header>
+*/

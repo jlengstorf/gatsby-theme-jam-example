@@ -16,13 +16,21 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/content/ChildrensPictureBookImages/`,
-        ignore: [`**/\cover*`], // ignore files starting with a dot
+        ignore: [`**/\cover*`], // ignore files starting with cover
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `cover`,
+        path: `${__dirname}/content/ChildrensPictureBookImages/`,
+        ignore: [`**/\*`], // ignore no files
       },
     },
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/layouts/index.js`),
+        component: require.resolve(`./src/components/audioWrapper.js`),
       },
     },
     "gatsby-plugin-theme-ui",
