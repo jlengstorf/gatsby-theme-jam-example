@@ -16,7 +16,7 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/content/ChildrensPictureBookImages/`,
-        ignore: [`**/\cover*`], // ignore files starting with cover
+        ignore: [`**/\cover*`], [`**/\Petra*`], // ignore files starting with cover
       },
     },
     {
