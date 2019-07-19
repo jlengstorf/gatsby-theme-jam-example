@@ -11,7 +11,9 @@ let contentPath
 let assetPath
 
 // These templates are simply data-fetching wrappers that import components
-const PageTemplate = require.resolve(`./src/templates/page`)
+const PageTemplate = require.resolve(`./src/templates/page`);
+const CallbackTemplate = require.resolve(`./src/templates/callback`);
+const PageNotFoundTemplate = require.resolve(`./src/templates/404`);
 // const PostsTemplate = require.resolve(`./src/templates/posts`)
 // Verify the data directory exists
 exports.onPreBootstrap = ({ store }, options) => {
@@ -70,14 +72,24 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         }
       }
       brandLogo: file(
-        relativePath: { regex: "/(jpg)|(jpeg)|(png)/" }
+        relativePath: { regex: "/(jpg)|(jpeg)|(png)|(svg)/" }
         relativeDirectory: { eq: "logo" }
       ) {
         childImageSharp {
           fluid(maxWidth: 250) {
+            base64
+            tracedSVG
+            aspectRatio
             src
+            srcSet
+            srcSetWebp
+            sizes
+            originalImg
+            originalName
           }
         }
+        extension
+        publicURL
       }
     }
   `);
@@ -91,11 +103,26 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   // Create Posts and Post pages.
   const { site: { siteMetadata }, brandLogo } = result.data;
   const { title: siteTitle, social: socialLinks, loginDesc: loginOption } = siteMetadata;
-  const brand = brandLogo.childImageSharp.fluid;
+  const brand = brandLogo;
 
   actions.createPage({
     path: basePath,
     component: PageTemplate,
+    context: {
+      siteTitle,
+      loginOption,
+      socialLinks,
+      brand,
+    },
+  });
+
+  actions.createPage({
+    path: '/callback',
+    component: CallbackTemplate,
+  });
+  actions.createPage({
+    path: '/404',
+    component: PageNotFoundTemplate,
   });
 
   // actions.createPage({
@@ -103,21 +130,17 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   //   component: require.resolve('./src/pages/index.js'),
   // });
 
-  const navList = result.data.allNavigation.nodes;
+  // const navList = result.data.allNavigation.nodes;
 
-  navList.forEach(nav => {
-    actions.createPage({
-      path: '/',
-      component: require.resolve('./src/templates/page.js'),
-      context: {
-        navId: nav.id,
-        siteTitle,
-        socialLinks,
-        brand,
-        loginOption,
-      },
-    });
-  });
+  // navList.forEach(nav => {
+  //   actions.createPage({
+  //     path: '/',
+  //     component: require.resolve('./src/templates/page.js'),
+  //     context: {
+  //       navId: nav.id,
+  //     },
+  //   });
+  // });
 };
 
 // Account for Auth0 in the gatsby build process

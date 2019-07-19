@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, graphql } from 'gatsby';
+import { Link } from 'gatsby';
 import Image from 'gatsby-image';
 import { withStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -17,15 +17,15 @@ import { isAuthenticated, login, logout } from '../../utils/Auth';
 // import brandLogo from '../../images/spud_logo_red.svg';
 
 const styles = {
-  root: {
-    flexGrow: 1,
-    // background:
-    //   'linear-gradient(to bottom, #ffcc00 0%, #FFD700 35%, #ffe066 68%, #fff5cc 100%)',
-    background: `linear-gradient(to bottom, #EE3234 0%, #EE6454 19%
-        , #dd3234 30%, #912b2d 100%)`,
-    boxShadow: 'inset 0px 1px 6px 0px #ffe066',
-    margin: 'auto 0px',
-  },
+  // root: {
+  //   flexGrow: 1,
+  //   // background:
+  //   //   'linear-gradient(to bottom, #ffcc00 0%, #FFD700 35%, #ffe066 68%, #fff5cc 100%)',
+  //   background: `linear-gradient(to bottom, #EE3234 0%, #EE6454 19%
+  //       , #dd3234 30%, #912b2d 100%)`,
+  //   boxShadow: 'inset 0px 1px 6px 0px #ffe066',
+  //   margin: 'auto 0px',
+  // },
   grow: {
     flexGrow: 1,
   },
@@ -42,22 +42,12 @@ const styles = {
     // color: '#7b1bb3',
     color: '#eee',
   },
+  brandLogo: {
+    width: '250px',
+    height: '45px',
+    margin: '5px',
+  },
 };
-
-export const pageQuery = graphql`
-  query {
-    brandLogo: file(
-      relativePath: { regex: "/(jpg)|(jpeg)|(png)/" }
-      relativeDirectory: { eq: "logo" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 250) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-  }
-`;
 
 class Header extends React.Component {
   state = {
@@ -80,16 +70,21 @@ class Header extends React.Component {
   };
 
   render() {
-    const { classes, siteTitle, brand, loginOption } = this.props;
-    console.log(this.props);
+    const { classes, brand, loginOption } = this.props;
     const { anchorEl, left } = this.state;
-    console.log(brand);
-
+    const alt = `This is the logo and return to home button for the site`;
     const open = Boolean(anchorEl);
+    let logo = null;
+
+    if (!brand.childImageSharp && brand.extension === 'svg') {
+      logo = brand.publicURL;
+    } else {
+      logo = brand.childImageSharp.fluid;
+    }
 
     return (
-      <SimpleAppBar className={classes.root}>
-        {!isAuthenticated() && (
+      <SimpleAppBar className={'appHeader'}>
+        {isAuthenticated() && (
           <HeaderButton
             className={classes.menuButton}
             aria-label="Menu"
@@ -101,11 +96,17 @@ class Header extends React.Component {
         )}
         <HeaderText className={classes.grow}>
           <Link to="/" className={classes.plainLink}>
-            {/* <Image fluid={brand.src} alt={`Hello`} /> */}
-            {siteTitle}
+            {brand.childImageSharp && (
+              <Image className={classes.brandLogo} fluid={logo} alt={alt} />
+            )}
+            {!brand.childImageSharp && (
+              <img className={classes.brandLogo} src={logo} alt={alt} />
+            )}
+
+            {/* {siteTitle} */}
           </Link>
         </HeaderText>
-        {!isAuthenticated() && (
+        {isAuthenticated() && (
           <SwipeDrawer left={left} toggleDrawer={this.toggleDrawer}>
             <NavigationList />
           </SwipeDrawer>

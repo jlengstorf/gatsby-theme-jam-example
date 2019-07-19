@@ -49,8 +49,8 @@ export default {
     color: `inherit`,
     borderLeftColor: `inherit`,
     opacity: 0.8,
-    "&.translation": {
+    '&.translation': {
       fontSize: `1em`,
     },
   },
-}
+};

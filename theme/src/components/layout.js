@@ -1,6 +1,7 @@
 import React from 'react';
 import { css, Global } from '@emotion/core';
 import { Layout as StyledLayout, Main, Container } from 'theme-ui';
+import './layout.css';
 
 import Header from '../components/Header/Header';
 
@@ -14,8 +15,7 @@ const Layout = ({ children, ...props }) => {
           }
         `}
       />
-      <Header {...props}>
-      </Header>
+      <Header {...props} />
       <Main>
         <Container>{children}</Container>
       </Main>
