@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import PageFlipper from "../components/PageFlipper"
 
@@ -11,7 +11,7 @@ export default class postLayout extends Component {
       <>
         <PageFlipper
           pageNumberProp={file.name}
-          tagline="Wes & Scott Is Syntax.fm"
+          tagline="Wes (& Scott) Are Cool"
         />
         <Img fluid={file.childImageSharp.fluid} />
       </>

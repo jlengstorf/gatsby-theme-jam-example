@@ -1,14 +1,14 @@
 import React from "react"
 
-import { Link, graphql } from "gatsby"
+import { Link } from "gatsby"
 
 class PageFlipper extends React.Component {
   render() {
     const currentPage = this.props.pageNumberProp
-    var conCurrentPage = Number(currentPage)
+    var pageNumber = Number(currentPage)
 
     const prevPage = currentPage - 1 === 0 ? "/" : (currentPage - 1).toString()
-    const nextPage = (conCurrentPage + 1).toString()
+    const nextPage = (pageNumber + 1).toString()
 
     return (
       <ul

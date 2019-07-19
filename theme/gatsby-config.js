@@ -8,7 +8,6 @@ module.exports = {
       options: {
         name: `audio`,
         path: `${__dirname}/audio&Pictures/audio/`,
-        ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
     {
@@ -16,23 +15,7 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/audio&Pictures/ChildrensPictureBookImages/`,
-        ignore: [`**/\Petra*`], // ignore files starting with cover
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `cover`,
-        path: `${__dirname}/audio&Pictures/ChildrensPictureBookImages/`,
-        ignore: [`**/\*`], // ignore no files
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images/`,
-        ignore: [`**/\*`], // ignore no files
+        ignore: [`**/\cover*`], // ignore files starting with cover
       },
     },
     {
