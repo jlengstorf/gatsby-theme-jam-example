@@ -1,4 +1,7 @@
 export default {
+  colors: {
+    primary: "salmon",
+  },
   styles: {
     Container: {
       width: 600,
