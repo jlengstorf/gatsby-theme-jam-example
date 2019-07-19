@@ -3,6 +3,7 @@
 This repo is an example and potential starting point for theme creators.
 
 It includes:
+
 - a bare-bones theme (located in `theme/`) that includes basic setup
 - a demo site (located in `demo/`) that installs the theme
 - a Yarn workspaces configuration so the theme and demo can be worked on simultaneously
@@ -16,6 +17,7 @@ It includes:
 2.  Rename the forked repo `gatsby-theme-THEMENAME`. (Make sure to replace `THEMENAME` with your chosen name.)
 
 3.  Get the theme set up locally.
+
     ```sh
     # clone the repo
     git clone git@github.com:USERNAME/gatsby-theme-THEMENAME.git
@@ -28,6 +30,7 @@ It includes:
     ```
 
 4.  Update `theme/package.json` with your info.
+
     ```diff
       {
     +   "name": "gatsby-theme-THEMENAME",
@@ -39,6 +42,7 @@ It includes:
     ```
 
 5.  Start the demo site.
+
     ```sh
     yarn workspace demo develop
     ```

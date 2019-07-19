@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-theme-jam-example",
-  "author": "Jason Lengstorf <jason@gatsbyjs.com>",
+  "name": "gatsby-theme-waves",
+  "author": "Rodrigo Pombo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jlengstorf/gatsby-theme-jam-example.git"
+    "url": "https://github.com/pomber/gatsby-theme-waves.git"
   },
-  "version": "1.0.1",
+  "version": "0.0.0",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
