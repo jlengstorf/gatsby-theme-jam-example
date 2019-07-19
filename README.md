@@ -17,6 +17,7 @@ It includes:
 ## How to develop for this repo
 
 - Create a new branch `git checkout -b <your branch name>`
+  - Make sure you first checkout the master branch and then pull the latest changes: `git checkout master` and then `git pull`
   - If you are working on an issue add the issue number to the repo name
   - Example: `git checkout -b shorter-theme-name-#2``
 - Commit often as you go along `git commit -a -m <commit message>` commits all changed files.
