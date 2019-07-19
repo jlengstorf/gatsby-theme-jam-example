@@ -1,4 +1,4 @@
-import { Layout, Main, Container } from "theme-ui"
+import { Layout, Container, Main } from "theme-ui"
 import React from "react"
 
 export default function({ children }) {
