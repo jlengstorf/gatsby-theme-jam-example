@@ -5,5 +5,5 @@
  */
 
 module.exports = {
-  plugins: ["trixie-hood-and-lilly-joan-book-theme"],
+  plugins: ["gatsby-theme-childrens-picture-book"],
 }

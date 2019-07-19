@@ -1,9 +1,9 @@
 {
-  "name": "trixie-hood-and-lilly-joan-book-theme",
+  "name": "gatsby-theme-childrens-picture-book",
   "author": "Ola <ola@olavea.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jlengstorf/gatsby-theme-jam-example.git"
+    "url": "https://github.com/olavea/gatsby-theme-childrens-picture-book.git"
   },
   "version": "1.0.1",
   "main": "index.js",
@@ -32,6 +32,11 @@
   "keywords": [
     "gatsby",
     "gatsby-theme",
-    "gatsby-plugin"
+    "gatsby-plugin",
+    "childrens-picture-book",
+    "childrens-book",
+    "picture-book",
+    "children",
+    "DIY-book"
   ]
 }
