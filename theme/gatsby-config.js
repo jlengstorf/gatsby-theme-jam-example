@@ -7,15 +7,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `audio`,
-        path: `${__dirname}/audio&Pictures/audio/`,
+        path: `${__dirname}/content/audio/`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/audio&Pictures/ChildrensPictureBookImages/`,
-        ignore: [`**/\cover*`], // ignore files starting with cover
+        path: `${__dirname}/content/images/`,
       },
     },
     {
