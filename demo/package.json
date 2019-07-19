@@ -12,10 +12,16 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
+    "@emotion/core": "^10.0.14",
+    "@mdx-js/mdx": "^1.1.0",
+    "@mdx-js/react": "^1.0.27",
     "gatsby": "^2.13.1",
+    "gatsby-plugin-mdx": "^1.0.14",
+    "gatsby-plugin-theme-ui": "^0.2.6",
     "gatsby-theme-waves": "*",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "theme-ui": "^0.2.14"
   },
   "devDependencies": {
     "prettier": "^1.18.2"
