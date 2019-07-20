@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Theme Scarlet",
-    author: "My Name",
+    title: "Scarlet",
+    author: "Shaun Wong | http://shaunwong.com.au",
     description: "My site description...",
     siteUrl: "https://www.gatsbyjs.org/",
     social: [

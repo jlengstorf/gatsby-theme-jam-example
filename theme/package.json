@@ -24,6 +24,8 @@
     "gatsby-plugin-netlify": "^2.1.1",
     "gatsby-plugin-theme-ui": "^0.2.2",
     "gatsby-source-lastfm": "^0.1.2",
+    "gatsby-plugin-twitter": "^2.1.2",
+    "jeffsum": "^1.0.0",
     "theme-ui": "^0.2.2",
     "typeface-open-sans": "^0.0.54",
     "typeface-pacifico": "^0.0.72"
