@@ -1,10 +1,14 @@
 import React from "react"
+import { Container } from "theme-ui"
+import { StyledHeader } from "./styles"
 
-const Header = ({ logo, logoTxt }) => {
+const Header = () => {
   return (
-    <Header>
-      {logo && logoTxt ? <img src={logo} alt={logoTxt} /> : <h2>{logoTxt}</h2>}
-    </Header>
+    <StyledHeader>
+      <Container>
+        <h2>test!!</h2>
+      </Container>
+    </StyledHeader>
   )
 }
 

@@ -1,11 +1,16 @@
 import React from "react"
-import ScarletHero from "../images/hero.png"
+// import ScarletImg from "../images/hero.png"
+import { Container } from "theme-ui"
+import { StyledHero } from "./styles"
 
 const Hero = () => {
   return (
-    <Hero>
-      <ScarletHero />
-    </Hero>
+    <StyledHero>
+      <Container>
+        <p>Hero Goes here</p>
+        {/* <ScarletImg src={ScarletImg} /> */}
+      </Container>
+    </StyledHero>
   )
 }
 

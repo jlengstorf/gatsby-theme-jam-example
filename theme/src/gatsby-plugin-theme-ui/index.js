@@ -29,9 +29,6 @@ export default {
     body: 4.5,
     heading: 1.125,
   },
-  letterSpacing: {
-    body: "1px",
-  },
   styles: {
     root: {
       fontFamily: "body",
@@ -39,7 +36,7 @@ export default {
       fontWeight: "body",
     },
     p: {
-      fontSize: [2, 3],
+      fontSize: [3, 4],
     },
     h1: {
       color: "text",
@@ -65,6 +62,8 @@ export default {
     },
     Container: {
       padding: 4,
+      paddingBottom: 0,
+      paddingTop: 0,
     },
   },
 }
