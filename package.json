@@ -2,6 +2,7 @@
   "private": true,
   "workspaces": [
     "theme",
-    "demo"
+    "demo",
+    "blog-demo"
   ]
 }
