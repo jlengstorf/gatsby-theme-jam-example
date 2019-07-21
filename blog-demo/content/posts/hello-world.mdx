@@ -3,7 +3,7 @@ title: Hello World
 date: 2019-04-15
 ---
 
-import { WaveSection } from "gatsby-theme-waves";
+import { WaveSection } from "gatsby-theme-waves"
 
 Lorem ipsum dolor sit amet, fugit errem volumus ex sit, magna fugit deserunt et qui. Sapientem mnesarchum ei vis, offendit appetere inimicus eu has. Te utamur voluptua per. Per dicant intellegebat in. Laboramus referrentur id his, electram philosophia sit an. Possim efficiendi no sea, eu admodum copiosae indoctum mea.
 
@@ -24,7 +24,7 @@ function HelloWorld({
   greeting = "hello",
   greeted = '"World"',
   silent = false,
-  onMouseOver
+  onMouseOver,
 }) {
   // TODO write more code
 }
@@ -37,10 +37,10 @@ function HelloWorld({
   greeting = "hello",
   greeted = '"World"',
   silent = false,
-  onMouseOver
+  onMouseOver,
 }) {
   if (!greeting) {
-    return null;
+    return null
   }
 
   // TODO write more code
@@ -60,13 +60,13 @@ function HelloWorld({
   greeting = "hello",
   greeted = '"World"',
   silent = false,
-  onMouseOver
+  onMouseOver,
 }) {
   if (!greeting) {
-    return null;
+    return null
   }
 
-  let num = 0;
+  let num = 0
 
   return (
     <div
@@ -75,17 +75,20 @@ function HelloWorld({
       onMouseOver={onMouseOver}
     >
       <strong>
-        {greeting.slice(0, 1).toUpperCase() + greeting.slice(1).toLowerCase()}
+        {greeting.slice(0, 1).toUpperCase() +
+          greeting.slice(1).toLowerCase()}
       </strong>
       {greeting.endsWith(",") ? (
         " "
       ) : (
-        <span style={{ color: "grey" }}>", "</span>
+        <span style={{ color: "grey" }}>
+          ", "
+        </span>
       )}
       <em>{greeted}</em>
       {silent ? "." : "!"}
     </div>
-  );
+  )
 }
 ```
 
@@ -100,13 +103,13 @@ function HelloWorld({
   greeting = "hello",
   greeted = '"World"',
   silent = false,
-  onMouseOver
+  onMouseOver,
 }) {
   if (!greeting) {
-    return null;
+    return null
   }
 
-  let num = 0;
+  let num = 0
 
   return (
     <div
@@ -115,17 +118,20 @@ function HelloWorld({
       onMouseOver={onMouseOver}
     >
       <strong>
-        {greeting.slice(0, 1).toUpperCase() + greeting.slice(1).toLowerCase()}
+        {greeting.slice(0, 1).toUpperCase() +
+          greeting.slice(1).toLowerCase()}
       </strong>
       {greeting.endsWith(",") ? (
         " "
       ) : (
-        <span style={{ color: "grey" }}>", "</span>
+        <span style={{ color: "grey" }}>
+          ", "
+        </span>
       )}
       <em>{greeted}</em>
       {silent ? "." : "!"}
     </div>
-  );
+  )
 }
 ```
 
@@ -136,16 +142,16 @@ function HelloWorld({
   greeting = "hello",
   greeted = '"World"',
   silent = false,
-  onMouseOver
+  onMouseOver,
 }) {
   if (!greeting) {
-    return null;
+    return null
   }
 
   // TODO: Don't use random in render
   let num = Math.floor(Math.random() * 1e7)
     .toString()
-    .replace(/\.\d+/gi, "");
+    .replace(/\.\d+/gi, "")
 
   return (
     <div
@@ -154,17 +160,20 @@ function HelloWorld({
       onMouseOver={onMouseOver}
     >
       <strong>
-        {greeting.slice(0, 1).toUpperCase() + greeting.slice(1).toLowerCase()}
+        {greeting.slice(0, 1).toUpperCase() +
+          greeting.slice(1).toLowerCase()}
       </strong>
       {greeting.endsWith(",") ? (
         " "
       ) : (
-        <span style={{ color: "grey" }}>", "</span>
+        <span style={{ color: "grey" }}>
+          ", "
+        </span>
       )}
       <em>{greeted}</em>
       {silent ? "." : "!"}
     </div>
-  );
+  )
 }
 ```
 
@@ -175,16 +184,16 @@ function HelloWorld({
   greeting = "hello",
   greeted = '"World"',
   silent = false,
-  onMouseOver
+  onMouseOver,
 }) {
   if (!greeting) {
-    return null;
+    return null
   }
 
   // TODO: Don't use random in render
   let num = Math.floor(Math.random() * 1e7)
     .toString()
-    .replace(/\.\d+/gi, "");
+    .replace(/\.\d+/gi, "")
 
   return (
     <div
@@ -193,17 +202,20 @@ function HelloWorld({
       onMouseOver={onMouseOver}
     >
       <strong>
-        {greeting.slice(0, 1).toUpperCase() + greeting.slice(1).toLowerCase()}
+        {greeting.slice(0, 1).toUpperCase() +
+          greeting.slice(1).toLowerCase()}
       </strong>
       {greeting.endsWith(",") ? (
         " "
       ) : (
-        <span style={{ color: "grey" }}>", "</span>
+        <span style={{ color: "grey" }}>
+          ", "
+        </span>
       )}
       <em>{greeted}</em>
       {silent ? "." : "!"}
     </div>
-  );
+  )
 }
 ```
 

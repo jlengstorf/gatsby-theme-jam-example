@@ -1,8 +1,8 @@
-# Gatsby Theme Jam Example Submission
+# Gatsby Theme Waves
 
-This is a bare-bones Gatsby theme to showcase how a [Theme Jam](https://themejam.gatsbyjs.org) submission should look.
+Add a section with a sticky column that changes as you scroll.
 
-See the [live demo](https://gatsby-theme-waves.netlify.com)
+See the [live demo](https://gatsby-theme-waves.netlify.com/hello-world)
 
 ## Installation
 
