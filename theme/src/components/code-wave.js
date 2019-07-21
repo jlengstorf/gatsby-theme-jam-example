@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, useColorMode, useThemeUI } from "theme-ui"
+import { jsx, useThemeUI } from "theme-ui"
 import React from "react"
 import CodeSurfer from "code-surfer/dist/standalone.esm"
 import { readStepFromElement } from "../stuff/step-reader"
