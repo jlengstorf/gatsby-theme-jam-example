@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import React from "react"
-import useSpring from "./use-spring"
-import styles from "./styles"
+import useSpring from "../stuff/use-spring"
 import Scroller from "./scroller"
 import CodeWave from "./code-wave"
 
@@ -66,7 +65,7 @@ function Section({ children, columns: columnComponents }) {
   const columnCount = 2
   const columns = toColumns(items, columnCount)
   return (
-    <div ref={ref} sx={styles.section}>
+    <div ref={ref} sx={{ variant: "styles.waves.Section" }}>
       <CodeWave steps={columns[0]} progress={progress} />
       <Scroller
         steps={columns[1]}

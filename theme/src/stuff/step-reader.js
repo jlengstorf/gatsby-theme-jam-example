@@ -1,13 +1,6 @@
 import { parse } from "shell-quote"
 
 export function readStepFromElement(element) {
-  // if (element.type === Code) {
-  //   // wrap everything except [code, lang, focus] in {value}
-  //   const stepEntries = Object.entries(element.props).map(([key, value]) => ({
-  //     [key]: ["code", "focus", "lang"].includes(key) ? value : { value },
-  //   }))
-  //   return Object.assign({}, ...stepEntries)
-  // }
   if (!element.props.children || !element.props.children.props) {
     return null
   }
