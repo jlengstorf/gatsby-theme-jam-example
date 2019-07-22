@@ -1,62 +1,125 @@
-# Gatsby Theme Jam Submission Example
+# Gatsby Theme Waves
 
-This repo is an example and potential starting point for theme creators.
+Add a section with a sticky column that changes as you scroll:
 
-It includes:
+<div align="center">
+<a href="https://gatsby-theme-waves.netlify.com/hello-world">
+<img alt="gatsby waves demo" src="https://user-images.githubusercontent.com/1911623/61620586-6bb7cb80-ac71-11e9-9a78-ae8b95d164a9.gif" />
+</a>
+<div><a href="https://code-surfer.netlify.com/sample/">See the live demo</a></div>
+</div>
 
-- a bare-bones theme (located in `theme/`) that includes basic setup
-- a demo site (located in `demo/`) that installs the theme
-- a Yarn workspaces configuration so the theme and demo can be worked on simultaneously
+Use it from MDX combining code and markdown:
 
-## How to use this repo
+````md
+import { WaveSection } from "gatsby-theme-waves"
 
-**NOTE:** Make sure to replace `USERNAME` with your GitHub username and `THEMENAME` with your theme name.
+<WaveSection>
 
-1.  Fork this repo.
+```py
+# some code
+```
 
-2.  Rename the forked repo `gatsby-theme-THEMENAME`. (Make sure to replace `THEMENAME` with your chosen name.)
+# Some markdown
 
-3.  Get the theme set up locally.
+```py
+# more code
+```
+
+More markdown
+
+> and more
+
+```py
+# and more
+```
+
+- ok
+- that's enough
+
+</WaveSection>
+````
+
+## Installation
+
+You need a Gatsby site with MDX. For example, this is how you add gatsby-theme-waves to a site that uses [gatsby-theme-blog](https://www.npmjs.com/package/gatsby-theme-blog):
+
+1.  Install the theme (and `deepmerge` for merging the theme styles)
 
     ```sh
-    # clone the repo
-    git clone git@github.com:USERNAME/gatsby-theme-THEMENAME.git
-
-    # move into the directory
-    cd gatsby-theme-THEMENAME
-
-    # install dependencies
-    yarn
+    npm install --save gatsby-theme-waves deepmerge
     ```
 
-4.  Update `theme/package.json` with your info.
+2.  Add the theme to your `gatsby-config.js` (at the end of the plugin list just in case)
 
-    ```diff
-      {
-    +   "name": "gatsby-theme-THEMENAME",
-    +   "author": "Your Name <name@example.com>",
-        "repository": {
-          "type": "git",
-    +     "url": "https://github.com/USERNAME/gatsby-theme-THEMENAME.git"
-        },
+    ```js
+    module.exports = {
+      plugins: [
+        "gatsby-theme-blog",
+        "gatsby-theme-waves" // <-- add this
+      ]
+    };
     ```
 
-5.  Start the demo site.
+3.  Merge the styles: create or edit `src/gatsby-plugin-theme-ui/index.js`
 
-    ```sh
-    yarn workspace demo develop
+    ```js
+    import wavesTheme from "gatsby-theme-waves/src/gatsby-plugin-theme-ui/index";
+    import blogTheme from "gatsby-theme-blog/src/gatsby-plugin-theme-ui/index";
+    import merge from "deepmerge";
+
+    export default merge(blogTheme, wavesTheme);
     ```
 
-    The demo will start at http://localhost:8000
+4)  Import `WaveSection` and use it in any MDX file
 
-    **NOTE:** If you’re new to Yarn workspaces, check out [this post](https://www.gatsbyjs.org/blog/2019-05-22-setting-up-yarn-workspaces-for-theme-development/) for details.
+    ````md
+    import { WaveSection } from "gatsby-theme-waves"
 
-6.  Start editing the theme! The demo site is configured to use the local theme, so any changes you make to the local `theme` directory will be reflected on the demo site for easy local development.
+    <WaveSection>
 
-7.  Follow the [submission checklist](./theme/README.md#submission-checklist) to make sure your theme qualifies to win!
+    ```py
+    # some code
+    ```
 
-8.  [Submit your theme](https://themejam.gatsbyjs.org/submit) to win!
+    # Some markdown
 
-## More information
+    ```py
+    # more code
+    ```
 
-For contest rules and more information, see [the Theme Jam website](https://themejam.gatsbyjs.org).
+    More markdown
+
+    > and more
+
+    ```py
+    # and more
+    ```
+
+    - ok
+    - that's enough
+
+    </WaveSection>
+    ````
+
+### Code Blocks
+
+By default the lines that changed between two consecutive code blocks will be highlighted. You can change it to highlihgt the line (and columns) you want:
+
+````md
+```js 1:3,6
+// highlihgts line 1,2,3 and 6
+```
+
+```js 5[1,3:6],8
+// highlihgts:
+// columns 1,3,4,5 and 6 from line 5
+// and line 8
+```
+````
+
+## Coming Soon
+
+- Mobile Support
+- Import code from files
+- Better custom code syntax highligthing using theme-ui

@@ -65,8 +65,6 @@ function Section({ children }) {
     round: p => Math.round(p * 100) / 100,
   })
 
-  console.log({ progress })
-
   const columns = React.useMemo(() => {
     const items = React.Children.map(children, child => [child])
     const columnCount = 2
