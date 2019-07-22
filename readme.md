@@ -120,6 +120,6 @@ By default the lines that changed between two consecutive code blocks will be hi
 
 ## Coming Soon
 
-- Mobile Support
+- Mobile support
 - Import code from files
 - Better custom code syntax highligthing using theme-ui
