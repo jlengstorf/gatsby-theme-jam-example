@@ -6,7 +6,7 @@ Add a section with a sticky column that changes as you scroll:
 <a href="https://gatsby-theme-waves.netlify.com/hello-world">
 <img alt="gatsby waves demo" src="https://user-images.githubusercontent.com/1911623/61620586-6bb7cb80-ac71-11e9-9a78-ae8b95d164a9.gif" />
 </a>
-<div><a href="https://code-surfer.netlify.com/sample/">See the live demo</a></div>
+<div><a href="https://gatsby-theme-waves.netlify.com/hello-world">See the live demo</a></div>
 </div>
 
 Use it from MDX combining code and markdown:
