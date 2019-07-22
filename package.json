@@ -3,5 +3,8 @@
   "workspaces": [
     "theme",
     "demo"
-  ]
+  ],
+  "dependencies": {
+    "react-helmet": "^5.2.1"
+  }
 }

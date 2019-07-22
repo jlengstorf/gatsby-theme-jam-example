@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import PageFlipper from "../components/PageFlipper"
+import SEO from "../components/seo"
 
 export default class postLayout extends Component {
   render() {
@@ -9,6 +10,8 @@ export default class postLayout extends Component {
 
     return (
       <>
+        <SEO title={file.name} />
+
         <PageFlipper
           pageNumberProp={file.name}
           tagline="Wes (& Scott) Are Cool"
