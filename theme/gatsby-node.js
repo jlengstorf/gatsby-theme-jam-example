@@ -3,7 +3,7 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     graphql(`
       query allImageFilesQuery {
-        allFile(filter: { sourceInstanceName: { eq: "images" } }) {
+        allFile(filter: { sourceInstanceName: { eq: "images" } }, sort: { fields: name, order:ASC } ) {
           edges {
             node {
               name
