@@ -1,12 +1,12 @@
 import React from "react"
-import { Container } from "theme-ui"
+import { Container, Styled } from "theme-ui"
 import { StyledHeader } from "./styles"
 
 const Header = () => {
   return (
     <StyledHeader>
       <Container>
-        <h2>test!!</h2>
+        <Styled.h2>Scarlet</Styled.h2>
       </Container>
     </StyledHeader>
   )

@@ -4,7 +4,7 @@ import { Global } from "@emotion/core"
 import { ThemeProvider } from "theme-ui"
 import theme from "../../gatsby-plugin-theme-ui"
 import { Layout, Main, Container } from "theme-ui"
-import { Header, Hero } from "../../components"
+import { Header, SectionWrap, Hero, Section } from "../../components"
 import { globalStyles } from "./styles"
 
 const BaseLayout = ({ children }) => {
@@ -23,7 +23,10 @@ const BaseLayout = ({ children }) => {
       <Layout>
         <Global styles={globalStyles} />
         <Header logo="test" logoTxt={title} nav="test" />
-        <Hero />
+        <SectionWrap>
+          <Hero />
+          <Section />
+        </SectionWrap>
         <Main>
           <Container>{children}</Container>
         </Main>
