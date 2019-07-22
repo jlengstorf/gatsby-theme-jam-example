@@ -35,13 +35,13 @@ export default {
         backgroundColor: "primary",
       },
       CodeContainer: {
-        width: "66%",
+        width: "50%",
       },
       CodeSticker: {
         position: "sticky",
         width: "100%",
-        height: "50vh",
-        top: "25vh",
+        height: "60vh",
+        top: "20vh",
         border: "1px solid",
         borderColor: "secondary",
       },

@@ -57,13 +57,23 @@ function useCurrentStep(ref) {
   return progress
 }
 
-function Section({ children, columns: columnComponents }) {
+function Section({ children }) {
   const ref = React.useRef()
   const currentStep = useCurrentStep(ref)
-  const progress = useSpring({ target: currentStep })
-  const items = React.Children.map(children, child => [child])
-  const columnCount = 2
-  const columns = toColumns(items, columnCount)
+  const progress = useSpring({
+    target: currentStep,
+    round: p => Math.round(p * 100) / 100,
+  })
+
+  console.log({ progress })
+
+  const columns = React.useMemo(() => {
+    const items = React.Children.map(children, child => [child])
+    const columnCount = 2
+    const columns = toColumns(items, columnCount)
+    return columns
+  }, [])
+
   return (
     <div ref={ref} sx={{ variant: "styles.waves.Section" }}>
       <CodeWave steps={columns[0]} progress={progress} />

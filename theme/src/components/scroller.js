@@ -4,12 +4,13 @@ import React from "react"
 import useSpring from "../stuff/use-spring"
 
 function Scroller({ steps, currentStep, progress }) {
-  const oldProgress = useSpring({
+  const fasterProgress = useSpring({
     target: currentStep,
     tension: 50,
+    round: p => Math.round(p * 100) / 100,
   })
-  const startBorder = Math.min(oldProgress, progress)
-  const endBorder = Math.max(oldProgress, progress)
+  const startBorder = Math.min(fasterProgress, progress)
+  const endBorder = Math.max(fasterProgress, progress)
 
   const progressStyles = steps.map((_, i) => {
     const from = Math.max(startBorder - i, 0)

@@ -4,11 +4,16 @@ import React from "react"
 import CodeSurfer from "code-surfer/dist/standalone.esm"
 import { readStepFromElement } from "../stuff/step-reader"
 
-function CodeWave({ steps, progress }) {
-  const s = steps.map(element => {
-    const parsedStep = readStepFromElement(element)
-    return parsedStep
-  })
+function CodeWave({ steps: stepElements, progress }) {
+  const steps = React.useMemo(
+    () =>
+      stepElements.map(element => {
+        const parsedStep = readStepFromElement(element)
+        return parsedStep
+      }),
+    []
+  )
+
   const { colorMode, theme: themeUI } = useThemeUI()
   const codeThemes = themeUI.styles.waves.theme
   const theme = codeThemes[colorMode] || codeThemes.default
@@ -26,7 +31,7 @@ function CodeWave({ steps, progress }) {
         }}
       >
         <div sx={{ variant: "styles.waves.CodeSticker" }}>
-          <CodeSurfer progress={progress} steps={s} theme={theme} />
+          <CodeSurfer progress={progress} steps={steps} theme={theme} />
         </div>
       </div>
     </div>
