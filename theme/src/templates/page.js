@@ -5,12 +5,13 @@ import PageFlipper from "../components/PageFlipper"
 
 export default class postLayout extends Component {
   render() {
-    const { file } = this.props.data
+    const { file, sitePage } = this.props.data
 
     return (
       <>
         <PageFlipper
-          pageNumberProp={file.name}
+          nextPage={sitePage.context.nextPage}
+          previousPage={sitePage.context.previousPage}
           tagline="Wes (& Scott) Are Cool"
         />
         <Img fluid={file.childImageSharp.fluid} />
@@ -28,7 +29,12 @@ export const query = graphql`
           src
         }
       }
-      name
+    }
+    sitePage(context: {slug: {eq: $slug}}) {
+      context {
+        nextPage
+        previousPage
+      }
     }
   }
 `
