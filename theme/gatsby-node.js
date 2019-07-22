@@ -12,16 +12,9 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `).then(results => {
-      results.data.allFile.edges.forEach(({ node }) => {
-        let namePath = ""
-        if (node.name === "coverPage") {
-          namePath = `/`
-        } else {
-          namePath = `/${node.name}`
-        }
-
+      results.data.allFile.edges.forEach(({ node }, index) => {
         createPage({
-          path: namePath,
+          path: index === 0 ? `/` : `/${node.name}`,
           component: require.resolve("./src/templates/page.js"),
           context: {
             slug: node.name,
