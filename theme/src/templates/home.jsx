@@ -28,7 +28,7 @@ const PageTemplate = ({ pageContext }) => {
           <Section backgroundColor={theme.colors.white}>
             <Styled.p>{pageContext.content}</Styled.p>
           </Section>
-          <Section backgroundColor={theme.colors.primary}>
+          <Section light backgroundColor={theme.colors.primary}>
             <Styled.p>{pageContext.content}</Styled.p>
           </Section>
         </SectionWrap>

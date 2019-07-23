@@ -12,16 +12,10 @@ const Header = () => {
           </Styled.h2>
           <NavList>
             <NavItem>
-              <NavLink to={"/example-page"}>Example Page</NavLink>
+              <NavLink to={"/example-page"}>Work</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to={"#about"}>About</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to={"#work"}>Work</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to={"#contact"}>Contact</NavLink>
+              <NavLink to={"/example-page"}>About</NavLink>
             </NavItem>
           </NavList>
         </Nav>

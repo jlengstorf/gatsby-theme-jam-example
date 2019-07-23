@@ -9,7 +9,7 @@ exports.createPages = ({ actions }) => {
     component: HomepageTemplate,
     context: {
       heading: "Scarlet",
-      content: jeffsum(5, "sentences"),
+      content: `jeffsum(5, "sentences")`,
     },
   })
   // Create Content Pages - todo: with mdx page dir
@@ -19,6 +19,15 @@ exports.createPages = ({ actions }) => {
     context: {
       heading: "Scarlet Page",
       content: jeffsum(5, "sentences"),
+    },
+  })
+  // Create 404 Pages
+  actions.createPage({
+    path: "/404",
+    component: PageTemplate,
+    context: {
+      heading: "404",
+      content: "404",
     },
   })
 }

@@ -50,9 +50,6 @@ export const StyledHero = styled.section`
   align-items: center;
   position: relative;
   overflow: hidden;
-  > div {
-    margin-top: -186px;
-  }
 `
 
 export const StyledSection = styled.section`
@@ -61,13 +58,10 @@ export const StyledSection = styled.section`
   height: 100vh;
   display: flex;
   align-items: center;
-  color: black;
   ${props => ({
     background: props.backgroundColor && props.backgroundColor,
+    color: props.light ? theme.colors.light : theme.colors.dark,
   })}
-  > div {
-    margin-top: -186px;
-  }
 `
 
 export const SplashImage = styled.img`
