@@ -1,5 +1,5 @@
 import { css } from "@emotion/core"
-import theme from "../../gatsby-plugin-theme-ui"
+import theme from "../gatsby-plugin-theme-ui"
 
 export const globalStyles = css`
   body {

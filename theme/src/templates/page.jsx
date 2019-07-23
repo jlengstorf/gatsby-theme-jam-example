@@ -2,12 +2,13 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { Global } from "@emotion/core"
 import { ThemeProvider } from "theme-ui"
-import theme from "../../gatsby-plugin-theme-ui"
-import { Layout, Main, Container } from "theme-ui"
-import { Header, SectionWrap, Hero, Section } from "../../components"
+import theme from "../gatsby-plugin-theme-ui"
+import { Layout } from "theme-ui"
+import { Header, SectionWrap, Hero, Section } from "../components"
 import { globalStyles } from "./styles"
 
-const BaseLayout = ({ children }) => {
+const PageTemplate = ({ pageContext }) => {
+  console.log(pageContext)
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -25,14 +26,12 @@ const BaseLayout = ({ children }) => {
         <Header logo="test" logoTxt={title} nav="test" />
         <SectionWrap>
           <Hero />
-          <Section />
+          <Section backgroundColor={theme.colors.white} />
+          <Section backgroundColor={theme.colors.primary} />
         </SectionWrap>
-        <Main>
-          <Container>{children}</Container>
-        </Main>
       </Layout>
     </ThemeProvider>
   )
 }
 
-export default BaseLayout
+export default PageTemplate

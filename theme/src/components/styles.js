@@ -28,7 +28,7 @@ export const StyledHero = styled.section`
   position: relative;
   overflow: hidden;
   > div {
-    margin-top: -123px;
+    margin-top: -186px;
   }
 `
 
@@ -43,7 +43,7 @@ export const StyledSection = styled.section`
     background: props.backgroundColor && props.backgroundColor,
   })}
   > div {
-    margin-top: -123px;
+    margin-top: -186px;
   }
 `
 

@@ -55,7 +55,6 @@ export default {
     },
     // Theme UI Components
     Layout: {
-      // backgroundColor: "background",
       color: "text",
       fontFamily: "body",
       fontSize: 1,
