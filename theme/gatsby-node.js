@@ -1,17 +1,17 @@
 const getPreviousPagePath = (page, currentPageIndex) => {
-  if (!page) return null;
-  if (currentPageIndex - 1 === 0) return '/';
-  return `/${page.name}`;
+  if (!page) return null
+  if (currentPageIndex - 1 === 0) return '/'
+  return `/${page.name}`
 }
 
 const getNextPagePath = page => {
-  if (!page) return null;
-  return `/${page.name}`;
+  if (!page) return null
+  return `/${page.name}`
 }
 
 const getCurrentPagePath = (page, currentPageIndex) => {
-  if (currentPageIndex === 0) return '/';
-  return `/${page.name}`;
+  if (currentPageIndex === 0) return '/'
+  return `/${page.name}`
 }
 
 exports.createPages = ({ graphql, actions }) => {
