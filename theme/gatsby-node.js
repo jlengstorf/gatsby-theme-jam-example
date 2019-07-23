@@ -9,7 +9,7 @@ exports.createPages = ({ actions }) => {
     component: HomepageTemplate,
     context: {
       heading: "Scarlet",
-      content: `jeffsum(5, "sentences")`,
+      content: jeffsum(5, "sentences"),
     },
   })
   // Create Content Pages - todo: with mdx page dir
