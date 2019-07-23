@@ -2,8 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
-import "../components/layout.css"
-
 const audioWrapper = ({ children }) => (
   <StaticQuery
     query={graphql`
