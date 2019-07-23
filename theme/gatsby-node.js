@@ -1,6 +1,17 @@
-const processPagePath = page => {
+const getPreviousPagePath = (page, currentPageIndex) => {
   if (!page) return null
-  return page.name === '00' ? '/' : `/${page.name}`
+  if (currentPageIndex - 1 === 0) return '/'
+  return `/${page.name}`
+}
+
+const getNextPagePath = page => {
+  if (!page) return null
+  return `/${page.name}`
+}
+
+const getCurrentPagePath = (page, currentPageIndex) => {
+  if (currentPageIndex === 0) return '/'
+  return `/${page.name}`
 }
 
 exports.createPages = ({ graphql, actions }) => {
@@ -23,10 +34,10 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `).then(results => {
-      results.data.allFile.edges.forEach(({ next, node, previous }) => {
-        const currentPath = processPagePath(node)
-        const nextPage = processPagePath(next)
-        const previousPage = processPagePath(previous)
+      results.data.allFile.edges.forEach(({ next, node, previous }, index) => {
+        const currentPath = getCurrentPagePath(node, index)
+        const nextPage = getNextPagePath(next, index)
+        const previousPage = getPreviousPagePath(previous, index)
 
         createPage({
           path: currentPath,
