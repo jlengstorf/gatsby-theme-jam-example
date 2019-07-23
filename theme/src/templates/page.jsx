@@ -3,12 +3,11 @@ import { graphql, useStaticQuery } from "gatsby"
 import { Global } from "@emotion/core"
 import { ThemeProvider } from "theme-ui"
 import theme from "../gatsby-plugin-theme-ui"
-import { Layout } from "theme-ui"
-import { Header, SectionWrap, Hero, Section } from "../components"
+import { Layout, Styled } from "theme-ui"
+import { Header, SectionWrap, Section } from "../components"
 import { globalStyles } from "./styles"
 
 const PageTemplate = ({ pageContext }) => {
-  console.log(pageContext)
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -25,9 +24,9 @@ const PageTemplate = ({ pageContext }) => {
         <Global styles={globalStyles} />
         <Header logo="test" logoTxt={title} nav="test" />
         <SectionWrap>
-          <Hero />
-          <Section backgroundColor={theme.colors.white} />
-          <Section backgroundColor={theme.colors.primary} />
+          <Section backgroundColor={theme.colors.white}>
+            <Styled.p>{pageContext.content}</Styled.p>
+          </Section>
         </SectionWrap>
       </Layout>
     </ThemeProvider>

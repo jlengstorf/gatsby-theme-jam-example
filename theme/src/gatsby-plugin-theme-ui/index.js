@@ -8,11 +8,12 @@ export default {
   // Global Theme Styles
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   colors: {
-    text: "#FFF",
-    background: "#F53B57",
+    light: "#FFF",
+    dark: "#1E272E",
     primary: "#F53B57",
     secondary: "#EF5777",
-    white: "#FFF",
+    tertiary: "FFF500",
+    background: "#F53B57",
     muted: "#f6f6f6",
   },
   fonts: {
