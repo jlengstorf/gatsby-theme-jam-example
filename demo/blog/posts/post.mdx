@@ -1,0 +1,231 @@
+---
+title: Hello World
+---
+
+import { CodeWave } from "gatsby-theme-waves"
+
+# This is the Title
+
+Lorem ipsum dolor sit amet, fugit errem volumus ex sit, magna fugit deserunt et qui. Sapientem mnesarchum ei vis, offendit appetere inimicus eu has. Te utamur voluptua per. Per dicant intellegebat in. Laboramus referrentur id his, electram philosophia sit an. Possim efficiendi no sea, eu admodum copiosae indoctum mea.
+
+Sit eligendi dignissim et, sit eius ancillae voluptatibus te. Ea summo nostrum omnesque sed. Deserunt iracundia definiebas ei est. An vitae reprimique ius, facer timeam cu nam.
+
+Id quot impetus prodesset eum, et usu iuvaret alienum. Ut amet quaerendum pro, impetus appetere disputando te per. Stet congue ancillae mei in, nam fuisset antiopam id. Ad denique blandit accommodare ius. Solum legere ea sea, per cu affert timeam, meis expetendis intellegebat ex pro.
+
+Nec probo paulo facilisi cu, eu nibh persecuti mea. Ut aperiam deseruisse est, eos eu delicata repudiare aliquando. Mei te justo euismod accusam, eos posse saperet elaboraret ne, mucius quodsi vocibus sit in. Mea at utinam maiorum, mei eu tale etiam.
+
+Te eos antiopam honestatis. No graeci regione nam, mea te accusam disputationi. An quo bonorum blandit honestatis, at nam wisi facilis oportere. Appetere democritum mea cu. Te tempor lobortis duo, vim an dicunt ornatus.
+
+<CodeWave>
+
+```jsx
+function HelloWorld({
+  greeting = "hello",
+  greeted = '"World"',
+  silent = false,
+  onMouseOver,
+}) {
+  // TODO write more code
+}
+```
+
+Lorem ipsum dolor sit amet, fugit errem volumus ex sit, magna fugit deserunt et qui. Sapientem mnesarchum ei vis, offendit appetere inimicus eu has. Te utamur voluptua per. Per dicant intellegebat in. Laboramus referrentur id his, electram philosophia sit an. Possim efficiendi no sea, eu admodum copiosae indoctum mea.
+
+```js
+function HelloWorld({
+  greeting = "hello",
+  greeted = '"World"',
+  silent = false,
+  onMouseOver,
+}) {
+  if (!greeting) {
+    return null
+  }
+
+  // TODO write more code
+}
+```
+
+Sit eligendi dignissim et, sit eius ancillae voluptatibus te. Ea summo nostrum omnesque sed. Deserunt iracundia definiebas ei est.
+
+- omnesque
+- tempor
+- referrentur
+
+An vitae reprimique ius, facer timeam cu nam.
+
+```js
+function HelloWorld({
+  greeting = "hello",
+  greeted = '"World"',
+  silent = false,
+  onMouseOver,
+}) {
+  if (!greeting) {
+    return null
+  }
+
+  let num = 0
+
+  return (
+    <div
+      className="HelloWorld"
+      title={`You are visitor number ${num}`}
+      onMouseOver={onMouseOver}
+    >
+      <strong>
+        {greeting.slice(0, 1).toUpperCase() +
+          greeting.slice(1).toLowerCase()}
+      </strong>
+      {greeting.endsWith(",") ? (
+        " "
+      ) : (
+        <span style={{ color: "grey" }}>
+          ", "
+        </span>
+      )}
+      <em>{greeted}</em>
+      {silent ? "." : "!"}
+    </div>
+  )
+}
+```
+
+## Id quot impetus prodesset eum
+
+> et usu iuvaret alienum
+
+Ut amet quaerendum pro, impetus appetere disputando te per. Stet congue ancillae mei in, nam fuisset antiopam id. Ad denique blandit accommodare ius. Solum legere ea sea, per cu affert timeam, meis expetendis intellegebat ex pro.
+
+```js 11
+function HelloWorld({
+  greeting = "hello",
+  greeted = '"World"',
+  silent = false,
+  onMouseOver,
+}) {
+  if (!greeting) {
+    return null
+  }
+
+  let num = 0
+
+  return (
+    <div
+      className="HelloWorld"
+      title={`You are visitor number ${num}`}
+      onMouseOver={onMouseOver}
+    >
+      <strong>
+        {greeting.slice(0, 1).toUpperCase() +
+          greeting.slice(1).toLowerCase()}
+      </strong>
+      {greeting.endsWith(",") ? (
+        " "
+      ) : (
+        <span style={{ color: "grey" }}>
+          ", "
+        </span>
+      )}
+      <em>{greeted}</em>
+      {silent ? "." : "!"}
+    </div>
+  )
+}
+```
+
+Nec probo paulo facilisi cu, eu nibh persecuti mea. Ut aperiam deseruisse est, eos eu delicata repudiare aliquando. Mei te justo euismod accusam, eos posse saperet elaboraret ne, mucius quodsi vocibus sit in. Mea at utinam maiorum, mei eu tale etiam.
+
+```js
+function HelloWorld({
+  greeting = "hello",
+  greeted = '"World"',
+  silent = false,
+  onMouseOver,
+}) {
+  if (!greeting) {
+    return null
+  }
+
+  // TODO: Don't use random in render
+  let num = Math.floor(Math.random() * 1e7)
+    .toString()
+    .replace(/\.\d+/gi, "")
+
+  return (
+    <div
+      className="HelloWorld"
+      title={`You are visitor number ${num}`}
+      onMouseOver={onMouseOver}
+    >
+      <strong>
+        {greeting.slice(0, 1).toUpperCase() +
+          greeting.slice(1).toLowerCase()}
+      </strong>
+      {greeting.endsWith(",") ? (
+        " "
+      ) : (
+        <span style={{ color: "grey" }}>
+          ", "
+        </span>
+      )}
+      <em>{greeted}</em>
+      {silent ? "." : "!"}
+    </div>
+  )
+}
+```
+
+Te eos antiopam honestatis. No graeci regione nam, mea te accusam disputationi. An quo bonorum blandit honestatis, at nam wisi facilis oportere. Appetere democritum mea cu. Te tempor lobortis duo, vim an dicunt ornatus.
+
+```js 1:37
+function HelloWorld({
+  greeting = "hello",
+  greeted = '"World"',
+  silent = false,
+  onMouseOver,
+}) {
+  if (!greeting) {
+    return null
+  }
+
+  // TODO: Don't use random in render
+  let num = Math.floor(Math.random() * 1e7)
+    .toString()
+    .replace(/\.\d+/gi, "")
+
+  return (
+    <div
+      className="HelloWorld"
+      title={`You are visitor number ${num}`}
+      onMouseOver={onMouseOver}
+    >
+      <strong>
+        {greeting.slice(0, 1).toUpperCase() +
+          greeting.slice(1).toLowerCase()}
+      </strong>
+      {greeting.endsWith(",") ? (
+        " "
+      ) : (
+        <span style={{ color: "grey" }}>
+          ", "
+        </span>
+      )}
+      <em>{greeted}</em>
+      {silent ? "." : "!"}
+    </div>
+  )
+}
+```
+
+Sit eligendi dignissim et, sit eius ancillae voluptatibus te. Ea summo nostrum omnesque sed. Deserunt iracundia definiebas ei est.
+
+</CodeWave>
+
+Lorem ipsum dolor sit amet, fugit errem volumus ex sit, magna fugit deserunt et qui. Sapientem mnesarchum ei vis, offendit appetere inimicus eu has. Te utamur voluptua per. Per dicant intellegebat in. Laboramus referrentur id his, electram philosophia sit an. Possim efficiendi no sea, eu admodum copiosae indoctum mea.
+
+Sit eligendi dignissim et, sit eius ancillae voluptatibus te. Ea summo nostrum omnesque sed. Deserunt iracundia definiebas ei est. An vitae reprimique ius, facer timeam cu nam.
+
+Id quot impetus prodesset eum, et usu iuvaret alienum. Ut amet quaerendum pro, impetus appetere disputando te per. Stet congue ancillae mei in, nam fuisset antiopam id. Ad denique blandit accommodare ius. Solum legere ea sea, per cu affert timeam, meis expetendis intellegebat ex pro.
+
+Nec probo paulo facilisi cu, eu nibh persecuti mea. Ut aperiam deseruisse est, eos eu delicata repudiare aliquando. Mei te justo euismod accusam, eos posse saperet elaboraret ne, mucius quodsi vocibus sit in. Mea at utinam maiorum, mei eu tale etiam.

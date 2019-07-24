@@ -1,5 +1,6 @@
 module.exports = {
   plugins: [
+    "gatsby-plugin-theme-ui",
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -7,7 +8,15 @@ module.exports = {
         path: `${__dirname}/src/pages`,
       },
     },
-    "gatsby-plugin-theme-ui",
+    {
+      resolve: `gatsby-theme-blog`,
+      options: {
+        basePath: `/blog`,
+        contentPath: `blog/posts`,
+        assetsPath: `blog/assets`,
+        mdx: false,
+      },
+    },
     {
       resolve: "gatsby-plugin-mdx",
       options: {
