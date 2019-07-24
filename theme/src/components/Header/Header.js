@@ -70,16 +70,24 @@ class Header extends React.Component {
   };
 
   render() {
-    const { classes, brand, loginOption } = this.props;
+    const { classes, brand, loginOption, siteTitle } = this.props;
     const { anchorEl, left } = this.state;
     const alt = `This is the logo and return to home button for the site`;
     const open = Boolean(anchorEl);
     let logo = null;
-
-    if (!brand.childImageSharp && brand.extension === 'svg') {
-      logo = brand.publicURL;
-    } else {
-      logo = brand.childImageSharp.fluid;
+    let BrandContainer = null;
+    if (brand) {
+      if (!brand.childImageSharp && brand.extension === 'svg') {
+        logo = brand.publicURL;
+        BrandContainer = (
+          <img className={classes.brandLogo} src={logo} alt={alt} />
+        );
+      } else {
+        logo = brand.childImageSharp.fluid;
+        BrandContainer = (
+          <Image className={classes.brandLogo} fluid={logo} alt={alt} />
+        );
+      }
     }
 
     return (
@@ -96,12 +104,11 @@ class Header extends React.Component {
         )}
         <HeaderText className={classes.grow}>
           <Link to="/" className={classes.plainLink}>
-            {brand.childImageSharp && (
-              <Image className={classes.brandLogo} fluid={logo} alt={alt} />
-            )}
-            {!brand.childImageSharp && (
+            {brand && BrandContainer}
+            {/*!brand.childImageSharp && (
               <img className={classes.brandLogo} src={logo} alt={alt} />
-            )}
+            )*/}
+            {siteTitle && !brand && siteTitle}
 
             {/* {siteTitle} */}
           </Link>

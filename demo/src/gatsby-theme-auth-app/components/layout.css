@@ -1,6 +1,6 @@
 .appHeader {
-    background: linear-gradient(to bottom, #FFCC00 0%, #FFD700 35%, #FFE066 68%, rgb(243, 217, 115) 100%);
-    box-shadow: inset 0 1px 6px 0 #FFE066;
+    background: linear-gradient(to bottom, #663399 0%, #6F2DA8 35%, #7F40BF 68%, #9F70CF 100%);
+    box-shadow: inset 0 1px 6px 0 #663399;
     flex-grow: 1;
     margin: auto 0;
 }
