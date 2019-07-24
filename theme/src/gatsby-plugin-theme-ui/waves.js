@@ -44,6 +44,7 @@ export default {
       border: ["none", "1px solid"],
       borderColor: "secondary",
     },
+    focus: [0.7, 0.5],
     theme: {
       // keys should be the same as the color modes from theme-ui
       // https://theme-ui.com/color-modes
