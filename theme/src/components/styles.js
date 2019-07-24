@@ -10,7 +10,6 @@ export const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   z-index: 1;
-  /* pointer-events: none; */
 `
 
 export const Nav = styled.nav`
@@ -34,9 +33,12 @@ export const NavLink = styled(Link)`
 export const NavItem = styled.li``
 
 export const SectionWrap = styled.main`
-  height: 100vh;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
+  &,
+  > section {
+    height: 100vh;
+  }
 `
 
 export const StyledHero = styled.section`
@@ -45,7 +47,7 @@ export const StyledHero = styled.section`
     ${theme.colors.primary},
     ${theme.colors.secondary}
   );
-  height: 100vh;
+  margin-top: -95px;
   display: flex;
   align-items: center;
   position: relative;
@@ -55,7 +57,6 @@ export const StyledHero = styled.section`
 export const StyledSection = styled.section`
   scroll-snap-align: start;
   background: white;
-  height: 100vh;
   display: flex;
   align-items: center;
   ${props => ({
