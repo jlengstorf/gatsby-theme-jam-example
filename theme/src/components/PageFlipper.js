@@ -1,13 +1,30 @@
 import React from "react"
 
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 
 class PageFlipper extends React.Component {
+  handleKeyStroke = e => {
+    const { nextPage, previousPage } = this.props
+
+    if (e.keyCode === 37) {
+      navigate(previousPage)
+    }
+
+    if (e.keyCode === 39) {
+      navigate(nextPage)
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener("keydown", this.handleKeyStroke)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("keydown", this.handleKeyStroke)
+  }
+
   render() {
-    const {
-      nextPage,
-      previousPage
-    } = this.props
+    const { nextPage, previousPage } = this.props
 
     return (
       <ul
