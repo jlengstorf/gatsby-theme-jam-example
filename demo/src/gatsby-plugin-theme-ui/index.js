@@ -12,7 +12,7 @@ export default {
       ...images,
     },
     Container: {
-      width: 600,
+      width: ["100%", 600],
       fontSize: "1.2em",
     },
   },

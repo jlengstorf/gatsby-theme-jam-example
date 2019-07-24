@@ -60,6 +60,7 @@ function Wave({
         //TODO rename currentStep to currentStepIndex
         return (
           <Component
+            key={columnIndex}
             steps={columnSteps}
             progress={progress}
             variant={variant}
