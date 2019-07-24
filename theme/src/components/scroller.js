@@ -3,7 +3,7 @@ import { jsx } from "theme-ui"
 import React from "react"
 import useSpring from "../stuff/use-spring"
 
-function Scroller({ steps, currentStep, progress }) {
+function Scroller({ steps, currentStep, progress, variant }) {
   const fasterProgress = useSpring({
     target: currentStep,
     tension: 50,
@@ -29,18 +29,18 @@ function Scroller({ steps, currentStep, progress }) {
   })
   return (
     <div
-      sx={{ variant: "styles.waves.ScrollerContainer" }}
+      sx={{ variant: `styles.waves.${variant}.ScrollerContainer` }}
       className="scroller"
     >
       {steps.map((step, i) => (
         <div
           sx={{
-            variant: "styles.waves.ScrollerStep",
+            variant: `styles.waves.${variant}.ScrollerStep`,
           }}
           key={i}
         >
           <div
-            sx={{ variant: "styles.waves.ScrollerProgress" }}
+            sx={{ variant: `styles.waves.${variant}.ScrollerProgress` }}
             style={progressStyles[i]}
           />
           {step}

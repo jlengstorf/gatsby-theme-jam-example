@@ -1,4 +1,5 @@
 import wavesRoot from "gatsby-theme-waves/src/gatsby-plugin-theme-ui"
+import images from "../pages/images/waves-variant"
 
 export default {
   colors: {
@@ -6,7 +7,10 @@ export default {
     primary: "salmon",
   },
   styles: {
-    ...wavesRoot.styles,
+    waves: {
+      ...wavesRoot.styles.waves,
+      ...images,
+    },
     Container: {
       width: 600,
       fontSize: "1.2em",

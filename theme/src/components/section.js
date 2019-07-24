@@ -57,7 +57,7 @@ function useCurrentStep(ref) {
   return progress
 }
 
-function Section({ children }) {
+function Section({ children, variant = "default" }) {
   const ref = React.useRef()
   const currentStep = useCurrentStep(ref)
   const progress = useSpring({
@@ -73,12 +73,13 @@ function Section({ children }) {
   }, [])
 
   return (
-    <div ref={ref} sx={{ variant: "styles.waves.Section" }}>
-      <CodeWave steps={columns[0]} progress={progress} />
+    <div ref={ref} sx={{ variant: `styles.waves.${variant}.Section` }}>
+      <CodeWave steps={columns[0]} progress={progress} variant={variant} />
       <Scroller
         steps={columns[1]}
         currentStep={currentStep}
         progress={progress}
+        variant={variant}
       />
     </div>
   )
