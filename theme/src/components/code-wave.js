@@ -1,40 +1,43 @@
 /** @jsx jsx */
-import { jsx, useThemeUI } from "theme-ui"
+import { jsx } from "theme-ui"
 import React from "react"
-import CodeSurfer from "code-surfer/dist/standalone.esm"
-import { readStepFromElement } from "../stuff/step-reader"
+import BarScroller from "./bar-scroller"
+import CodeSticker from "./code-sticker"
+import Wave from "./wave"
 
-function CodeWave({ steps: stepElements, progress, variant }) {
-  const steps = React.useMemo(
-    () =>
-      stepElements.map(element => {
-        const parsedStep = readStepFromElement(element)
-        return parsedStep
-      }),
-    []
-  )
+function toColumns(items, columnCount) {
+  const columns = Array(columnCount)
+    .fill()
+    .map(() => [])
 
-  const { colorMode, theme: themeUI } = useThemeUI()
-  const codeThemes = themeUI.styles.waves[variant].theme
-  const theme = codeThemes[colorMode] || codeThemes.default
+  items.forEach((item, i) => {
+    const isCode = item.props && item.props.mdxType === "pre"
+    if (isCode) {
+      columns[0].push(item)
+      columns[1].push(React.createElement("div", {}, []))
+    } else {
+      const step = columns[0].length - 1
+      columns[1][step].props.children.push(item)
+    }
+  })
+
+  return columns
+}
+
+function CodeWave(props) {
+  const childrenToColumns = children => {
+    const items = React.Children.map(children, child => [child])
+    const columnCount = 2
+    const columns = toColumns(items, columnCount)
+    return columns
+  }
 
   return (
-    <div
-      sx={{
-        variant: `styles.waves.${variant}.StickerContainer`,
-      }}
-    >
-      <div
-        style={{
-          height: "100%",
-          width: "100%",
-        }}
-      >
-        <div sx={{ variant: `styles.waves.${variant}.Sticker` }}>
-          <CodeSurfer progress={progress} steps={steps} theme={theme} />
-        </div>
-      </div>
-    </div>
+    <Wave
+      columnComponents={[CodeSticker, BarScroller]}
+      childrenToStepColumns={childrenToColumns}
+      {...props}
+    />
   )
 }
 

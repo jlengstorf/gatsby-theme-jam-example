@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import React from "react"
-import useSpring from "../stuff/use-spring"
-import Scroller from "./opacity-scroller"
+import OpacityScroller from "./opacity-scroller"
+import Wave from "./wave"
 
 function toColumns(items, columnCount) {
   const columns = Array(columnCount)
@@ -16,7 +16,7 @@ function toColumns(items, columnCount) {
       item.props.children &&
       item.props.children.props &&
       item.props.children.props.className === "gatsby-resp-image-wrapper"
-    console.log("item props", item.props, isImg)
+    // console.log("item props", item.props, isImg)
     if (isImg) {
       const img = React.cloneElement(
         item.props.children.props.children[1].props.children[3],
@@ -33,64 +33,20 @@ function toColumns(items, columnCount) {
   return columns
 }
 
-function getProgress(scroller) {
-  const children = scroller.childNodes
-  const middle = window.innerHeight / 2
-  let prevBottom = children[0].getBoundingClientRect().bottom
-  for (let i = 1; i < children.length; i++) {
-    const { top, bottom } = children[i].getBoundingClientRect()
-    const breakpoint = (prevBottom + top) / 2
-    if (middle < breakpoint) {
-      return i - 1
-    }
-    prevBottom = bottom
-  }
-  return children.length - 1
-}
-
-function useCurrentStep(ref) {
-  const [progress, setProgress] = React.useState(0)
-
-  React.useEffect(() => {
-    const scroller = ref.current.querySelector(".scroller")
-    function onScroll() {
-      const newProgress = getProgress(scroller)
-      setProgress(newProgress)
-    }
-    document.addEventListener("scroll", onScroll)
-    return () => {
-      document.removeEventListener("scroll", onScroll)
-    }
-  }, [])
-
-  return progress
-}
-
-function Section({ children, variant = "default" }) {
-  const ref = React.useRef()
-  const currentStep = useCurrentStep(ref)
-  const progress = useSpring({
-    target: currentStep,
-    round: p => Math.round(p * 100) / 100,
-  })
-
-  const columns = React.useMemo(() => {
+function ImageWave(props) {
+  const childrenToColumns = children => {
     const items = React.Children.map(children, child => [child])
     const columnCount = 2
     const columns = toColumns(items, columnCount)
     return columns
-  }, [])
+  }
 
   return (
-    <div ref={ref} sx={{ variant: `styles.waves.${variant}.Section` }}>
-      <ImageSticker steps={columns[0]} progress={progress} variant={variant} />
-      <Scroller
-        steps={columns[1]}
-        currentStep={currentStep}
-        progress={progress}
-        variant={variant}
-      />
-    </div>
+    <Wave
+      columnComponents={[ImageSticker, OpacityScroller]}
+      childrenToStepColumns={childrenToColumns}
+      {...props}
+    />
   )
 }
 
@@ -147,4 +103,4 @@ function ImageSticker({ progress, steps, variant }) {
   )
 }
 
-export default Section
+export default ImageWave

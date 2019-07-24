@@ -2,27 +2,6 @@
 import { jsx } from "theme-ui"
 import React from "react"
 import useSpring from "../stuff/use-spring"
-import Scroller from "./scroller"
-import CodeWave from "./code-wave"
-
-function toColumns(items, columnCount) {
-  const columns = Array(columnCount)
-    .fill()
-    .map(() => [])
-
-  items.forEach((item, i) => {
-    const isCode = item.props && item.props.mdxType === "pre"
-    if (isCode) {
-      columns[0].push(item)
-      columns[1].push(React.createElement("div", {}, []))
-    } else {
-      const step = columns[0].length - 1
-      columns[1][step].props.children.push(item)
-    }
-  })
-
-  return columns
-}
 
 function getProgress(scroller) {
   const children = scroller.childNodes
@@ -57,7 +36,12 @@ function useCurrentStep(ref) {
   return progress
 }
 
-function Section({ children, variant = "default" }) {
+function Wave({
+  children,
+  variant = "default",
+  columnComponents = [],
+  childrenToStepColumns,
+}) {
   const ref = React.useRef()
   const currentStep = useCurrentStep(ref)
   const progress = useSpring({
@@ -66,23 +50,25 @@ function Section({ children, variant = "default" }) {
   })
 
   const columns = React.useMemo(() => {
-    const items = React.Children.map(children, child => [child])
-    const columnCount = 2
-    const columns = toColumns(items, columnCount)
-    return columns
+    return childrenToStepColumns(children)
   }, [])
 
   return (
     <div ref={ref} sx={{ variant: `styles.waves.${variant}.Section` }}>
-      <CodeWave steps={columns[0]} progress={progress} variant={variant} />
-      <Scroller
-        steps={columns[1]}
-        currentStep={currentStep}
-        progress={progress}
-        variant={variant}
-      />
+      {columns.map((columnSteps, columnIndex) => {
+        const Component = columnComponents[columnIndex]
+        //TODO rename currentStep to currentStepIndex
+        return (
+          <Component
+            steps={columnSteps}
+            progress={progress}
+            variant={variant}
+            currentStep={currentStep}
+          />
+        )
+      })}
     </div>
   )
 }
 
-export default Section
+export default Wave
