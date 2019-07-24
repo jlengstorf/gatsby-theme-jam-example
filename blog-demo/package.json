@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "deepmerge": "^4.0.0",
-    "gatsby": "^2.13.31",
-    "gatsby-theme-blog": "^1.0.0",
+    "gatsby": "^2.13.39",
+    "gatsby-theme-blog": "^1.0.2",
     "gatsby-theme-waves": "*",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
