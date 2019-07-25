@@ -17,7 +17,7 @@ const theme = {
     Container: {
       width: ["100%", 520],
       fontSize: ["1em", "1.2em"],
-      marginRight: ["auto", "15%"],
+      marginLeft: ["auto", "10%"],
       color: "text",
       fontFamily: `-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif`,
     },
