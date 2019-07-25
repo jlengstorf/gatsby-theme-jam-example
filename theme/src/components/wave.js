@@ -19,7 +19,7 @@ function getProgress(scroller, focusPoint) {
 }
 
 function useFocusPoint(variant) {
-  if (!window) return false
+  if (typeof window === "undefined") return false
   //TODO keep focus point in ref and update on window resize
   const theme = useThemeUI()
   const focus = theme.theme.styles.waves[variant].focus || [0.7, 0.5]
