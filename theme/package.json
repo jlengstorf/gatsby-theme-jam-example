@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/pomber/gatsby-theme-waves.git"
   },
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
