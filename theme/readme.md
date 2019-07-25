@@ -3,18 +3,18 @@
 Add a section with a sticky column that changes as you scroll:
 
 <div align="center">
-<a href="https://gatsby-theme-waves.netlify.com/hello-world">
+<a href="https://gatsby-theme-waves.netlify.com/blog/post">
 <img alt="gatsby waves demo" src="https://user-images.githubusercontent.com/1911623/61620586-6bb7cb80-ac71-11e9-9a78-ae8b95d164a9.gif" />
 </a>
-<div><a href="https://gatsby-theme-waves.netlify.com/hello-world">See the live demo</a></div>
+<div><a href="https://gatsby-theme-waves.netlify.com/blog/post">See the live demo</a></div>
 </div>
 
 Use it from MDX combining code and markdown:
 
 ````md
-import { WaveSection } from "gatsby-theme-waves"
+import { CodeWave } from "gatsby-theme-waves"
 
-<WaveSection>
+<CodeWave>
 
 ```py
 # some code
@@ -37,7 +37,7 @@ More markdown
 - ok
 - that's enough
 
-</WaveSection>
+</CodeWave>
 ````
 
 ## Installation
@@ -71,12 +71,12 @@ You need a Gatsby site with MDX. For example, this is how you add gatsby-theme-w
     export default merge(blogTheme, wavesTheme)
     ```
 
-4)  Import `WaveSection` and use it in any MDX file
+4)  Import `CodeWave` and use it in any MDX file
 
     ````md
-    import { WaveSection } from "gatsby-theme-waves"
+    import { CodeWave } from "gatsby-theme-waves"
 
-    <WaveSection>
+    <CodeWave>
 
     ```py
     # some code
@@ -99,7 +99,7 @@ You need a Gatsby site with MDX. For example, this is how you add gatsby-theme-w
     - ok
     - that's enough
 
-    </WaveSection>
+    </CodeWave>
     ````
 
 ### Code Blocks
@@ -120,7 +120,6 @@ By default the lines that changed between two consecutive code blocks will be hi
 
 ## Coming Soon
 
-- Mobile support
 - Import code from files
 - Better custom code syntax highligthing using theme-ui
 - More docs

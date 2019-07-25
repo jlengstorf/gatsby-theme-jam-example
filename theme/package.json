@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/pomber/gatsby-theme-waves.git"
   },
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@mdx-js/react": "^1.0.21",
-    "code-surfer": "^2.0.0-alpha.9",
+    "code-surfer": "^2.0.0-alpha.10",
     "gatsby-plugin-theme-ui": "^0.2.2",
     "rebound": "^0.1.0",
     "shell-quote": "^1.6.1"
