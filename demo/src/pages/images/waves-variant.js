@@ -1,18 +1,17 @@
 export default {
   fullscreen: {
-    Section: {
-      width: "960px",
-      marginTop: "40px",
-      marginLeft: "calc(50% - 480px)",
-      marginBottom: "40px",
-      position: "relative",
-      display: "flex",
+    Wave: {
+      width: "100%",
+      marginTop: 0,
+      marginLeft: 0,
+      marginBottom: 0,
+      position: "static",
+      display: "block",
     },
     ScrollerContainer: {
       flex: 1,
-      paddingLeft: "50px",
+      paddingLeft: 0,
       margin: "30vh 0",
-      color: "white",
     },
     ScrollerStep: {
       position: "relative",

@@ -3,7 +3,7 @@ import * as codeThemes from "code-surfer/dist/standalone.esm"
 
 export default {
   default: {
-    Section: {
+    Wave: {
       width: ["100%", "960px"],
       marginTop: "40px",
       marginLeft: [0, "calc(50% - 480px)"],

@@ -66,7 +66,7 @@ function Wave({
   }, [])
 
   return (
-    <div ref={ref} sx={{ variant: `styles.waves.${variant}.Section` }}>
+    <div ref={ref} sx={{ variant: `styles.waves.${variant}.Wave` }}>
       {columns.map((columnSteps, columnIndex) => {
         const Component = columnComponents[columnIndex]
         //TODO rename currentStep to currentStepIndex
