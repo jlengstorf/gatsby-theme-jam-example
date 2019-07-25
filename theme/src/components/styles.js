@@ -1,8 +1,7 @@
 import styled from "@emotion/styled"
+import { keyframes, css } from "@emotion/core"
 import theme from "../gatsby-plugin-theme-ui"
 import { Link } from "gatsby"
-
-// Yeah i know i probably should clean this up in their own individual folder..
 
 export const StyledHeader = styled.header`
   display: flex;
@@ -28,6 +27,7 @@ export const NavLink = styled(Link)`
   padding: 1rem;
   color: ${theme.colors.light};
   text-decoration: none;
+  cursor: pointer;
 `
 
 export const NavItem = styled.li``
@@ -52,6 +52,51 @@ export const StyledHero = styled.section`
   align-items: center;
   position: relative;
   overflow: hidden;
+`
+
+export const waveAnimation = length => css`
+  animation: ${wave} ${length} linear infinite alternate;
+`
+
+const wave = keyframes`
+  0% {
+    d: path("M 0 100 Q 250 50 400 200 Q 550 350 800 300 L 800 0 L 0 0 L 0 100 Z");
+  }
+  50% {
+    d: path("M 0 100 Q 200 150 400 200 Q 600 250 800 300 L 800 0 L 0 0 L 0 100 Z");
+  }
+  100% {
+    d: path("M 0 100 Q 150 350 400 200 Q 650 50 800 300 L 800 0 L 0 0 L 0 100 Z");
+  }
+`
+export const WaveWrapper = styled.div`
+  transform: matrix(1, 0, 0, -1, 0, 0);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  > div:nth-child(2) {
+    transform: translateX(-1);
+  }
+`
+
+export const InnerWave = styled.div`
+  width: 100%;
+  height: 30vh;
+  left: 0;
+  position: absolute;
+  svg {
+    width: 100%;
+    height: 30vh;
+  }
+  path {
+    ${waveAnimation("20s")};
+  }
+  ${props => ({
+    zIndex: props.layer && props.layer,
+    top: props.waveoffset && props.waveoffset,
+  })}
 `
 
 export const StyledSection = styled.section`
