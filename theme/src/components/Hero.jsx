@@ -10,7 +10,7 @@ const Hero = ({ heroImage, imageAlt }) => {
         alt={imageAlt || "Scarlet Theme Hero Image"}
       />
       <WaveWrapper>
-        <InnerWave layer="1" waveoffset="0px">
+        <InnerWave layer="1" waveoffset="-2.5vh">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 800 338.05"
@@ -26,7 +26,7 @@ const Hero = ({ heroImage, imageAlt }) => {
             </path>
           </svg>
         </InnerWave>
-        <InnerWave layer="2" waveoffset="30px">
+        <InnerWave layer="2" waveoffset="2.5vh">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 800 338.05"
@@ -42,7 +42,7 @@ const Hero = ({ heroImage, imageAlt }) => {
             </path>
           </svg>
         </InnerWave>
-        <InnerWave layer="3" waveoffset="60px">
+        <InnerWave layer="3" waveoffset="0vh">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 800 338.05"

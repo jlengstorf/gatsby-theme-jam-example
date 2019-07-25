@@ -57,6 +57,14 @@ export const StyledHero = styled.section`
 export const waveAnimation = length => css`
   animation: ${wave} ${length} linear infinite alternate;
 `
+const dash = keyframes`
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+`
 
 const wave = keyframes`
   0% {
@@ -76,9 +84,6 @@ export const WaveWrapper = styled.div`
   bottom: 0;
   height: 100%;
   width: 100%;
-  > div:nth-child(2) {
-    transform: translateX(-1);
-  }
 `
 
 export const InnerWave = styled.div`
