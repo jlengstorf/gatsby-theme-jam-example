@@ -8,48 +8,50 @@ function ImageSticker({ progress, steps, variant }) {
   const next = steps[currentStep + 1]
 
   return (
-    <div
-      sx={{
-        variant: `styles.waves.${variant}.StickerContainer`,
-      }}
-    >
-      {prev && (
+    <div sx={{ variant: `styles.waves.${variant}.StickerContainer` }}>
+      <div sx={{ variant: `styles.waves.${variant}.Sticker` }}>
         <div
-          style={{
-            opacity: Math.max(0, currentStep - progress),
-          }}
           sx={{
-            variant: `styles.waves.${variant}.Sticker`,
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            backgroundColor: "background",
           }}
-          key="prev"
+        />
+        {prev && (
+          <div
+            sx={{ position: "absolute", height: "100%", width: "100%" }}
+            style={{ opacity: Math.max(0, currentStep - progress) }}
+            key={currentStep - 1}
+          >
+            {prev}
+          </div>
+        )}
+        <div
+          sx={{ position: "absolute", height: "100%", width: "100%" }}
+          style={{ opacity: 1 - Math.abs(currentStep - progress) }}
+          key={currentStep}
         >
-          {prev}
+          {curr}
         </div>
-      )}
-      <div
-        style={{
-          opacity: Math.abs(1 - (currentStep - progress)),
-        }}
-        sx={{
-          variant: `styles.waves.${variant}.Sticker`,
-        }}
-        key="curr"
-      >
-        {curr}
+        {next && (
+          <div
+            sx={{ position: "absolute", height: "100%", width: "100%" }}
+            style={{ opacity: Math.max(0, progress - currentStep) }}
+            key={currentStep + 1}
+          >
+            {next}
+          </div>
+        )}
+        <div
+          sx={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            backgroundColor: "rgba(1,1,1,0.6)",
+          }}
+        />
       </div>
-      {next && (
-        <div
-          style={{
-            opacity: Math.max(0, progress - currentStep),
-          }}
-          sx={{
-            variant: `styles.waves.${variant}.Sticker`,
-          }}
-          key="next"
-        >
-          {next}
-        </div>
-      )}
     </div>
   )
 }

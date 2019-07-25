@@ -44,6 +44,9 @@ export default {
       border: ["none", "1px solid"],
       borderColor: "secondary",
     },
+    // this is used to select the active scroller step
+    // 0.5 selects the step that is at half the screen height
+    // 0.7 the step that is at 70% the screen height
     focus: [0.7, 0.5],
     theme: {
       // keys should be the same as the color modes from theme-ui
