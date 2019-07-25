@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from "react"
 
-function Scroller({ steps, currentStep, progress, variant }) {
+function Scroller({ steps, progress, variant }) {
   return (
     <div
       sx={{

@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from "react"
 import useSpring from "../stuff/use-spring"
 
 function Scroller({ steps, currentStep, progress, variant }) {

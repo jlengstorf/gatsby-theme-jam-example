@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, useThemeUI, get, css } from "theme-ui"
+import { jsx, useThemeUI } from "theme-ui"
 import React from "react"
 import useSpring from "../stuff/use-spring"
 
