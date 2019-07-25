@@ -14,6 +14,7 @@ export default {
     ScrollerContainer: {
       flex: 1,
       paddingLeft: [0, "50px"],
+      paddingTop: ["50px", 0],
     },
     ScrollerStep: {
       position: "relative",
@@ -51,7 +52,7 @@ export default {
     theme: {
       // keys should be the same as the color modes from theme-ui
       // https://theme-ui.com/color-modes
-      default: codeThemes.github,
+      default: codeThemes.nightOwl,
       dark: codeThemes.vsDark,
     },
   },
