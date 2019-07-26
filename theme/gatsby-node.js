@@ -43,7 +43,7 @@ exports.createPages = ({ graphql, actions }, { basePath = "/" }) => {
             nextPage,
             previousPage,
             title: currentPage.title,
-            slug: node.name,
+            imageFileName: node.name,
           },
         })
       })
