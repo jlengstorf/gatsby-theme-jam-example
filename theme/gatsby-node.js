@@ -1,17 +1,10 @@
-const getPreviousPagePath = (page, currentPageIndex) => {
-  if (!page) return null
-  if (currentPageIndex - 1 === 0) return '/'
-  return `/${page.name}`
-}
+const page = (node, index) => {
+  if (!node) return
 
-const getNextPagePath = page => {
-  if (!page) return null
-  return `/${page.name}`
-}
-
-const getCurrentPagePath = (page, currentPageIndex) => {
-  if (currentPageIndex === 0) return '/'
-  return `/${page.name}`
+  return {
+    title: index === 0 ? "" : index.toString(10),
+    path: index === 0 ? "" : `${node.name}`,
+  }
 }
 
 exports.createPages = ({ graphql, actions }) => {
@@ -19,7 +12,10 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     graphql(`
       query allImageFilesQuery {
-        allFile(filter: { sourceInstanceName: { eq: "images" } }, sort: { fields: name, order:ASC } ) {
+        allFile(
+          filter: { sourceInstanceName: { eq: "images" } }
+          sort: { fields: name, order: ASC }
+        ) {
           edges {
             next {
               name
@@ -35,16 +31,17 @@ exports.createPages = ({ graphql, actions }) => {
       }
     `).then(results => {
       results.data.allFile.edges.forEach(({ next, node, previous }, index) => {
-        const currentPath = getCurrentPagePath(node, index)
-        const nextPage = getNextPagePath(next, index)
-        const previousPage = getPreviousPagePath(previous, index)
+        const currentPage = page(node, index)
+        const nextPage = page(next, index + 1)
+        const previousPage = page(previous, index - 1)
 
         createPage({
-          path: currentPath,
+          path: currentPage.path || "/",
           component: require.resolve("./src/templates/page.js"),
           context: {
             nextPage,
             previousPage,
+            title: currentPage.title,
             slug: node.name,
           },
         })

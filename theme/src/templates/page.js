@@ -1,26 +1,22 @@
-import React, { Component } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import PageFlipper from "../components/PageFlipper"
 import SEO from "../components/seo"
 
-export default class postLayout extends Component {
-  render() {
-    const { file, sitePage } = this.props.data
+const PageTemplate = ({ data: { file }, pageContext }) => {
+  return (
+    <>
+      <SEO title={pageContext.title} />
 
-    return (
-      <>
-        <SEO title={file.name} />
+      <PageFlipper
+        nextPage={pageContext.nextPage}
+        previousPage={pageContext.previousPage}
+      />
 
-        <PageFlipper
-          nextPage={sitePage.context.nextPage}
-          previousPage={sitePage.context.previousPage}
-          tagline="Wes (& Scott) Are Cool"
-        />
-        <Img fluid={file.childImageSharp.fluid} />
-      </>
-    )
-  }
+      <Img fluid={file.childImageSharp.fluid} />
+    </>
+  )
 }
 
 export const query = graphql`
@@ -33,11 +29,7 @@ export const query = graphql`
         }
       }
     }
-    sitePage(context: {slug: {eq: $slug}}) {
-      context {
-        nextPage
-        previousPage
-      }
-    }
   }
 `
+
+export default PageTemplate
