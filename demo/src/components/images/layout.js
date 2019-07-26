@@ -1,8 +1,10 @@
-import React from "react"
-import { ThemeProvider, Container, Styled } from "theme-ui"
+/** @jsx jsx */
+import { jsx, ThemeProvider, Container, Styled } from "theme-ui"
 
 import wavesRoot from "gatsby-theme-waves/src/gatsby-plugin-theme-ui"
 import images from "./waves-variant"
+
+import Header from "../header"
 
 const theme = {
   colors: {
@@ -30,6 +32,7 @@ const theme = {
 export default props => (
   <ThemeProvider theme={theme}>
     <Styled.root>
+      <Header codeUrl="https://github.com/pomber/gatsby-theme-waves/tree/master/demo/src/pages/images" />
       <Container>{props.children}</Container>
     </Styled.root>
   </ThemeProvider>
