@@ -1,13 +1,14 @@
-const page = (node, index) => {
+const page = (node, index, basePath) => {
   if (!node) return
+  const permalink = index === 0 ? "" : `${node.name}`
 
   return {
     title: index === 0 ? "" : index.toString(10),
-    path: index === 0 ? "" : `${node.name}`,
+    path: `${basePath}/${permalink}`.replace(/\/\/+/g, "/").replace(/^\//g, ""),
   }
 }
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = ({ graphql, actions }, { basePath = "/" }) => {
   const { createPage } = actions
   return new Promise((resolve, reject) => {
     graphql(`
@@ -31,12 +32,12 @@ exports.createPages = ({ graphql, actions }) => {
       }
     `).then(results => {
       results.data.allFile.edges.forEach(({ next, node, previous }, index) => {
-        const currentPage = page(node, index)
-        const nextPage = page(next, index + 1)
-        const previousPage = page(previous, index - 1)
+        const currentPage = page(node, index, basePath)
+        const nextPage = page(next, index + 1, basePath)
+        const previousPage = page(previous, index - 1, basePath)
 
         createPage({
-          path: currentPage.path || "/",
+          path: currentPage.path || basePath,
           component: require.resolve("./src/templates/page.js"),
           context: {
             nextPage,
