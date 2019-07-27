@@ -1,13 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Page from "../components/page"
+import ImagePage from "../components/imagePage"
 
-const PageTemplate = ({ data: { file }, pageContext }) => {
-  return <Page {...pageContext} imageFile={file} />
+const ImagePageTemplate = ({ data: { file }, pageContext }) => {
+  return <ImagePage {...pageContext} imageFile={file} />
 }
 
 export const query = graphql`
-  query PageQuery($imageFileName: String!) {
+  query ImagePageQuery($imageFileName: String!) {
     file(name: { eq: $imageFileName }) {
       childImageSharp {
         fluid(maxWidth: 1000) {
@@ -19,4 +19,4 @@ export const query = graphql`
   }
 `
 
-export default PageTemplate
+export default ImagePageTemplate

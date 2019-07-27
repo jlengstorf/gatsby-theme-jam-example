@@ -38,7 +38,7 @@ exports.createPages = ({ graphql, actions }, { basePath = "/" }) => {
 
         createPage({
           path: currentPage.path || basePath,
-          component: require.resolve("./src/templates/page.js"),
+          component: require.resolve("./src/templates/imagePage.js"),
           context: {
             nextPage,
             previousPage,

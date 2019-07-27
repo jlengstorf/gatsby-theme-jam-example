@@ -3,14 +3,14 @@ import React from "react"
 import { Link, navigate } from "gatsby"
 
 class PageFlipper extends React.Component {
-  handleKeyStroke = e => {
+  handleKeyStroke = event => {
     const { nextPage, previousPage } = this.props
 
-    if (e.keyCode === 37 && previousPage) {
+    if (event.keyCode === 37 && previousPage) {
       navigate(previousPage.path)
     }
 
-    if (e.keyCode === 39 && nextPage) {
+    if (event.keyCode === 39 && nextPage) {
       navigate(nextPage.path)
     }
   }

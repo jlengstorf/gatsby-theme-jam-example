@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Img from "gatsby-image"
-import PageFlipper from "./PageFlipper"
+import PageFlipper from "./pageFlipper"
 import SEO from "./seo"
 
 const Page = ({ title, imageFile, nextPage, previousPage }) => {
