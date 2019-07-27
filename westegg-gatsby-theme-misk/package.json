@@ -1,0 +1,39 @@
+{
+  "name": "@westegg/gatsby-theme-misk",
+  "description": "",
+  "version": "0.0.13",
+  "main": "gatsby-config.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run lint && echo 'no build'",
+    "lint": "prettier --write --config package.json \".{/notes/**/,/pages/**/,/posts/**/,/projects/**/,/src/**/,/}*.{md,mdx,css,sass,less,json,js,jsx,ts,tsx}\""
+  },
+  "peerDependencies": {
+    "gatsby": "^2.13.32",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "dependencies": {
+    "@blueprintjs/core": "3.17.1",
+    "@emotion/core": "10.0.14",
+    "@misk/common": "0.1.15",
+    "@misk/core": "0.1.15",
+    "@westegg/gatsby-theme-digital-garden": "0.0.13",
+    "gatsby": "2.13.41",
+    "gatsby-theme-digital-garden": "0.2.0"
+  },
+  "devDependencies": {
+    "@misk/prettier": "0.1.15"
+  },
+  "prettier": "@misk/prettier",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme",
+    "markdown",
+    "mdx",
+    "misk",
+    "misk-web"
+  ],
+  "gitHead": "289c2185e99932b9d41af54f8f9c92dd078da074"
+}
