@@ -10,7 +10,7 @@ const Hero = ({ heroImage, imageAlt }) => {
           # Specify the image processing specifications right in the query.
           # Makes it trivial to update as your page's design changes.
           fixed(width: 1800, height: 2000) {
-            ...GatsbyImageSharpFixed
+            src
           }
         }
       }
@@ -20,7 +20,7 @@ const Hero = ({ heroImage, imageAlt }) => {
   return (
     <StyledHero>
       <SplashImage
-        fixed={data.file.childImageSharp.fixed.src}
+        src={data.file.childImageSharp.fixed.src}
         // alt={imageAlt || "Scarlet Theme Hero Image"}
       />
       <WaveWrapper>

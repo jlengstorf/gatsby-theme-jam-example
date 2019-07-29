@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import { keyframes, css } from "@emotion/core"
 import theme from "../gatsby-plugin-theme-ui"
 import { Link } from "gatsby"
-import Img from "gatsby-image"
+// import Img from "gatsby-image"
 
 export const StyledHeader = styled.header`
   display: flex;
@@ -121,7 +121,7 @@ export const StyledSection = styled.section`
   })}
 `
 
-export const SplashImage = styled(Img)`
+export const SplashImage = styled.img`
   position: absolute;
   bottom: 0;
   right: 0;
