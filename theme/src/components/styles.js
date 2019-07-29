@@ -45,7 +45,7 @@ export const SectionWrap = styled.main`
 export const StyledHero = styled.section`
   scroll-snap-align: start;
   background: linear-gradient(
-    ${theme.colors.primary},
+    ${theme.colors.primary} 10%,
     ${theme.colors.secondary}
   );
   margin-top: -95px;

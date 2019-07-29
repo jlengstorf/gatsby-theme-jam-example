@@ -10,10 +10,10 @@ export default {
   colors: {
     light: "#FFF",
     dark: "#1E272E",
-    primary: "#F53B57",
-    secondary: "#EF5777",
-    tertiary: "FFF500",
-    background: "#F53B57",
+    primary: "#53388a",
+    secondary: "#fd97fd",
+    tertiary: "#FFF500",
+    background: "#53388a",
     muted: "#f6f6f6",
   },
   fonts: {

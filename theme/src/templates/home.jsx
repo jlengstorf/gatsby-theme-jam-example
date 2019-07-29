@@ -25,10 +25,10 @@ const PageTemplate = ({ pageContext }) => {
         <Header logo="test" logoTxt={title} nav="test" />
         <SectionWrap>
           <Hero />
-          <Section backgroundColor={theme.colors.white}>
+          <Section backgroundColor={theme.colors.white} id="work">
             <Styled.p>{pageContext.content}</Styled.p>
           </Section>
-          <Section light backgroundColor={theme.colors.primary}>
+          <Section light backgroundColor={theme.colors.primary} id="about">
             <Styled.p>{pageContext.content}</Styled.p>
           </Section>
         </SectionWrap>
