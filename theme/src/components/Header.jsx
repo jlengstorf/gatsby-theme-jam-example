@@ -7,7 +7,7 @@ const Header = () => {
     <StyledHeader>
       <Container>
         <Nav>
-          <Styled.h2 as={NavLink} to={"/"}>
+          <Styled.h2 as={NavLink} to={"#hero"}>
             Scarlet
           </Styled.h2>
           <NavList>

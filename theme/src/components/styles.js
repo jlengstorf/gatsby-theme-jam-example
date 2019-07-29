@@ -2,7 +2,6 @@ import styled from "@emotion/styled"
 import { keyframes, css } from "@emotion/core"
 import theme from "../gatsby-plugin-theme-ui"
 import { Link } from "gatsby"
-// import Img from "gatsby-image"
 
 export const StyledHeader = styled.header`
   display: flex;
@@ -45,7 +44,7 @@ export const SectionWrap = styled.main`
 export const StyledHero = styled.section`
   scroll-snap-align: start;
   background: linear-gradient(
-    ${theme.colors.primary} 10%,
+    ${theme.colors.primary} 12.5vh,
     ${theme.colors.secondary}
   );
   margin-top: -95px;
@@ -115,6 +114,7 @@ export const StyledSection = styled.section`
   background: white;
   display: flex;
   align-items: center;
+  position: relative;
   ${props => ({
     background: props.backgroundColor && props.backgroundColor,
     color: props.light ? theme.colors.light : theme.colors.dark,
@@ -130,4 +130,13 @@ export const SplashImage = styled.img`
   object-fit: contain;
   object-position: bottom;
   user-select: none;
+`
+
+export const ProjectList = styled.ul`
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+`
+
+export const ProjectItem = styled.li`
+  scroll-snap-align: start;
 `

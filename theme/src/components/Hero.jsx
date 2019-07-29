@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { StyledHero, SplashImage, WaveWrapper, InnerWave } from "./styles"
 
-const Hero = ({ heroImage, imageAlt }) => {
+const Hero = ({ imageAlt, id }) => {
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "hero.png" }) {
@@ -16,12 +16,11 @@ const Hero = ({ heroImage, imageAlt }) => {
       }
     }
   `)
-  console.log("🐠", data.file.childImageSharp.fixed)
   return (
-    <StyledHero>
+    <StyledHero id={id}>
       <SplashImage
         src={data.file.childImageSharp.fixed.src}
-        // alt={imageAlt || "Scarlet Theme Hero Image"}
+        alt={imageAlt || "Scarlet Theme Hero Image"}
       />
       <WaveWrapper>
         <InnerWave layer="1" waveoffset="-2.5vh">

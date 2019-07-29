@@ -18,18 +18,21 @@ const PageTemplate = ({ pageContext }) => {
     }
   `)
   const { title } = data.site.siteMetadata
+  console.log("🐠", pageContext)
   return (
     <ThemeProvider theme={theme}>
       <Layout>
         <Global styles={globalStyles} />
         <Header logo="test" logoTxt={title} nav="test" />
         <SectionWrap>
-          <Hero />
+          <Hero id="hero" />
           <Section backgroundColor={theme.colors.white} id="work">
-            <Styled.p>{pageContext.content}</Styled.p>
+            <Styled.h2>{pageContext.work.heading}</Styled.h2>
+            <Styled.p>{pageContext.work.content}</Styled.p>
           </Section>
           <Section light backgroundColor={theme.colors.primary} id="about">
-            <Styled.p>{pageContext.content}</Styled.p>
+            <Styled.h2>{pageContext.about.heading}</Styled.h2>
+            <Styled.p>{pageContext.about.content}</Styled.p>
           </Section>
         </SectionWrap>
       </Layout>
