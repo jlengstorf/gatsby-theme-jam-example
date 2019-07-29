@@ -13,14 +13,14 @@ exports.createPages = ({ actions }) => {
     },
   })
   // Create Content Pages - todo: with mdx page dir
-  actions.createPage({
-    path: "/example-page",
-    component: PageTemplate,
-    context: {
-      heading: "Scarlet Page",
-      content: jeffsum(5, "sentences"),
-    },
-  })
+  // actions.createPage({
+  //   path: "/example-page",
+  //   component: PageTemplate,
+  //   context: {
+  //     heading: "Scarlet Page",
+  //     content: jeffsum(5, "sentences"),
+  //   },
+  // })
   // Create 404 Pages
   actions.createPage({
     path: "/404",

@@ -1,13 +1,27 @@
 import React from "react"
-import ScarletImg from "../images/hero.png"
+import { useStaticQuery, graphql } from "gatsby"
 import { StyledHero, SplashImage, WaveWrapper, InnerWave } from "./styles"
 
 const Hero = ({ heroImage, imageAlt }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "hero.png" }) {
+        childImageSharp {
+          # Specify the image processing specifications right in the query.
+          # Makes it trivial to update as your page's design changes.
+          fixed(width: 1800, height: 2000) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `)
+  console.log("🐠", data.file.childImageSharp.fixed)
   return (
     <StyledHero>
       <SplashImage
-        src={heroImage || ScarletImg}
-        alt={imageAlt || "Scarlet Theme Hero Image"}
+        fixed={data.file.childImageSharp.fixed.src}
+        // alt={imageAlt || "Scarlet Theme Hero Image"}
       />
       <WaveWrapper>
         <InnerWave layer="1" waveoffset="-2.5vh">

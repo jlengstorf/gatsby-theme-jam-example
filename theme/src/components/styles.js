@@ -2,6 +2,7 @@ import styled from "@emotion/styled"
 import { keyframes, css } from "@emotion/core"
 import theme from "../gatsby-plugin-theme-ui"
 import { Link } from "gatsby"
+import Img from "gatsby-image"
 
 export const StyledHeader = styled.header`
   display: flex;
@@ -57,6 +58,11 @@ export const StyledHero = styled.section`
 export const waveAnimation = length => css`
   animation: ${wave} ${length} linear infinite alternate;
 `
+
+export const dashAnimation = length => css`
+  animation: ${dash} ${length} linear forwards;
+`
+
 const dash = keyframes`
   0% {
     stroke-dashoffset: 1000;
@@ -81,7 +87,7 @@ export const WaveWrapper = styled.div`
   transform: matrix(1, 0, 0, -1, 0, 0);
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -5vh;
   height: 100%;
   width: 100%;
 `
@@ -115,7 +121,7 @@ export const StyledSection = styled.section`
   })}
 `
 
-export const SplashImage = styled.img`
+export const SplashImage = styled(Img)`
   position: absolute;
   bottom: 0;
   right: 0;
