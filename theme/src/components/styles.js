@@ -25,13 +25,15 @@ export const NavList = styled.ul`
 `
 
 export const NavLink = styled(Link)`
-  padding: 1rem;
+  padding: 1rem 0;
   color: ${theme.colors.light};
   text-decoration: none;
   cursor: pointer;
 `
 
-export const NavItem = styled.li``
+export const NavItem = styled.li`
+  padding: 0 1rem;
+`
 
 export const SectionWrap = styled.main`
   overflow-y: scroll;
@@ -198,4 +200,12 @@ export const ProjectContent = styled.div`
   > h3 {
     margin-right: auto;
   }
+`
+
+export const ProjectBadge = styled.p`
+  color: ${theme.colors.white};
+  background-color: ${theme.colors.primary};
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: ${theme.fontSizes[1]}px;
 `
