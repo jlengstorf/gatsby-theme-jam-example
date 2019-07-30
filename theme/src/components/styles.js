@@ -42,7 +42,7 @@ export const SectionWrap = styled.main`
   &,
   > section {
     height: 100vh;
-    min-height: 750px;
+    min-height: 450px;
   }
 `
 
@@ -151,7 +151,7 @@ export const StyledProjectItem = styled.li`
   overflow: hidden;
   position: relative;
   border-radius: 1rem;
-  min-width: 275px;
+  min-width: 250px;
   margin: 1rem 1.5rem 0rem 0rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 `
@@ -159,7 +159,7 @@ export const StyledProjectItem = styled.li`
 export const ProjectLink = styled(Link)`
   display: flex;
   flex-direction: column;
-  height: 425px;
+  height: 275px;
   cursor: pointer;
   text-decoration: none;
 
