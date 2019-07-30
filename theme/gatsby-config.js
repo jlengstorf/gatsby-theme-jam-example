@@ -19,6 +19,7 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-theme-ui",
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -36,16 +37,17 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `GatsbyJS`,
-        short_name: `GatsbyJS`,
+        name: `Gatsby Theme Scarlet`,
+        short_name: `Scarlet`,
         start_url: `/`,
-        background_color: `#f7f0eb`,
-        theme_color: `#a2466c`,
+        background_color: `#53388a`,
+        theme_color: `#53388a`,
         display: `standalone`,
       },
     },
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
+    "gatsby-transformer-json",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
     "gatsby-plugin-netlify",
   ],
 }

@@ -6,9 +6,10 @@ import { Link } from "gatsby"
 export const StyledHeader = styled.header`
   display: flex;
   background: ${theme.colors.primary};
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
-  z-index: 1;
+  z-index: 10;
 `
 
 export const Nav = styled.nav`
@@ -35,6 +36,7 @@ export const NavItem = styled.li``
 export const SectionWrap = styled.main`
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
+
   &,
   > section {
     height: 100vh;
@@ -47,7 +49,7 @@ export const StyledHero = styled.section`
     ${theme.colors.primary} 12.5vh,
     ${theme.colors.secondary}
   );
-  margin-top: -95px;
+  margin-top: 95px;
   display: flex;
   align-items: center;
   position: relative;
@@ -133,10 +135,67 @@ export const SplashImage = styled.img`
 `
 
 export const ProjectList = styled.ul`
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  width: 100%;
 `
 
-export const ProjectItem = styled.li`
+export const StyledProjectItem = styled.li`
   scroll-snap-align: start;
+  overflow: hidden;
+  position: relative;
+  border-radius: 1rem;
+  min-width: 400px;
+  margin: 1rem 1.5rem 0rem 0rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+`
+
+export const ProjectLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  height: 425px;
+  cursor: pointer;
+  text-decoration: none;
+
+  &::before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: linear-gradient(
+      ${theme.colors.primary},
+      ${theme.colors.secondary}
+    );
+    z-index: 2;
+    opacity: 0.75;
+    pointer-events: none;
+    filter: brightness(0.75) saturate(1.5);
+  }
+`
+
+export const ProjectImage = styled.img`
+  position: absolute;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+`
+
+export const ProjectContent = styled.div`
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  padding: 1rem;
+  > h3,
+  > p {
+    color: white;
+    margin-bottom: 0;
+  }
+  > h3 {
+    margin-right: auto;
+  }
 `

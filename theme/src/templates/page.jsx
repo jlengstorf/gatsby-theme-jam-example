@@ -4,7 +4,8 @@ import { Global } from "@emotion/core"
 import { ThemeProvider } from "theme-ui"
 import theme from "../gatsby-plugin-theme-ui"
 import { Layout, Styled } from "theme-ui"
-import { Header, SectionWrap, Section } from "../components"
+import { Header, Section } from "../components"
+import { SectionWrap } from "../components/styles"
 import { globalStyles } from "./styles"
 
 const PageTemplate = ({ pageContext }) => {

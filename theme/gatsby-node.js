@@ -1,7 +1,6 @@
 const HomepageTemplate = require.resolve("./src/templates/home.jsx")
 const PageTemplate = require.resolve("./src/templates/page.jsx")
 const jeffsum = require("jeffsum")
-const Projects = require.resolve("./src/data/projects")
 
 exports.createPages = ({ actions }) => {
   // Create Homepage
@@ -13,7 +12,6 @@ exports.createPages = ({ actions }) => {
       work: {
         heading: "Work",
         content: jeffsum(2, "sentences"),
-        projects: Projects,
       },
       about: {
         heading: "About",

@@ -1,0 +1,19 @@
+{
+  "Projects": [
+    {
+      "name": "Project 1",
+      "link": "#",
+      "image": "https://source.unsplash.com/random/300x400",
+      "alt": "",
+      "badge": ""
+    },
+    {
+      "name": "Project 2",
+      "link": "#"
+    },
+    {
+      "name": "Project 3",
+      "link": "#"
+    }
+  ]
+}

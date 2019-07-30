@@ -7,9 +7,7 @@ const Hero = ({ imageAlt, id }) => {
     query {
       file(relativePath: { eq: "hero.png" }) {
         childImageSharp {
-          # Specify the image processing specifications right in the query.
-          # Makes it trivial to update as your page's design changes.
-          fixed(width: 1800, height: 2000) {
+          fixed(width: 1536, height: 2048) {
             src
           }
         }
