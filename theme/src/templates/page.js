@@ -19,6 +19,28 @@ const PageTemplate = ({ pageContext }) => {
           }
         }
       }
+      allTwitterStatusesUserTimelineNameofthequery {
+        edges {
+          node {
+            id
+            full_text # or text depending by endpoint params
+            created_at
+            favorite_count
+            retweet_count
+            source
+            entities {
+              urls {
+                url
+                expanded_url
+                display_url
+              }
+            }
+            user {
+              name
+            }
+          }
+        }
+      }
     }
   `)
 
