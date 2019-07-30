@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-theme-jam-example",
-  "author": "Jason Lengstorf <jason@gatsbyjs.com>",
+  "name": "gatsby-theme-tasting-notes",
+  "author": "Giuseppe de Santis <me@giuseppedesantis.eu>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jlengstorf/gatsby-theme-jam-example.git"
+    "url": "https://github.com/gidesan/gatsby-theme-tasting-notes.git"
   },
-  "version": "1.0.1",
+  "version": "0.1.0",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
