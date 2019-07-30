@@ -1,6 +1,5 @@
 {
-  "name": "gatsby-theme-jam-example",
-  "author": "Jason Lengstorf <jason@gatsbyjs.com>",
+  "name": "gatsby-theme-social-bio",
   "repository": {
     "type": "git",
     "url": "https://github.com/jlengstorf/gatsby-theme-jam-example.git"
@@ -20,8 +19,11 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.14",
+    "@emotion/styled": "^10.0.14",
     "@mdx-js/react": "^1.0.21",
     "gatsby-plugin-theme-ui": "^0.2.2",
+    "gatsby-source-instagram": "^0.5.1",
+    "gatsby-source-twitter": "^3.0.0",
     "theme-ui": "^0.2.2"
   },
   "keywords": [
