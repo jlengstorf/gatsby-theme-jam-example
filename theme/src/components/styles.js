@@ -42,7 +42,7 @@ export const SectionWrap = styled.main`
   &,
   > section {
     height: 100vh;
-    min-height: 450px;
+    min-height: 400px;
   }
 `
 
@@ -52,7 +52,7 @@ export const StyledHero = styled.section`
     ${theme.colors.primary} 12.5vh,
     ${theme.colors.secondary}
   );
-  margin-top: 95px;
+  /* margin-top: 95px; */
   display: flex;
   align-items: center;
   position: relative;

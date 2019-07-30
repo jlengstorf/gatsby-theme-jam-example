@@ -5,7 +5,7 @@ import { StyledHero, SplashImage, WaveWrapper, InnerWave } from "./styles"
 const Hero = ({ imageAlt, id }) => {
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "hero.png" }) {
+      file(relativePath: { eq: "scarlet.png" }) {
         childImageSharp {
           fixed(width: 1536, height: 2048) {
             src
