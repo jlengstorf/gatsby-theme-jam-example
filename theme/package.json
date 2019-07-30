@@ -21,6 +21,7 @@
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
     "@mdx-js/react": "^1.0.21",
+    "facepaint": "^1.2.1",
     "gatsby-plugin-theme-ui": "^0.2.2",
     "gatsby-source-instagram": "^0.5.1",
     "gatsby-source-twitter": "^3.0.0",
