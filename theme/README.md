@@ -1,51 +1,139 @@
-# Gatsby Theme Jam Example Submission
+<p align="center">
+  <a href="https://www.gatsbyjs.org">
+    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
+  </a>
+</p>
+<h1 align="center">
+  @olavea/gatsby-theme-book
+</h1>
 
-This is a bare-bones Gatsby theme to showcase how a [Theme Jam](https://themejam.gatsbyjs.org) submission should look.
+## A Gatsby theme for building a book.
 
-See the [live demo](https://gatsby-theme-jam-example.netlify.com)
+I love reading books. So the day it dawned on me that I could build a book with Gatsby was a GOOD day. I will try to pass some of the goodness of that day to you with this Gatsby Book Theme.
+
+If you want to read how my daughter Lillian (4) gave me this book building idea see below.
+
+[**Demo Website**](https://petra-kanini.netlify.com)
+
+## Features
+-
+-
+-
 
 ## Installation
 
-To use this theme in your Gatsby sites, follow these instructions:
+```sh
+npm install @olavea/gatsby-theme-book
+```
 
-1.  Install the theme
-    ```sh
-    npm install --save gatsby-theme-jam-example
-    ```
+### Install as a starter
 
-2.  Add the theme to your `gatsby-config.js`:
-    ```js
-    module.exports = {
-      plugins: [
-        'gatsby-theme-jam-example'
-      ]
+This will generate a new book (with the folder name "book") that pre-configures use of the theme including example content.
+
+```sh
+gatsby new book LekoArts/gatsby-starter-book
+```
+
+## Usage
+
+### Theme options
+
+| Key            | Default Value      | Description                                                                                               |
+| -------------- | ------------------ | --------------------------------------------------------------------------------------------------------- |
+| `basePath`     | `/`                | Root url for the theme                                                                                    |
+| `imagePath` | `book/pics` | Location of picturess                                                                                      |
+| `audioPath`    | `book/audio`    | Location of audio (optional)                                                                   |
+
+The usage of `book/pics` is mandatory. Have a look at the [example](https://github.com/LekoArts/gatsby-themes/tree/master/examples/emma) on how to create entries.
+
+The usage of `book/audio` is optional.
+
+#### Example usage
+
+```js
+// gatsby-config.js
+module.exports = {
+  plugins: [
+    {
+      resolve: `@olavea/gatsby-theme-book`,
+      options: {
+        // (I need some help on everything below this @raae or @ testower says @olavea) basePath defaults to `/`
+        basePath: `/sideproject`,
+        // projectsPath defaults to `content/projects`
+        projectsPath: `content/cool-projects`
+      }
     }
-    ```
+  ]
+};
+```
 
-3.  Start your site
-    ```sh
-    gatsby develop
-    ```
+#### Additional configuration
 
-## Submission Checklist
+In addition to the theme options, there are a handful of items you can customize via the `siteMetadata` object in your site's `gatsby-config.js`
 
-To ensure your Theme Jam submission [follows the rules](https://themejam.gatsbyjs.org/rules), use this checklist:
+```js
+// gatsby-config.js
+module.exports = {
+  siteMetadata: {
+    // Used for the title template on pages other than the index site
+    siteTitle: `Emma`,
+    // Default title of the page
+    siteTitleAlt: `Emma - @lekoarts/gatsby-theme-emma`,
+    // Can be used for e.g. JSONLD
+    siteHeadline: `Emma - Gatsby Theme from @lekoarts`,
+    // Will be used to generate absolute URLs for og:image etc.
+    siteUrl: `https://emma.lekoarts.de`,
+    // Used for SEO
+    siteDescription: `Minimalistic portfolio with full-width grid, page transitions, support for additional MDX pages, and a focus on large images`,
+    // Will be set on the <html /> tag
+    siteLanguage: `en`,
+    // Used for og:image and must be placed inside the `static` folder
+    siteImage: `/banner.jpg`,
+    // Twitter Handle
+    author: `@lekoarts_de`
+  }
+};
+```
 
-- [ ] Use our [accessibility guide][a11y] to ensure your site meets our accessibility standards
-- [ ] Run a performance audit using [Lighthouse][] and/or [WebPageTest][]
-- [ ] Set up a live demo using [Netlify][] or [GitHub Pages][]
-- [ ] Add installation documentation to the README
-- [ ] Update the `name` field in `package.json`
-- [ ] Update the `author` field in `package.json`
-- [ ] Update the `repository` field in `package.json`
-- [ ] Make sure the theme’s `keywords` in `package.json` include `gatsby`, `gatsby-theme`, and `gatsby-plugin`
-- [ ] Publish your theme to npm ([docs][npmpublish])
-- [ ] Submit your theme at https://themejam.gatsbyjs.org
+### Formats
 
-[a11y]: https://gatsbyjs.org/docs/making-your-site-accessible#how-to-improve-accessibility
-[Lighthouse]: https://developers.google.com/web/tools/lighthouse/
-[axe]: https://www.deque.com/axe/
-[WebPageTest]: http://webpagetest.org/
-[Netlify]: https://netlify.com
-[GitHub Pages]: https://pages.github.com/
-[npmpublish]: https://docs.npmjs.com/cli/publish
+Projects need the following frontmatter:
+
+```md
+---
+client: "LekoArts"
+title: "Theme"
+cover: "./image.jpg"
+date: "2019-06-10"
+service: "Theme"
+color: "#8e9d31"
+---
+```
+
+Pages need the following frontmatter:
+
+```md
+---
+title: "Name"
+slug: "/name"
+cover: "./name.jpg"
+---
+```
+
+Let me tell you about the good day my daughter Lillian (4) gave me the idea to build a book with Gatsby.
+
+## A Good Day In The Morning
+
+One sunny morning Lillian (4) and I was reading Ginger & Pickles together.
+Lillian (4) is my daughter. Ginger is an orange and yellow striped cat who runs a shop with Pickles the terrier. Lillian (4) was drinking warmed oat milk, I was reading out loud and sipping coffee.
+
+Lillian said:
+«I want to make my own book.»
+«Yessss!!» I said with feeling. «Let’s build Ginger & Pickles, but with added PIRATES! Arrrh!»
+«Do it NOW!» golden haired Lillian (4) said.
+
+## A Good Day At Work
+After a reckless ride on her green bicycle I leave Lillian at kindergarten and start my work day by typimg «Beatrix Potter» into  google, she is the author of Ginger & Pickles.
+
+## A Treausre Trove
+All of Beatrix Potter’s precious picture books for children where THERE, treausre trovelike. Clean content undirtified by «this-content-needs-polishing» thoughts to disctract me. I got started by firing up Scott Tolinski’s top notch tutorial Pro Gatsby 2. I had our new Ginger & Pickles book deployed before i even rememberd the poor pirates! Arrh!
