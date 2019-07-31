@@ -4,7 +4,7 @@ import { Global } from "@emotion/core"
 import { ThemeProvider } from "theme-ui"
 import theme from "../gatsby-plugin-theme-ui"
 import { Layout, Styled } from "theme-ui"
-import { Header, Hero, Section, ProjectItem } from "../components"
+import { Header, Hero, Section, ProjectItem, Footer } from "../components"
 import { SectionWrap, ProjectList } from "../components/styles"
 import { globalStyles } from "./styles"
 
@@ -62,11 +62,18 @@ const PageTemplate = ({ pageContext }) => {
               />
             </ProjectList>
           </Section>
-          <Section backgroundColor={theme.colors.primary} id="about" light>
+          <Section
+            backgroundColor={theme.colors.primary}
+            id="about"
+            light
+            enableWave={true}
+            waveBottom={false}
+          >
             <Styled.h2>{pageContext.about.heading}</Styled.h2>
             <Styled.p>{pageContext.about.content}</Styled.p>
           </Section>
         </SectionWrap>
+        <Footer />
       </Layout>
     </ThemeProvider>
   )

@@ -1,19 +1,34 @@
 {
   "Projects": [
     {
-      "name": "Project 1",
+      "name": "Project One",
       "link": "#",
-      "image": "https://source.unsplash.com/random/300x400",
-      "alt": "",
-      "badge": ""
+      "alt": "Project One",
+      "badge": "web"
     },
     {
-      "name": "Project 2",
-      "link": "#"
+      "name": "Project Two",
+      "link": "#",
+      "alt": "Project Two",
+      "badge": "web"
     },
     {
-      "name": "Project 3",
-      "link": "#"
+      "name": "Project Three",
+      "link": "#",
+      "alt": "Project Three",
+      "badge": "web"
+    },
+    {
+      "name": "Project Four",
+      "link": "#",
+      "alt": "Project Four",
+      "badge": "web"
+    },
+    {
+      "name": "Project Five",
+      "link": "#",
+      "alt": "Project Five",
+      "badge": "web"
     }
   ]
 }

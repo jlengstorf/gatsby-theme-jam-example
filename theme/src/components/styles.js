@@ -35,14 +35,7 @@ export const NavItem = styled.li`
 `
 
 export const SectionWrap = styled.main`
-  /* overflow-y: scroll;
-  scroll-snap-type: y mandatory; */
-
-  &,
-  > section {
-    height: 100vh;
-    min-height: 400px;
-  }
+  min-height: 400px;
 `
 
 export const StyledHero = styled.section`
@@ -51,7 +44,8 @@ export const StyledHero = styled.section`
     ${theme.colors.primary} 12.5vh,
     ${theme.colors.secondary}
   );
-  /* margin-top: 95px; */
+  height: 100vh;
+  min-height: 400px;
   display: flex;
   align-items: center;
   position: relative;
@@ -87,12 +81,15 @@ const wave = keyframes`
   }
 `
 export const WaveWrapper = styled.div`
-  transform: matrix(1, 0, 0, -1, 0, 0);
+  ${props => ({
+    transform: props.bottom && "matrix(1, 0, 0, -1, 0, 0)",
+  })}
   position: absolute;
   left: 0;
-  bottom: -5vh;
   height: 100%;
   width: 100%;
+  user-select: none;
+  pointer-events: none;
 `
 
 export const InnerWave = styled.div`
@@ -118,6 +115,8 @@ export const StyledSection = styled.section`
   display: flex;
   align-items: center;
   position: relative;
+  height: 100vh;
+  min-height: 400px;
   ${props => ({
     background: props.backgroundColor && props.backgroundColor,
     color: props.light ? theme.colors.light : theme.colors.dark,
@@ -206,4 +205,31 @@ export const ProjectBadge = styled.p`
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   font-size: ${theme.fontSizes[1]}px;
+`
+
+export const StyledFooter = styled.footer`
+  display: flex;
+  align-items: center;
+  padding: 1rem 0 0;
+`
+export const FooterBox = styled.div`
+  background: ${theme.colors.light};
+  padding: 1rem;
+  border-radius: 1rem 1rem 0 0;
+  font-size: ${theme.fontSizes[1]}px;
+
+  > p {
+    margin: 0;
+  }
+`
+
+export const Avatar = styled.img`
+  border-radius: 1rem;
+`
+
+export const HyperLink = styled.a`
+  cursor: pointer;
+  font-weight: ${theme.fontWeights.semiBold};
+  text-decoration: none;
+  color: ${theme.colors.dark};
 `

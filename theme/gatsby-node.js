@@ -8,7 +8,6 @@ exports.createPages = ({ actions }) => {
     path: "/",
     component: HomepageTemplate,
     context: {
-      heading: "Scarlet",
       work: {
         heading: "Work",
         content: "Just a few projects",

@@ -25,12 +25,17 @@ export default {
     body: 400,
     heading: 500,
     bold: 700,
+    semiBold: 600,
+    medium: 500,
+    regular: 400,
+    light: 300,
   },
   lineHeights: {
     body: 4.5,
     heading: 1.125,
   },
   breakpoints: ["40em", "56em", "64em"],
+  borderRadius: "16",
   styles: {
     root: {
       fontFamily: "body",
