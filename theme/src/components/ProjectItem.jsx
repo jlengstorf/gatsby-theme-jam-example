@@ -4,6 +4,7 @@ import {
   ProjectLink,
   ProjectImage,
   ProjectContent,
+  ProjectTitle,
   ProjectBadge,
 } from "./styles"
 
@@ -13,7 +14,7 @@ const ProjectItem = ({ link, image, alt, name, badge }) => {
       <ProjectLink to={link}>
         <ProjectImage src={image} alt={alt} />
         <ProjectContent>
-          <h3>{name}</h3>
+          <ProjectTitle>{name}</ProjectTitle>
           <ProjectBadge>{badge}</ProjectBadge>
         </ProjectContent>
       </ProjectLink>

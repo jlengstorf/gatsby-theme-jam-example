@@ -1,7 +1,6 @@
 import styled from "@emotion/styled"
 import { keyframes, css } from "@emotion/core"
 import theme from "../gatsby-plugin-theme-ui"
-import { Link } from "gatsby"
 
 export const StyledHeader = styled.header`
   display: flex;
@@ -24,7 +23,7 @@ export const NavList = styled.ul`
   margin: 0;
 `
 
-export const NavLink = styled(Link)`
+export const NavLink = styled.a`
   padding: 1rem 0;
   color: ${theme.colors.light};
   text-decoration: none;
@@ -116,7 +115,6 @@ export const InnerWave = styled.div`
 
 export const StyledSection = styled.section`
   scroll-snap-align: start;
-  background: white;
   display: flex;
   align-items: center;
   position: relative;
@@ -156,7 +154,7 @@ export const StyledProjectItem = styled.li`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 `
 
-export const ProjectLink = styled(Link)`
+export const ProjectLink = styled.a`
   display: flex;
   flex-direction: column;
   height: 275px;
@@ -193,19 +191,18 @@ export const ProjectContent = styled.div`
   align-items: flex-end;
   height: 100%;
   padding: 1rem;
-  > h3,
-  > p {
-    color: white;
-    margin-bottom: 0;
-  }
-  > h3 {
-    margin-right: auto;
-  }
+`
+
+export const ProjectTitle = styled.h3`
+  color: ${theme.colors.light};
+  margin-bottom: 0;
+  margin-right: auto;
 `
 
 export const ProjectBadge = styled.p`
-  color: ${theme.colors.white};
+  color: ${theme.colors.light};
   background-color: ${theme.colors.primary};
+  margin-bottom: 0;
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   font-size: ${theme.fontSizes[1]}px;

@@ -30,6 +30,7 @@ export default {
     body: 4.5,
     heading: 1.125,
   },
+  breakpoints: ["40em", "56em", "64em"],
   styles: {
     root: {
       fontFamily: "body",
@@ -40,23 +41,20 @@ export default {
       fontSize: [3, 4],
     },
     h1: {
-      color: "text",
       fontSize: [7, 8],
       fontFamily: "heading",
     },
     h2: {
-      color: "text",
       fontSize: [6, 7],
       fontFamily: "heading",
     },
     h3: {
-      color: "text",
       fontSize: [5, 6],
       fontFamily: "heading",
     },
     // Theme UI Components
     Layout: {
-      color: "text",
+      color: "dark",
       fontFamily: "body",
       fontSize: 1,
     },

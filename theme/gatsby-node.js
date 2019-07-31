@@ -11,11 +11,11 @@ exports.createPages = ({ actions }) => {
       heading: "Scarlet",
       work: {
         heading: "Work",
-        content: jeffsum(2, "sentences"),
+        content: "Just a few projects",
       },
       about: {
         heading: "About",
-        content: jeffsum(5, "sentences"),
+        content: jeffsum(3, "sentences"),
       },
     },
   }),

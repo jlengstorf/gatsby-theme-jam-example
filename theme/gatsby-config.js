@@ -4,16 +4,17 @@ module.exports = {
   siteMetadata: {
     title: "Scarlet",
     author: "Shaun Wong | http://shaunwong.com.au",
-    description: "My site description...",
+    description:
+      "Gatsby Theme Scarlet - The Custom theme currently features 3 slides, a hero section, projects section and about section.",
     siteUrl: "https://www.gatsbyjs.org/",
     social: [
       {
         name: "twitter",
-        url: "https://twitter.com/gatsbyjs",
+        url: "https://twitter.com/devshaun",
       },
       {
         name: "github",
-        url: "https://github.com/gatsbyjs",
+        url: "https://github.com/arxchrono",
       },
     ],
   },
@@ -40,6 +41,8 @@ module.exports = {
         name: `Gatsby Theme Scarlet`,
         short_name: `Scarlet`,
         start_url: `/`,
+        lang: `en`,
+        icon: `${__dirname}/src/images/icon.png`,
         background_color: `#53388a`,
         theme_color: `#53388a`,
         display: `standalone`,

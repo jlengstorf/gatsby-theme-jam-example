@@ -62,7 +62,7 @@ const PageTemplate = ({ pageContext }) => {
               />
             </ProjectList>
           </Section>
-          <Section light backgroundColor={theme.colors.primary} id="about">
+          <Section backgroundColor={theme.colors.primary} id="about" light>
             <Styled.h2>{pageContext.about.heading}</Styled.h2>
             <Styled.p>{pageContext.about.content}</Styled.p>
           </Section>

@@ -7,15 +7,15 @@ const Header = () => {
     <StyledHeader>
       <Container>
         <Nav>
-          <Styled.h2 as={NavLink} to={"#hero"}>
+          <Styled.h2 as={NavLink} href="#hero">
             Scarlet
           </Styled.h2>
           <NavList>
             <NavItem>
-              <NavLink to={"#work"}>Work</NavLink>
+              <NavLink href="#work">Work</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to={"#about"}>About</NavLink>
+              <NavLink href="#about">About</NavLink>
             </NavItem>
           </NavList>
         </Nav>
