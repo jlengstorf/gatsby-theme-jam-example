@@ -43,37 +43,37 @@ const PageTemplate = ({ pageContext }) => {
             <Styled.p>{work.content}</Styled.p>
             <ProjectList>
               <ProjectItem
-                image={"https://source.unsplash.com/random/300x400"}
+                image={"https://source.unsplash.com/random/300x301"}
                 alt={"card"}
                 name={"Project One"}
                 badge={"Web"}
               />
               <ProjectItem
-                image={"https://source.unsplash.com/random/300x400"}
+                image={"https://source.unsplash.com/random/300x302"}
                 alt={"card"}
                 name={"Project One"}
                 badge={"Web"}
               />
               <ProjectItem
-                image={"https://source.unsplash.com/random/300x400"}
+                image={"https://source.unsplash.com/random/300x303"}
                 alt={"card"}
                 name={"Project One"}
                 badge={"Web"}
               />
               <ProjectItem
-                image={"https://source.unsplash.com/random/300x400"}
+                image={"https://source.unsplash.com/random/300x304"}
                 alt={"card"}
                 name={"Project One"}
                 badge={"Web"}
               />
               <ProjectItem
-                image={"https://source.unsplash.com/random/300x400"}
+                image={"https://source.unsplash.com/random/300x305"}
                 alt={"card"}
                 name={"Project One"}
                 badge={"Web"}
               />
               <ProjectItem
-                image={"https://source.unsplash.com/random/300x400"}
+                image={"https://source.unsplash.com/random/300x306"}
                 alt={"card"}
                 name={"Project One"}
                 badge={"Web"}

@@ -60,12 +60,31 @@ export const dashAnimation = length => css`
   animation: ${dash} ${length} linear forwards;
 `
 
+export const zoomAnimation = length => css`
+  animation: ${zoom} ${length} linear infinite;
+`
+
+export const moveAnimation = length => css`
+  animation: ${move} ${length} linear infinite;
+`
+
 const dash = keyframes`
   0% {
     stroke-dashoffset: 1000;
   }
   100% {
     stroke-dashoffset: 0;
+  }
+`
+const move = keyframes`
+  100% {
+    transform: translate3d(0, 0, 1px) rotate(360deg);
+  }
+`
+
+const zoom = keyframes`
+  50% {
+    transform:scale(1.2) skew(2deg, 2deg);
   }
 `
 
@@ -201,6 +220,7 @@ export const ProjectImage = styled.img`
   height: 100%;
   width: 100%;
   z-index: 1;
+  ${zoomAnimation("40s")};
 `
 
 export const ProjectContent = styled.div`
