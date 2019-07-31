@@ -5,5 +5,13 @@
  */
 
 module.exports = {
-  plugins: ["gatsby-theme-childrens-picture-book"],
+  plugins: [
+    {
+      resolve: `gatsby-theme-childrens-picture-book`,
+      options: {
+        imagePath: `./book/pics/`,
+        audioPath: `./book/audio/`,
+      },
+    },
+  ],
 }
