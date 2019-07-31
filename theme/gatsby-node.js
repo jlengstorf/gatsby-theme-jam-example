@@ -7,14 +7,5 @@ exports.createPages = ({ actions }) => {
     path: "/",
     component: HomepageTemplate,
     context: {},
-  }),
-    // Create 404 Pages
-    actions.createPage({
-      path: "/404",
-      component: PageTemplate,
-      context: {
-        heading: "404",
-        content: "404",
-      },
-    })
+  })
 }

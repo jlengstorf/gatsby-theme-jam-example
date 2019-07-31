@@ -9,18 +9,17 @@ const Footer = () => {
         <FooterBox>
           <span>
             Powered by <HyperLink href="https://reactjs.org/">React</HyperLink>{" "}
-            and <HyperLink href="https://www.gatsbyjs.org/">Gatsby</HyperLink>
-          </span>
-          <p>
-            Gatsby Themes Scarlet made with{" "}
+            and <HyperLink href="https://www.gatsbyjs.org/">Gatsby</HyperLink>{" "}
             <span role="img" aria-label="love">
               ❤️
-            </span>{" "}
-            | Design & Developed by{" "}
+            </span>
+          </span>
+          <p>
+            Gatsby Theme Scarlet Design & Developed by{" "}
             <HyperLink href="https://twitter.com/devShaun">
               Shaun Wong
             </HyperLink>
-          </p>{" "}
+          </p>
         </FooterBox>
       </Container>
     </StyledFooter>

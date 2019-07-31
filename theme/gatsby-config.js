@@ -2,7 +2,8 @@ const path = require(`path`)
 
 module.exports = {
   siteMetadata: {
-    title: "Scarlet",
+    title: "Gatsby Theme Scarlet",
+    shortTitle: "Scarlet",
     author: "Shaun Wong | http://shaunwong.com.au",
     description:
       "Gatsby Theme Scarlet - The Custom theme currently features 3 slides, a hero section, projects section and about section.",

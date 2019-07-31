@@ -1,4 +1,5 @@
 import React from "react"
+import Helmet from "react-helmet"
 import { graphql, useStaticQuery } from "gatsby"
 import { Global } from "@emotion/core"
 import { ThemeProvider } from "theme-ui"
@@ -14,6 +15,7 @@ const PageTemplate = ({ pageContext }) => {
       site {
         siteMetadata {
           title
+          shortTitle
         }
       }
       dataJson {
@@ -28,14 +30,17 @@ const PageTemplate = ({ pageContext }) => {
       }
     }
   `)
-  console.log(data)
   const { about, work } = data.dataJson
-  const { title } = data.site.siteMetadata
+  const { title, shortTitle } = data.site.siteMetadata
   return (
     <ThemeProvider theme={theme}>
       <Layout>
+        <Helmet>
+          <html lang="en" />
+          <title>{title}</title>
+        </Helmet>
         <Global styles={globalStyles} />
-        <Header logo="test" logoTxt={title} nav="test" />
+        <Header logoTxt={shortTitle} />
         <SectionWrap>
           <Hero id="hero" />
           <Section backgroundColor={theme.colors.white} id="work">
