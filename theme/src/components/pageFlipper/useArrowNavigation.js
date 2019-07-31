@@ -1,13 +1,13 @@
-import { useEffect } from 'react'
+import { useEffect } from "react"
 
 export default ({ nextPage, previousPage }, onNavigate) => {
   const handleKeyStroke = e => {
     if (e.keyCode === 37 && previousPage) {
-      onNavigate(previousPage)
+      onNavigate(previousPage.path)
     }
 
     if (e.keyCode === 39 && nextPage) {
-      onNavigate(nextPage)
+      onNavigate(nextPage.path)
     }
   }
 

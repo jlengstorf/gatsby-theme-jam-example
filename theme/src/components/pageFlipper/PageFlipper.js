@@ -1,23 +1,11 @@
-import React, { useEffect } from "react"
-
+import React from "react"
 import { Link, navigate } from "gatsby"
+import useArrowNavigation from "./useArrowNavigation"
+import useSwipeNavigation from "./useSwipeNavigation"
 
 const PageFlipper = ({ nextPage, previousPage }) => {
-  const tingeling = event => {
-    if (event.keyCode === 37 && previousPage) {
-      navigate(previousPage.path)
-    } else if (event.keyCode === 39 && nextPage) {
-      navigate(nextPage.path)
-    }
-  }
-  useEffect(() => {
-    // Update the document title using the browser API
-    window.addEventListener("keydown", tingeling)
-
-    return () => {
-      window.removeEventListener("keydown", tingeling)
-    }
-  })
+  useArrowNavigation({ nextPage, previousPage }, navigate)
+  useSwipeNavigation({ nextPage, previousPage }, navigate)
 
   return (
     <ul
@@ -34,14 +22,14 @@ const PageFlipper = ({ nextPage, previousPage }) => {
     >
       <li>
         {previousPage && (
-          <Link to={`/${previousPage.path}`} rel="prev">
+          <Link to={`${previousPage.path}`} rel="prev">
             ← {previousPage.title}
           </Link>
         )}
       </li>
       <li>
         {nextPage && (
-          <Link to={`/${nextPage.path}`} rel="next">
+          <Link to={`${nextPage.path}`} rel="next">
             {nextPage.title} →
           </Link>
         )}

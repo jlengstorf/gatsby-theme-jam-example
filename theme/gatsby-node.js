@@ -4,7 +4,7 @@ const page = (node, index, basePath) => {
 
   return {
     title: index === 0 ? "" : index.toString(10),
-    path: `${basePath}/${permalink}`.replace(/\/\/+/g, "/").replace(/^\//g, ""),
+    path: `/${basePath}/${permalink}`.replace(/\/\/+/g, "/"),
   }
 }
 
