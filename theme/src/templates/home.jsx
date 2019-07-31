@@ -16,8 +16,20 @@ const PageTemplate = ({ pageContext }) => {
           title
         }
       }
+      dataJson {
+        work {
+          content
+          heading
+        }
+        about {
+          heading
+          content
+        }
+      }
     }
   `)
+  console.log(data)
+  const { about, work } = data.dataJson
   const { title } = data.site.siteMetadata
   return (
     <ThemeProvider theme={theme}>
@@ -27,8 +39,8 @@ const PageTemplate = ({ pageContext }) => {
         <SectionWrap>
           <Hero id="hero" />
           <Section backgroundColor={theme.colors.white} id="work">
-            <Styled.h2>{pageContext.work.heading}</Styled.h2>
-            <Styled.p>{pageContext.work.content}</Styled.p>
+            <Styled.h2>{work.heading}</Styled.h2>
+            <Styled.p>{work.content}</Styled.p>
             <ProjectList>
               <ProjectItem
                 image={"https://source.unsplash.com/random/300x400"}
@@ -37,28 +49,34 @@ const PageTemplate = ({ pageContext }) => {
                 badge={"Web"}
               />
               <ProjectItem
-                image={"https://source.unsplash.com/random/300x401"}
+                image={"https://source.unsplash.com/random/300x400"}
                 alt={"card"}
-                name={"Project Two"}
-                badge={"Game"}
+                name={"Project One"}
+                badge={"Web"}
               />
               <ProjectItem
-                image={"https://source.unsplash.com/random/300x402"}
+                image={"https://source.unsplash.com/random/300x400"}
                 alt={"card"}
-                name={"Project Three"}
-                badge={"App"}
+                name={"Project One"}
+                badge={"Web"}
               />
               <ProjectItem
-                image={"https://source.unsplash.com/random/300x403"}
+                image={"https://source.unsplash.com/random/300x400"}
                 alt={"card"}
-                name={"Project Four"}
-                badge={"Video"}
+                name={"Project One"}
+                badge={"Web"}
               />
               <ProjectItem
-                image={"https://source.unsplash.com/random/300x404"}
+                image={"https://source.unsplash.com/random/300x400"}
                 alt={"card"}
-                name={"Project Five"}
-                badge={"Music"}
+                name={"Project One"}
+                badge={"Web"}
+              />
+              <ProjectItem
+                image={"https://source.unsplash.com/random/300x400"}
+                alt={"card"}
+                name={"Project One"}
+                badge={"Web"}
               />
             </ProjectList>
           </Section>
@@ -69,8 +87,8 @@ const PageTemplate = ({ pageContext }) => {
             enableWave={true}
             waveBottom={false}
           >
-            <Styled.h2>{pageContext.about.heading}</Styled.h2>
-            <Styled.p>{pageContext.about.content}</Styled.p>
+            <Styled.h2>{about.heading}</Styled.h2>
+            <Styled.p>{about.content}</Styled.p>
           </Section>
         </SectionWrap>
         <Footer />

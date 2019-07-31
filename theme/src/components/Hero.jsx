@@ -8,7 +8,7 @@ const Hero = ({ imageAlt, id }) => {
     query {
       file(relativePath: { eq: "scarlet.png" }) {
         childImageSharp {
-          fixed(width: 1536, height: 2048) {
+          fixed(width: 768, height: 1024) {
             src
           }
         }

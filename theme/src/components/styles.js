@@ -44,12 +44,12 @@ export const StyledHero = styled.section`
     ${theme.colors.primary} 12.5vh,
     ${theme.colors.secondary}
   );
-  height: 100vh;
-  min-height: 400px;
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
+  min-height: 400px;
+  height: 100vh;
 `
 
 export const waveAnimation = length => css`
@@ -117,6 +117,10 @@ export const StyledSection = styled.section`
   position: relative;
   height: 100vh;
   min-height: 400px;
+  @media only screen and (min-width: ${theme.breakpoints[1]}) {
+    min-height: 70vh;
+    height: auto;
+  }
   ${props => ({
     background: props.backgroundColor && props.backgroundColor,
     color: props.light ? theme.colors.light : theme.colors.dark,
@@ -141,6 +145,12 @@ export const ProjectList = styled.ul`
   padding: 0;
   display: flex;
   width: 100%;
+  padding: 0 0 1.5rem;
+
+  @media only screen and (min-width: ${theme.breakpoints[1]}) {
+    overflow: unset;
+    flex-wrap: wrap;
+  }
 `
 
 export const StyledProjectItem = styled.li`
@@ -151,6 +161,15 @@ export const StyledProjectItem = styled.li`
   min-width: 250px;
   margin: 1rem 1.5rem 0rem 0rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: transform 0.27s ease;
+  @media only screen and (min-width: ${theme.breakpoints[1]}) {
+    flex: 1 1 40%;
+    max-width: 50%;
+  }
+  &:hover,
+  &:focus {
+    transform: scale(1.025);
+  }
 `
 
 export const ProjectLink = styled.a`

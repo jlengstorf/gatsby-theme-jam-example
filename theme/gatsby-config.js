@@ -6,7 +6,7 @@ module.exports = {
     author: "Shaun Wong | http://shaunwong.com.au",
     description:
       "Gatsby Theme Scarlet - The Custom theme currently features 3 slides, a hero section, projects section and about section.",
-    siteUrl: "https://www.gatsbyjs.org/",
+    siteUrl: "https://github.com/ARXChrono/gatsby-theme-scarlet",
     social: [
       {
         name: "twitter",
