@@ -5,8 +5,9 @@
     "demo"
   ],
   "scripts": {
-    "start": "yarn workspace demo start",
-    "build": "yarn workspace demo build",
-    "serve": "yarn workspace demo serve"
+    "start": "yarn workspace gatsby-theme-scarlet-demo start",
+    "build": "yarn workspace gatsby-theme-scarlet-demo build",
+    "serve": "yarn workspace gatsby-theme-scarlet-demo serve",
+    "clean": "yarn workspace gatsby-theme-scarlet-demo clean"
   }
 }

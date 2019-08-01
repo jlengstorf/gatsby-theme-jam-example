@@ -1,62 +1,72 @@
-/**
- * This theme uses `theme-ui` under the hood.
- * @see https://theme-ui.com/
- * @see https://theme-ui.com/gatsby-plugin/
- */
+import "typeface-open-sans"
+import "typeface-pacifico"
+
+const systemFontStack =
+  '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol'
+
 export default {
+  // Global Theme Styles
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   colors: {
-    text: "#232129",
-    background: "#fff",
-    primary: "#639",
+    light: "#FFF",
+    dark: "#1E272E",
+    primary: "#53388a",
+    secondary: "#fd97fd",
+    tertiary: "#FFF500",
+    background: "#53388a",
+    muted: "#f6f6f6",
   },
   fonts: {
-    default:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+    heading: `'Pacifico', ${systemFontStack}`,
+    body: `'Open Sans', ${systemFontStack}`,
   },
-  fontSizes: [16, 18, 20, 22, 27, 36],
+  fontSizes: [12, 14, 16, 18, 24, 28, 32, 36, 48, 64, 72],
+  fontWeights: {
+    body: 400,
+    heading: 500,
+    bold: 700,
+    semiBold: 600,
+    medium: 500,
+    regular: 400,
+    light: 300,
+  },
   lineHeights: {
-    text: "1.45",
-    heading: "1.1",
+    body: 4.5,
+    heading: 1.125,
   },
-  sizes: {
-    container: 650,
-  },
+  breakpoints: ["40em", "56em", "64em"],
+  borderRadius: "16",
   styles: {
-    Layout: {
-      backgroundColor: "background",
-      color: "text",
-      fontFamily: "default",
-      fontSize: 1,
-      lineHeight: "text",
+    root: {
+      fontFamily: "body",
+      lineHeight: "body",
+      fontWeight: "body",
     },
-    Header: {
-      backgroundColor: "primary",
-      color: "background",
-      fontWeight: "bold",
-      margin: 0,
-      span: {
-        display: "block",
-        fontSize: 3,
-        margin: "0 auto",
-        maxWidth: "container",
-        padding: 3,
-        width: "90vw",
-      },
-    },
-    Main: {
-      margin: "0 auto",
-      maxWidth: "container",
-      width: "90vw",
-    },
-    Container: {
-      padding: 0,
-      paddingBottom: 3,
-      paddingTop: 3,
+    p: {
+      fontSize: [3, 4],
     },
     h1: {
-      color: "text",
-      fontSize: 5,
-      lineHeight: "heading",
+      fontSize: [7, 8],
+      fontFamily: "heading",
+    },
+    h2: {
+      fontSize: [6, 7],
+      fontFamily: "heading",
+    },
+    h3: {
+      fontSize: [5, 6],
+      fontFamily: "heading",
+    },
+    // Theme UI Components
+    Layout: {
+      color: "dark",
+      fontFamily: "body",
+      fontSize: 1,
+    },
+    Container: {
+      padding: 4,
+      paddingBottom: 0,
+      paddingTop: 0,
     },
   },
 }
