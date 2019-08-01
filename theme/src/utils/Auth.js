@@ -7,27 +7,26 @@ let idToken = null;
 let expiresAt = null;
 let isAuth = 'loggedIn';
 const isBrowser = typeof window !== 'undefined';
-const isProcessEnv = process.env.AUTH0_DOMAIN;
-let auth0 =
-  isBrowser && isProcessEnv
-    ? new authorize0.WebAuth({
-        domain: process.env.AUTH0_DOMAIN,
-        clientID: process.env.AUTH0_CLIENT_ID,
-        redirectUri: process.env.AUTH0_CALLBACK_URL,
-        responseType: 'token id_token',
-        scope: 'openid email',
-      })
-    : {};
+
+let auth0 = isBrowser
+  ? new authorize0.WebAuth({
+      domain: process.env.AUTH0_DOMAIN,
+      clientID: process.env.AUTH0_CLIENT_ID,
+      redirectUri: process.env.AUTH0_CALLBACK_URL,
+      responseType: 'token id_token',
+      scope: 'openid email',
+    })
+  : {};
 
 export const login = () => {
-  if (!isBrowser && !isProcessEnv) {
+  if (!isBrowser) {
     return;
   }
   auth0.authorize();
 };
 
 export const isAuthenticated = () => {
-  if (!isBrowser && !isProcessEnv) {
+  if (!isBrowser) {
     return;
   }
   return JSON.parse(localStorage.getItem(isAuth));
@@ -35,7 +34,7 @@ export const isAuthenticated = () => {
 
 // DETERMINES IF THE AUTH0 PROFILE IS VALID
 export const handleAuthentication = () => {
-  if (!isBrowser && !isProcessEnv) {
+  if (!isBrowser) {
     return;
   }
 
@@ -72,7 +71,7 @@ const setSession = (cb = () => {}) => (err, authResult) => {
 // RENEWS THE SESSION WHEN THE USER RETURNS TO THE APPLICATION AND IF TOKEN IS NOT EXPIRED
 export const renewSession = () => {
   return dispatch => {
-    if (!isBrowser && !isProcessEnv) {
+    if (!isBrowser) {
       return;
     }
     auth0.checkSession({}, (err, authResult) => {
@@ -91,7 +90,7 @@ export const renewSession = () => {
 
 // LOGS THE USER OUT, DESTROYS THE SESSION AND RELEASES THE AUTH0 CONNECTION
 export const logout = () => {
-  if (!isBrowser && !isProcessEnv) {
+  if (!isBrowser) {
     return;
   }
 
