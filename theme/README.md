@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/977f7853-ebdf-4382-adde-d669c42e082b/deploy-status)](https://app.netlify.com/sites/gatsby-theme-scarlet/deploys)
 
-![ScarletPreview](https://github.com/ARXChrono/gatsby-theme-scarlet/blob/master/screenshot.png)
+![ScarletPreview](https://raw.githubusercontent.com/ARXChrono/gatsby-theme-scarlet/master/screenshot.png)
 
 Gatsby theme scarlet is a personal portfolio which features 3 slides, several beautiful shades of purple, and our star Scarlet.
 

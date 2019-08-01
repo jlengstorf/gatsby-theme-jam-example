@@ -1,58 +1,52 @@
-# Gatsby Theme Jam Submission Example
+# Gatsby Theme Scarlet
 
-This repo is an example and potential starting point for theme creators.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/977f7853-ebdf-4382-adde-d669c42e082b/deploy-status)](https://app.netlify.com/sites/gatsby-theme-scarlet/deploys)
 
-It includes:
-- a bare-bones theme (located in `theme/`) that includes basic setup
-- a demo site (located in `demo/`) that installs the theme
-- a Yarn workspaces configuration so the theme and demo can be worked on simultaneously
+![ScarletPreview](https://raw.githubusercontent.com/ARXChrono/gatsby-theme-scarlet/master/screenshot.png)
 
-## How to use this repo
+## 🛠 Installing Gatsby Theme Scarlet
 
-**NOTE:** Make sure to replace `USERNAME` with your GitHub username and `THEMENAME` with your theme name.
+To use this theme in your Gatsby sites, follow these instructions:
 
-1.  Fork this repo.
+1.  Install the theme via npm or yarn
 
-2.  Rename the forked repo `gatsby-theme-THEMENAME`. (Make sure to replace `THEMENAME` with your chosen name.)
+    npm
 
-3.  Get the theme set up locally.
     ```sh
-    # clone the repo
-    git clone git@github.com:USERNAME/gatsby-theme-THEMENAME.git
-
-    # move into the directory
-    cd gatsby-theme-THEMENAME
-
-    # install dependencies
-    yarn
+    npm install --save gatsby-theme-scarlet
     ```
 
-4.  Update `package.json` with your info.
-    ```diff
-      {
-    +   "name": "gatsby-theme-THEMENAME",
-    +   "author": "Your Name <name@example.com>",
-        "repository": {
-          "type": "git",
-    +     "url": "https://github.com/USERNAME/gatsby-theme-THEMENAME.git"
-        },
+    Yarn
+
+    ```
+    yarn add gatsby-theme-scarlet
     ```
 
-5.  Start the demo site.
+2.  Add the theme to your `gatsby-config.js`:
+
+    ```js
+    module.exports = {
+      plugins: ["gatsby-theme-scarlet"]
+    };
+    ```
+
+3.  Start your site
     ```sh
-    yarn workspace demo develop
+    gatsby develop
     ```
 
-    The demo will start at http://localhost:8000
+## 🎨 Customizations
 
-    **NOTE:** If you’re new to Yarn workspaces, check out [this post](https://www.gatsbyjs.org/blog/2019-05-22-setting-up-yarn-workspaces-for-theme-development/) for details.
+Checkout theme folder, you will be able to extend any files you wish. There will be a config/site.js file in the demo which can be edited.
 
-6.  Start editing the theme! The demo site is configured to use the local theme, so any changes you make to the local `theme` directory will be reflected on the demo site for easy local development.
+Out of the box you will have all gatsby scarlet assets. You will have to replace them in your own project. These images will live inside src/images.
 
-7.  Follow the [submission checklist](./theme/README.md#submission-checklist) to make sure your theme qualifies to win!
+There is a homepage.json data file that contains the homepage data.
 
-8.  [Submit your theme](https://themejam.gatsbyjs.org/submit) to win!
+## 👨‍🍳 Using this repo
 
-## More information
+This repo contains the a theme folder and demo using the theme. After cloning down this repo, run `yarn` and `yarn start` to start up the server.
 
-For contest rules and more information, see [the Theme Jam website](https://themejam.gatsbyjs.org).
+## 💪 How to contribute
+
+Feel free to open a PR! Currently its still early days, so plenty to improve on.
