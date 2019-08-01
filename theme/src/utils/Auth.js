@@ -10,9 +10,9 @@ const isBrowser = typeof window !== 'undefined';
 
 let auth0 = isBrowser
   ? new authorize0.WebAuth({
-      domain: process.env.AUTH0_DOMAIN,
-      clientID: process.env.AUTH0_CLIENT_ID,
-      redirectUri: process.env.AUTH0_CALLBACK_URL,
+      domain: process.env.GATSBY_AUTH0_DOMAIN,
+      clientID: process.env.GATSBY_AUTH0_CLIENT_ID,
+      redirectUri: process.env.GATSBY_AUTH0_CALLBACK_URL,
       responseType: 'token id_token',
       scope: 'openid email',
     })
