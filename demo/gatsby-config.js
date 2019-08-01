@@ -6,9 +6,9 @@ module.exports = {
     },
   ],
   siteMetadata: {
-    title: `Spudnik Landing Page`,
+    title: `The Developer Toolbook`,
     author: `Reuben Ellis`,
-    description: `Spudnik Tools Landing Page`,
+    description: `The Developer Toolbook`,
     loginDesc: "Login",
     isAuthApp: false,
     social: [
