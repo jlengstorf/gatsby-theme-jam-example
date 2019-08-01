@@ -68,36 +68,42 @@ const PageTemplate = ({ pageContext }) => {
                 alt={"card"}
                 name={"Project One"}
                 badge={"Web"}
+                link={"#"}
               />
               <ProjectItem
                 image={"https://source.unsplash.com/random/300x302"}
                 alt={"card"}
                 name={"Project One"}
                 badge={"Web"}
+                link={"#"}
               />
               <ProjectItem
                 image={"https://source.unsplash.com/random/300x303"}
                 alt={"card"}
                 name={"Project One"}
                 badge={"Web"}
+                link={"#"}
               />
               <ProjectItem
                 image={"https://source.unsplash.com/random/300x304"}
                 alt={"card"}
                 name={"Project One"}
                 badge={"Web"}
+                link={"#"}
               />
               <ProjectItem
                 image={"https://source.unsplash.com/random/300x305"}
                 alt={"card"}
                 name={"Project One"}
                 badge={"Web"}
+                link={"#"}
               />
               <ProjectItem
                 image={"https://source.unsplash.com/random/300x306"}
                 alt={"card"}
                 name={"Project One"}
                 badge={"Web"}
+                link={"#"}
               />
             </ProjectList>
           </Section>

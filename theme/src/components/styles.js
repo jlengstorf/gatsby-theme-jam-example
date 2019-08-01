@@ -185,9 +185,11 @@ export const StyledProjectItem = styled.li`
     flex: 1 1 40%;
     max-width: 50%;
   }
-  &:hover,
-  &:focus {
+  &:hover {
     transform: scale(1.025);
+  }
+  &:focus-within {
+    outline: -webkit-focus-ring-color auto 5px;
   }
 `
 

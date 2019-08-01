@@ -11,7 +11,7 @@ import {
 const ProjectItem = ({ link, image, alt, name, badge }) => {
   return (
     <StyledProjectItem>
-      <ProjectLink to={link}>
+      <ProjectLink href={link}>
         <ProjectImage src={image} alt={alt} />
         <ProjectContent>
           <ProjectTitle>{name}</ProjectTitle>
