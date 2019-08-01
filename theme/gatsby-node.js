@@ -46,13 +46,15 @@ exports.sourceNodes = ({ actions }) => {
     type TastingNote implements Node @dontInfer {
       id: ID!
       brand: String!
-      date: Date! @dateformat @proxy(from: "date")
+      bottlingYear: Int! @proxy(from: "bottling_year")
+      date: Date! @dateformat
       finish: String!
       name: String!
       nose: String!
       strength: Float!
       taste: String!
       type: String!
+      score: Int!
       slug: String!
     }
   `)

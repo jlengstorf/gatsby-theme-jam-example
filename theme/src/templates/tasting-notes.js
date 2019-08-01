@@ -11,6 +11,9 @@ const TastingNotesTemplate = () => {
           id
           name
           date
+          bottlingYear
+          score
+          strength
           slug
         }
       }

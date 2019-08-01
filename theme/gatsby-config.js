@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Theme for Tasting Notes",
+    title: "My Tasting Notes",
   },
   plugins: [
     "gatsby-plugin-theme-ui",

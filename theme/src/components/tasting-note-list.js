@@ -1,14 +1,18 @@
 import React from "react"
 import { Link } from "gatsby"
+import { Styled } from "theme-ui"
 
 const TastingNoteList = ({ tastingNotes }) => (
   <>
-    <h2>Tasting Notes</h2>
-    <ul>
+    <Styled.ul>
       {tastingNotes.map(tastingNote => (
-        <li key={tastingNote.id}>
+        <Styled.li key={tastingNote.id}>
           <strong>
-            <Link to={tastingNote.slug}>{tastingNote.name}</Link>
+            <Link to={tastingNote.slug}>
+              {tastingNote.name} ({tastingNote.bottlingYear},{" "}
+              {tastingNote.strength}%)
+            </Link>{" "}
+            - {tastingNote.score}/100
           </strong>
           <br />
           {new Date(tastingNote.date).toLocaleDateString("en-US", {
@@ -16,9 +20,9 @@ const TastingNoteList = ({ tastingNotes }) => (
             day: "numeric",
             year: "numeric",
           })}{" "}
-        </li>
+        </Styled.li>
       ))}
-    </ul>
+    </Styled.ul>
   </>
 )
 export default TastingNoteList

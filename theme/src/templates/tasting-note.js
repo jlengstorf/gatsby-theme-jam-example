@@ -7,8 +7,14 @@ export const query = graphql`
   query($tastingNoteID: String!) {
     tastingNote(id: { eq: $tastingNoteID }) {
       name
-      date(formatString: "MMMM DD YYYY")
+      date(formatString: "MMMM DD, YYYY")
+      bottlingYear
+      score
+      strength
       slug
+      nose
+      taste
+      finish
     }
   }
 `

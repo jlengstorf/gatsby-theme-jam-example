@@ -1,24 +1,24 @@
 - name: Ardbeg Ten
-  brand: Ardbeg
-  type: Scotch
   strength: 43
   nose: todo
   taste: todo
   finish: todo
   date: 2016-10-10
+  bottling_year: 2016
+  score: 87
 - name: Ardbeg Uigeadail
-  brand: Ardbeg
-  type: Scotch
   strength: 50
   nose: todo
   taste: todo
   finish: todo
   date: 2019-10-10
+  bottling_year: 2013
+  score: 89
 - name: Nikka Whisky from the Barrel
-  brand: Nikka Whisky
-  type: Blend
   strength: 51.4
   nose: todo
   taste: todo
   finish: todo
   date: 2017-10-10
+  bottling_year: 2011
+  score: 85
