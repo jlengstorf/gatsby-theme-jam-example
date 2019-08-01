@@ -1,9 +1,14 @@
 # Gatsby Theme Scarlet
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/977f7853-ebdf-4382-adde-d669c42e082b/deploy-status)](https://app.netlify.com/sites/gatsby-theme-scarlet/deploys) [![npm version](https://img.shields.io/npm/v/gatsby-theme-scarlet)](https://www.npmjs.com/package/gatsby-theme-scarlet)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/977f7853-ebdf-4382-adde-d669c42e082b/deploy-status)](https://app.netlify.com/sites/gatsby-theme-scarlet/deploys) [![npm version](https://img.shields.io/npm/v/gatsby-theme-scarlet)](https://www.npmjs.com/package/gatsby-theme-scarlet) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg) ![GitHub issues](https://img.shields.io/github/issues-raw/arxchrono/gatsby-theme-scarlet.svg) ![GitHub pull requests](https://img.shields.io/github/issues-pr/arxchrono/gatsby-theme-scarlet.svg) [![Twitter Follow](https://img.shields.io/twitter/follow/devshaun.svg?style=social)](https://twitter.com/devshaun)
+
+Gatsby theme scarlet is a personal portfolio which features 3 slides, several beautiful shades of purple, and our star Scarlet.
+
+See the [live demo](https://gatsby-theme-scarlet.netlify.com/)
 
 ![ScarletPreview](https://raw.githubusercontent.com/ARXChrono/gatsby-theme-scarlet/master/screenshot.png)
 
+ 
 ## 🛠 Installing Gatsby Theme Scarlet
 
 To use this theme in your Gatsby sites, follow these instructions:
@@ -49,4 +54,4 @@ This repo contains the a theme folder and demo using the theme. After cloning do
 
 ## 💪 How to contribute
 
-Feel free to open a PR! Currently its still early days, so plenty to improve on.
+Feel free to open a PR! Currently its still early days for scarlet! so i'm sure there will be plenty of things to improve 😅
