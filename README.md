@@ -2,7 +2,7 @@
 
 This is theme which incorporates Auth0, Material-UI for styling components and a sidebar navigation.
 
-See the [live demo](https://gatsby-theme-jam-example.netlify.com)
+See the [live demo](https://sleepy-haibt-f5d703.netlify.com/)
 
 ## Quick Start
 
