@@ -1,32 +1,33 @@
 // import { AUTH_CONFIG } from "./auth0-variables";
-import authorize0 from "auth0-js";
-import { navigate } from "gatsby";
+import authorize0 from 'auth0-js';
+import { navigate } from 'gatsby';
 
 let accessToken = null;
 let idToken = null;
 let expiresAt = null;
-let isAuth = "loggedIn";
-const isBrowser = typeof window !== "undefined";
-
-let auth0 = isBrowser
-  ? new authorize0.WebAuth({
-      domain: process.env.AUTH0_DOMAIN,
-      clientID: process.env.AUTH0_CLIENT_ID,
-      redirectUri: process.env.AUTH0_CALLBACK_URL,
-      responseType: "token id_token",
-      scope: "openid email",
-    })
-  : {};
+let isAuth = 'loggedIn';
+const isBrowser = typeof window !== 'undefined';
+const isProcessEnv = process.env.AUTH0_DOMAIN;
+let auth0 =
+  isBrowser && isProcessEnv
+    ? new authorize0.WebAuth({
+        domain: process.env.AUTH0_DOMAIN,
+        clientID: process.env.AUTH0_CLIENT_ID,
+        redirectUri: process.env.AUTH0_CALLBACK_URL,
+        responseType: 'token id_token',
+        scope: 'openid email',
+      })
+    : {};
 
 export const login = () => {
-  if (!isBrowser) {
+  if (!isBrowser && !isProcessEnv) {
     return;
   }
   auth0.authorize();
 };
 
 export const isAuthenticated = () => {
-  if (!isBrowser) {
+  if (!isBrowser && !isProcessEnv) {
     return;
   }
   return JSON.parse(localStorage.getItem(isAuth));
@@ -34,7 +35,7 @@ export const isAuthenticated = () => {
 
 // DETERMINES IF THE AUTH0 PROFILE IS VALID
 export const handleAuthentication = () => {
-  if (!isBrowser) {
+  if (!isBrowser && !isProcessEnv) {
     return;
   }
 
@@ -44,7 +45,7 @@ export const handleAuthentication = () => {
 // SETS THE SESSION IF THE PROFILE IS VALID
 const setSession = (cb = () => {}) => (err, authResult) => {
   if (err) {
-    navigate("/");
+    navigate('/');
     cb();
     return;
   }
@@ -54,16 +55,16 @@ const setSession = (cb = () => {}) => (err, authResult) => {
     idToken = authResult.idToken;
     expiresAt = currentExpiresAt;
     // let user = authResult.idTokenPayload;
-    localStorage.setItem("access_token", accessToken);
-    localStorage.setItem("id_token", idToken);
-    localStorage.setItem("loggedIn", true);
-    localStorage.setItem("expires_at", expiresAt);
+    localStorage.setItem('access_token', accessToken);
+    localStorage.setItem('id_token', idToken);
+    localStorage.setItem('loggedIn', true);
+    localStorage.setItem('expires_at', expiresAt);
     auth0.client.userInfo(accessToken, function(err, profile) {
       let profileName = profile;
-      let userId = profileName.sub.split("|")[1];
-      localStorage.setItem("profile", userId);
+      let userId = profileName.sub.split('|')[1];
+      localStorage.setItem('profile', userId);
     });
-    navigate("/");
+    navigate('/');
     cb();
   }
 };
@@ -71,7 +72,7 @@ const setSession = (cb = () => {}) => (err, authResult) => {
 // RENEWS THE SESSION WHEN THE USER RETURNS TO THE APPLICATION AND IF TOKEN IS NOT EXPIRED
 export const renewSession = () => {
   return dispatch => {
-    if (!isBrowser) {
+    if (!isBrowser && !isProcessEnv) {
       return;
     }
     auth0.checkSession({}, (err, authResult) => {
@@ -81,7 +82,7 @@ export const renewSession = () => {
         logout();
         console.log(err);
         alert(
-          `Could not get a new token (${err.error}: ${err.error_description}).`
+          `Could not get a new token (${err.error}: ${err.error_description}).`,
         );
       }
     });
@@ -90,16 +91,16 @@ export const renewSession = () => {
 
 // LOGS THE USER OUT, DESTROYS THE SESSION AND RELEASES THE AUTH0 CONNECTION
 export const logout = () => {
-  if (!isBrowser) {
+  if (!isBrowser && !isProcessEnv) {
     return;
   }
 
-  let returnTo = "";
+  let returnTo = '';
 
-  if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
-    returnTo = "http://localhost:8000";
+  if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+    returnTo = 'http://localhost:8000';
   } else {
-    returnTo = "https://www.thedevelopertoolbook.com";
+    returnTo = 'https://www.thedevelopertoolbook.com';
   }
 
   auth0.logout({
@@ -107,11 +108,11 @@ export const logout = () => {
     clientID: process.env.AUTH0_CLIENT_ID,
   });
   if (isBrowser) {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("loggedIn");
-    localStorage.removeItem("expires_at");
-    localStorage.removeItem("profile");
-    localStorage.removeItem("id_token");
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('expires_at');
+    localStorage.removeItem('profile');
+    localStorage.removeItem('id_token');
   }
   return dispatch => {
     return false;
