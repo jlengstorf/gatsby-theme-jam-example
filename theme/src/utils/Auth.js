@@ -109,7 +109,7 @@ export const logout = () => {
   if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
     returnTo = 'http://localhost:8000';
   } else {
-    returnTo = 'https://www.thedevelopertoolbook.com';
+    returnTo = process.env.GATSBY_AUTH0_REDIRECT_URL,
   }
 
   auth0.logout({
