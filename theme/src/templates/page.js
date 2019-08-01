@@ -8,6 +8,7 @@ const PageTemplate = ({ pageContext }) => {
       socialLinks={pageContext.socialLinks}
       brand={pageContext.brand}
       loginOption={pageContext.loginOption}
+      isAuthApp={pageContext.isAuthApp}
     />
   );
 };

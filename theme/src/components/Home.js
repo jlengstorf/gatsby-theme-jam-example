@@ -6,8 +6,13 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 // import Footer from '../components/home-footer';
 
-const Home = ({ siteTitle, brand, loginOption }) => (
-  <Layout siteTitle={siteTitle} brand={brand} loginOption={loginOption}>
+const Home = ({ siteTitle, brand, loginOption, isAuthApp }) => (
+  <Layout
+    siteTitle={siteTitle}
+    brand={brand}
+    loginOption={loginOption}
+    isAuthApp={isAuthApp}
+  >
     <main>
       <SEO title="Home" />
       <div>

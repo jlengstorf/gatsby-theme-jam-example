@@ -10,6 +10,7 @@ module.exports = {
     author: `Reuben Ellis`,
     description: `Spudnik Tools Landing Page`,
     loginDesc: "Login",
+    isAuthApp: false,
     social: [
       {
         name: `github`,

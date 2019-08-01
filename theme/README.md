@@ -4,6 +4,14 @@ This is theme which incorporates Auth0, Material-UI for styling components and a
 
 See the [live demo](https://gatsby-theme-jam-example.netlify.com)
 
+## Quick Start
+
+1.  Use the auth app starter
+
+    ```sh
+    gatsby new my-auth-app https://github.com/ethriel3695/gatsby-theme-auth-app
+    ```
+
 ## Installation
 
 To use this theme in your Gatsby sites, follow these instructions:
@@ -56,8 +64,10 @@ module.exports = {
     author: `My Name`,
     // Used for SEO
     description: `My site description...`,
-    //
-    loginDesc: `The login button description (Ex. Login or Login / Signup)`,
+    // The login button description (Ex. Login or Login / Signup). Default: Login / Signup
+    loginDesc: `Login / Signup`,
+    // isAuth determines if authentication is enabled for your app. Default: true
+    isAuthApp: true // options: true, false
     // Used for social links in the root footer
     social: [
       {
@@ -71,6 +81,16 @@ module.exports = {
     ],
   },
 };
+```
+
+In addition replace the values in the site's `env.development` file with the correct values from your Auth0 account.
+If you do not have an Auth0 account create one for free [Auth0](https://auth0.com/signup?&signUpData=%7B%22category%22%3A%22button%22%7D)
+
+```js
+// env.development
+AUTH0_DOMAIN = domain.auth0.com; // Replace domain with your auth0 domain
+AUTH0_CLIENT_ID = secret_client_id; // This ID can be found after creating an Application within Auth0 within the Application tab
+AUTH0_CALLBACK_URL = `http://localhost:8000/callback`; //Remove the literal string character when replacing the callback url
 ```
 
 1.  **`/content`**: A content folder holding assets that the theme expects to exist. This will vary from theme to theme -- this starter expects a logo directory with either a png, jpg or svg image, an article directory for content and a data directory with a navItems.json object for the navigation items within the sidebar menu. Replace the logo image file, delete the demo articles, replace the navItems.json and add your own! **`NOTE`** If the logo directory is empty the theme will use the title attribute in the **`gatsby-config.js`** file.

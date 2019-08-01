@@ -9,12 +9,12 @@
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
-    "gatsby": "^2.13.1",
+    "gatsby": "^2.13.45",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "gatsby": "^2.13.1",
+    "gatsby": "^2.13.45",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
@@ -29,11 +29,18 @@
     "auth0-js": "^9.11.1",
     "gatsby-image": "^2.2.6",
     "gatsby-plugin-emotion": "^4.1.2",
+    "gatsby-plugin-feed": "^2.3.6",
     "gatsby-plugin-material-ui": "^2.1.4",
     "gatsby-plugin-mdx": "^1.0.13",
     "gatsby-plugin-react-helmet": "^3.1.2",
     "gatsby-plugin-sharp": "^2.2.6",
     "gatsby-plugin-theme-ui": "^0.2.6",
+    "gatsby-plugin-twitter": "^2.1.2",
+    "gatsby-remark-code-titles": "^1.1.0",
+    "gatsby-remark-copy-linked-files": "^2.1.4",
+    "gatsby-remark-images": "^3.1.7",
+    "gatsby-remark-numbered-footnotes": "^1.0.0",
+    "gatsby-remark-smartypants": "^2.1.2",
     "gatsby-source-filesystem": "^2.1.4",
     "gatsby-transformer-json": "^2.2.2",
     "gatsby-transformer-sharp": "^2.2.3",
@@ -42,7 +49,11 @@
     "react-swipeable-views": "^0.13.3",
     "react-swipeable-views-utils": "^0.13.3",
     "react-switch": "^5.0.0",
-    "theme-ui": "^0.2.13"
+    "remark-slug": "^5.1.2",
+    "theme-ui": "^0.2.13",
+    "typeface-merriweather": "^0.0.72",
+    "typeface-montserrat": "^0.0.75",
+    "typography-theme-wordpress-2016": "^0.16.19"
   },
   "keywords": [
     "gatsby",

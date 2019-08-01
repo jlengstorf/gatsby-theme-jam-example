@@ -1,5 +1,5 @@
 module.exports = options => {
-  const { mdx = false } = options
+  const { mdx = true } = options;
 
   return {
     siteMetadata: {
@@ -7,6 +7,7 @@ module.exports = options => {
       author: `Name Placeholder`,
       description: `Description placeholder`,
       loginDesc: 'Login / Signup',
+      isAuthApp: true,
       social: [
         {
           name: `twitter`,
@@ -54,6 +55,13 @@ module.exports = options => {
         },
       },
       {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          path: options.contentPath || `content/posts`,
+          name: options.contentPath || `content/posts`,
+        },
+      },
+      {
         resolve: 'gatsby-transformer-json',
         options: {
           typeName: 'Navigation',
@@ -72,6 +80,7 @@ module.exports = options => {
       'gatsby-plugin-theme-ui',
       'gatsby-plugin-material-ui',
       'gatsby-plugin-react-helmet',
+      'gatsby-plugin-twitter',
     ].filter(Boolean),
-  }
+  };
 };

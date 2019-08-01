@@ -70,7 +70,7 @@ class Header extends React.Component {
   };
 
   render() {
-    const { classes, brand, loginOption, siteTitle } = this.props;
+    const { classes, brand, loginOption, siteTitle, isAuthApp } = this.props;
     const { anchorEl, left } = this.state;
     const alt = `This is the logo and return to home button for the site`;
     const open = Boolean(anchorEl);
@@ -92,7 +92,7 @@ class Header extends React.Component {
 
     return (
       <SimpleAppBar className={'appHeader'}>
-        {isAuthenticated() && (
+        {(isAuthenticated() && isAuthApp) || !isAuthApp ? (
           <HeaderButton
             className={classes.menuButton}
             aria-label="Menu"
@@ -101,7 +101,7 @@ class Header extends React.Component {
           >
             <MenuIcon className={classes.foregroundColor} />
           </HeaderButton>
-        )}
+        ) : null}
         <HeaderText className={classes.grow}>
           <Link to="/" className={classes.plainLink}>
             {brand && BrandContainer}
@@ -113,13 +113,13 @@ class Header extends React.Component {
             {/* {siteTitle} */}
           </Link>
         </HeaderText>
-        {isAuthenticated() && (
+        {(isAuthenticated() && isAuthApp) || !isAuthApp ? (
           <SwipeDrawer left={left} toggleDrawer={this.toggleDrawer}>
             <NavigationList />
           </SwipeDrawer>
-        )}
+        ) : null}
         <div>
-          {isAuthenticated() && (
+          {isAuthenticated() && isAuthApp ? (
             <React.Fragment>
               <HeaderButton
                 aria-owns={open ? 'menu-appbar' : undefined}
@@ -137,8 +137,8 @@ class Header extends React.Component {
                 isAuthenticated={isAuthenticated}
               />
             </React.Fragment>
-          )}
-          {!isAuthenticated() && (
+          ) : null}
+          {!isAuthenticated() && isAuthApp ? (
             <Button
               onClick={() => login()}
               className={classes.foregroundColor}
@@ -147,7 +147,7 @@ class Header extends React.Component {
             >
               {loginOption}
             </Button>
-          )}
+          ) : null}
         </div>
       </SimpleAppBar>
     );
