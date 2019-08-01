@@ -8,11 +8,21 @@ let expiresAt = null;
 let isAuth = 'loggedIn';
 const isBrowser = typeof window !== 'undefined';
 
+// let auth0 = isBrowser
+//   ? new authorize0.WebAuth({
+//       domain: process.env.GATSBY_AUTH0_DOMAIN,
+//       clientID: process.env.GATSBY_AUTH0_CLIENT_ID,
+//       redirectUri: process.env.GATSBY_AUTH0_CALLBACK_URL,
+//       responseType: 'token id_token',
+//       scope: 'openid email',
+//     })
+//   : {};
+
 let auth0 = isBrowser
   ? new authorize0.WebAuth({
-      domain: process.env.GATSBY_AUTH0_DOMAIN,
-      clientID: process.env.GATSBY_AUTH0_CLIENT_ID,
-      redirectUri: process.env.GATSBY_AUTH0_CALLBACK_URL,
+      domain: 'devellistech.auth0.com',
+      clientID: 'HeKKgZWsqsHxcPYSs46pB09U06JA4ySN',
+      redirectUri: 'https://master--sleepy-haibt-f5d703.netlify.com/callback',
       responseType: 'token id_token',
       scope: 'openid email',
     })
