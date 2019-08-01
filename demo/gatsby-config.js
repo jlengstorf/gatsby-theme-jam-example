@@ -10,7 +10,7 @@ module.exports = {
     author: `Reuben Ellis`,
     description: `The Developer Toolbook`,
     loginDesc: "Login",
-    isAuthApp: false,
+    isAuthApp: true,
     social: [
       {
         name: `github`,
