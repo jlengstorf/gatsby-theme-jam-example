@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/ethriel3695/gatsby-theme-auth-app.git"
   },
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
