@@ -1,6 +1,6 @@
 # Gatsby Theme Scarlet
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/977f7853-ebdf-4382-adde-d669c42e082b/deploy-status)](https://app.netlify.com/sites/gatsby-theme-scarlet/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/977f7853-ebdf-4382-adde-d669c42e082b/deploy-status)](https://app.netlify.com/sites/gatsby-theme-scarlet/deploys) [![npm version](https://img.shields.io/npm/v/gatsby-theme-scarlet)](https://www.npmjs.com/package/gatsby-theme-scarlet)
 
 ![ScarletPreview](https://raw.githubusercontent.com/ARXChrono/gatsby-theme-scarlet/master/screenshot.png)
 
