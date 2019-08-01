@@ -1,4 +1,7 @@
 {
+  "hero": {
+    "imageAlt": "Scarlet Hero Image"
+  },
   "work": {
     "heading": "Work",
     "content": "Check out a few of my projects below"

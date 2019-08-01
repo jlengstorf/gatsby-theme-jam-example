@@ -14,11 +14,26 @@ const PageTemplate = ({ pageContext }) => {
     query {
       site {
         siteMetadata {
-          title
-          shortTitle
+          siteTitle
+          siteTitleShort
+          siteAuthor
+          siteLogoText
+          siteUrl
+          siteLanguage
+          siteDescription
+          siteKeywords
+          ogSiteName
+          ogLanguage
+          social {
+            name
+            url
+          }
         }
       }
       dataJson {
+        hero {
+          imageAlt
+        }
         work {
           content
           heading
@@ -30,19 +45,20 @@ const PageTemplate = ({ pageContext }) => {
       }
     }
   `)
-  const { about, work } = data.dataJson
-  const { title, shortTitle } = data.site.siteMetadata
+  const { about, work, hero } = data.dataJson
+  const { siteTitle, siteLogoText, siteDescription } = data.site.siteMetadata
   return (
     <ThemeProvider theme={theme}>
       <Layout>
         <Helmet>
           <html lang="en" />
-          <title>{title}</title>
+          <title>{siteTitle}</title>
+          <meta name="Description" content={siteDescription} />
         </Helmet>
         <Global styles={globalStyles} />
-        <Header logoTxt={shortTitle} />
+        <Header logoTxt={siteLogoText} />
         <SectionWrap>
-          <Hero id="hero" />
+          <Hero imageAlt={hero.imageAlt} id="hero" />
           <Section backgroundColor={theme.colors.white} id="work">
             <Styled.h2>{work.heading}</Styled.h2>
             <Styled.p>{work.content}</Styled.p>

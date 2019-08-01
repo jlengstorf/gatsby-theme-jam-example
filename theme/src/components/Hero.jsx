@@ -6,7 +6,7 @@ import { AnimatedWave } from "./"
 const Hero = ({ imageAlt, id }) => {
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "scarlet.png" }) {
+      file(relativePath: { eq: "hero.png" }) {
         childImageSharp {
           fixed(width: 768, height: 1024) {
             src
