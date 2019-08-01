@@ -34,7 +34,7 @@ module.exports = {
       resolve: `gatsby-theme-auth-app`,
       options: {
         // basePath defaults to `/`
-        basePath: `/articles`
+        basePath: `/posts`
       }
     }
   ]
@@ -43,12 +43,12 @@ module.exports = {
 
 ### Theme options
 
-| Key           | Default value       | Description                                                                                               |
-| ------------- | ------------------- | --------------------------------------------------------------------------------------------------------- |
-| `basePath`    | `/`                 | Root url for all blog posts                                                                               |
-| `contentPath` | `/content/articles` | Location of blog posts                                                                                    |
-| `assetPath`   | `/content/assets`   | Location of assets                                                                                        |
-| `mdx`         | `true`              | Configure `gatsby-plugin-mdx` (if your website already is using the plugin pass `false` to turn this off) |
+| Key           | Default value     | Description                                                                                               |
+| ------------- | ----------------- | --------------------------------------------------------------------------------------------------------- |
+| `basePath`    | `/`               | Root url for all blog posts                                                                               |
+| `contentPath` | `/content/posts`  | Location of blog posts                                                                                    |
+| `assetPath`   | `/content/assets` | Location of assets                                                                                        |
+| `mdx`         | `true`            | Configure `gatsby-plugin-mdx` (if your website already is using the plugin pass `false` to turn this off) |
 
 ### Additional configuration
 
@@ -110,26 +110,3 @@ AUTH0_CALLBACK_URL = `http://localhost:8000/callback`; //Remove the literal stri
 8.  **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
 
 9.  **`README.md`**: A text file containing useful reference information about your project.
-
-## Submission Checklist
-
-To ensure your Theme Jam submission [follows the rules](https://themejam.gatsbyjs.org/rules), use this checklist:
-
-- [ ] Use our [accessibility guide][a11y] to ensure your site meets our accessibility standards
-- [ ] Run a performance audit using [Lighthouse][] and/or [WebPageTest][]
-- [ ] Set up a live demo using [Netlify][] or [GitHub Pages][]
-- [ ] Add installation documentation to the README
-- [ ] Update the `name` field in `package.json`
-- [ ] Update the `author` field in `package.json`
-- [ ] Update the `repository` field in `package.json`
-- [ ] Make sure the theme’s `keywords` in `package.json` include `gatsby`, `gatsby-theme`, and `gatsby-plugin`
-- [ ] Publish your theme to npm ([docs][npmpublish])
-- [ ] Submit your theme at https://themejam.gatsbyjs.org
-
-[a11y]: https://gatsbyjs.org/docs/making-your-site-accessible#how-to-improve-accessibility
-[lighthouse]: https://developers.google.com/web/tools/lighthouse/
-[axe]: https://www.deque.com/axe/
-[webpagetest]: http://webpagetest.org/
-[netlify]: https://netlify.com
-[github pages]: https://pages.github.com/
-[npmpublish]: https://docs.npmjs.com/cli/publish
