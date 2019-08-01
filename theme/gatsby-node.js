@@ -52,7 +52,7 @@ exports.sourceNodes = ({ actions }) => {
       name: String!
       nose: String!
       strength: Float!
-      taste: String!
+      mouth: String!
       type: String!
       score: Int!
       slug: String!

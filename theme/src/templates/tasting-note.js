@@ -13,7 +13,7 @@ export const query = graphql`
       strength
       slug
       nose
-      taste
+      mouth
       finish
     }
   }

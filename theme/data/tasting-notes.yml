@@ -1,24 +1,40 @@
 - name: Ardbeg Ten
   strength: 43
-  nose: todo
-  taste: todo
-  finish: todo
-  date: 2016-10-10
-  bottling_year: 2016
+  nose: Citrus, peat
+  mouth: Peat, tobacco, offee
+  finish: Smoke, malt
+  date: 2012-01-02
+  bottling_year: 2009
   score: 87
-- name: Ardbeg Uigeadail
-  strength: 50
-  nose: todo
-  taste: todo
-  finish: todo
-  date: 2019-10-10
-  bottling_year: 2013
-  score: 89
+- name: Baker's 7y
+  strength: 53.5
+  nose: Rye, oak, caramel, vanilla
+  mouth: Mellow. Vanilla, oranges
+  finish: Ginger, sweet
+  date: 2014-07-03
+  bottling_year: 2007
+  score: 84
+- name: Macallan 10yo (Giovinetti & Figli)
+  strength: 40
+  nose: Chocolate, raisins
+  mouth: Caramel, died fruits
+  finish: Long, dried fruits
+  date: 2009-10-11
+  bottling_year: 1985
+  score: 92
 - name: Nikka Whisky from the Barrel
   strength: 51.4
-  nose: todo
-  taste: todo
-  finish: todo
+  nose: Apricot, orange
+  mouth: Citrus fruit, caramel, tea
+  finish: Long, malt, spices
   date: 2017-10-10
   bottling_year: 2011
-  score: 85
+  score: 83
+- name: Redbreast Lustau
+  strength: 46
+  nose: Apple, sherry
+  mouth: Cinnamon, ginger
+  finish: Sherry, oak
+  date: 2018-04-12
+  bottling_year: 2016
+  score: 86
