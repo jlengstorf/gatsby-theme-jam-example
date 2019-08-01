@@ -3,5 +3,6 @@
   "workspaces": [
     "theme",
     "demo"
-  ]
+  ],
+  "dependencies": {}
 }
