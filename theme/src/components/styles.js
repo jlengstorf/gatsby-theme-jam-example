@@ -246,6 +246,7 @@ export const ProjectBadge = styled.p`
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   font-size: ${theme.fontSizes[1]}px;
+  text-transform: capitalize;
 `
 
 export const StyledFooter = styled.footer`
