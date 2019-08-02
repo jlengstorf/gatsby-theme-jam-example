@@ -8,7 +8,6 @@ See the [live demo](https://gatsby-theme-scarlet.netlify.com/)
 
 ![ScarletPreview](https://raw.githubusercontent.com/ARXChrono/gatsby-theme-scarlet/master/screenshot.png)
 
- 
 ## 🛠 Installing Gatsby Theme Scarlet
 
 To use this theme in your Gatsby sites, follow these instructions:
@@ -51,6 +50,20 @@ There is a homepage.json data file that contains the homepage data.
 ## 👨‍🍳 Using this repo
 
 This repo contains the a theme folder and demo using the theme. After cloning down this repo, run `yarn` and `yarn start` to start up the server.
+
+## 🚚 Future Roadmap
+
+There's a bunch of things I did not get a chance to do, but i will add them eventually, when I have spare time.
+
+Future Roadmap Features:
+
+- Add Blog Listing section and Single template
+- Improve projects section so we can either have a modal or get taken to a single project page layout.
+- Improve about section, with more details.
+- Add more animations ideas to make the layout more epic
+- Allow for more customizations without having to shadow files.
+- Add options to move towards headless CMS.
+- Add a real single page template layout
 
 ## 💪 How to contribute
 

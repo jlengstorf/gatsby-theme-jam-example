@@ -22,12 +22,6 @@ const PageTemplate = ({ pageContext }) => {
           siteLanguage
           siteDescription
           siteKeywords
-          ogSiteName
-          ogLanguage
-          social {
-            name
-            url
-          }
         }
       }
       dataJson {
@@ -49,17 +43,24 @@ const PageTemplate = ({ pageContext }) => {
           link
           alt
           badge
+          image
         }
       }
     }
   `)
+  const projectsItems = data.allProjectsJson.nodes
   const { about, work, hero } = data.dataJson
-  const { siteTitle, siteLogoText, siteDescription } = data.site.siteMetadata
+  const {
+    siteTitle,
+    siteLogoText,
+    siteDescription,
+    siteLanguage,
+  } = data.site.siteMetadata
   return (
     <ThemeProvider theme={theme}>
       <Layout>
         <Helmet>
-          <html lang="en" />
+          <html lang={siteLanguage} />
           <title>{siteTitle}</title>
           <meta name="Description" content={siteDescription} />
         </Helmet>
@@ -71,48 +72,19 @@ const PageTemplate = ({ pageContext }) => {
             <Styled.h2>{work.heading}</Styled.h2>
             <Styled.p>{work.content}</Styled.p>
             <ProjectList>
-              <ProjectItem
-                image={"https://source.unsplash.com/random/300x301"}
-                alt={"card"}
-                name={"Project One"}
-                badge={"Web"}
-                link={"#"}
-              />
-              <ProjectItem
-                image={"https://source.unsplash.com/random/300x302"}
-                alt={"card"}
-                name={"Project One"}
-                badge={"Web"}
-                link={"#"}
-              />
-              <ProjectItem
-                image={"https://source.unsplash.com/random/300x303"}
-                alt={"card"}
-                name={"Project One"}
-                badge={"Web"}
-                link={"#"}
-              />
-              <ProjectItem
-                image={"https://source.unsplash.com/random/300x304"}
-                alt={"card"}
-                name={"Project One"}
-                badge={"Web"}
-                link={"#"}
-              />
-              <ProjectItem
-                image={"https://source.unsplash.com/random/300x305"}
-                alt={"card"}
-                name={"Project One"}
-                badge={"Web"}
-                link={"#"}
-              />
-              <ProjectItem
-                image={"https://source.unsplash.com/random/300x306"}
-                alt={"card"}
-                name={"Project One"}
-                badge={"Web"}
-                link={"#"}
-              />
+              {projectsItems ? (
+                projectsItems.map(({ name, link, alt, badge, image }) => (
+                  <ProjectItem
+                    image={image}
+                    alt={alt}
+                    name={name}
+                    badge={badge}
+                    link={link}
+                  />
+                ))
+              ) : (
+                <Styled.p>"No projects yet!"</Styled.p>
+              )}
             </ProjectList>
           </Section>
           <Section

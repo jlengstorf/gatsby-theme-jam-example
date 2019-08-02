@@ -13,19 +13,6 @@ module.exports = {
     siteDescription:
       "Gatsby Theme Scarlet - The Custom theme currently features 3 slides, a hero section, projects section and about section.",
     siteKeywords: "gatsby theme scarlet",
-    googleAnalyticsID: "UA-12345678-1", // Google
-    ogSiteName: "Shaun Wong", // Facebook Site Name
-    ogLanguage: "en_US", // Facebook Language
-    social: [
-      {
-        name: "twitter",
-        url: "https://twitter.com/devshaun",
-      },
-      {
-        name: "github",
-        url: "https://github.com/arxchrono",
-      },
-    ],
   },
   // Plugins
   plugins: [

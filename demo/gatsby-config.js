@@ -10,7 +10,7 @@ const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix
 
 module.exports = {
   siteMetadata: {
-    // Replace with your data
+    // edit this data in config/site.js
     title: config.siteTitle,
     shortTitle: config.siteTitleShort,
     author: "Shaun Wong | @devShaun",

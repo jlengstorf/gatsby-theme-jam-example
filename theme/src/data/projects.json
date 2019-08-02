@@ -3,30 +3,42 @@
     "name": "Project One",
     "link": "#",
     "alt": "Project One",
+    "image": "https://source.unsplash.com/random/300x300",
     "badge": "web"
   },
   {
     "name": "Project Two",
     "link": "#",
     "alt": "Project Two",
-    "badge": "web"
+    "image": "https://source.unsplash.com/random/300x301",
+    "badge": "app"
   },
   {
     "name": "Project Three",
     "link": "#",
     "alt": "Project Three",
-    "badge": "web"
+    "image": "https://source.unsplash.com/random/300x302",
+    "badge": "game"
   },
   {
     "name": "Project Four",
     "link": "#",
     "alt": "Project Four",
-    "badge": "web"
+    "image": "https://source.unsplash.com/random/300x303",
+    "badge": "music"
   },
   {
     "name": "Project Five",
     "link": "#",
     "alt": "Project Five",
-    "badge": "web"
+    "image": "https://source.unsplash.com/random/300x304",
+    "badge": "design"
+  },
+  {
+    "name": "Project Six",
+    "link": "#",
+    "alt": "Project Six",
+    "image": "https://source.unsplash.com/random/300x305",
+    "badge": "article"
   }
 ]

@@ -182,8 +182,8 @@ export const StyledProjectItem = styled.li`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: transform 0.27s ease;
   @media only screen and (min-width: ${theme.breakpoints[1]}) {
-    flex: 1 1 40%;
-    max-width: 50%;
+    flex: 1 1 45%;
+    max-width: 45%;
   }
   &:hover {
     transform: scale(1.025);
