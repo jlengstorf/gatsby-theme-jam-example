@@ -1,32 +1,32 @@
-{
-  "ProjectOne": {
+[
+  {
     "name": "Project One",
     "link": "#",
     "alt": "Project One",
     "badge": "web"
   },
-  "ProjectTwo": {
+  {
     "name": "Project Two",
     "link": "#",
     "alt": "Project Two",
     "badge": "web"
   },
-  "ProjectThree": {
+  {
     "name": "Project Three",
     "link": "#",
     "alt": "Project Three",
     "badge": "web"
   },
-  "ProjectFour": {
+  {
     "name": "Project Four",
     "link": "#",
     "alt": "Project Four",
     "badge": "web"
   },
-  "ProjectFive": {
+  {
     "name": "Project Five",
     "link": "#",
     "alt": "Project Five",
     "badge": "web"
   }
-}
+]

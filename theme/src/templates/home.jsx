@@ -43,6 +43,14 @@ const PageTemplate = ({ pageContext }) => {
           content
         }
       }
+      allProjectsJson {
+        nodes {
+          name
+          link
+          alt
+          badge
+        }
+      }
     }
   `)
   const { about, work, hero } = data.dataJson
