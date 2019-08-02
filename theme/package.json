@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/ARXChrono/gatsby-theme-scarlet.git"
   },
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {

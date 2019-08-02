@@ -157,6 +157,18 @@ export const SplashImage = styled.img`
   user-select: none;
 `
 
+export const SplashImageObj = {
+  position: "absolute",
+  top: "unset",
+  bottom: 0,
+  right: 0,
+  width: "100%",
+  height: "85vh",
+  objectFit: "contain",
+  objectPosition: "bottom",
+  userSelect: "none",
+}
+
 export const ProjectList = styled.ul`
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
