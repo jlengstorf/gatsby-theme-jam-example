@@ -9,7 +9,7 @@ import { Header, Hero, Section, ProjectItem, Footer } from "../components"
 import { SectionWrap, ProjectList } from "../components/styles"
 import { globalStyles } from "./styles"
 
-const PageTemplate = ({ pageContext }) => {
+const HomeTemplate = () => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -73,17 +73,22 @@ const PageTemplate = ({ pageContext }) => {
             <Styled.p>{work.content}</Styled.p>
             <ProjectList>
               {projectsItems ? (
-                projectsItems.map(({ name, link, alt, badge, image }) => (
-                  <ProjectItem
-                    image={image}
-                    alt={alt}
-                    name={name}
-                    badge={badge}
-                    link={link}
-                  />
-                ))
+                projectsItems.map(
+                  ({ name, link, alt, badge, image }, index) => (
+                    <ProjectItem
+                      key={name + index}
+                      image={image}
+                      alt={alt}
+                      name={name}
+                      badge={badge}
+                      link={link}
+                    />
+                  )
+                )
               ) : (
-                <Styled.p>"No projects yet!"</Styled.p>
+                <li>
+                  <Styled.p>No projects yet!</Styled.p>
+                </li>
               )}
             </ProjectList>
           </Section>
@@ -104,4 +109,4 @@ const PageTemplate = ({ pageContext }) => {
   )
 }
 
-export default PageTemplate
+export default HomeTemplate
