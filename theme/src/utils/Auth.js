@@ -114,7 +114,7 @@ export const logout = () => {
 
   auth0.logout({
     returnTo: returnTo,
-    clientID: process.env.AUTH0_CLIENT_ID,
+    clientID: process.env.GATSBY_AUTH0_CLIENT_ID,
   });
   if (isBrowser) {
     localStorage.removeItem('access_token');
