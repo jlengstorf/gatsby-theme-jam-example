@@ -10805,10 +10805,10 @@ text-table@0.2.0, text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-theme-ui@^0.2.25:
-  version "0.2.25"
-  resolved "https://registry.yarnpkg.com/theme-ui/-/theme-ui-0.2.25.tgz#828020be6d3fc61327e2486702020ad206ba5417"
-  integrity sha512-ENvlYEXkODtc9/ohFWxFdazUxH26ObC74MVBZQ5UtIRhnrMjij3kbIIzWijK33ZqmnWEzofbk6f0TtQCdHqTNA==
+theme-ui@^0.2.29:
+  version "0.2.29"
+  resolved "https://registry.yarnpkg.com/theme-ui/-/theme-ui-0.2.29.tgz#aea19dda30867961b59c5bd4d7df67b1bfb931ac"
+  integrity sha512-fR3SPXaO/sHRW1qF0S2vRiHxyVn011fn/2PkpYBXbBHatha6tsbRQmWEE0WTKfbAVIXyHUK/aQ/4i0o0evRu9g==
   dependencies:
     "@emotion/is-prop-valid" "^0.8.1"
     "@styled-system/css" "^5.0.16"

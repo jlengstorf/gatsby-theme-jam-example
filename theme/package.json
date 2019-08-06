@@ -32,7 +32,7 @@
     "gatsby-transformer-json": "^2.2.2",
     "gatsby-transformer-sharp": "^2.2.5",
     "react-helmet": "^5.2.1",
-    "theme-ui": "^0.2.25",
+    "theme-ui": "^0.2.29",
     "typeface-open-sans": "^0.0.75",
     "typeface-pacifico": "^0.0.76"
   },
