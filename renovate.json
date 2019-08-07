@@ -1,0 +1,35 @@
+{
+  "extends": ["config:base"],
+  "automerge": true,
+  "major": {
+    "automerge": false
+  },
+  "packageRules": [
+    {
+      "packagePatterns": ["@emotion"],
+      "groupName": "@emotion"
+    },
+    {
+      "packagePatterns": ["gatsby"],
+      "groupName": "gatsby"
+    },
+    {
+      "packagePatterns": ["@mdx-js"],
+      "groupName": "@mdx-js"
+    },
+    {
+      "packageNames": ["react", "react-dom"],
+      "groupName": "react"
+    },
+    {
+      "packageNames": ["typeface"],
+      "groupName": "typeface"
+    }
+  ],
+  "labels": ["renovate"],
+  "prHourlyLimit": 4,
+  "prConcurrentLimit": 16,
+  "rangeStrategy": "bump",
+  "semanticCommits": true,
+  "schedule": "every weekend"
+}
