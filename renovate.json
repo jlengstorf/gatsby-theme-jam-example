@@ -1,9 +1,6 @@
 {
   "extends": ["config:base"],
-  "automerge": true,
-  "major": {
-    "automerge": false
-  },
+  "automerge": false,
   "packageRules": [
     {
       "packagePatterns": ["@emotion"],
