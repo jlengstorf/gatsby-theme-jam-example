@@ -1,3 +1,9 @@
+// https://github.com/scttcper/gatsby-theme-casper
+// https://github.com/akzhy/gatsby-theme-elemental/blob/master/gatsby-theme-elemental/gatsby-node.js
+// https://github.com/smakosh/gatsby-theme-portfolio
+// https://github.com/nnnkit/gatsby-theme-grid-blog
+// https://themejam.gatsbyjs.org/showcase
+
 const fs = require('fs');
 const path = require(`path`);
 const mkdirp = require(`mkdirp`);
