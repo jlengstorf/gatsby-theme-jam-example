@@ -7,7 +7,6 @@
 const fs = require('fs');
 const path = require(`path`);
 const mkdirp = require(`mkdirp`);
-const crypto = require(`crypto`);
 const Debug = require(`debug`);
 
 const debug = Debug(`gatsby-theme-auth-app`);
@@ -19,16 +18,23 @@ let assetPath;
 
 // These templates are simply data-fetching wrappers that import components
 const PageTemplate = require.resolve(`./src/templates/page`);
-const CallbackTemplate = require.resolve(`./src/templates/callback`);
-const PageNotFoundTemplate = require.resolve(`./src/templates/404`);
+// const CallbackTemplate = require.resolve(`./src/templates/callback`);
+// const PageNotFoundTemplate = require.resolve(`./src/templates/404`);
 // const ArticleTemplate = require.resolve(`./src/templates/post`);
-const ArticlesTemplate = require.resolve(`./src/templates/posts`);
+const ToolsTemplate = require.resolve(`./src/templates/tools`);
+const TagTemplate = require.resolve(`./src/templates/tags`);
+
 // Verify the data directory exists
 exports.onPreBootstrap = ({ store }, options) => {
   const { program } = store.getState();
   basePath = options.basePath || `/`;
-  contentPath = options.contentPath || `content/posts`;
-  assetPath = options.assetPath || `content/posts`;
+  contentPath = options.contentPath || `content/data`;
+  if (!fs.existsSync(contentPath)) {
+    reporter.info(`creating the ${contentPath} directory`);
+    fs.mkdirSync(contentPath);
+  }
+  assetPath = options.assetPath || `content/assets`;
+  toolPath = options.toolPath || `content/tools`;
 
   const dirs = [
     path.join(program.directory, contentPath),
@@ -43,58 +49,6 @@ exports.onPreBootstrap = ({ store }, options) => {
   });
 };
 
-const mdxResolverPassthrough = fieldName => async (
-  source,
-  args,
-  context,
-  info,
-) => {
-  const type = info.schema.getType(`Mdx`);
-  const mdxNode = context.nodeModel.getNodeById({
-    id: source.parent,
-  });
-  const resolver = type.getFields()[fieldName].resolve;
-  const result = await resolver(mdxNode, args, context, {
-    fieldName,
-  });
-  return result;
-};
-// exports.sourceNodes = ({ actions, schema }) => {
-//   const { createTypes } = actions;
-//   createTypes(
-//     schema.buildObjectType({
-//       name: `BlogPost`,
-//       fields: {
-//         id: { type: `ID!` },
-//         title: {
-//           type: `String!`,
-//         },
-//         slug: {
-//           type: `String!`,
-//         },
-//         date: { type: `Date`, extensions: { dateformat: {} } },
-//         tags: { type: `[String]!` },
-//         keywords: { type: `[String]!` },
-//         excerpt: {
-//           type: `String!`,
-//           args: {
-//             pruneLength: {
-//               type: `Int`,
-//               defaultValue: 140,
-//             },
-//           },
-//           resolve: mdxResolverPassthrough(`excerpt`),
-//         },
-//         body: {
-//           type: `String!`,
-//           resolve: mdxResolverPassthrough(`body`),
-//         },
-//       },
-//       interfaces: [`Node`],
-//     }),
-//   );
-// };
-
 // Define the event type
 exports.sourceNodes = ({ actions }) => {
   actions.createTypes(`
@@ -107,7 +61,8 @@ exports.sourceNodes = ({ actions }) => {
 };
 
 // Query for nav and create pages
-exports.createPages = async ({ actions, graphql, reporter }) => {
+exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
+  const { createPage } = actions;
   const result = await graphql(`
     {
       site {
@@ -131,13 +86,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           loadOrder
         }
       }
-      allMdx {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
+      allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
+        nodes {
+          frontmatter {
+            slug
+            categories
           }
         }
       }
@@ -175,7 +128,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     site: { siteMetadata },
     brandLogo,
   } = result.data;
-  const posts = result.data.allMdx.edges;
+  const posts = result.data.allMdx.nodes;
+  let tags = [
+    ...new Set(
+      posts.reduce((acc, post) => {
+        return acc.concat(post.frontmatter.categories);
+      }, []),
+    ),
+  ];
 
   const {
     title: siteTitle,
@@ -186,134 +146,50 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const brand = brandLogo;
 
   // Create a page for each Article
-  posts.forEach(({ node }, index) => {
-    actions.createPage({
-      // This is the slug we created before
-      // (or `node.frontmatter.slug`)
-      path: node.fields.slug,
-      // This component will wrap our MDX content
-      component: ArticlesTemplate,
-      // We can use the values in this context in
-      // our page layout component
-      context: { id: node.id },
+  posts.forEach(post => {
+    const slug = post.frontmatter.slug;
+    createPage({
+      path: slug,
+      component: require.resolve(ToolsTemplate),
+      context: {
+        slug,
+      },
     });
   });
-  // posts.forEach(({ node: post }, index) => {
-  //   const previous = index === posts.length - 1 ? null : posts[index + 1];
-  //   const next = index === 0 ? null : posts[index - 1];
-  //   const { slug } = article;
-  //   actions.createPage({
-  //     path: slug,
-  //     component: ArticleTemplate,
-  //     context: {
-  //       ...post,
-  //       siteTitle,
-  //       socialLinks,
-  //       previous,
-  //       next,
-  //     },
-  //   });
-  // });
+  tags.forEach(tag => {
+    createPage({
+      path: `/tags/${tag}`,
+      component: require.resolve(TagTemplate),
+      context: {
+        tag,
+      },
+    });
+  });
+  posts.forEach(post => {
+    const slug = post.frontmatter.slug;
+    createPage({
+      path: basePath,
+      component: require.resolve(PageTemplate),
+      context: {
+        siteTitle,
+        loginOption,
+        socialLinks,
+        brand,
+        isAuthApp,
+        slug,
+      },
+    });
+  });
 
   // actions.createPage({
-  //   path: basePath,
-  //   component: ArticlesTemplate,
-  //   context: {
-  //     posts,
-  //     siteTitle,
-  //     socialLinks,
-  //   },
+  //   path: '/callback',
+  //   component: CallbackTemplate,
   // });
-
-  actions.createPage({
-    path: basePath,
-    component: PageTemplate,
-    context: {
-      siteTitle,
-      loginOption,
-      socialLinks,
-      brand,
-      isAuthApp,
-    },
-  });
-
-  actions.createPage({
-    path: '/callback',
-    component: CallbackTemplate,
-  });
-  actions.createPage({
-    path: '/404',
-    component: PageNotFoundTemplate,
-  });
+  // actions.createPage({
+  //   path: '/404',
+  //   component: PageNotFoundTemplate,
+  // });
 };
-
-const { createFilePath } = require('gatsby-source-filesystem');
-// Create fields for post slugs and source
-// This will change with schema customization with work
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions;
-  // We only want to operate on `Mdx` nodes. If we had content from a
-  // remote CMS we could also check to see if the parent node was a
-  // `File` node here
-  if (node.internal.type === 'Mdx') {
-    const value = createFilePath({ node, getNode });
-    createNodeField({
-      // Name of the field you are adding
-      name: 'slug',
-      // Individual MDX node
-      node,
-      // Generated value based on filepath with "blog" prefix. We
-      // don't need a separating "/" before the value because
-      // createFilePath returns a path with the leading "/".
-      value: `/blog${value}`,
-    });
-  }
-};
-// exports.onCreateNode = ({ node, actions, getNode, createNodeId }) => {
-//   const { createNode, createParentChildLink } = actions;
-
-//   const toPostPath = node => {
-//     const { dir } = path.parse(node.relativePath);
-//     return path.join(basePath, dir, node.name);
-//   };
-
-//   // Make sure it's an MDX node
-//   if (node.internal.type !== `Mdx`) {
-//     return;
-//   }
-
-//   // Create source field (according to contentPath)
-//   const fileNode = getNode(node.parent);
-//   const source = fileNode.sourceInstanceName;
-
-//   if (node.internal.type === `Mdx` && source === contentPath) {
-//     const slug = toPostPath(fileNode);
-
-//     const fieldData = {
-//       title: node.frontmatter.title,
-//       tags: node.frontmatter.tags || [],
-//       slug,
-//       date: node.frontmatter.date,
-//     };
-//     createNode({
-//       ...fieldData,
-//       // Required fields.
-//       id: createNodeId(`${node.id} >>> BlogPost`),
-//       parent: node.id,
-//       children: [],
-//       internal: {
-//         type: `BlogPost`,
-//         contentDigest: crypto
-//           .createHash(`md5`)
-//           .update(JSON.stringify(fieldData))
-//           .digest(`hex`),
-//         content: JSON.stringify(fieldData),
-//         description: `Blog Posts`,
-//       },
-//     });
-//     createParentChildLink({ parent: fileNode, child: node });
-//   }
-// };
 
 // Account for Auth0 in the gatsby build process
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
@@ -331,6 +207,11 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
           {
             test: /auth0-js/,
             use: loaders.null(),
+          },
+          {
+            test: /\.js$/,
+            include: path.dirname(require.resolve('gatsby-theme-auth-app')),
+            use: [loaders.js()],
           },
         ],
       },

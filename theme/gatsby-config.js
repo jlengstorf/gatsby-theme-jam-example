@@ -1,6 +1,11 @@
-module.exports = options => {
-  const { mdx = true } = options;
-
+const path = require('path');
+module.exports = ({
+  contentPath = 'content/data',
+  basePath = '/',
+  assetPath = 'content/assets',
+  toolPath = 'content/tools',
+  mdx = true,
+}) => {
   return {
     siteMetadata: {
       title: `Gatsby Theme Auth App`,
@@ -24,6 +29,9 @@ module.exports = options => {
         resolve: `gatsby-plugin-mdx`,
         options: {
           extensions: [`.mdx`, `.md`],
+          defaultLayouts: {
+            default: require.resolve('./src/components/layout.js'),
+          },
           gatsbyRemarkPlugins: [
             {
               resolve: `gatsby-remark-images`,
@@ -43,22 +51,28 @@ module.exports = options => {
       {
         resolve: `gatsby-source-filesystem`,
         options: {
-          path: options.contentPath || `content/data`,
-          name: options.contentPath || `content/data`,
+          path: contentPath || `content/data`,
+          name: contentPath || `content/data`,
         },
       },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
-          path: options.assetPath || `content/assets`,
-          name: options.assetPath || `content/assets`,
+          path: assetPath || `content/assets`,
+          name: assetPath || `content/assets`,
         },
       },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
-          path: options.contentPath || `content/posts`,
-          name: options.contentPath || `content/posts`,
+          path: toolPath || `content/tools`,
+          name: toolPath || `content/tools`,
+        },
+      },
+      {
+        resolve: `gatsby-plugin-page-creator`,
+        options: {
+          path: path.join(__dirname, `src`, `pages`),
         },
       },
       {

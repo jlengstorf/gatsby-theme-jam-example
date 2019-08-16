@@ -32,6 +32,10 @@ export default {
   a: {
     color: `primary`,
   },
+  h1: {
+    color: `primary`,
+    textAlign: `center`,
+  },
   hr: {
     borderColor: `muted`,
   },

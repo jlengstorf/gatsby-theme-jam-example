@@ -1,4 +1,4 @@
 [
-  { "route": "home", "label": "Home", "loadOrder": 1 },
-  { "route": "about", "label": "About", "loadOrder": 2 }
+  { "route": "/", "label": "Home", "loadOrder": 1 },
+  { "route": "/app/about", "label": "About", "loadOrder": 2 }
 ]
