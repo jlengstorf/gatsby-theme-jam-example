@@ -10,6 +10,7 @@ export default function PageTemplate({
   return (
     <Home
       siteTitle={pageContext.siteTitle}
+      siteDescription={pageContext.siteDescription}
       socialLinks={pageContext.socialLinks}
       brand={pageContext.brand}
       hero={pageContext.hero}

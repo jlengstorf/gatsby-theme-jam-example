@@ -6,9 +6,9 @@ module.exports = {
     },
   ],
   siteMetadata: {
-    title: `The Developer Toolbook`,
+    title: `Dashboard`,
     author: `Reuben Ellis`,
-    description: `The Developer Toolbook`,
+    description: `All the Digital Tools in one place.`,
     loginDesc: "Login",
     isAuthApp: true,
     social: [

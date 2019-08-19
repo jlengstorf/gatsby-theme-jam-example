@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "gatsby": "^2.13.1",
-    "gatsby-theme-auth-app": "1.0.10",
+    "gatsby-theme-auth-app": "1.0.11",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },

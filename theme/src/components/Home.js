@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2),
   },
   heroContent: {
-    backgroundColor: theme.palette.background.paper,
+    // backgroundColor: theme.palette.background.paper,
   },
   heroButtons: {
     marginTop: theme.spacing(4),
@@ -26,6 +26,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Home({
   siteTitle,
+  siteDescription,
   brand,
   hero,
   loginOption,
@@ -38,48 +39,61 @@ export default function Home({
   let pageDetails = null;
   if (hero) {
     pageDetails = (
+      <Grid container>
+        <Grid item xs={12} key={`toolsContainer`}>
+          <Img
+            fluid={hero.childImageSharp.fluid}
+            style={{ height: 600, width: '100vw', textAlign: 'center' }}
+          />
+        </Grid>
+      </Grid>
+    );
+  } else {
+    pageDetails = (
       <div>
         <Typography
           component="h1"
           variant="h2"
           align="center"
-          color="textPrimary"
+          color="#eee"
           gutterBottom
+          style={{ padding: 20 }}
         >
-          Album layout
+          {siteTitle}
         </Typography>
-        <Typography variant="h5" align="center" color="textSecondary" paragraph>
-          Something short and leading about the collection below—its contents,
-          the creator, etc. Make it short and sweet, but not too short so folks
-          don&apos;t simply skip over it entirely.
+        <Typography variant="h5" align="center" color="#eee" paragraph>
+          {siteDescription}
         </Typography>
         <div className={classes.heroButtons}>
           <Grid container spacing={2} justify="center">
             <Grid item>
-              <Button variant="contained" color="primary">
-                Main call to action
+              <Button
+                variant="contained"
+                style={{ backgroundColor: '#c31924' }}
+                color="primary"
+              >
+                <a
+                  href="https://www.spudnik.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: '#eee',
+                    textDecoration: 'none',
+                  }}
+                >
+                  spudnik.com
+                </a>
               </Button>
             </Grid>
-            <Grid item>
+            {/* <Grid item>
               <Button variant="outlined" color="primary">
                 Secondary action
               </Button>
-            </Grid>
+            </Grid> */}
           </Grid>
         </div>
       </div>
     );
-  } else {
-    // pageDetails = (
-    //   <Grid container>
-    //     <Grid item xs={12} key={`toolsContainer`}>
-    //       <Img
-    //         fluid={hero.childImageSharp.fluid}
-    //         style={{ height: 600, width: '100vw', textAlign: 'center' }}
-    //       />
-    //     </Grid>
-    //   </Grid>
-    // );
   }
   return (
     <Layout

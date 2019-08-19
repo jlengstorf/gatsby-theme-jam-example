@@ -22,7 +22,7 @@ const PageTemplate = require.resolve(`./src/templates/page`);
 // const PageNotFoundTemplate = require.resolve(`./src/templates/404`);
 // const ArticleTemplate = require.resolve(`./src/templates/post`);
 const ToolsTemplate = require.resolve(`./src/templates/tools`);
-const TagTemplate = require.resolve(`./src/templates/tags`);
+// const TagTemplate = require.resolve(`./src/templates/tags`);
 
 // Verify the data directory exists
 exports.onPreBootstrap = ({ store }, options) => {
@@ -150,16 +150,17 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
     hero,
   } = result.data;
   const posts = result.data.allMdx.nodes;
-  let tags = [
-    ...new Set(
-      posts.reduce((acc, post) => {
-        return acc.concat(post.frontmatter.categories);
-      }, []),
-    ),
-  ];
+  // let tags = [
+  //   ...new Set(
+  //     posts.reduce((acc, post) => {
+  //       return acc.concat(post.frontmatter.categories);
+  //     }, []),
+  //   ),
+  // ];
 
   const {
     title: siteTitle,
+    description: siteDescription,
     social: socialLinks,
     loginDesc: loginOption,
     isAuthApp: isAuthApp,
@@ -177,15 +178,15 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
       },
     });
   });
-  tags.forEach(tag => {
-    createPage({
-      path: `/tags/${tag}`,
-      component: require.resolve(TagTemplate),
-      context: {
-        tag,
-      },
-    });
-  });
+  // tags.forEach(tag => {
+  //   createPage({
+  //     path: `/tags/${tag}`,
+  //     component: require.resolve(TagTemplate),
+  //     context: {
+  //       tag,
+  //     },
+  //   });
+  // });
   posts.forEach(post => {
     const slug = post.frontmatter.slug;
     createPage({
@@ -193,6 +194,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
       component: require.resolve(PageTemplate),
       context: {
         siteTitle,
+        siteDescription,
         loginOption,
         socialLinks,
         brand,

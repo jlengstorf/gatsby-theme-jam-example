@@ -14,11 +14,11 @@ export default function Tools({ data: { mdx: post } }) {
             <h1 className="post-single__title">{title}</h1>
             <div className="blog__details flex-start">
               <span>{date}</span>
-              {categories.map((category, index) => (
+              {/* {categories.map((category, index) => (
                 <Link key={index} to={`/tags/${category}`}>
                   <span className="tag">{category}</span>
                 </Link>
-              ))}
+              ))} */}
             </div>
             <Img
               fluid={banner.sharp.fluid}
@@ -28,14 +28,14 @@ export default function Tools({ data: { mdx: post } }) {
           </header>
           <MDXRenderer>{post.body}</MDXRenderer>
         </article>
-        <div className="blog__details flex-start">
+        {/* <div className="blog__details flex-start">
           {categories &&
             categories.map((category, index) => (
               <Link key={index} className="tag" to={`/tags/${category}`}>
                 {category}
               </Link>
             ))}
-        </div>
+        </div> */}
       </div>
     </Layout>
   );
