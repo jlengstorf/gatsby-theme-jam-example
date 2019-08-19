@@ -114,6 +114,26 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         extension
         publicURL
       }
+      hero: file(
+        relativePath: { regex: "/(jpg)|(jpeg)|(png)|(svg)/" }
+        relativeDirectory: { eq: "hero" }
+      ) {
+        childImageSharp {
+          fluid(maxWidth: 250) {
+            base64
+            tracedSVG
+            aspectRatio
+            src
+            srcSet
+            srcSetWebp
+            sizes
+            originalImg
+            originalName
+          }
+        }
+        extension
+        publicURL
+      }
     }
   `);
 
@@ -127,6 +147,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
   const {
     site: { siteMetadata },
     brandLogo,
+    hero,
   } = result.data;
   const posts = result.data.allMdx.nodes;
   let tags = [
@@ -175,6 +196,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         loginOption,
         socialLinks,
         brand,
+        hero,
         isAuthApp,
         slug,
       },

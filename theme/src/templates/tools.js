@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-// import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Layout from '../components/layout';
 import Img from 'gatsby-image';
 
@@ -23,10 +23,10 @@ export default function Tools({ data: { mdx: post } }) {
             <Img
               fluid={banner.sharp.fluid}
               alt={title}
-              className="img-responsive post-single__img"
+              style={{ height: 600, width: '100vw' }}
             />
           </header>
-          {/* <MDXRenderer>{post.code.body}</MDXRenderer> */}
+          <MDXRenderer>{post.body}</MDXRenderer>
         </article>
         <div className="blog__details flex-start">
           {categories &&
@@ -56,6 +56,7 @@ export const pageQuery = graphql`
           }
         }
       }
+      body
     }
   }
 `;

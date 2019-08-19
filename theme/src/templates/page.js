@@ -12,6 +12,7 @@ export default function PageTemplate({
       siteTitle={pageContext.siteTitle}
       socialLinks={pageContext.socialLinks}
       brand={pageContext.brand}
+      hero={pageContext.hero}
       loginOption={pageContext.loginOption}
       isAuthApp={pageContext.isAuthApp}
       posts={posts}

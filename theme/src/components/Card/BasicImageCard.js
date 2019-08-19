@@ -70,12 +70,11 @@ class BasicImageCard extends React.Component {
         <CardHeader title={this.props.title} subheader={this.props.subHeader} />
         <CardContent>
           <CardMedia>
-            {/* <Img
-              className="img-responsive blog__img"
+            <Img
               fluid={this.props.banner.sharp.fluid}
               style={{ height: 200, width: 400 }}
               alt={this.props.title}
-            /> */}
+            />
           </CardMedia>
           <Typography component="p">
             {this.props.content ? this.props.content : ''}
