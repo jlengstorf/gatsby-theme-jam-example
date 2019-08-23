@@ -1,6 +1,7 @@
 // import { AUTH_CONFIG } from "./auth0-variables";
 import authorize0 from 'auth0-js';
 import { navigate } from 'gatsby';
+import { withStyles } from '@material-ui/core';
 
 let accessToken = null;
 let idToken = null;
@@ -10,9 +11,9 @@ const isBrowser = typeof window !== 'undefined';
 
 let auth0 = isBrowser
   ? new authorize0.WebAuth({
-      domain: process.env.GATSBY_AUTH0_DOMAIN,
-      clientID: process.env.GATSBY_AUTH0_CLIENT_ID,
-      redirectUri: process.env.GATSBY_AUTH0_CALLBACK_URL,
+      domain: 'field-issue.auth0.com',
+      clientID: 'dlKWDROj8gR0THWpf2rEpgV05vn6P64j',
+      redirectUri: 'http://localhost:8000/callback',
       responseType: 'token id_token',
       scope: 'openid email',
     })
@@ -35,11 +36,28 @@ export const login = () => {
   auth0.authorize();
 };
 
+const getCookie = cname => {
+  let name = `${cname}=`;
+  let decodeCookie = decodeURIComponent(document.cookie);
+  let ca = decodeCookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return '';
+};
+
 export const isAuthenticated = () => {
   if (!isBrowser) {
     return;
   }
-  return JSON.parse(localStorage.getItem(isAuth));
+  return getCookie('loggedIn');
+  // return JSON.parse(localStorage.getItem(isAuth));
 };
 
 // DETERMINES IF THE AUTH0 PROFILE IS VALID
@@ -49,6 +67,13 @@ export const handleAuthentication = () => {
   }
 
   auth0.parseHash(setSession());
+};
+
+const setCookie = (cname, cvalue, exdays) => {
+  let d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  let expires = 'expires=' + d.toGMTString();
+  document.cookie = `${cname}=${cvalue};${expires};path=/;domain=.spudnik.com`;
 };
 
 // SETS THE SESSION IF THE PROFILE IS VALID
@@ -63,15 +88,21 @@ const setSession = (cb = () => {}) => (err, authResult) => {
     accessToken = authResult.accessToken;
     idToken = authResult.idToken;
     expiresAt = currentExpiresAt;
+
     // let user = authResult.idTokenPayload;
-    localStorage.setItem('access_token', accessToken);
-    localStorage.setItem('id_token', idToken);
-    localStorage.setItem('loggedIn', true);
-    localStorage.setItem('expires_at', expiresAt);
+    setCookie('access_token', accessToken, 60);
+    setCookie('id_token', idToken, 60);
+    setCookie('loggedIn', true, 60);
+    setCookie('expires_at', expiresAt, 60);
+    // localStorage.setItem('access_token', accessToken);
+    // localStorage.setItem('id_token', idToken);
+    // localStorage.setItem('loggedIn', true);
+    // localStorage.setItem('expires_at', expiresAt);
     auth0.client.userInfo(accessToken, function(err, profile) {
       let profileName = profile;
       let userId = profileName.sub.split('|')[1];
-      localStorage.setItem('profile', userId);
+      setCookie('profile', userId, 60);
+      // localStorage.setItem('profile', userId);
     });
     navigate('/');
     cb();
@@ -98,6 +129,18 @@ export const renewSession = () => {
   };
 };
 
+const deleteCookie = (name, path, domain) => {
+  if (getCookie(name)) {
+    console.log(name);
+    document.cookie =
+      name +
+      '=' +
+      (path ? ';path=' + path : '') +
+      (domain ? ';domain=' + domain : '') +
+      ';expires=Thu, 01 Jan 1970 00:00:01 GMT';
+  }
+};
+
 // LOGS THE USER OUT, DESTROYS THE SESSION AND RELEASES THE AUTH0 CONNECTION
 export const logout = () => {
   if (!isBrowser) {
@@ -109,19 +152,24 @@ export const logout = () => {
   if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
     returnTo = 'http://localhost:8000';
   } else {
-    returnTo = process.env.GATSBY_AUTH0_REDIRECT_URL;
+    returnTo = 'https://dashboard.spudnik.com';
   }
 
   auth0.logout({
     returnTo: returnTo,
-    clientID: process.env.GATSBY_AUTH0_CLIENT_ID,
+    clientID: 'dlKWDROj8gR0THWpf2rEpgV05vn6P64j',
   });
   if (isBrowser) {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('loggedIn');
-    localStorage.removeItem('expires_at');
-    localStorage.removeItem('profile');
-    localStorage.removeItem('id_token');
+    // localStorage.removeItem('access_token');
+    // localStorage.removeItem('loggedIn');
+    // localStorage.removeItem('expires_at');
+    // localStorage.removeItem('profile');
+    // localStorage.removeItem('id_token');
+    deleteCookie('access_token');
+    deleteCookie('id_token');
+    deleteCookie('loggedIn');
+    deleteCookie('expires_at');
+    deleteCookie('profile');
   }
   return dispatch => {
     return false;

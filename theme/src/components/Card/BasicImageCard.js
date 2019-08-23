@@ -72,7 +72,7 @@ class BasicImageCard extends React.Component {
           <CardMedia>
             <Img
               fluid={this.props.banner.sharp.fluid}
-              style={{ height: 200, width: 400 }}
+              // style={{ height: 200, width: 400 }}
               alt={this.props.title}
             />
           </CardMedia>

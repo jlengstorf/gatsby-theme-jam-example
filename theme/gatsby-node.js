@@ -1,9 +1,3 @@
-// https://github.com/scttcper/gatsby-theme-casper
-// https://github.com/akzhy/gatsby-theme-elemental/blob/master/gatsby-theme-elemental/gatsby-node.js
-// https://github.com/smakosh/gatsby-theme-portfolio
-// https://github.com/nnnkit/gatsby-theme-grid-blog
-// https://themejam.gatsbyjs.org/showcase
-
 const fs = require('fs');
 const path = require(`path`);
 const mkdirp = require(`mkdirp`);
@@ -17,7 +11,7 @@ let contentPath;
 let assetPath;
 
 // These templates are simply data-fetching wrappers that import components
-const PageTemplate = require.resolve(`./src/templates/page`);
+const PageTemplate = require.resolve(`./src/templates/index`);
 // const CallbackTemplate = require.resolve(`./src/templates/callback`);
 // const PageNotFoundTemplate = require.resolve(`./src/templates/404`);
 // const ArticleTemplate = require.resolve(`./src/templates/post`);
@@ -58,6 +52,12 @@ exports.sourceNodes = ({ actions }) => {
       label: String!
       loadOrder: Int!
     }`);
+};
+
+exports.onCreateNode = ({ node, getNode }, settings) => {
+  // Not a markdown file, skip...
+  if (node.internal.type !== 'MarkdownRemark') return;
+  console.log('PLUGIN', node.fields.slug);
 };
 
 // Query for nav and create pages
@@ -168,16 +168,16 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
   const brand = brandLogo;
 
   // Create a page for each Article
-  posts.forEach(post => {
-    const slug = post.frontmatter.slug;
-    createPage({
-      path: slug,
-      component: require.resolve(ToolsTemplate),
-      context: {
-        slug,
-      },
-    });
-  });
+  // posts.forEach(post => {
+  //   const slug = post.frontmatter.slug;
+  //   createPage({
+  //     path: slug,
+  //     component: require.resolve(ToolsTemplate),
+  //     context: {
+  //       slug,
+  //     },
+  //   });
+  // });
   // tags.forEach(tag => {
   //   createPage({
   //     path: `/tags/${tag}`,

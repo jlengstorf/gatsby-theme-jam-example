@@ -6,11 +6,14 @@ import { Link } from 'gatsby';
 
 export default function ToolsGrid({ excerpt, frontmatter }) {
   const { banner, title, slug, date } = frontmatter;
-  console.log(date);
   return (
     <>
       <div>
-        <Link to={slug} style={{ textDecoration: 'none' }}>
+        <a
+          href={`https:/${slug}`}
+          target={'_blank'}
+          style={{ textDecoration: 'none' }}
+        >
           <BasicImageCard
             key={`toolCard`}
             id={title}
@@ -39,7 +42,7 @@ export default function ToolsGrid({ excerpt, frontmatter }) {
                 banner={banner}
               />
             </Grid> */}
-        </Link>
+        </a>
       </div>
     </>
   );

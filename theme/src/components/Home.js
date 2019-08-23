@@ -33,8 +33,6 @@ export default function Home({
   isAuthApp,
   posts,
 }) {
-  console.log(brand);
-  // console.log(hero);
   const classes = useStyles();
   let pageDetails = null;
   if (hero) {
@@ -55,13 +53,13 @@ export default function Home({
           component="h1"
           variant="h2"
           align="center"
-          color="#eee"
+          color="inherit"
           gutterBottom
           style={{ padding: 20 }}
         >
           {siteTitle}
         </Typography>
-        <Typography variant="h5" align="center" color="#eee" paragraph>
+        <Typography variant="h5" align="center" color="inherit" paragraph>
           {siteDescription}
         </Typography>
         <div className={classes.heroButtons}>
@@ -122,8 +120,15 @@ export default function Home({
           }}
         >
           <Grid container spacing={4}>
-            {posts.map(post => (
-              <Grid item xs={12} sm={6} md={4} lg={4} key={`toolsContainer-1`}>
+            {posts.map((post, index) => (
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                lg={4}
+                key={`toolsContainer-${index}`}
+              >
                 <ToolsGrid key={post.id} {...post} />
               </Grid>
             ))}
