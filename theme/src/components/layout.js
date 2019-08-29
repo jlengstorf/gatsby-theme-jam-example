@@ -18,7 +18,7 @@ const Layout = ({ children, ...props }) => {
       />
       <Header {...props} />
       <Main>{children}</Main>
-      <Footer />
+      <Footer {...props} />
     </StyledLayout>
   );
 };

@@ -4,3 +4,21 @@
     flex-grow: 1;
     margin: auto 0;
 }
+
+.fontAwesomeFooterIcon {
+    color: "#030ca5";
+    text-decoration: "none";
+}
+
+.socialLink {
+    font-size: "25px";
+    margin: "1rem 1rem";
+    text-decoration: "none";
+}
+
+.externalLink {
+    color: #030CA5;
+    font-size: 18px;
+    margin: 1rem 1rem;
+    text-decoration: none;
+}

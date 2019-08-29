@@ -1,6 +1,6 @@
 export default {
   root: {
-    fontFamily: `body`,
+    fontFamily: `Lato`,
   },
   pre: {
     variant: `prism`,

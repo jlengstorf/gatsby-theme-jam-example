@@ -3,7 +3,8 @@
   "workspaces": [
     "theme",
     "demo",
-    "no-auth-demo"
+    "no-auth-demo",
+    "dashboard"
   ],
   "dependencies": {}
 }

@@ -11,6 +11,7 @@ module.exports = ({
       title: `Gatsby Theme Auth App`,
       author: `Name Placeholder`,
       description: `Description placeholder`,
+      copyright: `This is to insert a copyright message`,
       loginDesc: 'Login / Signup',
       isAuthApp: true,
       social: {
@@ -19,6 +20,7 @@ module.exports = ({
         github: 'ethriel3695',
         email: 'test@example.com',
       },
+      externalLinks: [''],
     },
     plugins: [
       mdx && {

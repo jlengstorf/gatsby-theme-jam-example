@@ -14,18 +14,8 @@ import SwipeDrawer from '../Menu/SwipeDrawer';
 import UserMenu from '../Menu/UserMenu';
 import NavigationList from '../Menu/NavigationList';
 import { isAuthenticated, login, logout } from '../../utils/Auth';
-// import brandLogo from '../../images/spud_logo_red.svg';
 
 const styles = {
-  // root: {
-  //   flexGrow: 1,
-  //   // background:
-  //   //   'linear-gradient(to bottom, #ffcc00 0%, #FFD700 35%, #ffe066 68%, #fff5cc 100%)',
-  //   background: `linear-gradient(to bottom, #EE3234 0%, #EE6454 19%
-  //       , #dd3234 30%, #912b2d 100%)`,
-  //   boxShadow: 'inset 0px 1px 6px 0px #ffe066',
-  //   margin: 'auto 0px',
-  // },
   grow: {
     flexGrow: 1,
   },

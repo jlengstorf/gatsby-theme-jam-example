@@ -19,16 +19,6 @@ let auth0 = isBrowser
     })
   : {};
 
-// let auth0 = isBrowser
-//   ? new authorize0.WebAuth({
-//       domain: 'devellistech.auth0.com',
-//       clientID: 'HeKKgZWsqsHxcPYSs46pB09U06JA4ySN',
-//       redirectUri: 'https://master--sleepy-haibt-f5d703.netlify.com/callback',
-//       responseType: 'token id_token',
-//       scope: 'openid email',
-//     })
-//   : {};
-
 export const login = () => {
   if (!isBrowser) {
     return;
@@ -57,7 +47,6 @@ export const isAuthenticated = () => {
     return;
   }
   return getCookie('loggedIn');
-  // return JSON.parse(localStorage.getItem(isAuth));
 };
 
 // DETERMINES IF THE AUTH0 PROFILE IS VALID
@@ -94,15 +83,10 @@ const setSession = (cb = () => {}) => (err, authResult) => {
     setCookie('id_token', idToken, 60);
     setCookie('loggedIn', true, 60);
     setCookie('expires_at', expiresAt, 60);
-    // localStorage.setItem('access_token', accessToken);
-    // localStorage.setItem('id_token', idToken);
-    // localStorage.setItem('loggedIn', true);
-    // localStorage.setItem('expires_at', expiresAt);
     auth0.client.userInfo(accessToken, function(err, profile) {
       let profileName = profile;
       let userId = profileName.sub.split('|')[1];
       setCookie('profile', userId, 60);
-      // localStorage.setItem('profile', userId);
     });
     navigate('/');
     cb();
@@ -151,11 +135,6 @@ export const logout = () => {
     clientID: process.env.GATSBY_AUTH0_CLIENT_ID,
   });
   if (isBrowser) {
-    // localStorage.removeItem('access_token');
-    // localStorage.removeItem('loggedIn');
-    // localStorage.removeItem('expires_at');
-    // localStorage.removeItem('profile');
-    // localStorage.removeItem('id_token');
     deleteCookie('access_token');
     deleteCookie('id_token');
     deleteCookie('loggedIn');

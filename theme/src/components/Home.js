@@ -27,6 +27,7 @@ const useStyles = makeStyles(theme => ({
 export default function Home({
   siteTitle,
   siteDescription,
+  copyright,
   brand,
   hero,
   loginOption,
@@ -94,6 +95,7 @@ export default function Home({
       siteTitle={siteTitle}
       brand={brand}
       hero={hero}
+      copyright={copyright}
       loginOption={loginOption}
       isAuthApp={isAuthApp}
       slugs={slugs}
