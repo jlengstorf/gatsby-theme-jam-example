@@ -1,18 +1,18 @@
 import React from 'react';
-import Moment from 'react-moment';
+// import Moment from 'react-moment';
 import BasicImageCard from '../Card/BasicImageCard';
-import Grid from '@material-ui/core/Grid';
+// import Grid from '@material-ui/core/Grid';
 import { Link } from 'gatsby';
 
-export default function ToolsGrid({ excerpt, frontmatter }) {
+export default function ToolsGrid({ frontmatter }) {
   const { banner, title, slug, date } = frontmatter;
   return (
     <>
       <div>
-        <a
-          href={`https:/${slug}`}
-          target={'_blank'}
-          style={{ textDecoration: 'none' }}
+        <Link
+          to={`${slug}`}
+          // target={'_blank'}
+          // style={{ textDecoration: 'none' }}
         >
           <BasicImageCard
             key={`toolCard`}
@@ -22,27 +22,7 @@ export default function ToolsGrid({ excerpt, frontmatter }) {
             slug={slug}
             banner={banner}
           />
-          {/* <Grid item xs={12} sm={6} md={4} lg={4} key={`toolsContainer-2`}>
-              <BasicImageCard
-                key={`toolCard_1`}
-                id={`${title}_1`}
-                title={title}
-                subHeader={date}
-                slug={slug}
-                banner={banner}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4} lg={4} key={`toolsContainer-3`}>
-              <BasicImageCard
-                key={`toolCard_2`}
-                id={`${title}_2`}
-                title={title}
-                subHeader={date}
-                slug={slug}
-                banner={banner}
-              />
-            </Grid> */}
-        </a>
+        </Link>
       </div>
     </>
   );

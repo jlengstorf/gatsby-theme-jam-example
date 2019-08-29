@@ -1,10 +1,10 @@
 import React from 'react';
-import { Styled, css } from 'theme-ui';
+// import { Styled, css } from 'theme-ui';
 import Img from 'gatsby-image';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
+// import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import ToolsGrid from './Grid/ToolsGrid';
 import { isAuthenticated } from '../utils/Auth';
@@ -32,6 +32,7 @@ export default function Home({
   loginOption,
   isAuthApp,
   posts,
+  slugs,
 }) {
   const classes = useStyles();
   let pageDetails = null;
@@ -83,11 +84,6 @@ export default function Home({
                 </a>
               </Button>
             </Grid>
-            {/* <Grid item>
-              <Button variant="outlined" color="primary">
-                Secondary action
-              </Button>
-            </Grid> */}
           </Grid>
         </div>
       </div>
@@ -100,6 +96,7 @@ export default function Home({
       hero={hero}
       loginOption={loginOption}
       isAuthApp={isAuthApp}
+      slugs={slugs}
     >
       {/*<Styled.h1
         css={css({

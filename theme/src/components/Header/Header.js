@@ -70,7 +70,14 @@ class Header extends React.Component {
   };
 
   render() {
-    const { classes, brand, loginOption, siteTitle, isAuthApp } = this.props;
+    const {
+      classes,
+      brand,
+      loginOption,
+      siteTitle,
+      isAuthApp,
+      slugs,
+    } = this.props;
     const { anchorEl, left } = this.state;
     const alt = `This is the logo and return to home button for the site`;
     const open = Boolean(anchorEl);
@@ -115,7 +122,7 @@ class Header extends React.Component {
         </HeaderText>
         {(isAuthenticated() && isAuthApp) || !isAuthApp ? (
           <SwipeDrawer left={left} toggleDrawer={this.toggleDrawer}>
-            <NavigationList />
+            <NavigationList slugs={slugs} />
           </SwipeDrawer>
         ) : null}
         <div>

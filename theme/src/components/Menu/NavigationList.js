@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function NavigationList() {
+export default function NavigationList(props) {
   const data = useStaticQuery(graphql`
     query {
       allNavigation(sort: { fields: loadOrder, order: ASC }) {
@@ -27,20 +27,20 @@ export default function NavigationList() {
     }
   `);
 
-  const navList = data.allNavigation.nodes;
-
+  const navList = props.slugs;
+  // console.log(props);
   const classes = useStyles();
   return (
     <div className={classes.list}>
       <List>
         {navList.map(nav => {
           return (
-            <ListItem button key={nav.route}>
+            <ListItem button key={nav}>
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
-              <Link style={{ textDecoration: 'none' }} to={`${nav.route}`}>
-                {`${nav.label}`}
+              <Link style={{ textDecoration: 'none' }} to={`${nav}`}>
+                {`Test`}
               </Link>
             </ListItem>
           );

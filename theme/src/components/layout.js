@@ -4,6 +4,7 @@ import { Layout as StyledLayout, Main } from 'theme-ui';
 import './layout.css';
 
 import Header from '../components/Header/Header';
+import Footer from '../components/Footer';
 
 const Layout = ({ children, ...props }) => {
   return (
@@ -17,6 +18,7 @@ const Layout = ({ children, ...props }) => {
       />
       <Header {...props} />
       <Main>{children}</Main>
+      <Footer />
     </StyledLayout>
   );
 };

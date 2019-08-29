@@ -1,19 +1,19 @@
 // import { AUTH_CONFIG } from "./auth0-variables";
 import authorize0 from 'auth0-js';
 import { navigate } from 'gatsby';
-import { withStyles } from '@material-ui/core';
+// import { withStyles } from '@material-ui/core';
 
 let accessToken = null;
 let idToken = null;
 let expiresAt = null;
-let isAuth = 'loggedIn';
+// let isAuth = 'loggedIn';
 const isBrowser = typeof window !== 'undefined';
 
 let auth0 = isBrowser
   ? new authorize0.WebAuth({
-      domain: 'field-issue.auth0.com',
-      clientID: 'dlKWDROj8gR0THWpf2rEpgV05vn6P64j',
-      redirectUri: 'http://localhost:8000/callback',
+      domain: process.env.GATSBY_AUTH0_DOMAIN,
+      clientID: process.env.GATSBY_AUTH0_CLIENT_ID,
+      redirectUri: process.env.GATSBY_AUTH0_CALLBACK_URL,
       responseType: 'token id_token',
       scope: 'openid email',
     })
@@ -73,7 +73,7 @@ const setCookie = (cname, cvalue, exdays) => {
   let d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
   let expires = 'expires=' + d.toGMTString();
-  document.cookie = `${cname}=${cvalue};${expires};path=/;domain=.spudnik.com`;
+  document.cookie = `${cname}=${cvalue};${expires};path=/;`;
 };
 
 // SETS THE SESSION IF THE PROFILE IS VALID
@@ -131,7 +131,6 @@ export const renewSession = () => {
 
 const deleteCookie = (name, path, domain) => {
   if (getCookie(name)) {
-    console.log(name);
     document.cookie =
       name +
       '=' +
@@ -147,17 +146,9 @@ export const logout = () => {
     return;
   }
 
-  let returnTo = '';
-
-  if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
-    returnTo = 'http://localhost:8000';
-  } else {
-    returnTo = 'https://dashboard.spudnik.com';
-  }
-
   auth0.logout({
-    returnTo: returnTo,
-    clientID: 'dlKWDROj8gR0THWpf2rEpgV05vn6P64j',
+    returnTo: process.env.GATSBY_AUTH0_REDIRECT_URL,
+    clientID: process.env.GATSBY_AUTH0_CLIENT_ID,
   });
   if (isBrowser) {
     // localStorage.removeItem('access_token');
@@ -171,7 +162,5 @@ export const logout = () => {
     deleteCookie('expires_at');
     deleteCookie('profile');
   }
-  return dispatch => {
-    return false;
-  };
+  return false;
 };

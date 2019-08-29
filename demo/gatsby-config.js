@@ -11,11 +11,11 @@ module.exports = {
     description: `All the Digital Tools in one place.`,
     loginDesc: "Login",
     isAuthApp: true,
-    social: [
-      {
-        name: `github`,
-        url: `https://github.com/ethriel3695`,
-      },
-    ],
+    social: {
+      facebook: "/",
+      twitter: "/",
+      github: "ethriel3695",
+      email: "thedevelopertoolbook@gmail.com",
+    },
   },
 }

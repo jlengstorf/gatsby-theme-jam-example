@@ -17,6 +17,7 @@ export default function PageTemplate({
       loginOption={pageContext.loginOption}
       isAuthApp={pageContext.isAuthApp}
       posts={posts}
+      slugs={pageContext.slugs}
     />
   );
 }

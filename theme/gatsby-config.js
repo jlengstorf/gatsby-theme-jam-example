@@ -13,16 +13,12 @@ module.exports = ({
       description: `Description placeholder`,
       loginDesc: 'Login / Signup',
       isAuthApp: true,
-      social: [
-        {
-          name: `twitter`,
-          url: `https://twitter.com/reubenellis8`,
-        },
-        {
-          name: `github`,
-          url: `https://github.com/ethriel3695`,
-        },
-      ],
+      social: {
+        facebook: 'altcampus',
+        twitter: 'altcampus',
+        github: 'ethriel3695',
+        email: 'test@example.com',
+      },
     },
     plugins: [
       mdx && {

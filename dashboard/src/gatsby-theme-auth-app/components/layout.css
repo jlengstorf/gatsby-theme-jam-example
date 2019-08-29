@@ -1,0 +1,7 @@
+.appHeader {
+    background: linear-gradient(to bottom, #EE3234 0%, #EE6454 19%
+    , #DD3234 30%, #912B2D 100%);
+    box-shadow: inset 0 1px 6px 0 #FFE066;
+    flex-grow: 1;
+    margin: auto 0;
+}

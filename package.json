@@ -2,7 +2,8 @@
   "private": true,
   "workspaces": [
     "theme",
-    "demo"
+    "demo",
+    "no-auth-demo"
   ],
   "dependencies": {}
 }

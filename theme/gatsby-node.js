@@ -16,6 +16,7 @@ const PageTemplate = require.resolve(`./src/templates/index`);
 // const PageNotFoundTemplate = require.resolve(`./src/templates/404`);
 // const ArticleTemplate = require.resolve(`./src/templates/post`);
 const ToolsTemplate = require.resolve(`./src/templates/tools`);
+const PostTemplate = require.resolve(`./src/templates/post`);
 // const TagTemplate = require.resolve(`./src/templates/tags`);
 
 // Verify the data directory exists
@@ -72,10 +73,6 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
           author
           loginDesc
           isAuthApp
-          social {
-            name
-            url
-          }
         }
       }
       allNavigation(sort: { fields: loadOrder, order: ASC }) {
@@ -166,18 +163,30 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
     isAuthApp: isAuthApp,
   } = siteMetadata;
   const brand = brandLogo;
+  const slugs = [];
+
+  posts.forEach(post => {
+    slugs.push(post.frontmatter.slug);
+  });
 
   // Create a page for each Article
-  // posts.forEach(post => {
-  //   const slug = post.frontmatter.slug;
-  //   createPage({
-  //     path: slug,
-  //     component: require.resolve(ToolsTemplate),
-  //     context: {
-  //       slug,
-  //     },
-  //   });
-  // });
+  posts.forEach(post => {
+    const slug = post.frontmatter.slug;
+    createPage({
+      path: slug,
+      component: require.resolve(PostTemplate),
+      context: {
+        siteTitle,
+        siteDescription,
+        loginOption,
+        socialLinks,
+        brand,
+        isAuthApp,
+        slug,
+        slugs,
+      },
+    });
+  });
   // tags.forEach(tag => {
   //   createPage({
   //     path: `/tags/${tag}`,
@@ -201,6 +210,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         hero,
         isAuthApp,
         slug,
+        slugs,
       },
     });
   });
