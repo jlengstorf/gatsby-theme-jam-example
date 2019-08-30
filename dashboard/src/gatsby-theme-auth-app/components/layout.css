@@ -7,8 +7,9 @@
 }
 
 .fontAwesomeFooterIcon {
-    color: #C31924;
+    color: #EC1C24 ;
     text-decoration: none;
+    text-shadow: 2px 2px #282828;
 }
 
 .socialLink {
@@ -18,8 +19,9 @@
 }
 
 .externalLink {
-    color: #C31924;
+    color: #EC1C24 ;
     font-size: 18px;
     margin: 1rem 1rem;
     text-decoration: none;
+    text-shadow: 2px 2px #282828;
 }

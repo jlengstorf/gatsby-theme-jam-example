@@ -1,21 +1,21 @@
 import React from 'react';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 
-export default function SwipeDrawer({ left, toggleDrawer, children }, props) {
+export default function SwipeDrawer({ left, handleClose, children }, props) {
   return (
     <SwipeableDrawer
       {...props}
       id="menu-sidebar"
       // anchor="right"
       open={left}
-      onClose={toggleDrawer('left', false)}
-      onOpen={toggleDrawer('left', true)}
+      onClose={() => handleClose(false)}
+      onOpen={() => handleClose(true)}
     >
       <div
         tabIndex={0}
         role="button"
-        onClick={toggleDrawer('left', false)}
-        onKeyDown={toggleDrawer('left', false)}
+        onClick={() => handleClose(false)}
+        onKeyDown={() => handleClose(false)}
       >
         {children}
       </div>

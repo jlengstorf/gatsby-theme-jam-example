@@ -1,8 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useRef } from 'react';
 import { Link } from 'gatsby';
 import Image from 'gatsby-image';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
@@ -14,8 +13,10 @@ import SwipeDrawer from '../Menu/SwipeDrawer';
 import UserMenu from '../Menu/UserMenu';
 import NavigationList from '../Menu/NavigationList';
 import { isAuthenticated, login, logout } from '../../utils/Auth';
+import getSiteData from '../../hooks/siteMetadata';
+import getBrandData from '../../hooks/brandData';
 
-const styles = {
+const useStyles = makeStyles({
   grow: {
     flexGrow: 1,
   },
@@ -32,131 +33,117 @@ const styles = {
     // color: '#7b1bb3',
     color: '#eee',
   },
-  brandLogo: {
+  brandLogoClass: {
     width: '250px',
     height: '45px',
     margin: '5px',
   },
-};
+});
 
-class Header extends React.Component {
-  state = {
-    anchorEl: null,
-    left: false,
-  };
+export default function Header() {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [left, setLeft] = useState(false);
+  const open = Boolean(anchorEl);
 
-  handleMenu = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
+  function handleMenu(event) {
+    setAnchorEl(event.currentTarget);
+  }
 
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
+  function handleClose() {
+    setAnchorEl(null);
+  }
 
-  toggleDrawer = (side, open) => () => {
-    this.setState({
-      [side]: open,
-    });
-  };
+  function openDrawer() {
+    setLeft(true);
+  }
+  function closeDrawer() {
+    setLeft(false);
+  }
 
-  render() {
-    const {
-      classes,
-      brand,
-      loginOption,
-      siteTitle,
-      isAuthApp,
-      slugs,
-    } = this.props;
-    const { anchorEl, left } = this.state;
-    const alt = `This is the logo and return to home button for the site`;
-    const open = Boolean(anchorEl);
-    let logo = null;
-    let BrandContainer = null;
-    if (brand) {
-      if (!brand.childImageSharp && brand.extension === 'svg') {
-        logo = brand.publicURL;
-        BrandContainer = (
-          <img className={classes.brandLogo} src={logo} alt={alt} />
-        );
-      } else {
-        logo = brand.childImageSharp.fluid;
-        BrandContainer = (
-          <Image className={classes.brandLogo} fluid={logo} alt={alt} />
-        );
-      }
+  const { loginDesc, title, isAuthApp } = getSiteData();
+  const data = getBrandData();
+  let brandLogo = false;
+  if (data) {
+    brandLogo = data.brandLogo;
+  }
+  const classes = useStyles();
+  const alt = `This is the logo and return to home button for the site`;
+  let logo = null;
+  let BrandContainer = null;
+
+  if (brandLogo) {
+    if (!brandLogo.childImageSharp && brandLogo.extension === 'svg') {
+      logo = brandLogo.publicURL;
+      BrandContainer = (
+        <img className={classes.brandLogoClass} src={logo} alt={alt} />
+      );
+    } else {
+      logo = brandLogo.childImageSharp.fluid;
+      BrandContainer = (
+        <Image className={classes.brandLogoClass} fluid={logo} alt={alt} />
+      );
     }
-
-    return (
-      <SimpleAppBar className={'appHeader'}>
-        {(isAuthenticated() && isAuthApp) || !isAuthApp ? (
-          <HeaderButton
-            className={classes.menuButton}
-            aria-label="Menu"
-            aria-owns={anchorEl ? 'menu-sidebar' : undefined}
-            onClick={this.toggleDrawer('left', true)}
-          >
-            <MenuIcon className={classes.foregroundColor} />
-          </HeaderButton>
-        ) : null}
-        <HeaderText className={classes.grow}>
-          <Link to="/" className={classes.plainLink}>
-            {brand && BrandContainer}
-            {/*!brand.childImageSharp && (
+  } else {
+    brandLogo = false;
+  }
+  return (
+    <SimpleAppBar className={'appHeader'}>
+      {(isAuthenticated() && isAuthApp) || !isAuthApp ? (
+        <HeaderButton
+          className={classes.menuButton}
+          aria-label="Menu"
+          aria-owns={open ? 'menu-sidebar' : undefined}
+          onClick={openDrawer}
+        >
+          <MenuIcon className={classes.foregroundColor} />
+        </HeaderButton>
+      ) : null}
+      <HeaderText className={classes.grow}>
+        <Link to="/" className={classes.plainLink}>
+          {brandLogo && BrandContainer}
+          {/*!brand.childImageSharp && (
               <img className={classes.brandLogo} src={logo} alt={alt} />
             )*/}
-            {siteTitle && !brand && siteTitle}
+          {title && !brandLogo && title}
 
-            {/* {siteTitle} */}
-          </Link>
-        </HeaderText>
-        {(isAuthenticated() && isAuthApp) || !isAuthApp ? (
-          <SwipeDrawer left={left} toggleDrawer={this.toggleDrawer}>
-            <NavigationList slugs={slugs} />
-          </SwipeDrawer>
-        ) : null}
-        <div>
-          {isAuthenticated() && isAuthApp ? (
-            <React.Fragment>
-              <HeaderButton
-                aria-owns={open ? 'menu-appbar' : undefined}
-                onClick={this.handleMenu}
-              >
-                <AccountCircle className={classes.foregroundColor} />
-              </HeaderButton>
-
-              <UserMenu
-                anchorEl={anchorEl}
-                open={open}
-                handleClose={this.handleClose}
-                login={login}
-                logout={logout}
-                isAuthenticated={isAuthenticated}
-              />
-            </React.Fragment>
-          ) : null}
-          {!isAuthenticated() && isAuthApp ? (
-            <Button
-              onClick={() => login()}
-              className={classes.foregroundColor}
-              // color={buttonColor}
-              // autoFocus
+          {/* {siteTitle} */}
+        </Link>
+      </HeaderText>
+      {(isAuthenticated() && isAuthApp) || !isAuthApp ? (
+        <SwipeDrawer left={left} handleClose={handleClose}>
+          <NavigationList />
+        </SwipeDrawer>
+      ) : null}
+      <div>
+        {isAuthenticated() && isAuthApp ? (
+          <React.Fragment>
+            <HeaderButton
+              aria-owns={open ? 'menu-appbar' : undefined}
+              onClick={handleMenu}
             >
-              {loginOption}
-            </Button>
-          ) : null}
-        </div>
-      </SimpleAppBar>
-    );
-  }
+              <AccountCircle className={classes.foregroundColor} />
+            </HeaderButton>
+
+            <UserMenu
+              anchorEl={anchorEl}
+              open={open}
+              handleClose={handleClose}
+              logout={logout}
+              isAuthenticated={isAuthenticated}
+            />
+          </React.Fragment>
+        ) : null}
+        {!isAuthenticated() && isAuthApp ? (
+          <Button
+            onClick={() => login()}
+            className={classes.foregroundColor}
+            // color={buttonColor}
+            // autoFocus
+          >
+            {loginDesc}
+          </Button>
+        ) : null}
+      </div>
+    </SimpleAppBar>
+  );
 }
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-};
-
-Header.defaultProps = {
-  siteTitle: ``,
-};
-
-export default withStyles(styles)(Header);

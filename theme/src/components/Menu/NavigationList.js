@@ -1,11 +1,12 @@
 import React from 'react';
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import Divider from '@material-ui/core/Divider';
+import getSlugList from '../../hooks/slugList';
 
 const useStyles = makeStyles({
   list: {
@@ -13,29 +14,21 @@ const useStyles = makeStyles({
   },
 });
 
-export default function NavigationList(props) {
-  const data = useStaticQuery(graphql`
-    query {
-      allNavigation(sort: { fields: loadOrder, order: ASC }) {
-        nodes {
-          id
-          route
-          label
-          loadOrder
-        }
-      }
-    }
-  `);
+export default function NavigationList() {
+  const navList = getSlugList();
+  let navs = [];
+  navList.allMdx.nodes.map(node => {
+    navs.push(node.frontMatter.slug);
+  });
 
-  const navList = props.slugs;
-  // console.log(props);
+  console.log(navs);
   const classes = useStyles();
   return (
     <div className={classes.list}>
       <List>
-        {navList.map(nav => {
+        {navs.map((nav, index) => {
           return (
-            <ListItem button key={nav}>
+            <ListItem button key={index}>
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>

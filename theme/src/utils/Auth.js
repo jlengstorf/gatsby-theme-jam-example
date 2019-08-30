@@ -11,9 +11,9 @@ const isBrowser = typeof window !== 'undefined';
 
 let auth0 = isBrowser
   ? new authorize0.WebAuth({
-      domain: process.env.GATSBY_AUTH0_DOMAIN,
-      clientID: process.env.GATSBY_AUTH0_CLIENT_ID,
-      redirectUri: process.env.GATSBY_AUTH0_CALLBACK_URL,
+      domain: 'field-issue.auth0.com',
+      clientID: 'dlKWDROj8gR0THWpf2rEpgV05vn6P64j',
+      redirectUri: 'https://dashboard.spudnik.com/callback',
       responseType: 'token id_token',
       scope: 'openid email',
     })
@@ -62,7 +62,7 @@ const setCookie = (cname, cvalue, exdays) => {
   let d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
   let expires = 'expires=' + d.toGMTString();
-  document.cookie = `${cname}=${cvalue};${expires};path=/;`;
+  document.cookie = `${cname}=${cvalue};${expires};domain=.spudnik.com;path=/;`;
 };
 
 // SETS THE SESSION IF THE PROFILE IS VALID
@@ -131,8 +131,8 @@ export const logout = () => {
   }
 
   auth0.logout({
-    returnTo: process.env.GATSBY_AUTH0_REDIRECT_URL,
-    clientID: process.env.GATSBY_AUTH0_CLIENT_ID,
+    returnTo: 'https://dashboard.spudnik.com',
+    clientID: 'dlKWDROj8gR0THWpf2rEpgV05vn6P64j',
   });
   if (isBrowser) {
     deleteCookie('access_token');

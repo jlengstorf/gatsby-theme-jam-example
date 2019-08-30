@@ -79,13 +79,13 @@ class BasicImageCard extends React.Component {
 
     return (
       <Card className={classes.card}>
-        <CardHeader title={this.props.title} subheader={this.props.subHeader} />
+        <CardMedia>{banner && BannerContainer}</CardMedia>
         <CardContent>
-          <CardMedia>{banner && BannerContainer}</CardMedia>
           <Typography component="p">
             {this.props.content ? this.props.content : ""}
           </Typography>
         </CardContent>
+        <CardHeader title={this.props.title} subheader={this.props.subHeader} />
       </Card>
     )
   }
