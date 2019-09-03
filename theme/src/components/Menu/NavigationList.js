@@ -17,8 +17,13 @@ const useStyles = makeStyles({
 export default function NavigationList() {
   const navList = getSlugList();
   let navs = [];
+  let navObject = null;
   navList.allMdx.nodes.map(node => {
-    navs.push(node.frontMatter.slug);
+    navObject = {
+      route: node.frontmatter.slug,
+      label: node.frontmatter.label,
+    };
+    navs.push(navObject);
   });
 
   console.log(navs);
@@ -32,8 +37,8 @@ export default function NavigationList() {
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
-              <Link style={{ textDecoration: 'none' }} to={`${nav}`}>
-                {`Test`}
+              <Link style={{ textDecoration: 'none' }} to={`${nav.route}`}>
+                {`${nav.label}`}
               </Link>
             </ListItem>
           );

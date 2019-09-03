@@ -20,7 +20,7 @@ module.exports = ({
         github: 'ethriel3695',
         email: 'test@example.com',
       },
-      externalLinks: [''],
+      externalLinks: [{ label: '', link: '' }],
     },
     plugins: [
       mdx && {

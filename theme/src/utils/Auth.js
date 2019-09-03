@@ -11,9 +11,9 @@ const isBrowser = typeof window !== 'undefined';
 
 let auth0 = isBrowser
   ? new authorize0.WebAuth({
-      domain: 'field-issue.auth0.com',
-      clientID: 'dlKWDROj8gR0THWpf2rEpgV05vn6P64j',
-      redirectUri: 'https://dashboard.spudnik.com/callback',
+      domain: process.env.GATSBY_AUTH0_DOMAIN,
+      clientID: process.env.GATSBY_AUTH0_CLIENT_ID,
+      redirectUri: process.env.GATSBY_AUTH0_CALLBACK_URL,
       responseType: 'token id_token',
       scope: 'openid email',
     })
@@ -131,8 +131,8 @@ export const logout = () => {
   }
 
   auth0.logout({
-    returnTo: 'https://dashboard.spudnik.com',
-    clientID: 'dlKWDROj8gR0THWpf2rEpgV05vn6P64j',
+    returnTo: process.env.GATSBY_AUTH0_REDIRECT_URL,
+    clientID: process.env.GATSBY_AUTH0_CLIENT_ID,
   });
   if (isBrowser) {
     deleteCookie('access_token');

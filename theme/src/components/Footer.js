@@ -58,7 +58,7 @@ export default function Footer() {
           ))}
         </div>
       </div>
-      <Grid container spacing={10}>
+      <Grid container mt={10}>
         <Grid item>
           <div
             style={{ textAlign: 'justify', paddingLeft: 20, paddingRight: 20 }}

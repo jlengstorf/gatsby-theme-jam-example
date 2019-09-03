@@ -11,17 +11,19 @@ export default function Post({ data: { mdx: post } }) {
       <div className="post-single-container">
         <article className="post-single">
           <header>
-            <Img
-              fluid={banner.sharp.fluid}
-              alt={title}
-              className="img-responsive post-single__img"
-            />
+            {banner ? (
+              <Img
+                fluid={banner.sharp.fluid}
+                alt={title}
+                className="img-responsive post-single__img"
+              />
+            ) : null}
             <h1 style={{ textAlign: 'center' }}>{title}</h1>
             <div style={{ textAlign: 'center' }}>
               <span>{date}</span>
             </div>
           </header>
-          <div style={{ textAlign: 'center', padding: 20 }}>
+          <div style={{ textAlign: 'justify', padding: 20 }}>
             <MDXRenderer>{post.body}</MDXRenderer>
           </div>
         </article>

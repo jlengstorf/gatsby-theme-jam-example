@@ -4,3 +4,25 @@
     flex-grow: 1;
     margin: auto 0;
 }
+
+.fontAwesomeFooterIcon {
+    color: #040DAF ;
+    cursor: pointer;
+    text-decoration: none;
+    text-shadow: 2px 2px #282828;
+}
+
+.socialLink {
+    cursor: pointer;
+    font-size: 25px;
+    margin: 1rem 1rem;
+    text-decoration: none;
+}
+
+.externalLink {
+    color: #040DAF ;
+    font-size: 18px;
+    margin: 1rem 1rem;
+    text-decoration: none;
+    text-shadow: 2px 2px #DDDDDD;
+}

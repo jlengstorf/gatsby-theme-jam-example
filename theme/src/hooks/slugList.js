@@ -12,6 +12,7 @@ export default function getSlugList() {
           frontmatter {
             title
             slug
+            label
           }
         }
       }
