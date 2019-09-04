@@ -6,16 +6,15 @@ export default function SwipeDrawer({ left, handleClose, children }, props) {
     <SwipeableDrawer
       {...props}
       id="menu-sidebar"
-      // anchor="right"
       open={left}
-      onClose={() => handleClose(false)}
-      onOpen={() => handleClose(true)}
+      onClose={handleClose}
+      onOpen={handleClose}
     >
       <div
         tabIndex={0}
         role="button"
-        onClick={() => handleClose(false)}
-        onKeyDown={() => handleClose(false)}
+        onClick={handleClose}
+        onKeyDown={handleClose}
       >
         {children}
       </div>

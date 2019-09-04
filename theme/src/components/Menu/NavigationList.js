@@ -18,15 +18,17 @@ export default function NavigationList() {
   const navList = getSlugList();
   let navs = [];
   let navObject = null;
-  navList.allMdx.nodes.map(node => {
-    navObject = {
-      route: node.frontmatter.slug,
-      label: node.frontmatter.label,
-    };
-    navs.push(navObject);
-  });
+  console.log(navList);
+  if (navList) {
+    navList.allMdx.nodes.map(node => {
+      navObject = {
+        route: node.frontmatter.slug,
+        label: node.frontmatter.label,
+      };
+      navs.push(navObject);
+    });
+  }
 
-  console.log(navs);
   const classes = useStyles();
   return (
     <div className={classes.list}>

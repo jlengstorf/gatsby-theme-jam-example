@@ -2,9 +2,11 @@ import React from 'react';
 import getSocialInfo from '../hooks/socialInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import {
+  faFacebook,
+  faTwitterSquare,
+  faGithub,
+} from '@fortawesome/free-brands-svg-icons';
 import getExternalLinks from '../hooks/externalLinks';
 import getSiteData from '../hooks/siteMetadata';
 import Grid from '@material-ui/core/Grid';
@@ -14,10 +16,18 @@ export default function Footer() {
   const { email, facebook, twitter, github } = getSocialInfo();
   const links = getExternalLinks();
   let social = [];
-  social.push({ icon: faFacebook, link: facebook });
-  social.push({ icon: faTwitterSquare, link: twitter });
-  social.push({ icon: faGithub, link: github });
-  social.push({ icon: faEnvelope, link: email });
+  if (facebook) {
+    social.push({ icon: faFacebook, link: facebook });
+  }
+  if (twitter) {
+    social.push({ icon: faTwitterSquare, link: twitter });
+  }
+  if (github) {
+    social.push({ icon: faGithub, link: github });
+  }
+  if (email) {
+    social.push({ icon: faEnvelope, link: email });
+  }
 
   return (
     <footer>
@@ -60,11 +70,7 @@ export default function Footer() {
       </div>
       <Grid container mt={10}>
         <Grid item>
-          <div
-            style={{ textAlign: 'justify', paddingLeft: 20, paddingRight: 20 }}
-          >
-            {copyright}{' '}
-          </div>
+          <div style={{ textAlign: 'justify', padding: 10 }}>{copyright} </div>
         </Grid>
       </Grid>
     </footer>

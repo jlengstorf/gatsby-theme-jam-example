@@ -10,7 +10,6 @@ export default function UserMenu({
   logout,
   isAuthenticated,
 }) {
-  console.log(open);
   return (
     <Menu
       id="menu-appbar"

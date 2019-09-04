@@ -8,14 +8,13 @@ let idToken = null;
 let expiresAt = null;
 // let isAuth = 'loggedIn';
 const isBrowser = typeof window !== 'undefined';
-
 let auth0 = isBrowser
   ? new authorize0.WebAuth({
       domain: process.env.GATSBY_AUTH0_DOMAIN,
       clientID: process.env.GATSBY_AUTH0_CLIENT_ID,
       redirectUri: process.env.GATSBY_AUTH0_CALLBACK_URL,
       responseType: 'token id_token',
-      scope: 'openid email',
+      scope: 'openid email user_metadata',
     })
   : {};
 
@@ -46,7 +45,7 @@ export const isAuthenticated = () => {
   if (!isBrowser) {
     return;
   }
-  return getCookie('loggedIn');
+  return decodeURIComponent(getCookie('loggedIn'));
 };
 
 // DETERMINES IF THE AUTH0 PROFILE IS VALID
@@ -60,9 +59,11 @@ export const handleAuthentication = () => {
 
 const setCookie = (cname, cvalue, exdays) => {
   let d = new Date();
+  let secureValue = encodeURIComponent(cvalue);
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
   let expires = 'expires=' + d.toGMTString();
-  document.cookie = `${cname}=${cvalue};${expires};domain=.spudnik.com;path=/;`;
+  // document.cookie = `${cname}=${secureValue};${expires};domain=.spudnik.com;path=/;secure;`;
+  document.cookie = `${cname}=${secureValue};${expires};path=/;`;
 };
 
 // SETS THE SESSION IF THE PROFILE IS VALID
@@ -77,8 +78,6 @@ const setSession = (cb = () => {}) => (err, authResult) => {
     accessToken = authResult.accessToken;
     idToken = authResult.idToken;
     expiresAt = currentExpiresAt;
-
-    // let user = authResult.idTokenPayload;
     setCookie('access_token', accessToken, 60);
     setCookie('id_token', idToken, 60);
     setCookie('loggedIn', true, 60);

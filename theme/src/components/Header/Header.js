@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import Image from 'gatsby-image';
 import { makeStyles } from '@material-ui/core/styles';
@@ -25,12 +25,10 @@ const useStyles = makeStyles({
     marginRight: 20,
   },
   plainLink: {
-    // color: '#7b1bb3',
     color: '#eee',
     textDecoration: 'none',
   },
   foregroundColor: {
-    // color: '#7b1bb3',
     color: '#eee',
   },
   brandLogoClass: {
@@ -53,11 +51,12 @@ export default function Header() {
     setAnchorEl(null);
   }
 
-  function openDrawer() {
-    setLeft(true);
-  }
-  function closeDrawer() {
-    setLeft(false);
+  function toogleDrawer() {
+    if (left) {
+      setLeft(false);
+    } else {
+      setLeft(true);
+    }
   }
 
   const { loginDesc, title, isAuthApp } = getSiteData();
@@ -92,8 +91,8 @@ export default function Header() {
         <HeaderButton
           className={classes.menuButton}
           aria-label="Menu"
-          aria-owns={open ? 'menu-sidebar' : undefined}
-          onClick={openDrawer}
+          aria-owns={left ? 'menu-sidebar' : undefined}
+          onClick={toogleDrawer}
         >
           <MenuIcon className={classes.foregroundColor} />
         </HeaderButton>
@@ -101,16 +100,11 @@ export default function Header() {
       <HeaderText className={classes.grow}>
         <Link to="/" className={classes.plainLink}>
           {brandLogo && BrandContainer}
-          {/*!brand.childImageSharp && (
-              <img className={classes.brandLogo} src={logo} alt={alt} />
-            )*/}
           {title && !brandLogo && title}
-
-          {/* {siteTitle} */}
         </Link>
       </HeaderText>
       {(isAuthenticated() && isAuthApp) || !isAuthApp ? (
-        <SwipeDrawer left={left} handleClose={handleClose}>
+        <SwipeDrawer left={left} handleClose={toogleDrawer}>
           <NavigationList />
         </SwipeDrawer>
       ) : null}
@@ -134,12 +128,7 @@ export default function Header() {
           </React.Fragment>
         ) : null}
         {!isAuthenticated() && isAuthApp ? (
-          <Button
-            onClick={() => login()}
-            className={classes.foregroundColor}
-            // color={buttonColor}
-            // autoFocus
-          >
+          <Button onClick={() => login()} className={classes.foregroundColor}>
             {loginDesc}
           </Button>
         ) : null}

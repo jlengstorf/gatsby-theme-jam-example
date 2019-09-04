@@ -112,13 +112,23 @@ export default function Home({
       {isAuthenticated() ? (
         <div
           style={{
-            textAlign: 'center',
-            display: 'flex',
-            justifyContent: 'space-around',
-            marginTop: '25px',
+            overflowX: 'hidden',
+            overflowY: 'hidden',
+            padding: 15,
           }}
         >
-          <Grid container spacing={4}>
+          <Grid
+            // style={{
+            //   display: 'flex',
+            //   flexDirection: 'row',
+            //   justifyContent: 'space-around',
+            // }}
+            container
+            spacing={4}
+            // direction="row"
+            // justify="space-around"
+            // alignItems="center"
+          >
             {posts.map((post, index) => (
               <Grid
                 item
@@ -128,7 +138,9 @@ export default function Home({
                 lg={4}
                 key={`toolsContainer-${index}`}
               >
+                {/* <div style={{ textAlign: 'center' }}> */}
                 <ToolsGrid key={post.id} {...post} />
+                {/* </div> */}
               </Grid>
             ))}
           </Grid>
