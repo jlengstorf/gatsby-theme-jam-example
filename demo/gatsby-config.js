@@ -6,10 +6,10 @@ module.exports = {
     },
   ],
   siteMetadata: {
-    title: `Dashboard`,
+    title: `Demo`,
     author: `Reuben Ellis`,
     description: `An Authentication Site Built with Gatsby, GraphQL, Material-UI and Auth0.`,
-    copyright: `This is to insert a copyright message`,
+    copyright: `Copyright © 2019 Devellistech - No part of this website may be reproduced without specific written permission... Just Kidding Copy Away!!!`,
     loginDesc: "Login / Signup",
     isAuthApp: true,
     social: {

@@ -48,6 +48,7 @@
     "gatsby-remark-numbered-footnotes": "^1.0.0",
     "gatsby-remark-smartypants": "^2.1.2",
     "gatsby-source-filesystem": "^2.1.4",
+    "gatsby-transformer-excel": "^2.2.7",
     "gatsby-transformer-json": "^2.2.2",
     "gatsby-transformer-remark": "^2.6.14",
     "gatsby-transformer-sharp": "^2.2.3",

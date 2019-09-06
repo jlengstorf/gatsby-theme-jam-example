@@ -4,6 +4,7 @@ module.exports = ({
   basePath = '/',
   assetPath = 'content/assets',
   toolPath = 'content/tools',
+  excelPath = 'content/excel',
   mdx = true,
 }) => {
   return {
@@ -67,6 +68,14 @@ module.exports = ({
           name: toolPath || `content/tools`,
         },
       },
+      {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          name: excelPath || `content/excel`,
+          path: excelPath || `content/excel`,
+        },
+      },
+      `gatsby-transformer-excel`,
       {
         resolve: `gatsby-plugin-page-creator`,
         options: {
