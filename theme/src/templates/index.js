@@ -11,6 +11,7 @@ export default function PageTemplate({
     <Home
       siteTitle={pageContext.siteTitle}
       siteDescription={pageContext.siteDescription}
+      siteGreeting={pageContext.siteGreeting}
       copyright={pageContext.copyrightMessage}
       socialLinks={pageContext.socialLinks}
       brand={pageContext.brand}

@@ -5,6 +5,7 @@ module.exports = ({
   assetPath = 'content/assets',
   toolPath = 'content/tools',
   excelPath = 'content/excel',
+  eventPath = 'content/events',
   mdx = true,
 }) => {
   return {
@@ -12,6 +13,7 @@ module.exports = ({
       title: `Gatsby Theme Auth App`,
       author: `Name Placeholder`,
       description: `Description placeholder`,
+      greeting: `test`,
       copyright: `This is to insert a copyright message`,
       loginDesc: 'Login / Signup',
       isAuthApp: true,
@@ -66,6 +68,13 @@ module.exports = ({
         options: {
           path: toolPath || `content/tools`,
           name: toolPath || `content/tools`,
+        },
+      },
+      {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          name: eventPath || `content/events`,
+          path: eventPath || `content/events`,
         },
       },
       {

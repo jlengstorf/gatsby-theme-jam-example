@@ -70,6 +70,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
         siteMetadata {
           title
           description
+          greeting
           copyright
           author
           loginDesc
@@ -163,6 +164,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
     loginDesc: loginOption,
     isAuthApp: isAuthApp,
     copyright: copyrightMessage,
+    greeting: siteGreeting,
   } = siteMetadata;
   const brand = brandLogo;
   const slugs = [];
@@ -180,6 +182,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
       context: {
         siteTitle,
         siteDescription,
+        siteGreeting,
         copyrightMessage,
         loginOption,
         socialLinks,
@@ -207,6 +210,7 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
       context: {
         siteTitle,
         siteDescription,
+        siteGreeting,
         copyrightMessage,
         loginOption,
         socialLinks,

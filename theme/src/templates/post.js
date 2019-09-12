@@ -15,7 +15,7 @@ export default function Post({ data: { mdx: post } }) {
               <Img
                 fluid={banner.sharp.fluid}
                 alt={title}
-                className="img-responsive post-single__img"
+                style={{ height: '50vh', width: '100vw', textAlign: 'center' }}
               />
             ) : null}
             <h1 style={{ textAlign: 'center' }}>{title}</h1>

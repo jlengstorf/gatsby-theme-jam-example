@@ -30,20 +30,36 @@ export default function Footer() {
   }
 
   return (
-    <footer>
-      <div style={{ textAlign: 'center' }}>
+    <footer
+    // style={{
+    //   bottom: 0,
+    //   height: '2.5rem' /* Footer height */,
+    //   position: 'absolute',
+    //   width: '100%',
+    // }}
+    >
+      <Grid container spacing={2}>
         {links.map((link, index) => (
-          <a
-            key={index}
-            href={`${link.link}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={'externalLink'}
+          <Grid
+            key={`container-${index}`}
+            style={{ textAlign: 'center' }}
+            item
+            xs={12}
+            md={6}
+            lg={4}
           >
-            {`${link.label}`}
-          </a>
+            <a
+              key={index}
+              href={`${link.link}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={'externalLink'}
+            >
+              {`${link.label}`}
+            </a>
+          </Grid>
         ))}
-      </div>
+      </Grid>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <div
           style={{

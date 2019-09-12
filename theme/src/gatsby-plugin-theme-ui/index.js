@@ -36,6 +36,7 @@ export default merge(
     },
     Main: {
       margin: '0 auto',
+      marginBottom: '50px !important',
       maxWidth: 'container',
       width: '90vw',
     },

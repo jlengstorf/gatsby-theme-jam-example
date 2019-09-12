@@ -17,7 +17,7 @@ const Layout = ({ children, ...props }) => {
         `}
       />
       <Header {...props} />
-      <Main>{children}</Main>
+      <Main style={{ marginBottom: '30px' }}>{children}</Main>
       <Footer {...props} />
     </StyledLayout>
   );

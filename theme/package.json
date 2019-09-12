@@ -52,6 +52,7 @@
     "gatsby-transformer-json": "^2.2.2",
     "gatsby-transformer-remark": "^2.6.14",
     "gatsby-transformer-sharp": "^2.2.3",
+    "google-map-react": "^1.1.4",
     "google-maps-react": "^2.0.2",
     "lodash.merge": "^4.6.2",
     "react-helmet": "^5.2.1",

@@ -27,6 +27,7 @@ const useStyles = makeStyles(theme => ({
 export default function Home({
   siteTitle,
   siteDescription,
+  siteGreeting,
   copyright,
   brand,
   hero,
@@ -40,11 +41,29 @@ export default function Home({
   if (hero) {
     pageDetails = (
       <Grid container>
-        <Grid item xs={12} key={`toolsContainer`}>
+        <Grid item xs={12} key={`heroContainer`}>
           <Img
             fluid={hero.childImageSharp.fluid}
-            style={{ height: 600, width: '100vw', textAlign: 'center' }}
+            style={{
+              height: '60vh',
+              width: '100vw',
+              textAlign: 'center',
+            }}
           />
+        </Grid>
+        <Grid item xs={12} key={`textContainer`}>
+          <Typography variant="h5" align="center" color="inherit" paragraph>
+            {siteDescription}
+          </Typography>
+          <Typography
+            style={{ textAlign: 'justify', padding: 10 }}
+            variant="body2"
+            align="center"
+            color="inherit"
+            paragraph
+          >
+            {siteGreeting}
+          </Typography>
         </Grid>
       </Grid>
     );
@@ -63,6 +82,9 @@ export default function Home({
         </Typography>
         <Typography variant="h5" align="center" color="inherit" paragraph>
           {siteDescription}
+        </Typography>
+        <Typography variant="h5" align="center" color="inherit" paragraph>
+          {siteGreeting}
         </Typography>
         <div className={classes.heroButtons}>
           <Grid container spacing={2} justify="center">

@@ -7,6 +7,7 @@ export default function getSiteData() {
         siteMetadata {
           title
           description
+          greeting
           copyright
           author
           loginDesc
