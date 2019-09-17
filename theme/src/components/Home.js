@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 // import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
-import ToolsGrid from './Grid/ToolsGrid';
+import PostGrid from './Grid/PostGrid';
 import { isAuthenticated } from '../utils/Auth';
 import Layout from './layout';
 import SEO from './seo';
@@ -161,7 +161,7 @@ export default function Home({
                 key={`toolsContainer-${index}`}
               >
                 {/* <div style={{ textAlign: 'center' }}> */}
-                <ToolsGrid key={post.id} {...post} />
+                <PostGrid key={post.id} {...post} />
                 {/* </div> */}
               </Grid>
             ))}

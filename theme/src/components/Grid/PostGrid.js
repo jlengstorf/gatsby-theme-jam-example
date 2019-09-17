@@ -4,7 +4,7 @@ import BasicImageCard from '../Card/BasicImageCard';
 // import Grid from '@material-ui/core/Grid';
 import { Link } from 'gatsby';
 
-export default function ToolsGrid({ frontmatter }) {
+export default function PostGrid({ frontmatter }) {
   const { banner, title, slug, date } = frontmatter;
   return (
     <>

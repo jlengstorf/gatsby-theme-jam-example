@@ -4,7 +4,8 @@
     "theme",
     "demo",
     "no-auth-demo",
-    "dashboard"
+    "dashboard",
+    "blog"
   ],
   "dependencies": {}
 }

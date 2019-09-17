@@ -9,31 +9,50 @@ const debug = Debug(`gatsby-theme-auth-app`);
 let basePath;
 let contentPath;
 let assetPath;
+let excelPath;
+let eventPath;
 
 // These templates are simply data-fetching wrappers that import components
 const PageTemplate = require.resolve(`./src/templates/index`);
-// const CallbackTemplate = require.resolve(`./src/templates/callback`);
-// const PageNotFoundTemplate = require.resolve(`./src/templates/404`);
-// const ArticleTemplate = require.resolve(`./src/templates/post`);
 const ToolsTemplate = require.resolve(`./src/templates/tools`);
 const PostTemplate = require.resolve(`./src/templates/post`);
-// const TagTemplate = require.resolve(`./src/templates/tags`);
+const TagTemplate = require.resolve(`./src/templates/Tags`);
 
 // Verify the data directory exists
-exports.onPreBootstrap = ({ store }, options) => {
+exports.onPreBootstrap = ({ store, reporter }, options) => {
   const { program } = store.getState();
   basePath = options.basePath || `/`;
   contentPath = options.contentPath || `content/data`;
+  assetPath = options.assetPath || `content/assets`;
+  toolPath = options.toolPath || `content/tools`;
+  excelPath = options.excelPath || `content/excel`;
+  eventPath = options.eventPath || `content/event`;
   if (!fs.existsSync(contentPath)) {
     reporter.info(`creating the ${contentPath} directory`);
     fs.mkdirSync(contentPath);
   }
-  assetPath = options.assetPath || `content/assets`;
-  toolPath = options.toolPath || `content/tools`;
+  if (!fs.existsSync(assetPath)) {
+    reporter.info(`creating the ${assetPath} directory`);
+    fs.mkdirSync(assetPath);
+  }
+  if (!fs.existsSync(toolPath)) {
+    reporter.info(`creating the ${toolPath} directory`);
+    fs.mkdirSync(toolPath);
+  }
+  if (!fs.existsSync(excelPath)) {
+    reporter.info(`creating the ${excelPath} directory`);
+    fs.mkdirSync(excelPath);
+  }
+  if (!fs.existsSync(eventPath)) {
+    reporter.info(`creating the ${eventPath} directory`);
+    fs.mkdirSync(eventPath);
+  }
 
   const dirs = [
     path.join(program.directory, contentPath),
     path.join(program.directory, assetPath),
+    path.join(program.directory, excelPath),
+    path.join(program.directory, eventPath),
   ];
 
   dirs.forEach(dir => {
@@ -149,13 +168,13 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
     hero,
   } = result.data;
   const posts = result.data.allMdx.nodes;
-  // let tags = [
-  //   ...new Set(
-  //     posts.reduce((acc, post) => {
-  //       return acc.concat(post.frontmatter.categories);
-  //     }, []),
-  //   ),
-  // ];
+  let tags = [
+    ...new Set(
+      posts.reduce((acc, post) => {
+        return acc.concat(post.frontmatter.categories);
+      }, []),
+    ),
+  ];
 
   const {
     title: siteTitle,
@@ -193,15 +212,15 @@ exports.createPages = async ({ actions, graphql, reporter }, themeOptions) => {
       },
     });
   });
-  // tags.forEach(tag => {
-  //   createPage({
-  //     path: `/tags/${tag}`,
-  //     component: require.resolve(TagTemplate),
-  //     context: {
-  //       tag,
-  //     },
-  //   });
-  // });
+  tags.forEach(tag => {
+    createPage({
+      path: `/tags/${tag}`,
+      component: require.resolve(TagTemplate),
+      context: {
+        tag,
+      },
+    });
+  });
   posts.forEach(post => {
     const slug = post.frontmatter.slug;
     createPage({

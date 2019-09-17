@@ -3,9 +3,9 @@ module.exports = ({
   contentPath = 'content/data',
   basePath = '/',
   assetPath = 'content/assets',
-  toolPath = 'content/tools',
+  postPath = 'content/post',
   excelPath = 'content/excel',
-  eventPath = 'content/events',
+  eventPath = 'content/event',
   mdx = true,
 }) => {
   return {
@@ -52,36 +52,36 @@ module.exports = ({
       {
         resolve: `gatsby-source-filesystem`,
         options: {
-          path: contentPath || `content/data`,
-          name: contentPath || `content/data`,
+          path: contentPath,
+          name: contentPath,
         },
       },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
-          path: assetPath || `content/assets`,
-          name: assetPath || `content/assets`,
+          path: assetPath,
+          name: assetPath,
         },
       },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
-          path: toolPath || `content/tools`,
-          name: toolPath || `content/tools`,
+          path: postPath,
+          name: postPath,
         },
       },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
-          name: eventPath || `content/events`,
-          path: eventPath || `content/events`,
+          name: eventPath,
+          path: eventPath,
         },
       },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
-          name: excelPath || `content/excel`,
-          path: excelPath || `content/excel`,
+          name: excelPath,
+          path: excelPath,
         },
       },
       `gatsby-transformer-excel`,
