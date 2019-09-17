@@ -1,4 +1,4 @@
 [build]
   base = "demo"
-  command = "yarn build"
+  command = "node ./create-env.js && npm i && npm audit fix && gatsby build"
   publish = "demo/public"

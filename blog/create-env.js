@@ -1,0 +1,5 @@
+const fs = require("fs")
+fs.writeFileSync(
+  "./.env",
+  `GATSBY_AUTH0_DOMAIN=${process.env.GATSBY_AUTH0_DOMAIN}\n GATSBY_AUTH0_CLIENT_ID=${process.env.GATSBY_AUTH0_CLIENT_ID}\n GATSBY_AUTH0_CALLBACK_URL=${process.env.GATSBY_AUTH0_CALLBACK_URL}\n GATSBY_AUTH0_REDIRECT_URL=${process.env.GATSBY_AUTH0_REDIRECT_URL}`,
+)

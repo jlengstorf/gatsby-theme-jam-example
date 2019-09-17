@@ -1,19 +1,12 @@
-import React from "react"
-import { css, Global } from "@emotion/core"
-import { Layout as StyledLayout, Header, Main, Container } from "theme-ui"
-import { graphql, useStaticQuery } from "gatsby"
+import React from 'react';
+import { css, Global } from '@emotion/core';
+import { Layout as StyledLayout, Main } from 'theme-ui';
+import './layout.css';
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer';
 
+const Layout = ({ children, ...props }) => {
   return (
     <StyledLayout>
       <Global
@@ -23,14 +16,11 @@ const Layout = ({ children }) => {
           }
         `}
       />
-      <Header>
-        <span>{data.site.siteMetadata.title}</span>
-      </Header>
-      <Main>
-        <Container>{children}</Container>
-      </Main>
+      <Header {...props} />
+      <Main style={{ marginBottom: '30px' }}>{children}</Main>
+      <Footer {...props} />
     </StyledLayout>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
