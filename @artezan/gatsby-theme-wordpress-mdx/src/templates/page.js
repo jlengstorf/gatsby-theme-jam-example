@@ -1,6 +1,6 @@
 import React from "react"
 import { Styled } from "theme-ui"
-import Layout from "../components/layout"
+import Layout from "../layouts/layout"
 
 const PageTemplate = ({ pageContext }) => (
   <Layout>

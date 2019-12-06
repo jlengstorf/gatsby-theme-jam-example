@@ -1,7 +1,7 @@
 {
   "private": true,
   "workspaces": [
-    "theme",
+    "@artezan/gatsby-theme-wordpress-mdx",
     "demo"
   ]
 }

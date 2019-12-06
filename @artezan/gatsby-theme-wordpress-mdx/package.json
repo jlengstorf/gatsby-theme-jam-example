@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-theme-jam-example",
-  "author": "Jason Lengstorf <jason@gatsbyjs.com>",
+  "name": "gatsby-theme-wordpress-mdx",
+  "author": "Cesar Artezan <artezan.cabrera@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jlengstorf/gatsby-theme-jam-example.git"
+    "url": "https://github.com/jlengstorf/gatsby-theme-wordpress-mdx.git"
   },
   "version": "1.0.1",
   "main": "index.js",
@@ -20,8 +20,12 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.14",
-    "@mdx-js/react": "^1.0.21",
+    "@mdx-js/mdx": "^1.5.1",
+    "@mdx-js/react": "^1.5.1",
+    "gatsby-plugin-layout": "^1.1.16",
+    "gatsby-plugin-mdx": "^1.0.59",
     "gatsby-plugin-theme-ui": "^0.2.2",
+    "gatsby-source-filesystem": "^2.1.40",
     "theme-ui": "^0.2.2"
   },
   "keywords": [
