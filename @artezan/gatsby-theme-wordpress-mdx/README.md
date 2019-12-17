@@ -13,7 +13,7 @@ To use this theme in your Gatsby sites, follow these instructions:
     npm install --save gatsby-theme-jam-example
     ```
 
-2.  Add the theme to your `gatsby-config.js` :
+2.  Add the theme to your `gatsby-config.js`:
     ```js
     module.exports = {
       plugins: [

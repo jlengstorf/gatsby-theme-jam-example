@@ -6,17 +6,17 @@
 
 module.exports = {
   siteMetadata: {
-    title: 'Introducing GatStats',
+    title: 'WP MDX',
     description:
-      'GatStats is a dashboard for your tech blog, or a dashblog if you prefer? ',
+      'It is a WP with MDX blog ',
     keywords: ['GatsbyJs', 'React', 'theme-ui'],
-    siteURL: 'https://gatsby-theme-gatstats.netlify.com',
-    siteImage: 'gatstats-open-graph-image.jpg',
+    siteURL: '',
+    siteImage: '',
     config: {
       headerHeight: 64,
       sideBarWidth: 240,
-      twitter: 'pauliescanlon',
-      github: 'pauliescanlon'
+      twitter: 'artezanc',
+      github: 'artezanc'
     }
   },
   plugins: ["gatsby-theme-wordpress-mdx"],

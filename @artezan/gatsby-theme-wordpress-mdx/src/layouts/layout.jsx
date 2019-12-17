@@ -1,11 +1,16 @@
 /** @jsx jsx */
 import React from 'react'
 import { css, Global } from '@emotion/core'
-import {
-  jsx,
-  Styled
-} from 'theme-ui'
+import { jsx, Styled } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
+import { Location } from '@reach/router'
+import { SideBarProvider } from '../components/SideBarContext'
+import { Seo } from '../components/Seo'
+import { HeaderContainer } from '../components/Header/HeaderContainer'
+import { SideBarContainer } from '../components/SideBar'
+import { LightPanel } from '../components/LightPanel'
+import { ContentContainer } from '../components/Content'
+import { formatPathname } from '../helpers'
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -28,9 +33,8 @@ const Layout = ({ children }) => {
     siteURL,
     siteImage
   } = data.site.siteMetadata
-  console.log(title)
   return (
-    <React.Fragment>
+    <>
       <Global
         styles={css`
           body {
@@ -45,41 +49,37 @@ const Layout = ({ children }) => {
       <Styled.div
         sx={{
           margin: '0 auto',
-          backgroundColor: 'background',
-          maxWidth: theme => theme.breakpoints[3]
+          backgroundColor: 'background'
         }}
       >
-       {children}
-        {/* <SideBarProvider>
-                <Location>
-                  {({ location }) => {
-                    const { pathname }: IPathname = location
+        <SideBarProvider>
+          <Location>
+            {({ location }) => {
+              const { pathname } = location
 
-                    return (
-                      <React.Fragment>
-                        <Seo
-                          title={title}
-                          titleTemplate={formatPathname(pathname)}
-                          description={description}
-                          keywords={keywords}
-                          siteURL={siteURL}
-                          image={siteImage}
-                        />
-                        <HeaderContainer />
-                        <SideBarContainer />
-                        <LightPanel />
-                        <ContentContainer>
-                          <Transition pathname={pathname}>
-                            {children}
-                          </Transition>
-                        </ContentContainer>
-                      </React.Fragment>
-                    )
-                  }}
-                </Location>
-              </SideBarProvider> */}
+              return (
+                <React.Fragment>
+                  <Seo
+                    title={title}
+                    titleTemplate={formatPathname(pathname)}
+                    description={description}
+                    keywords={keywords}
+                    siteURL={siteURL}
+                    image={siteImage}
+                  />
+                  <HeaderContainer />
+                  <SideBarContainer />
+                  <LightPanel />
+
+                  {children}
+                  {/* <Transition pathname={pathname}>{children}</Transition> */}
+                </React.Fragment>
+              )
+            }}
+          </Location>
+        </SideBarProvider>
       </Styled.div>
-    </React.Fragment>
+    </>
   )
 }
 
