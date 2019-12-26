@@ -13,6 +13,7 @@ export const HeaderContainer = ({ children }) => (
             config {
               headerHeight
               sideBarWidth
+              showToggle
             }
           }
         }

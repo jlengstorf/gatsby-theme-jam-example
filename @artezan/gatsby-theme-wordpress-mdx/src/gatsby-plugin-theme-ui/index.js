@@ -54,7 +54,11 @@ export default {
 
     surface: '#1a1832',
     background: '#131127',
-
+    gradient0: 'linear-gradient(#131127, #131127)',
+    gradient1: 'linear-gradient(#06050c, #131127)',
+    gradient2: 'linear-gradient(#131127, #2e295e)',
+    gradient3: 'linear-gradient(#2e295e, #131127)',
+    gradient4: 'linear-gradient(#131127, #06050c)',
     transparent: `rgba(0,0,0,0)`,
 
     modes: {
@@ -68,6 +72,11 @@ export default {
 
         surface: '#fbf4fc',
         background: '#fefbff',
+        gradient0: 'linear-gradient(#fefbff, #fefbff)',
+        gradient1: 'linear-gradient(#ebafff, #f8e2ff)',
+        gradient2: 'linear-gradient(#f8e2ff, #fefbff)',
+        gradient3: 'linear-gradient(#fefbff, #f8e2ff)',
+        gradient4: 'linear-gradient(#f8e2ff, #ebafff)',
 
         transparent: `rgba(0,0,0,0)`
       }
@@ -95,6 +104,9 @@ export default {
       fontFamily: 'body',
       fontWeight: 'body',
       lineHeight: 'normal'
+    },
+    div: {
+      color: 'text'
     },
 
     h1: {
@@ -225,12 +237,15 @@ export default {
     },
 
     hr: {
-      opacity: 0
+      opacity: 0,
     },
 
     img: {
       width: '100%',
       height: 'auto'
+    },
+    'list-footer': {
+      color: 'text'
     }
   }
 }

@@ -7,13 +7,12 @@ import Img from 'gatsby-image'
 export const FeatureComponent = ({ features }) => {
   const withFeature =
     features.lenght === 1 ? '100%' : features.lenght === 2 ? '50%' : '33%'
-  console.log(features)
   return (
     <>
       <Flex
         sx={{
           flexWrap: 'wrap',
-          pr: [0, 0, 4]
+          p: [1, 1, 4]
         }}
       >
         {features.map(({ body, frontmatter: { featureImage } }, index) => {

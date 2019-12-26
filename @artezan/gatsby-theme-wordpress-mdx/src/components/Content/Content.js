@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled, Box } from 'theme-ui'
+import { jsx, Styled, useThemeUI } from 'theme-ui'
 
 const commonStyles = {
   display: 'flex',
@@ -19,14 +19,20 @@ const commonStyles = {
   paddingTop: 2
 }
 
-export const Content = ({ children, config }) => {
+export const Content = ({ children, config, gradient }) => {
+  const context = useThemeUI()
+  console.log(context)
+  const background = config.backgroundGradient
+    ? { backgroundImage: theme => theme.colors[gradient] }
+    : { backgroundColor: theme => theme.colors.background }
   return (
     <Styled.div
       sx={{
         ...commonStyles,
         zIndex: '2',
         position: 'relative',
-        backgroundColor: theme => theme.colors.background
+        ...background
+        // backgroundColor: theme => theme.colors.background
       }}
     >
       <Styled.div

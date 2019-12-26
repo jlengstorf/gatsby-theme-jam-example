@@ -10,6 +10,8 @@ module.exports = {
     config: {
       headerHeight: 64,
       sideBarWidth: 240,
+      showToggle: true,
+      backgroundt: true,
       twitter: '',
       github: ''
     }

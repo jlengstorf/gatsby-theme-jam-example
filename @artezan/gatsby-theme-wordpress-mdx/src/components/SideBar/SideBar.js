@@ -9,7 +9,7 @@ import { ToggleSwitch } from '../ToggleSwitch'
 
 export const SideBar = ({ config, links }) => {
   const { state } = React.useContext(SideBarContext)
-  const { sideBarWidth, headerHeight } = config
+  const { sideBarWidth, headerHeight, showToggle } = config
   const conditionalLeft = state.isNavOpen ? 0 : sideBarWidth
 
   return (
@@ -73,9 +73,11 @@ export const SideBar = ({ config, links }) => {
               justifyContent: 'space-between'
             }}
           >
-            <ToggleSwitch toggleSwitchName="sidebar-theme-toggle">
-              Toggle Theme
-            </ToggleSwitch>
+            {showToggle && (
+              <ToggleSwitch toggleSwitchName="sidebar-theme-toggle">
+                Toggle Theme
+              </ToggleSwitch>
+            )}
           </Styled.div>
         </Styled.div>
       </Styled.div>

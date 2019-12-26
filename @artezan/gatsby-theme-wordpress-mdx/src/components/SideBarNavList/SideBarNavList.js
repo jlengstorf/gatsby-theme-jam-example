@@ -12,7 +12,10 @@ export const SideBarNavList = ({ links }) => {
 
   const getProps = ({ isCurrent, isPartiallyCurrent, href }) => {
     if (isCurrent || (isPartiallyCurrent && href !== '/')) {
+      console.log('here')
       setCurrentActive(href)
+    } else if (currentActive === href ) {
+      setCurrentActive('/')
     }
   }
 

@@ -7,17 +7,18 @@
 module.exports = {
   siteMetadata: {
     title: 'WP MDX',
-    description:
-      'It is a WP with MDX blog ',
+    description: 'It is a WP with MDX blog ',
     keywords: ['GatsbyJs', 'React', 'theme-ui'],
     siteURL: '',
     siteImage: '',
     config: {
       headerHeight: 64,
       sideBarWidth: 240,
+      showToggle: true,
+      backgroundGradient: true,
       twitter: 'artezanc',
       github: 'artezanc'
     }
   },
-  plugins: ["gatsby-theme-wordpress-mdx"],
+  plugins: ['gatsby-theme-wordpress-mdx']
 }

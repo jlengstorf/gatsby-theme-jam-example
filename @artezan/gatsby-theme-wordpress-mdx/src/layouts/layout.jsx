@@ -11,6 +11,10 @@ import { SideBarContainer } from '../components/SideBar'
 import { LightPanel } from '../components/LightPanel'
 import { ContentContainer } from '../components/Content'
 import { formatPathname } from '../helpers'
+import { MDXProvider } from '@mdx-js/react'
+import { Div } from '../Shortcodes'
+
+const shortcodes = { Div }
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -58,7 +62,7 @@ const Layout = ({ children }) => {
               const { pathname } = location
 
               return (
-                <React.Fragment>
+                <>
                   <Seo
                     title={title}
                     titleTemplate={formatPathname(pathname)}
@@ -70,10 +74,10 @@ const Layout = ({ children }) => {
                   <HeaderContainer />
                   <SideBarContainer />
                   <LightPanel />
+                  <MDXProvider components={shortcodes}>{children}</MDXProvider>
 
-                  {children}
                   {/* <Transition pathname={pathname}>{children}</Transition> */}
-                </React.Fragment>
+                </>
               )
             }}
           </Location>

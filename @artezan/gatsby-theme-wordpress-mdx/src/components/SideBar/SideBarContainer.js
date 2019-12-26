@@ -12,7 +12,8 @@ export const SideBarContainer = () => (
           siteMetadata {
             config {
               headerHeight
-              sideBarWidth
+              sideBarWidth,
+              showToggle
             }
           }
         }

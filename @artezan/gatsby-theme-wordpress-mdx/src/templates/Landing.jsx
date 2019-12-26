@@ -6,13 +6,16 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { HeaderComponent } from '../components/sections/Header/HeaderComponent'
 import { FeatureComponent } from '../components/sections/Features/FeatureComponent'
 import { Content } from '../components/Content'
+import { AboutSection } from '../components/sections/About/AboutSection'
+import { FooterSection } from '../components/sections/Footer/FooterSection'
 
 const Landing = ({
   data: {
     allMdx: { nodes: sections },
     mdx: {
       frontmatter: { sections: sectionsOrder }
-    }
+    },
+    site: { siteMetadata }
   }
 }) => {
   // Sort sections
@@ -59,22 +62,35 @@ const Landing = ({
             )}
 
             {sectionComp.frontmatter.section.toLowerCase() === 'features' && (
-              <Content>
+              <Content
+                config={siteMetadata.config}
+                gradient={`gradient${index}`}
+              >
                 <FeatureComponent
                   features={[...sectionComp.featureGroup]}
                 ></FeatureComponent>
               </Content>
             )}
+            {console.log(sectionComp.frontmatter.section.toLowerCase() )}
+            {sectionComp.frontmatter.section.toLowerCase() === 'about' && (
+              <Content
+                config={siteMetadata.config}
+                gradient={`gradient${index}`}
+              >
+                <AboutSection {...sectionComp}></AboutSection>
+              </Content>
+            )}
+            {sectionComp.frontmatter.section.toLowerCase() === 'footer' && (
+              <Content
+                config={siteMetadata.config}
+                gradient={`gradient${index}`}
+              >
+                <FooterSection {...sectionComp}></FooterSection>
+              </Content>
+            )}
           </section>
         ))}
       </main>
-      <footer
-        sx={{
-          width: '100%'
-        }}
-      >
-        Footer
-      </footer>
     </div>
   )
 }
@@ -85,6 +101,9 @@ export const contentQuery = graphql`
       siteMetadata {
         title
         siteURL
+        config {
+          backgroundGradient
+        }
       }
     }
     mdx(id: { eq: $id }) {
@@ -129,6 +148,13 @@ export const contentQuery = graphql`
             height
           }
           featureImage {
+            childImageSharp {
+              fluid(maxWidth: 800) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+          aboutImage {
             childImageSharp {
               fluid(maxWidth: 800) {
                 ...GatsbyImageSharpFluid_withWebp

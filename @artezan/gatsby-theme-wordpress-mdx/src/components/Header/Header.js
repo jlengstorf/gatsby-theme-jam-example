@@ -8,7 +8,7 @@ import { SideBarContext } from '../SideBarContext'
 import { SideBarNavList } from '../SideBarNavList'
 
 export const Header = ({ config, links }) => {
-  const { sideBarWidth, headerHeight } = config
+  const { sideBarWidth, headerHeight, showToggle } = config
   const { state, dispatch } = React.useContext(SideBarContext)
 
   return (
@@ -22,11 +22,12 @@ export const Header = ({ config, links }) => {
         marginBottom: 2,
         color: 'text',
         backgroundColor: 'background',
+        opacity: 0.85,
         paddingLeft: [3, 4],
         paddingRight: [3, 4],
-        marginLeft: [0, 0, 0, `${sideBarWidth}px`],
+        marginLeft: [0, 0, 0, 0],
         transition: theme => theme.sideBarTransition,
-        zIndex: 1
+        zIndex: 3
       }}
     >
       <Styled.div
@@ -70,10 +71,10 @@ export const Header = ({ config, links }) => {
         >
           {/* Pages */}
           <SideBarNavList links={links} />
-          <ToggleSwitch
-           
-            toggleSwitchName="header-theme-toggle"
-          />
+          {/* Toggle */}
+          {showToggle && (
+            <ToggleSwitch toggleSwitchName="header-theme-toggle" />
+          )}
         </Styled.div>
       </Styled.div>
     </header>
