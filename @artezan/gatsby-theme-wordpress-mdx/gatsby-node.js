@@ -2,7 +2,11 @@ const { createFilePath } = require('gatsby-source-filesystem')
 const path = require('path')
 const CreatePagesMdx = require(`./gatsby/create-pages-mdx`)
 
-
+/* exports.onPreInit = (_, pluginOptions) => {
+  // console.log(_)
+  console.log("HERE",pluginOptions);
+  
+} */
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
@@ -31,5 +35,3 @@ exports.createPages = async ({ page, graphql, actions, reporter }) => {
    */
   await CreatePagesMdx(actions, graphql, reporter)
 }
-
-

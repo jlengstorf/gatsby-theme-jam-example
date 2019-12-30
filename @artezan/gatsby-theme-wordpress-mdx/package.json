@@ -33,6 +33,7 @@
     "gatsby-plugin-sharp": "^2.3.5",
     "gatsby-plugin-theme-ui": "^0.2.2",
     "gatsby-source-filesystem": "^2.1.40",
+    "gatsby-source-wordpress": "^3.1.54",
     "gatsby-transformer-sharp": "^2.3.7",
     "husky": "^3.1.0",
     "react-helmet": "^5.2.1",
