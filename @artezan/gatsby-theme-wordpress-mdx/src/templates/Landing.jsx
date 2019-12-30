@@ -8,6 +8,7 @@ import { FeatureComponent } from '../components/sections/Features/FeatureCompone
 import { Content } from '../components/Content'
 import { AboutSection } from '../components/sections/About/AboutSection'
 import { FooterSection } from '../components/sections/Footer/FooterSection'
+import { GeneralSection } from '../components/sections/GeneralSection/GeneralSection'
 
 const Landing = ({
   data: {
@@ -85,6 +86,11 @@ const Landing = ({
                 <FooterSection {...sectionComp}></FooterSection>
               </Content>
             )}
+            {sectionComp.frontmatter.section.toLowerCase() === 'general' && (
+              <Content config={siteMetadata.config} bg={`backgroundGeneral`}>
+                <GeneralSection {...sectionComp}></GeneralSection>
+              </Content>
+            )}
           </section>
         ))}
       </main>
@@ -121,7 +127,7 @@ export const contentQuery = graphql`
           section
           parallaxBodySpeed
           featureOrder
-          headerImages{
+          headerImages {
             publicURL
             name
             childImageSharp {
@@ -141,6 +147,15 @@ export const contentQuery = graphql`
             childImageSharp {
               fluid(maxWidth: 800) {
                 ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+          images {
+            publicURL
+            name
+            childImageSharp {
+              fluid(maxWidth: 800) {
+                ...GatsbyImageSharpFluid
               }
             }
           }

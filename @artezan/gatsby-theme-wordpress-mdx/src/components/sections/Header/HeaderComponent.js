@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from 'react'
-import { jsx,  useThemeUI } from 'theme-ui'
+import { jsx, useThemeUI } from 'theme-ui'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 export const HeaderComponent = ({ body, frontmatter }) => {
@@ -13,7 +13,6 @@ export const HeaderComponent = ({ body, frontmatter }) => {
     )
   let headerImagesFluid = {}
   if (headerImages) {
-    console.log(convertArrayToObject(headerImages, 'name'))
     headerImagesFluid = convertArrayToObject(headerImages, 'name')
   }
   return (

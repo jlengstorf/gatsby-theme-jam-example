@@ -57,9 +57,11 @@ export default {
     backgroundHeader: 'linear-gradient(#131127, #131127)',
     backgroundFeatures: 'linear-gradient(#06050c, #131127)',
     backgroundAbout: 'linear-gradient(#131127, #2e295e)',
-    backgroundFooter: 'linear-gradient(#2e295e, #131127)',
-    backgroundPost: 'linear-gradient(#131127, #06050c)',
+    backgroundGeneral: 'linear-gradient(#2e295e, #423b87)',
+    backgroundPost: 'linear-gradient(#423b87, #2e295e)',
+    backgroundFooter: 'linear-gradient(#2e295e, #06050c)',
     transparent: `rgba(0,0,0,0)`,
+    shadowCard: '11px 7px 20px 12px rgb(0, 0, 0)',
 
     modes: {
       light: {
@@ -75,6 +77,7 @@ export default {
         backgroundHeader: 'linear-gradient(#fefbff, #fefbff)',
         backgroundFeatures: 'linear-gradient(#ebafff, #f8e2ff)',
         backgroundAbout: 'linear-gradient(#f8e2ff, #fefbff)',
+        backgroundGeneral: 'linear-gradient(#f8e2ff, #fefbff)',
         backgroundFooter: 'linear-gradient(#fefbff, #f8e2ff)',
         backgroundPost: 'linear-gradient(#f8e2ff, #ebafff)',
 
@@ -237,7 +240,7 @@ export default {
     },
 
     hr: {
-      opacity: 0,
+      opacity: 0
     },
 
     img: {

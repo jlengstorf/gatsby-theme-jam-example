@@ -20,5 +20,13 @@ module.exports = {
       github: 'artezanc'
     }
   },
-  plugins: ['gatsby-theme-wordpress-mdx']
+  plugins: [
+    {
+      resolve: 'gatsby-theme-wordpress-mdx',
+      options: {
+        // The base url to your WP site. www.theartezan.xyz wpdemo.gatsbycentral.com us-central1-kigali-162302.cloudfunctions.net/function-2
+        baseUrl: 'www.theartezan.xyz'
+      }
+    }
+  ]
 }
