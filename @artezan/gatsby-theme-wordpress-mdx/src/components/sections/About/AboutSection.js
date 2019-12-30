@@ -12,13 +12,13 @@ export const AboutSection = ({ body, frontmatter: { aboutImage } }) => {
         sx={{
           flexWrap: 'wrap',
           flexDirection: 'row',
-          p: [1, 1, 43],
+          p: [1, 1, 43]
           // pb:  30
         }}
       >
         <Box
           sx={{
-            display:  ['flex', 'flex', '', ''] ,
+            display: ['flex', 'flex', '', ''],
             justifyContent: ['center', 'center'],
             width: ['100%', '100%', '50%', '50%']
           }}
@@ -28,7 +28,7 @@ export const AboutSection = ({ body, frontmatter: { aboutImage } }) => {
             sx={{
               width: '80%',
               borderRadius: '5%',
-              boxShadow: theme => theme.shadows[0]
+              boxShadow: theme => theme.colors.shadowCard
             }}
           />
         </Box>

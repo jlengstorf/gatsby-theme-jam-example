@@ -12,9 +12,8 @@ export const SideBarNavList = ({ links }) => {
 
   const getProps = ({ isCurrent, isPartiallyCurrent, href }) => {
     if (isCurrent || (isPartiallyCurrent && href !== '/')) {
-      console.log('here')
       setCurrentActive(href)
-    } else if (currentActive === href ) {
+    } else if (currentActive === href) {
       setCurrentActive('/')
     }
   }
@@ -58,7 +57,7 @@ export const SideBarNavList = ({ links }) => {
                   outline: 'none',
                   div: {
                     boxShadow: theme =>
-                      `${theme.shadows[0]} ${theme.colors.textMuted}`
+                      `${theme.colors.shadowCard} ${theme.colors.textMuted}`
                   }
                 }
               }}

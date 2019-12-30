@@ -4,12 +4,7 @@ import { jsx } from 'theme-ui'
 
 import { Icon } from '../Icon'
 
-
-
-export const ButtonIcon = ({
-  iconPath,
-  ...rest
-}) => {
+export const ButtonIcon = ({ iconPath, ...rest }) => {
   return (
     <button
       {...rest}
@@ -35,7 +30,8 @@ export const ButtonIcon = ({
         minWidth: 48,
         height: 48,
         ':focus ': {
-          boxShadow: theme => `${theme.shadows[0]} ${theme.colors.textMuted}`
+          boxShadow: theme =>
+            `${theme.colors.shadowCard} ${theme.colors.textMuted}`
         }
       }}
     >

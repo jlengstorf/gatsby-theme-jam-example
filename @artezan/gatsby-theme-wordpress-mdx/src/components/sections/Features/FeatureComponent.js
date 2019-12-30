@@ -43,15 +43,16 @@ export const FeatureComponent = ({ features }) => {
                     width: '80%',
                     height: '200px',
                     borderRadius: '5%',
-                    boxShadow: theme => theme.shadows[0],
-                    
+                    boxShadow: theme => theme.colors.shadowCard
                   }}
                 />
               </Styled.div>
 
-              <Styled.div sx={{
-                marginTop: '10%'
-              }} >
+              <Styled.div
+                sx={{
+                  marginTop: '10%'
+                }}
+              >
                 <MDXRenderer>{body}</MDXRenderer>
               </Styled.div>
             </Box>

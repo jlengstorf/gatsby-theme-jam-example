@@ -74,7 +74,7 @@ export const ToggleSwitch = ({
             [':focus ~ .gatstats-toggle-track']: {
               borderRadius: [24, 32],
               boxShadow: theme =>
-                `${theme.shadows[0]} ${theme.colors.textMuted}`
+                `${theme.colors.shadowCard} ${theme.colors.textMuted}`
             }
           }}
         />

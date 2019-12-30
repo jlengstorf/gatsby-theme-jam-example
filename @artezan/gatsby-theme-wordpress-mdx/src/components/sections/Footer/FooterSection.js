@@ -5,7 +5,6 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Img from 'gatsby-image'
 
 export const FooterSection = ({ body }) => {
-  console.log('here')
   return (
     <Footer>
       <Styled.div
@@ -15,7 +14,6 @@ export const FooterSection = ({ body }) => {
       >
         <MDXRenderer>{body}</MDXRenderer>
       </Styled.div>
-      
     </Footer>
   )
 }
