@@ -1,0 +1,45 @@
+---
+section: general
+images: [general1.jpg]
+---
+
+<!--
+    In order to access to the `images` in the frontmatter
+    call `imagesFluid` with the name of the img as a key
+ -->
+
+<Div
+  sx={{
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    padding: ['0', '0', '24px']
+  }}
+>
+  <Div
+    sx={{
+      marginTop: '3%'
+    }}
+  >
+    <h3>General Section</h3>
+    <p> Example of generic section with IMG </p>
+  </Div>
+  <Div
+    sx={{
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center'
+    }}
+  >
+    <ImgGatsby
+      fluid={imagesFluid['general1']}
+      sx={{
+        width: '100%',
+        maxWidth: '300px',
+         borderRadius: '20px',
+        height: 'auto',
+        boxShadow: theme => theme.colors.shadowCard
+      }}
+    />
+  </Div>
+</Div>
