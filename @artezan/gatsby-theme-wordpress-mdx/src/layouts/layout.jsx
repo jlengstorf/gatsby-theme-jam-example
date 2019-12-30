@@ -12,9 +12,10 @@ import { LightPanel } from '../components/LightPanel'
 import { ContentContainer } from '../components/Content'
 import { formatPathname } from '../helpers'
 import { MDXProvider } from '@mdx-js/react'
-import { Div } from '../Shortcodes'
+import { Div, SocialLink, BgImage, ImgGatsby } from '../Shortcodes'
+import Parallax from 'react-rellax'
 
-const shortcodes = { Div }
+const shortcodes = { Div, SocialLink, BgImage, Parallax, ImgGatsby }
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`

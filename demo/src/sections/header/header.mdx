@@ -1,16 +1,36 @@
 ---
 section: header
-backgroundImage: {
-    img: image1.jpg,
-    height: '86vh', 
-    backgroundAttachment: 'fixed' 
-}
-frontImage: {
-    img: image2.png,
-    height: '86vh', 
-   
-}
 parallaxBodySpeed: -10
+headerImages: [image2.png, image1.jpg]
 ---
 
-# Title Header
+<!--
+    In order to access to the `headerImages` in the frontmatter
+    call `headerImagesFluid` with the name of the img as a key
+ -->
+
+<BgImage
+  Tag="div"
+  sx={{
+    height: '86vh',
+    width: '100%',
+    backgroundAttachment: 'fixed',
+    zIndex: '1'
+  }}
+  fluid={headerImagesFluid.image1}
+  backgroundColor={context.theme.colors.primary}
+>
+  <Parallax speed={parallaxBodySpeed || -2}>
+    <h1>Title Header</h1>
+  </Parallax>
+
+  <ImgGatsby
+    fluid={headerImagesFluid['image2']}
+    sx={{
+      position: 'absolute !important',
+      bottom: '0px',
+      width: '100%',
+      height: '86vh'
+    }}
+  />
+</BgImage>

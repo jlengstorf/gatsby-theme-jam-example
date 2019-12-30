@@ -62,28 +62,25 @@ const Landing = ({
             )}
 
             {sectionComp.frontmatter.section.toLowerCase() === 'features' && (
-              <Content
-                config={siteMetadata.config}
-                gradient={`gradient${index}`}
-              >
+              <Content config={siteMetadata.config} bg={`backgroundFeatures`}>
                 <FeatureComponent
                   features={[...sectionComp.featureGroup]}
                 ></FeatureComponent>
               </Content>
             )}
-            {console.log(sectionComp.frontmatter.section.toLowerCase() )}
+            {console.log(sectionComp.frontmatter.section.toLowerCase())}
             {sectionComp.frontmatter.section.toLowerCase() === 'about' && (
-              <Content
-                config={siteMetadata.config}
-                gradient={`gradient${index}`}
-              >
+              <Content config={siteMetadata.config} bg={`backgroundAbout`}>
                 <AboutSection {...sectionComp}></AboutSection>
               </Content>
             )}
             {sectionComp.frontmatter.section.toLowerCase() === 'footer' && (
               <Content
+                style={{
+                  marginTop: '2%'
+                }}
                 config={siteMetadata.config}
-                gradient={`gradient${index}`}
+                bg={`backgroundFooter`}
               >
                 <FooterSection {...sectionComp}></FooterSection>
               </Content>
@@ -102,7 +99,7 @@ export const contentQuery = graphql`
         title
         siteURL
         config {
-          backgroundGradient
+          multipleBackground
         }
       }
     }
@@ -124,28 +121,14 @@ export const contentQuery = graphql`
           section
           parallaxBodySpeed
           featureOrder
-          backgroundImage {
-            img {
-              name
-              childImageSharp {
-                fluid(maxWidth: 800) {
-                  ...GatsbyImageSharpFluid
-                }
+          headerImages{
+            publicURL
+            name
+            childImageSharp {
+              fluid(maxWidth: 800) {
+                ...GatsbyImageSharpFluid
               }
             }
-            height
-            backgroundAttachment
-          }
-          frontImage {
-            img {
-              name
-              childImageSharp {
-                fluid(maxWidth: 800) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            height
           }
           featureImage {
             childImageSharp {

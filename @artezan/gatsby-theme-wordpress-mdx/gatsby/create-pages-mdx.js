@@ -1,7 +1,6 @@
 const path = require('path')
 
 module.exports = async function CreatePagesMdx(actions, graphql, reporter) {
-  console.log('HERE')
     const { createPage } = actions;
       const result = await graphql(`
       query {

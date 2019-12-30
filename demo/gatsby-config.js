@@ -15,7 +15,7 @@ module.exports = {
       headerHeight: 64,
       sideBarWidth: 240,
       showToggle: true,
-      backgroundGradient: true,
+      multipleBackground: true,
       twitter: 'artezanc',
       github: 'artezanc'
     }

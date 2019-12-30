@@ -19,12 +19,10 @@ const commonStyles = {
   paddingTop: 2
 }
 
-export const Content = ({ children, config, gradient }) => {
-  const context = useThemeUI()
-  console.log(context)
-  const background = config.backgroundGradient
-    ? { backgroundImage: theme => theme.colors[gradient] }
-    : { backgroundColor: theme => theme.colors.background }
+export const Content = ({ children, config, bg }) => {
+  const background = config.multipleBackground
+    ? { background: theme => theme.colors[bg] }
+    : { background: theme => theme.colors.background }
   return (
     <Styled.div
       sx={{
@@ -32,7 +30,6 @@ export const Content = ({ children, config, gradient }) => {
         zIndex: '2',
         position: 'relative',
         ...background
-        // backgroundColor: theme => theme.colors.background
       }}
     >
       <Styled.div

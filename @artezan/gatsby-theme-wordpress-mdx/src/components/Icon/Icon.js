@@ -5,11 +5,12 @@ export const Icon = ({
   className,
   iconPath,
   iconFill = 'currentcolor',
-  iconSize = 24
+  iconSize = 24,
+  showBackground = true
 }) => (
   <svg
     style={{ ...style }}
-    className={`jato-icon ${className}`}
+    className={`${className}`}
     width={iconSize}
     height={iconSize}
     viewBox={`0 0 24 24`}
@@ -19,6 +20,6 @@ export const Icon = ({
     id={iconPath}
   >
     <path d={iconPath} fill={iconFill} />
-    <path d="M0 0h24v24H0z" fill="none" />
+    {/* {showBackground && <path d="M0 0h24v24H0z" fill="none" />} */}
   </svg>
 )

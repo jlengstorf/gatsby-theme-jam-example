@@ -12,11 +12,14 @@ export const AboutSection = ({ body, frontmatter: { aboutImage } }) => {
         sx={{
           flexWrap: 'wrap',
           flexDirection: 'row',
-          p: [1, 1, 4]
+          p: [1, 1, 43],
+          // pb:  30
         }}
       >
         <Box
           sx={{
+            display:  ['flex', 'flex', '', ''] ,
+            justifyContent: ['center', 'center'],
             width: ['100%', '100%', '50%', '50%']
           }}
         >

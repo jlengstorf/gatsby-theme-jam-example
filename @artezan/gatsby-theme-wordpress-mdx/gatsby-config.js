@@ -11,7 +11,7 @@ module.exports = {
       headerHeight: 64,
       sideBarWidth: 240,
       showToggle: true,
-      backgroundt: true,
+      multipleBackground: true,
       twitter: '',
       github: ''
     }
