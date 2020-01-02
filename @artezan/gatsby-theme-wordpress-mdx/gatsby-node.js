@@ -1,6 +1,7 @@
 const { createFilePath } = require('gatsby-source-filesystem')
 const path = require('path')
 const CreatePagesMdx = require(`./gatsby/create-pages-mdx`)
+const CreatePagesWp = require(`./gatsby/create-pages-wp`)
 
 /* exports.onPreInit = (_, pluginOptions) => {
   // console.log(_)
@@ -27,11 +28,30 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       })
     }
   }
+
+  if (node.internal.type === `MarkdownRemark`) {
+    const value = createFilePath({ node, getNode })
+    createNodeField({
+      name: `slug`,
+      node,
+      value
+    })
+  }
 }
 
-exports.createPages = async ({ page, graphql, actions, reporter }) => {
+exports.createPages = async (
+  { page, graphql, actions, reporter },
+  pluginOptions
+) => {
   /**
    * Create each page of mdx
    */
   await CreatePagesMdx(actions, graphql, reporter)
+  const { sourceWordpress = false } = pluginOptions
+  if (sourceWordpress) {
+    /**
+     * Create each page from WP
+     */
+    await CreatePagesWp(actions, graphql, reporter)
+  }
 }

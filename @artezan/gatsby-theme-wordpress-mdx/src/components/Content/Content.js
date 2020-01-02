@@ -19,7 +19,7 @@ const commonStyles = {
   paddingTop: 2
 }
 
-export const Content = ({ children, config, bg }) => {
+export const Content = ({ children, config = {}, bg }) => {
   const background = config.multipleBackground
     ? { background: theme => theme.colors[bg] }
     : { background: theme => theme.colors.background }

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from 'react'
-import { css, Global } from '@emotion/core'
-import { jsx, Styled } from 'theme-ui'
+import { Global } from '@emotion/core'
+import { jsx, Styled, useThemeUI, css } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Location } from '@reach/router'
 import { SideBarProvider } from '../components/SideBarContext'
@@ -18,6 +18,7 @@ import Parallax from 'react-rellax'
 const shortcodes = { Div, SocialLink, BgImage, Parallax, ImgGatsby }
 
 const Layout = ({ children }) => {
+  const context = useThemeUI()
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -39,22 +40,25 @@ const Layout = ({ children }) => {
     siteImage
   } = data.site.siteMetadata
   return (
-    <>
+    <React.Fragment>
       <Global
-        styles={css`
-          body {
-            position: relative;
-            margin: 0;
-            min-height: 100%;
-            min-width: 320px;
+        styles={css({
+          body: {
+            margin: 0,
+            padding: 0,
+            position: 'relative',
+            minHeight: '100%',
+            minWidth: '320px',
+            bg: 'background'
           }
-        `}
+        })}
       />
 
       <Styled.div
         sx={{
-          margin: '0 auto',
-          backgroundColor: 'background'
+          margin: '0',
+          backgroundColor: theme => theme.colors.background
+          // maxWidth: theme => theme.breakpoints[3]
         }}
       >
         <SideBarProvider>
@@ -84,7 +88,7 @@ const Layout = ({ children }) => {
           </Location>
         </SideBarProvider>
       </Styled.div>
-    </>
+    </React.Fragment>
   )
 }
 

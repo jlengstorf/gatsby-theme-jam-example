@@ -11,7 +11,7 @@ export const SideBar = ({ config, links }) => {
   const { state } = React.useContext(SideBarContext)
   const { sideBarWidth, headerHeight, showToggle } = config
   const conditionalLeft = state.isNavOpen ? 0 : sideBarWidth
-
+  console.log('isNavOpen', state.isNavOpen)
   return (
     <Styled.div
       sx={{
