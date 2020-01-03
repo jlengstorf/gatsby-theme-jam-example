@@ -21,16 +21,6 @@ export const WpPostTemplate = ({
   site
 }) => {
   const context = useThemeUI()
-  console.log({
-    content,
-    categories,
-    tags,
-    title,
-    date,
-    author,
-    featuredImage,
-    excerpt
-  })
   const colorScale = colorRange(
     context.theme.colors.primary,
     context.theme.colors.secondary,
@@ -120,7 +110,6 @@ export const WpPostTemplate = ({
 
 const WpPost = ({ data }) => {
   const { wordpressPost: post, site } = data
-  console.log('data', data)
   return (
     <Content config={site.config}>
       <WpPostTemplate
