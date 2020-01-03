@@ -14,6 +14,7 @@ import { formatPathname } from '../helpers'
 import { MDXProvider } from '@mdx-js/react'
 import { Div, SocialLink, BgImage, ImgGatsby } from '../Shortcodes'
 import Parallax from 'react-rellax'
+// import Parallax from 'react-springy-parallax'
 
 const shortcodes = { Div, SocialLink, BgImage, Parallax, ImgGatsby }
 
@@ -47,7 +48,7 @@ const Layout = ({ children }) => {
             margin: 0,
             padding: 0,
             position: 'relative',
-            minHeight: '100%',
+            // minHeight: '100%',
             minWidth: '320px',
             bg: 'background'
           }
