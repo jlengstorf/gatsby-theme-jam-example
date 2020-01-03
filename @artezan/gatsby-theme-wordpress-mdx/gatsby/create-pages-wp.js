@@ -2,7 +2,7 @@ const path = require('path')
 const { paginate } = require('gatsby-awesome-pagination')
 
 const getOnlyPublished = edges =>
-  edges.filer(({ node }) => node.status === 'publish')
+  edges.filter(({ node }) => node.status === 'publish')
 
 module.exports = async function CreatePagesWp(actions, graphql, reporter) {
   const { createPage } = actions

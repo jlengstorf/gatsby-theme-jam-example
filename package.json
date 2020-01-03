@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "start": "yarn workspace demo develop",
-    "build": "yarn workspace demo build"
+    "start": "yarn workspace demo develop"
   },
   "private": true,
   "workspaces": [
