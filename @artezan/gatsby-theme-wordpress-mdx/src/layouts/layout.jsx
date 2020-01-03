@@ -58,7 +58,6 @@ const Layout = ({ children }) => {
         sx={{
           margin: '0',
           backgroundColor: theme => theme.colors.background
-          // maxWidth: theme => theme.breakpoints[3]
         }}
       >
         <SideBarProvider>

@@ -103,6 +103,12 @@ export default {
     '0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.17)'
   ],
 
+  layout: {
+    content: {
+      maxWidth: '1220px'
+    }
+  },
+
   styles: {
     root: {
       fontFamily: 'body',
@@ -248,9 +254,6 @@ export default {
     img: {
       width: '100%',
       height: 'auto'
-    },
-    'list-footer': {
-      color: 'text'
     }
   }
 }

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled, useThemeUI } from 'theme-ui'
+import { jsx, Styled, useThemeUI, Container } from 'theme-ui'
 
 const commonStyles = {
   display: 'flex',
@@ -26,23 +26,16 @@ export const Content = ({ children, config = {}, bg }) => {
   return (
     <Styled.div
       sx={{
-        ...commonStyles,
         zIndex: '2',
         position: 'relative',
-        ...background
+        ...background,
+        overflow: 'hidden',
+        transition: theme => theme.sideBarTranstion
       }}
     >
-      <Styled.div
-        sx={{
-          ...commonStyles,
-          paddingLeft: [3, 4],
-          paddingRight: [3, 4],
-          overflow: 'hidden',
-          transition: theme => theme.sideBarTranstion
-        }}
-      >
+      <Container sx={{ variant: 'layout.content' }} p={4}>
         {children}
-      </Styled.div>
+      </Container>
     </Styled.div>
   )
 }

@@ -21,13 +21,6 @@ module.exports = {
     }
   },
   plugins: [
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`
-      }
-    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
@@ -47,7 +40,7 @@ module.exports = {
           jwt_base_path: '/jwt-auth/v1/token'
         }, */
         // Set to true to debug endpoints on 'gatsby build'
-        verboseOutput: false
+        verboseOutput: false,
         // includedRoutes: [
         //   '**/categories',
         //   '**/posts',
@@ -57,17 +50,16 @@ module.exports = {
         //   '**/taxonomies',
         //   '**/users'
         // ]
-        // Este es el bueno
-        /*  plugins: [
+        plugins: [
           {
             resolve: `gatsby-wordpress-inline-images`,
             options: {
-              baseUrl: `www.theartezan.xyz`,
+              baseUrl: `wpdemo.gatsbycentral.com`,
               protocol: `https`,
               postTypes: ['post', 'page']
             }
           }
-        ] */
+        ]
       }
     },
     {

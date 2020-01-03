@@ -50,7 +50,8 @@ export const FeatureComponent = ({ features }) => {
 
               <Styled.div
                 sx={{
-                  marginTop: '10%'
+                  marginTop: '10%',
+                  mx: ['0%', '0%', '2%', '2%']
                 }}
               >
                 <MDXRenderer>{body}</MDXRenderer>

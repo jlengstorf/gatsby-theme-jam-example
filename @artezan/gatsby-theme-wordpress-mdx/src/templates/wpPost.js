@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled, useThemeUI } from 'theme-ui'
+import { jsx, Styled, useThemeUI, css } from 'theme-ui'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
@@ -105,7 +105,15 @@ export const WpPostTemplate = ({
         </ul>
       )}
 
-      <div dangerouslySetInnerHTML={{ __html: content }} />
+      <Styled.div
+        sx={css({
+          img: {
+            width: '100%',
+            height: 'auto'
+          }
+        })}
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
     </article>
   )
 }
