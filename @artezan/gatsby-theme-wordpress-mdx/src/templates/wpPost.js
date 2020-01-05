@@ -118,7 +118,7 @@ const WpPost = ({ data }) => {
         tags={post.tags}
         title={post.title}
         date={post.date}
-        author={post.author}
+        // author={post.author}
         featuredImage={post.featured_media}
         excerpt={post.excerpt}
         site={site}
@@ -162,10 +162,10 @@ export const pageQuery = graphql`
         name
         slug
       }
-      author {
-        name
-        slug
-      }
+      # author {
+      #   name
+      #   slug
+      # }
       featured_media {
         localFile {
           childImageSharp {

@@ -28,17 +28,18 @@ module.exports = async function CreatePagesMdx(actions, graphql, reporter) {
       frontmatter: { section, layout },
       id
     } = node
-    if (section) return
-    let layoutPath
-    if (layout === 'landing') {
-      layoutPath = `../src/templates/Landing.jsx`
-    } else if (layout === 'page') {
-      layoutPath = `../src/layouts/post.jsx`
+    if (layout) {
+      let layoutPath
+      if (layout === 'landing') {
+        layoutPath = `../src/templates/Landing.jsx`
+      } else if (layout === 'page') {
+        layoutPath = `../src/layouts/post.jsx`
+      }
+      createPage({
+        path: node.fields.slug,
+        component: path.join(__dirname, layoutPath),
+        context: { id: node.id }
+      })
     }
-    createPage({
-      path: node.fields.slug,
-      component: path.join(__dirname, layoutPath),
-      context: { id: node.id }
-    })
   })
 }

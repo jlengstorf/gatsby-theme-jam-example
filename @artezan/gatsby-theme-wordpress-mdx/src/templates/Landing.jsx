@@ -9,6 +9,9 @@ import { Content } from '../components/Content'
 import { AboutSection } from '../components/sections/About/AboutSection'
 import { FooterSection } from '../components/sections/Footer/FooterSection'
 import { GeneralSection } from '../components/sections/GeneralSection/GeneralSection'
+import { LastedPosts } from '../components/sections/LastedPosts/LastedPosts'
+import PostWp from '../components/PostWP/PostWp'
+import PostMdx from '../components/PostsMdx/PostMdx'
 
 const Landing = ({
   data: {
@@ -16,7 +19,8 @@ const Landing = ({
     mdx: {
       frontmatter: { sections: sectionsOrder }
     },
-    site: { siteMetadata }
+    site: { siteMetadata },
+    sitePlugin: { pluginOptions }
   }
 }) => {
   // Sort sections
@@ -91,6 +95,19 @@ const Landing = ({
                 <GeneralSection {...sectionComp}></GeneralSection>
               </Content>
             )}
+            {sectionComp.frontmatter.section.toLowerCase() ===
+              'lastedposts' && (
+              <Content config={siteMetadata.config} bg={`backgroundPost`}>
+                <LastedPosts>
+                  {pluginOptions.sourceWordpress && (
+                    <PostWp {...sectionComp}></PostWp>
+                  )}
+                  {pluginOptions.sourceMdxPosts && (
+                    <PostMdx {...sectionComp}></PostMdx>
+                  )}
+                </LastedPosts>
+              </Content>
+            )}
           </section>
         ))}
       </main>
@@ -100,6 +117,12 @@ const Landing = ({
 
 export const contentQuery = graphql`
   query landingQuery($id: String) {
+    sitePlugin(name: { eq: "gatsby-theme-wordpress-mdx" }) {
+      pluginOptions {
+        sourceWordpress
+        sourceMdxPosts
+      }
+    }
     site {
       siteMetadata {
         title

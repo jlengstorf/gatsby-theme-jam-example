@@ -38,7 +38,7 @@ module.exports = {
           jwt_user: process.env.WP_USER,
           jwt_pass: process.env.WP_PASSWORD,
           jwt_base_path: '/jwt-auth/v1/token'
-        }, 
+        },
         // Set to true to debug endpoints on 'gatsby build'
         verboseOutput: false,
         // includedRoutes: [
@@ -65,8 +65,10 @@ module.exports = {
     {
       resolve: 'gatsby-theme-wordpress-mdx',
       options: {
-        // OPTIONAL: Take pages and posts form Wordpress
-        sourceWordpress: true
+        // Requiered
+        sourceWordpress: true,
+        // Requered
+        sourceMdxPosts: true
       }
     }
   ]

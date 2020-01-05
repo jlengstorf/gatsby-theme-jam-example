@@ -52,11 +52,20 @@ module.exports = options => {
       }
     ]
   }
-  const { sourceWordpress = false } = options
+  const { sourceWordpress = false, sourceMdxPosts = false } = options
   // Push another plugins dynamicly here
   if (sourceWordpress) {
     console.log('Get data from Wordpress ...')
     // config.plugins.push()
+  }
+  if (sourceMdxPosts) {
+    config.plugins.push({
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'posts',
+        path: path.resolve('src/posts')
+      }
+    })
   }
   return config
 }
