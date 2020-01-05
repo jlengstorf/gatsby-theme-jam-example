@@ -9,9 +9,11 @@ import { Content } from '../components/Content'
 import { AboutSection } from '../components/sections/About/AboutSection'
 import { FooterSection } from '../components/sections/Footer/FooterSection'
 import { GeneralSection } from '../components/sections/GeneralSection/GeneralSection'
-import { LastedPosts } from '../components/sections/LastedPosts/LastedPosts'
-import PostWp from '../components/PostWP/PostWp'
-import PostMdx from '../components/PostsMdx/PostMdx'
+import {
+  MixPostsContainer,
+  WpPostsContainer,
+  MdxPostsContainer
+} from '../components/AllPosts'
 
 const Landing = ({
   data: {
@@ -23,6 +25,10 @@ const Landing = ({
     sitePlugin: { pluginOptions }
   }
 }) => {
+  const { sourceWordpress, sourceMdxPosts } = pluginOptions
+  const isMix = sourceWordpress && sourceMdxPosts
+  const isWp = sourceWordpress && !sourceMdxPosts
+  const isMdx = !sourceWordpress && sourceMdxPosts
   // Sort sections
   const [sortSecctions, setSortSecctions] = useState([])
   useEffect(() => {
@@ -98,14 +104,11 @@ const Landing = ({
             {sectionComp.frontmatter.section.toLowerCase() ===
               'lastedposts' && (
               <Content config={siteMetadata.config} bg={`backgroundPost`}>
-                <LastedPosts>
-                  {pluginOptions.sourceWordpress && (
-                    <PostWp {...sectionComp}></PostWp>
-                  )}
-                  {pluginOptions.sourceMdxPosts && (
-                    <PostMdx {...sectionComp}></PostMdx>
-                  )}
-                </LastedPosts>
+                {isWp && <WpPostsContainer {...sectionComp}></WpPostsContainer>}
+                {isMdx && (
+                  <MdxPostsContainer {...sectionComp}></MdxPostsContainer>
+                )}
+                {isMix && <MixPostsContainer></MixPostsContainer>}
               </Content>
             )}
           </section>

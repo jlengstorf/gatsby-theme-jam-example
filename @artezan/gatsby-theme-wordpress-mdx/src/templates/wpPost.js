@@ -130,13 +130,6 @@ const WpPost = ({ data }) => {
 export default WpPost
 
 export const pageQuery = graphql`
-  fragment PostFields on wordpress__POST {
-    id
-    slug
-    content
-    date(formatString: "MMMM DD, YYYY")
-    title
-  }
   query BlogPostByID($id: String!) {
     site {
       siteMetadata {

@@ -17,7 +17,7 @@ exports.sourceNodes = async (
   const mdxNodes = getNodesByType('Mdx')
   const wpNodes = getNodesByType('wordpress__POST')
   const { sourceWordpress = false, sourceMdxPosts = false } = pluginOptions
-  // create wp  post with mdx
+  // todo create fake node
   if (sourceWordpress) {
     wpNodes.forEach(post => {
       const node = {
@@ -91,6 +91,7 @@ exports.createPages = async (
   pluginOptions
 ) => {
   const { sourceWordpress = false } = pluginOptions
+  console.log(sourceWordpress)
   if (sourceWordpress) {
     /**
      * Create each page from WP
