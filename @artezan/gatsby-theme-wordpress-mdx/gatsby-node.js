@@ -3,37 +3,68 @@ const path = require('path')
 const CreatePagesMdx = require(`./gatsby/create-pages-mdx`)
 const CreatePagesWp = require(`./gatsby/create-pages-wp`)
 
-exports.sourceNodes = async (
+exports.sourceNodes = (
   {
     actions,
     createNodeId,
     createContentDigest,
     getNode,
     getNodes,
-    getNodesByType
+    getNodesByType,
+    schema
   },
   pluginOptions
 ) => {
-  const mdxNodes = getNodesByType('Mdx')
-  const wpNodes = getNodesByType('wordpress__POST')
-  const { sourceWordpress = false, sourceMdxPosts = false } = pluginOptions
-  // todo create fake node
-  if (sourceWordpress) {
-    wpNodes.forEach(post => {
-      const node = {
-        postId: post.id,
-        type: 'WP',
-        date: post.date,
-        wpData: { ...post },
-        id: createNodeId(`p-${post.id}`), // required by Gatsby
-        internal: {
-          type: 'MdxWpPosts', // required by Gatsby
-          contentDigest: createContentDigest(post) // required by Gatsby, must be unique
-        }
+  const { createTypes, createNode } = actions
+  // Dumy data
+  /*  createNode({
+    type: '',
+    postId: '1234',
+    date: new Date(),
+    parent: '',
+    children: [],
+    mdxData: {},
+    wpData: { test: 123 },
+    id: createNodeId(`p-${1}`),
+    internal: {
+      type: 'MdxWpPosts',
+      contentDigest: createContentDigest({ dummy: '' })
+    }
+  }) */
+  createTypes(
+    schema.buildObjectType({
+      name: 'AnyObject',
+      description: 'Arbitrary object',
+      parseValue: value => {
+        return typeof value === 'object'
+          ? value
+          : typeof value === 'string'
+          ? JSON.parse(value)
+          : null
+      },
+      serialize: value => {
+        return typeof value === 'object'
+          ? value
+          : typeof value === 'string'
+          ? JSON.parse(value)
+          : null
       }
-      actions.createNode(node)
     })
-  }
+  )
+  createTypes(
+    schema.buildObjectType({
+      name: `MdxWpPosts`,
+      fields: {
+        id: { type: `ID!` },
+        type: { type: 'String' },
+        postId: { type: 'String' },
+        date: { type: 'Date' },
+        wpData: { type: 'AnyObject' },
+        testField: { type: 'Float' }
+      },
+      interfaces: [`Node`]
+    })
+  )
 }
 
 exports.onCreateNode = ({
@@ -64,7 +95,9 @@ exports.onCreateNode = ({
         createNode({
           type: 'MDX',
           postId: node.id,
-          date: node.frontmatter.date,
+          date: node.frontmatter.date || [],
+          parent: node.id,
+          children: [],
           mdxData: { ...node },
           id: createNodeId(`p-${node.id}`),
           internal: {
@@ -72,16 +105,26 @@ exports.onCreateNode = ({
             contentDigest: createContentDigest(node)
           }
         })
+        actions.createParentChildLink({
+          parent: parent,
+          child: node
+        })
       }
     }
   }
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value
+  if (node.internal.type === 'wordpress__POST') {
+    const post = node
+    actions.createNode({
+      postId: post.id,
+      type: 'WP',
+      date: post.date,
+      wpData: { ...post },
+      id: createNodeId(`p-${post.id}`), // required by Gatsby
+      internal: {
+        type: 'MdxWpPosts', // required by Gatsby
+        contentDigest: createContentDigest(post) // required by Gatsby, must be unique
+      }
     })
   }
 }
@@ -91,7 +134,6 @@ exports.createPages = async (
   pluginOptions
 ) => {
   const { sourceWordpress = false } = pluginOptions
-  console.log(sourceWordpress)
   if (sourceWordpress) {
     /**
      * Create each page from WP

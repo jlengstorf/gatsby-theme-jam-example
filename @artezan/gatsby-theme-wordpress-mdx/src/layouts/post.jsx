@@ -6,7 +6,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 const Post = ({ data: { mdx, site } }) => {
   const context = useThemeUI()
 
-  const { timeToRead, wordCount, excerpt } = mdx
+  const { timeToRead, wordCount } = mdx
 
   return (
     <article
@@ -30,7 +30,6 @@ export const contentQuery = graphql`
     mdx(id: { eq: $id }) {
       id
       body
-      excerpt
       timeToRead
       wordCount {
         words

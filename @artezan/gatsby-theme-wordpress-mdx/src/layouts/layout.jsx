@@ -41,7 +41,7 @@ const Layout = ({ children }) => {
     siteImage
   } = data.site.siteMetadata
   return (
-    <React.Fragment>
+    <>
       <Global
         styles={css({
           body: {
@@ -88,7 +88,7 @@ const Layout = ({ children }) => {
           </Location>
         </SideBarProvider>
       </Styled.div>
-    </React.Fragment>
+    </>
   )
 }
 

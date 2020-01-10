@@ -153,6 +153,9 @@ export const contentQuery = graphql`
           section
           parallaxBodySpeed
           featureOrder
+          tags
+          title
+          date
           headerImages {
             publicURL
             name

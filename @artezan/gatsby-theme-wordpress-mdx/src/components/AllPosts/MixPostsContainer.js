@@ -15,7 +15,6 @@ export const MixPostsContainer = () => (
           nodes {
             id
             body
-            excerpt
             frontmatter {
               date
             }

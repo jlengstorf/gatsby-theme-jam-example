@@ -12,7 +12,6 @@ export const MdxPostsContainer = () => (
           nodes {
             id
             body
-            excerpt
             frontmatter {
               date
             }
