@@ -1,6 +1,11 @@
 const path = require('path')
 
-module.exports = async function CreatePagesMdx(actions, graphql, reporter) {
+module.exports = async function CreatePagesMdx(
+  actions,
+  graphql,
+  reporter,
+  sourceMdxPosts
+) {
   const { createPage } = actions
   const result = await graphql(`
     query {
@@ -14,6 +19,18 @@ module.exports = async function CreatePagesMdx(actions, graphql, reporter) {
             frontmatter {
               section
               layout
+            }
+          }
+        }
+      }
+      allMdxWpPosts(filter: { type: { eq: "MDX" } }) {
+        edges {
+          node {
+            id
+            mdxData {
+              fields {
+                slug
+              }
             }
           }
         }
@@ -42,4 +59,15 @@ module.exports = async function CreatePagesMdx(actions, graphql, reporter) {
       })
     }
   })
+  const { edges: mdxPosts } = result.data.allMdxWpPosts
+  if (sourceMdxPosts && mdxPosts.length) {
+    const postTemplate = path.join(__dirname, `../src/templates/mdxPost.js`)
+    mdxPosts.forEach(({ node }) => {
+      createPage({
+        path: node.mdxData.fields.slug,
+        component: postTemplate,
+        context: { id: node.id }
+      })
+    })
+  }
 }

@@ -10,17 +10,19 @@ import { Seo } from '../components/Seo'
 
 import { formatDate, colorRange } from '../helpers'
 import { Content } from '../components/Content'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
-export const WpPostTemplate = ({
+export const MdxPostTemplate = ({
   content,
-  categories,
   tags,
   title,
   date,
   author,
   featuredImage,
+  site,
   excerpt,
-  site
+  timeToRead,
+  wordCount
 }) => {
   const context = useThemeUI()
   const colorScale = colorRange(
@@ -41,12 +43,12 @@ export const WpPostTemplate = ({
         keywords={tags || []}
         siteURL={site.siteMetadata.siteURL}
         image={
-          featuredImage.localFile
-            ? featuredImage.localFile.childImageSharp.fluid.src.replace('/', '')
+          featuredImage
+            ? featuredImage.childImageSharp.fluid.src.replace('/', '')
             : ''
         }
       />
-      {featuredImage.localFile && (
+      {featuredImage && (
         <Styled.div
           sx={{
             display: 'flex',
@@ -57,7 +59,7 @@ export const WpPostTemplate = ({
           }}
         >
           <Img
-            fluid={featuredImage.localFile.childImageSharp.fluid}
+            fluid={featuredImage.childImageSharp.fluid}
             alt={title}
             style={{
               display: 'block',
@@ -76,13 +78,7 @@ export const WpPostTemplate = ({
         }}
       >
         <Styled.h1>{title}</Styled.h1>
-        {formatDate(date)}{' '}
-        {author && (
-          <>
-            {' '}
-            <span>| By {author} </span>{' '}
-          </>
-        )}
+        {formatDate(date)} {author && <> | By {author} </>}
       </Styled.div>
       {tags && (
         <ul
@@ -97,53 +93,58 @@ export const WpPostTemplate = ({
             }
           }}
         >
-          {tags.map(({ name }, index) => (
+          {tags.map((tag, index) => (
             <Tag key={index} color={colorScale[index]}>
-              {name}
+              {tag}
             </Tag>
           ))}
         </ul>
       )}
 
       <Styled.div
-        sx={css({
-          img: {
-            width: '100%  !important',
-            height: 'auto  !important'
-          }
-        })}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+        sx={{
+          mb: 4,
+          color: 'textMuted',
+          fontSize: 1,
+          fontFamily: 'body',
+          textAlign: 'right'
+        }}
+      >
+        {`${timeToRead} min read / ${wordCount} words`}
+      </Styled.div>
+
+      <MDXRenderer>{content}</MDXRenderer>
     </article>
   )
 }
 
-const WpPost = ({ data }) => {
+const MdxPost = ({ data }) => {
   const {
-    mdxWpPosts: { wpData: post },
+    mdxWpPosts: { mdxData: post },
     site
   } = data
   return (
     <Content config={site.config}>
-      <WpPostTemplate
-        content={post.content}
-        categories={post.categories}
-        tags={post.tags}
-        title={post.title}
-        date={data.mdxWpPosts.date}
-        author={post.author.name}
-        featuredImage={post.featured_media}
+      <MdxPostTemplate
+        content={post.body}
         excerpt={post.excerpt}
+        tags={post.frontmatter.tags}
+        title={post.frontmatter.title}
+        date={data.mdxWpPosts.date}
+        author={post.author}
+        featuredImage={post.frontmatter.featureImage}
         site={site}
+        timeToRead={post.timeToRead}
+        wordCount={post.wordCount.words}
       />
     </Content>
   )
 }
 
-export default WpPost
+export default MdxPost
 
 export const pageQuery = graphql`
-  query BlogPostByID($id: String!) {
+  query MdxBlogPostByID($id: String!) {
     site {
       siteMetadata {
         title
@@ -151,29 +152,22 @@ export const pageQuery = graphql`
       }
     }
     mdxWpPosts(id: { eq: $id }) {
-      date
-      wpData {
-        title
-        slug
-        content
+      date(formatString: "MMMM DD, YYYY")
+      mdxData {
+        timeToRead
+        wordCount {
+          words
+        }
+        body
         excerpt
-        categories {
-          name
-          slug
-        }
-        tags {
-          name
-          slug
-        }
-        author {
-          name
-        }
-        featured_media {
-          localFile {
+        author
+        frontmatter {
+          tags
+          title
+          featureImage {
             childImageSharp {
-              fluid(maxWidth: 300) {
-                ...GatsbyImageSharpFluid
-                originalName
+              fluid(maxWidth: 800) {
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }

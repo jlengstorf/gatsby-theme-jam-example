@@ -27,7 +27,7 @@ module.exports = {
       resolve: 'gatsby-source-wordpress',
       options: {
         // The base url to your WP site. www.theartezan.xyz wpdemo.gatsbycentral.com us-central1-kigali-162302.cloudfunctions.net/function-2
-        baseUrl: 'www.theartezan.xyz',
+        baseUrl: 'wpdemo.gatsbycentral.com',
         // WP.com sites set to true, WP.org set to false
         hostingWPCOM: false,
         // The protocol. This can be http or https.
@@ -54,7 +54,7 @@ module.exports = {
           {
             resolve: `gatsby-wordpress-inline-images`,
             options: {
-              baseUrl: `www.theartezan.xyz`,
+              baseUrl: `wpdemo.gatsbycentral.com`,
               protocol: `https`,
               postTypes: ['post', 'page']
             }

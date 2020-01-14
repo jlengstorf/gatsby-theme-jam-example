@@ -8,30 +8,53 @@ export const MixPostsContainer = () => (
   <StaticQuery
     query={graphql`
       query mixQuery {
-        allMdx(
-          filter: { fields: { sourceName: { eq: "posts" } } }
-          sort: { fields: frontmatter___date, order: DESC }
-        ) {
-          nodes {
-            id
-            body
-            frontmatter {
-              date
-            }
-          }
-        }
-
-        allWordpressPost(sort: { fields: date, order: DESC }) {
+        allMdxWpPosts(sort: { fields: date, order: DESC }, limit: 4) {
           nodes {
             date
-            title
+            type
+            mdxData {
+              body
+              excerpt
+              timeToRead
+              wordCount {
+                words
+              }
+              frontmatter {
+                title
+                tags
+                featureImage {
+                  childImageSharp {
+                    fluid {
+                      src
+                    }
+                  }
+                }
+              }
+            }
+            wpData {
+              excerpt
+              content
+              title
+              tags {
+                name
+              }
+              featured_media {
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      src
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
     `}
     render={data => {
-      const { allWordpressPost, allMdx } = data
-      return <Posts allWordpressPost={allWordpressPost} allMdx={allMdx}></Posts>
+      const { allMdxWpPosts } = data
+      return <Posts allMdxWpPosts={allMdxWpPosts}></Posts>
     }}
   />
 )

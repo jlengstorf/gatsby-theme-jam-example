@@ -7,21 +7,41 @@ import { Posts } from './Posts'
 export const MdxPostsContainer = () => (
   <StaticQuery
     query={graphql`
-      query mdxContQuery {
-        allMdx(filter: { fields: { sourceName: { eq: "posts" } } }) {
+      query mdxQuery {
+        allMdxWpPosts(
+          sort: { fields: date, order: DESC }
+          limit: 4
+          filter: { type: { eq: "MDX" } }
+        ) {
           nodes {
-            id
-            body
-            frontmatter {
-              date
+            date
+            type
+            mdxData {
+              body
+              excerpt
+              timeToRead
+              wordCount {
+                words
+              }
+              frontmatter {
+                title
+                tags
+                featureImage {
+                  childImageSharp {
+                    fluid {
+                      src
+                    }
+                  }
+                }
+              }
             }
           }
         }
       }
     `}
     render={data => {
-      const { allMdx } = data
-      return <Posts allMdx={allMdx}></Posts>
+      const { allMdxWpPosts } = data
+      return <Posts allMdxWpPosts={allMdxWpPosts}></Posts>
     }}
   />
 )

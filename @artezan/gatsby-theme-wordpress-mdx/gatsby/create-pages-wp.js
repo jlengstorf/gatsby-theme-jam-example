@@ -2,19 +2,21 @@ const path = require('path')
 const { paginate } = require('gatsby-awesome-pagination')
 
 const getOnlyPublished = edges =>
-  edges.filter(({ node }) => node.status === 'publish')
+  edges.filter(({ node }) => node.wpData.status === 'publish')
 
 module.exports = async function CreatePagesWp(actions, graphql, reporter) {
   const { createPage } = actions
   const result = await graphql(`
     {
-      allWordpressPost {
+      allMdxWpPosts(filter: { type: { eq: "WP" } }) {
         edges {
           node {
             id
-            slug
-            status
-            wordpress_id
+            wpData {
+              slug
+              status
+              wordpress_id
+            }
           }
         }
       }
@@ -26,7 +28,7 @@ module.exports = async function CreatePagesWp(actions, graphql, reporter) {
   }
 
   // In production builds, filter for only published posts.
-  const allPosts = result.data.allWordpressPost.edges
+  const allPosts = result.data.allMdxWpPosts.edges
   const posts =
     process.env.NODE_ENV === 'production'
       ? getOnlyPublished(allPosts)
@@ -38,7 +40,7 @@ module.exports = async function CreatePagesWp(actions, graphql, reporter) {
   posts.forEach(({ node: post }) => {
     // Create the Gatsby page for this WordPress post
     createPage({
-      path: `/${post.slug}/`,
+      path: `/${post.wpData.slug}/`,
       component: postTemplate,
       context: {
         id: post.id

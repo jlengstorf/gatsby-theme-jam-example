@@ -104,10 +104,8 @@ const Landing = ({
             {sectionComp.frontmatter.section.toLowerCase() ===
               'lastedposts' && (
               <Content config={siteMetadata.config} bg={`backgroundPost`}>
-                {isWp && <WpPostsContainer {...sectionComp}></WpPostsContainer>}
-                {isMdx && (
-                  <MdxPostsContainer {...sectionComp}></MdxPostsContainer>
-                )}
+                {isWp && <WpPostsContainer></WpPostsContainer>}
+                {isMdx && <MdxPostsContainer></MdxPostsContainer>}
                 {isMix && <MixPostsContainer></MixPostsContainer>}
               </Content>
             )}

@@ -7,11 +7,32 @@ import { Posts } from './Posts'
 export const WpPostsContainer = () => (
   <StaticQuery
     query={graphql`
-      query wpContQuery {
-        allWordpressPost(sort: { fields: date, order: DESC }) {
+      query wpQuery {
+        allMdxWpPosts(
+          sort: { fields: date, order: DESC }
+          limit: 4
+          filter: { type: { eq: "WP" } }
+        ) {
           nodes {
             date
-            title
+            type
+            wpData {
+              excerpt
+              content
+              title
+              tags {
+                name
+              }
+              featured_media {
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      src
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
