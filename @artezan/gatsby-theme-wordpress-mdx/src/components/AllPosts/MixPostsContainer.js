@@ -4,11 +4,11 @@ import { jsx } from 'theme-ui'
 
 import { Posts } from './Posts'
 
-export const MixPostsContainer = () => (
+export const MixPostsContainer = props => (
   <StaticQuery
     query={graphql`
       query mixQuery {
-        allMdxWpPosts(sort: { fields: date, order: DESC }, limit: 4) {
+        allMdxWpPosts(sort: { fields: date, order: DESC }) {
           nodes {
             date
             type
@@ -19,13 +19,16 @@ export const MixPostsContainer = () => (
               wordCount {
                 words
               }
+              fields {
+                slug
+              }
               frontmatter {
                 title
                 tags
                 featureImage {
                   childImageSharp {
-                    fluid {
-                      src
+                    fluid(maxWidth: 300) {
+                      ...GatsbyImageSharpFluid
                     }
                   }
                 }
@@ -35,14 +38,15 @@ export const MixPostsContainer = () => (
               excerpt
               content
               title
+              slug
               tags {
                 name
               }
               featured_media {
                 localFile {
                   childImageSharp {
-                    fluid {
-                      src
+                    fluid(maxWidth: 300) {
+                      ...GatsbyImageSharpFluid
                     }
                   }
                 }
@@ -54,7 +58,7 @@ export const MixPostsContainer = () => (
     `}
     render={data => {
       const { allMdxWpPosts } = data
-      return <Posts allMdxWpPosts={allMdxWpPosts}></Posts>
+      return <Posts allMdxWpPosts={allMdxWpPosts} {...props}></Posts>
     }}
   />
 )

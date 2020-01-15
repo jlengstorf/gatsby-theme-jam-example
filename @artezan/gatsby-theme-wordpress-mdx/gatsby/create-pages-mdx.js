@@ -15,6 +15,7 @@ module.exports = async function CreatePagesMdx(
             id
             fields {
               slug
+              sourceName
             }
             frontmatter {
               section
@@ -45,12 +46,12 @@ module.exports = async function CreatePagesMdx(
       frontmatter: { section, layout },
       id
     } = node
-    if (layout) {
-      let layoutPath
-      if (layout === 'landing') {
+    let layoutPath
+    if (['index', 'pages'].includes(node.fields.sourceName)) {
+      if (node.fields.sourceName === 'index') {
         layoutPath = `../src/templates/Landing.jsx`
-      } else if (layout === 'page') {
-        layoutPath = `../src/layouts/post.jsx`
+      } else if (node.fields.sourceName === 'pages') {
+        layoutPath = `../src/templates/page2.js`
       }
       createPage({
         path: node.fields.slug,

@@ -28,7 +28,6 @@ export const WpPostTemplate = ({
     context.theme.colors.secondary,
     tags ? tags.length : 2
   )
-
   return (
     <article
       sx={{
@@ -41,12 +40,12 @@ export const WpPostTemplate = ({
         keywords={tags || []}
         siteURL={site.siteMetadata.siteURL}
         image={
-          featuredImage.localFile
+          featuredImage && featuredImage.localFile
             ? featuredImage.localFile.childImageSharp.fluid.src.replace('/', '')
             : ''
         }
       />
-      {featuredImage.localFile && (
+      {featuredImage && featuredImage.localFile && (
         <Styled.div
           sx={{
             display: 'flex',
@@ -171,7 +170,7 @@ export const pageQuery = graphql`
         featured_media {
           localFile {
             childImageSharp {
-              fluid(maxWidth: 300) {
+              fluid(maxWidth: 800) {
                 ...GatsbyImageSharpFluid
                 originalName
               }

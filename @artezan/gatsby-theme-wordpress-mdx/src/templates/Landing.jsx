@@ -14,6 +14,7 @@ import {
   WpPostsContainer,
   MdxPostsContainer
 } from '../components/AllPosts'
+import { LastedPosts } from '../components/sections/LastedPosts/LastedPosts'
 
 const Landing = ({
   data: {
@@ -104,9 +105,7 @@ const Landing = ({
             {sectionComp.frontmatter.section.toLowerCase() ===
               'lastedposts' && (
               <Content config={siteMetadata.config} bg={`backgroundPost`}>
-                {isWp && <WpPostsContainer></WpPostsContainer>}
-                {isMdx && <MdxPostsContainer></MdxPostsContainer>}
-                {isMix && <MixPostsContainer></MixPostsContainer>}
+                <LastedPosts {...sectionComp} />
               </Content>
             )}
           </section>

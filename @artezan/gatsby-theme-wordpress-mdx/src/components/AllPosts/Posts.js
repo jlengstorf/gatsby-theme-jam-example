@@ -1,47 +1,49 @@
 /** @jsx jsx */
 import * as React from 'react'
-import { jsx, Styled } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import { Card } from '../Card'
+import { CardList } from '../CardList'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
-export const Posts = ({ allMdxWpPosts }) => {
+export const Posts = ({
+  allMdxWpPosts,
+  numOfPosts,
+  lastedFirst = true,
+  ...rest
+}) => {
   const { nodes: posts } = allMdxWpPosts
-  console.log(posts)
-  return (
-    <>
-      {posts.length &&
-        posts.map((post, index) => {
-          if (post.type === 'MDX') {
-            const { mdxData } = post
-            const strExcerpt = mdxData.excerpt.substring(0, 30)
-            return (
-              <div key={index}>
-                <Card
-                  excerpt={strExcerpt}
-                  timeToRead={mdxData.timeToRead}
-                  wordCount={mdxData.wordCount.words}
-                  date={post.date}
-                  tags={mdxData.frontmatter.tags}
-                  title={mdxData.frontmatter.title}
-                  featuredImage={mdxData.frontmatter.featuredImage}
-                />
-              </div>
-            )
-          } else {
-            const { wpData } = post
-            const strExcerpt = wpData.excerpt.substring(0, 30)
-            return (
-              <div key={index}>
-                <Card
-                  excerpt={strExcerpt}
-                  date={post.date}
-                  tags={wpData.tags}
-                  title={wpData.title}
-                  featuredImage={wpData.featured_media}
-                />
-              </div>
-            )
-          }
-        })}
-    </>
-  )
+  // Map all posts
+  let allPosts = posts.map(post => {
+    const { mdxData, wpData, date } = post
+    if (post.type === 'MDX') {
+      return {
+        excerpt: `${mdxData.excerpt}`,
+        slug: mdxData.fields.slug,
+        timeToRead: mdxData.timeToRead,
+        wordCount: mdxData.wordCount.words,
+        date,
+        tags: mdxData.frontmatter.tags,
+        title: mdxData.frontmatter.title,
+        featuredImage: mdxData.frontmatter.featureImage
+      }
+    } else {
+      return {
+        excerpt: `${wpData.excerpt}`,
+        slug: wpData.slug,
+        date,
+        tags: wpData.tags,
+        title: wpData.title,
+        featuredImage: wpData.featured_media
+      }
+    }
+  })
+  if (!lastedFirst) {
+    const c = new Date().getTime()
+    allPosts.sort((a, b) => new Date(a.date || c) - new Date(b.date || c))
+  }
+  if (numOfPosts) {
+    allPosts = allPosts.slice(0, numOfPosts)
+  }
+
+  return <CardList {...rest} listItems={allPosts} />
 }

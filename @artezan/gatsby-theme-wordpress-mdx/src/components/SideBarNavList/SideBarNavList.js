@@ -22,7 +22,8 @@ export const SideBarNavList = ({ links }) => {
     <Styled.ul
       sx={{
         margin: 0,
-        padding: 0
+        padding: 0,
+        display: ['block', 'block', 'block', 'flex']
       }}
     >
       {links.map((link, index) => {

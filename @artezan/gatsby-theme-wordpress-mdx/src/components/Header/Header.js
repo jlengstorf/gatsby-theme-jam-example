@@ -66,7 +66,8 @@ export const Header = ({ config, links }) => {
           sx={{
             display: ['none', 'none', 'none', 'flex'],
             justifyContent: 'flex-end',
-            flexBasis: '100%'
+            flexBasis: '100%',
+            mt: [0, 0, 3]
           }}
         >
           {/* Pages */}
