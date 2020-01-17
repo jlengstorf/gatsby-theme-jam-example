@@ -21,7 +21,7 @@ const Page = ({ data: { mdx, site } }) => {
           mb: 7
         }}
       >
-        <Seo
+        {/*  <Seo
           title={`${site.siteMetadata.title} | ${title}`}
           description={excerpt}
           keywords={tags || []}
@@ -34,13 +34,12 @@ const Page = ({ data: { mdx, site } }) => {
                 )
               : ''
           }
-        />
+        /> */}
         <Styled.div
           sx={{
             p: 4
           }}
         >
-          Hi
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </Styled.div>
       </article>

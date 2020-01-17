@@ -12,13 +12,14 @@ export const SideBarContainer = () => (
           siteMetadata {
             config {
               headerHeight
-              sideBarWidth,
+              sideBarWidth
               showToggle
             }
           }
         }
         allMdx(
-          filter: { fileAbsolutePath: { regex: "//src/pages//" } }
+          # todo !!
+          filter: { fileAbsolutePath: { regex: "//src/page//" } }
           sort: { order: ASC, fields: [fields___slug] }
         ) {
           edges {
@@ -38,7 +39,7 @@ export const SideBarContainer = () => (
     `}
     render={data => {
       const { config } = data.site.siteMetadata
-      const links = data.allMdx.edges.map(item => {
+      let links = data.allMdx.edges.map(item => {
         return {
           slug: item.node.fields.slug,
           icon: item.node.frontmatter.icon,
