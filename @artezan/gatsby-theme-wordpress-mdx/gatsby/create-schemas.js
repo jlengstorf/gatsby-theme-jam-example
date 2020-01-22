@@ -2,6 +2,26 @@ function CreateWpDataSchema(actions) {
   const { createTypes } = actions
   const typeDefs = `
       # ----- WP
+      type MdxWpPagesWpData implements Node {
+        wordpress_id: Int
+        date: Date
+        guid: String
+        modified: Date
+        slug: String
+        status: String
+        type: String
+        link: String
+        title: String
+        content: String
+        excerpt: String
+        wordpress_parent: Int
+        menu_order: Int
+        comment_status: String
+        ping_status: String
+        template: String
+        author: wordpress__wp_users
+        path: String
+      }
       type MdxWpPostsWpData implements Node {
         wordpress_id: Int
         date: Date

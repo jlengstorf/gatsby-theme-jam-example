@@ -18,7 +18,7 @@
     "gatsby-source-wordpress": "^3.1.54",
     "gatsby-theme-wordpress-mdx": "1.0.0",
     "gatsby-transformer-sharp": "^2.3.9",
-    "gatsby-wordpress-inline-images": "^1.2.0",
+    "gatsby-wordpress-inline-images": "^1.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },

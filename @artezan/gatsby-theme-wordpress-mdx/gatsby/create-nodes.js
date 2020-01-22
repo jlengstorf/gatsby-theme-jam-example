@@ -57,4 +57,29 @@ function CreateNodeMDX({
     })
   }
 }
-module.exports = { CreateNodeWP, CreateNodeMDX }
+/*
+ * Create WP pages in MdxWpPosts
+ */
+function CreateNodeWPPage({
+  node,
+  actions,
+  createNodeId,
+  createContentDigest,
+  getNode
+}) {
+  const { createNode, createParentChildLink } = actions
+  const parent = getNode(node.parent)
+  createNode({
+    type: 'WPP',
+    date: node.date,
+    parent: node.id,
+    children: [],
+    wpData: { ...node },
+    id: createNodeId(`pa-${node.id}`),
+    internal: {
+      type: 'MdxWpPages',
+      contentDigest: createContentDigest(node)
+    }
+  })
+}
+module.exports = { CreateNodeWP, CreateNodeMDX, CreateNodeWPPage }

@@ -27,7 +27,7 @@ export const MixPostsContainer = props => (
                 tags
                 featureImage {
                   childImageSharp {
-                    fluid(maxWidth: 300) {
+                    fluid(maxWidth: 600) {
                       ...GatsbyImageSharpFluid
                     }
                   }
@@ -45,7 +45,7 @@ export const MixPostsContainer = props => (
               featured_media {
                 localFile {
                   childImageSharp {
-                    fluid(maxWidth: 300) {
+                    fluid(maxWidth: 600) {
                       ...GatsbyImageSharpFluid
                     }
                   }

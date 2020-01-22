@@ -4,6 +4,26 @@ import { jsx, Styled, useThemeUI } from 'theme-ui'
 import Img from 'gatsby-image'
 import { Tag } from '../Tag'
 import { formatDate, colorRange } from '../../helpers'
+import { css } from '@emotion/core'
+
+const onImgLoad = ev => {
+  console.log('load', ev)
+}
+
+const CardImg = ({ fluid, title }) => (
+  <Img
+    imgStyle={{
+      height: 'auto',
+      maxHeight: '75vh'
+    }}
+    sx={{
+      height: 'auto',
+      maxHeight: '75vh'
+    }}
+    alt={title}
+    fluid={fluid}
+  />
+)
 
 export const Card = ({
   excerpt,
@@ -43,15 +63,18 @@ export const Card = ({
         {featuredImage &&
           featuredImage.childImageSharp &&
           featuredImage.childImageSharp.fluid && (
-            <Img alt={title} fluid={featuredImage.childImageSharp.fluid} />
+            <CardImg
+              title={title}
+              fluid={featuredImage.childImageSharp.fluid}
+            />
           )}
         {featuredImage &&
           featuredImage.localFile &&
           featuredImage.localFile.childImageSharp &&
           featuredImage.localFile.childImageSharp.fluid && (
             <>
-              <Img
-                alt={title}
+              <CardImg
+                title={title}
                 fluid={featuredImage.localFile.childImageSharp.fluid}
               />
             </>

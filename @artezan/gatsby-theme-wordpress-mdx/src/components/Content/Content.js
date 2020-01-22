@@ -33,9 +33,7 @@ export const Content = ({ children, config = {}, bg }) => {
         transition: theme => theme.sideBarTranstion
       }}
     >
-      <Container sx={{ variant: 'layout.content' }} p={4}>
-        {children}
-      </Container>
+      <Container p={4}>{children}</Container>
     </Styled.div>
   )
 }

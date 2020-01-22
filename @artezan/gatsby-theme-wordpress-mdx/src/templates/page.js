@@ -35,11 +35,7 @@ const Page = ({ data: { mdx, site } }) => {
               : ''
           }
         /> */}
-        <Styled.div
-          sx={{
-            p: 4
-          }}
-        >
+        <Styled.div>
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </Styled.div>
       </article>

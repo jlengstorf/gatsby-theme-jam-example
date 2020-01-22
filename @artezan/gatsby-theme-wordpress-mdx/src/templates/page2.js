@@ -11,12 +11,69 @@ import { Seo } from '../components/Seo'
 import { formatDate, colorRange } from '../helpers'
 import { Content } from '../components/Content'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { Posts } from '../components/AllPosts/Posts'
 
-export default function PageTemplate(props) {
+export default function PageTemplate({ data }) {
+  const { allMdxWpPosts } = data
+
   return (
     <div>
-      {console.log('Page 2', props)}
-      <p>Page2 vamos</p>
+      <Posts allMdxWpPosts={allMdxWpPosts} />
     </div>
   )
 }
+
+export const pageQuery = graphql`
+  query IndexQuery($limit: Int!, $skip: Int!) {
+    allMdxWpPosts(
+      sort: { fields: date, order: DESC }
+      limit: $limit
+      skip: $skip
+    ) {
+      nodes {
+        date
+        type
+        mdxData {
+          body
+          excerpt
+          timeToRead
+          wordCount {
+            words
+          }
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            tags
+            featureImage {
+              childImageSharp {
+                fluid(maxWidth: 300) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+        wpData {
+          excerpt
+          content
+          title
+          slug
+          tags {
+            name
+          }
+          featured_media {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 300) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`

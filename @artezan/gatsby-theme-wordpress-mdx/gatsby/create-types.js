@@ -4,6 +4,7 @@
 function CreateTypeMdxWpPosts(actions, schema) {
   const { createTypes } = actions
   // resolve data see : https://www.christopherbiscardi.com/post/constructing-query-types-in-themes/
+  // resolvers for MDX data
   createTypes(
     schema.buildObjectType({
       name: `MdxWpPostsMdxData`,
@@ -77,6 +78,7 @@ function CreateTypeMdxWpPosts(actions, schema) {
       interfaces: [`Node`]
     })
   )
+  // resolvers for WP post data
   createTypes(
     schema.buildObjectType({
       name: `MdxWpPostsWpData`,
@@ -108,6 +110,40 @@ function CreateTypeMdxWpPosts(actions, schema) {
       interfaces: [`Node`]
     })
   )
+
+  // resolvers for WP Page data
+  createTypes(
+    schema.buildObjectType({
+      name: `MdxWpPagesWpData`,
+      fields: {
+        content: {
+          type: 'String!',
+          resolve: async (source, args, context, info) => {
+            // This is for inline images
+            const wpNode = context.nodeModel.getNodeById({
+              id: source.id
+            })
+            return wpNode.content
+          }
+        },
+        excerpt: {
+          type: 'String',
+          resolve: async (source, args, context, info) => {
+            // This is for inline images
+            const wpNode = context.nodeModel.getNodeById({
+              id: source.id
+            })
+            const str = `${wpNode.excerpt
+              .replace(/<[^>]+>/g, '')
+              .substring(0, 140)}...`
+            return str
+          }
+        }
+      },
+      interfaces: [`Node`]
+    })
+  )
+  // types for MdxWpPosts
   createTypes(
     schema.buildObjectType({
       name: `MdxWpPosts`,
@@ -118,6 +154,22 @@ function CreateTypeMdxWpPosts(actions, schema) {
         date: { type: 'Date' },
         wpData: { type: 'MdxWpPostsWpData' },
         mdxData: { type: 'MdxWpPostsMdxData' }
+      },
+      interfaces: [`Node`]
+    })
+  )
+
+  // types for MdxWpPages
+
+  createTypes(
+    schema.buildObjectType({
+      name: `MdxWpPages`,
+      fields: {
+        id: { type: `ID!` },
+        type: { type: 'String' },
+        date: { type: 'Date' },
+        wpData: { type: 'MdxWpPagesWpData' }
+        // mdxData: { type: 'MdxWpPagesMdxData' }
       },
       interfaces: [`Node`]
     })

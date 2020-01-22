@@ -17,7 +17,7 @@ export const Posts = ({
     const { mdxData, wpData, date } = post
     if (post.type === 'MDX') {
       return {
-        excerpt: `${mdxData.excerpt}`,
+        excerpt: `${mdxData.excerpt || ''}`,
         slug: mdxData.fields.slug,
         timeToRead: mdxData.timeToRead,
         wordCount: mdxData.wordCount.words,

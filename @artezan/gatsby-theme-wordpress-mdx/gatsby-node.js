@@ -4,7 +4,11 @@ const CreatePagesMdx = require(`./gatsby/create-pages-mdx`)
 const CreatePagesWp = require(`./gatsby/create-pages-wp`)
 const { CreateWpDataSchema } = require(`./gatsby/create-schemas`)
 const { CreateTypeMdxWpPosts } = require(`./gatsby/create-types`)
-const { CreateNodeWP, CreateNodeMDX } = require(`./gatsby/create-nodes`)
+const {
+  CreateNodeWP,
+  CreateNodeMDX,
+  CreateNodeWPPage
+} = require(`./gatsby/create-nodes`)
 
 exports.createSchemaCustomization = ({ actions }) => {
   CreateWpDataSchema(actions)
@@ -50,6 +54,17 @@ exports.onCreateNode = ({
   if (node.internal.type === 'wordpress__POST') {
     // create WP post with MDX
     CreateNodeWP({
+      node,
+      getNode,
+      createNodeId,
+      createContentDigest,
+      actions
+    })
+  }
+  // wp pages
+  if (node.internal.type === 'wordpress__PAGE') {
+    // create WP page
+    CreateNodeWPPage({
       node,
       getNode,
       createNodeId,

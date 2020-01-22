@@ -46,31 +46,14 @@ module.exports = async function CreatePagesMdx(
       frontmatter: { section, layout },
       id
     } = node
-    /* let component
-    if (['index', 'pages'].includes(node.fields.sourceName)) {
-      if (node.fields.sourceName === 'index') {
-        component = path.join(__dirname, `../src/templates/Landing.jsx`)
-      } else if (node.fields.sourceName === 'pages') {
-        component = path.join(__dirname, `../src/templates/page2.js`)
-      }
-      console.log("create page", node.fields.slug )
-      console.log("create component", component )
-      createPage({
-        path: node.fields.slug,
-        component: path.join(__dirname, `../src/templates/page2.js`),
-        context: { id: node.id }
-      })
-    } */
 
     if (layout) {
       let layoutPath
       if (layout === 'landing') {
-        layoutPath = `../src/templates/Landing.jsx`
+        layoutPath = `../src/templates/Landing.js`
       } else if (layout === 'page') {
         layoutPath = `../src/templates/page.js`
       }
-      console.log('create page', node.fields.slug)
-      console.log('create component', layoutPath)
       createPage({
         path: node.fields.slug,
         component: path.join(__dirname, layoutPath),
